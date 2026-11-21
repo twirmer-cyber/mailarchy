@@ -7,7 +7,8 @@
   <title>MailVault – Ihr E-Mail-Archiv für Windows</title>
   <meta name="description" content="MailVault archiviert Postfächer, Outlook und Thunderbird in ein durchsuchbares Archiv auf Ihrem eigenen PC. Kostenlos, ohne Konto, ohne Cloud, mit offenem Quelltext.">
   <meta name="referrer" content="strict-origin-when-cross-origin">
-  <meta name="theme-color" content="#15171A">
+  <meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#121417" media="(prefers-color-scheme: dark)">
   <link rel="icon" href="favicon.svg" type="image/svg+xml">
   <link rel="preload" href="schriften/barlow-semi-condensed-600-latin.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="preload" href="schriften/barlow-400-latin.woff2" as="font" type="font/woff2" crossorigin>
@@ -40,13 +41,14 @@
     <symbol id="i-shield" viewBox="0 0 16 16"><path d="M8 1.75 2.75 3.75v4c0 3.1 2.2 5.4 5.25 6.5 3.05-1.1 5.25-3.4 5.25-6.5v-4z"/><path d="m5.75 8 1.6 1.6 3-3.1"/></symbol>
   </svg>
 
-  <!-- ============================================================ Tafel: Kopf und Einstieg -->
-  <header class="tafel kopf">
+  <!-- ============================================================ Kopf und Einstieg -->
+  <header class="kopf">
     <div class="rahmen kopf-innen">
       <a class="marke" href="#inhalt" aria-label="MailVault" data-i18n-attr="aria-label:home_label">
         <svg class="mark" aria-hidden="true"><use href="#i-mark"/></svg><span>MailVault</span>
       </a>
       <nav class="kopf-nav" aria-label="Seite" data-i18n-attr="aria-label:nav_label">
+        <a href="#warum" data-i18n="nav_why">Warum ein Archiv?</a>
         <a href="#funktionen" data-i18n="nav_features">Funktionen</a>
         <a href="#installation" data-i18n="nav_install">Installation</a>
         <a href="#mitmachen" data-i18n="nav_join">Mitmachen</a>
@@ -62,13 +64,13 @@
   </header>
 
   <main id="inhalt">
-    <section class="tafel buehne" aria-labelledby="titel">
+    <section class="buehne" aria-labelledby="titel">
       <div class="rahmen buehne-innen">
-        <h1 id="titel" class="klapptitel" data-i18n-html="hero_title"><span class="zeile">Ihre E-Mails.</span> <span class="zeile">Auf Ihrem PC.</span> <span class="zeile">Jederzeit wiederzufinden.</span></h1>
+        <h1 id="titel" class="klapptitel" data-i18n-html="hero_title"><span class="zeile">Kostenloses E-Mail-Archiv</span> <span class="zeile">für Windows</span></h1>
 
         <div class="buehne-unten">
           <div class="laden">
-            <p class="lead" data-i18n="hero_lead">MailVault sammelt Postfächer, Outlook und Thunderbird in einem durchsuchbaren Archiv auf Ihrem eigenen Rechner. Kostenlos, ohne Konto, ohne Cloud – und mit offenem Quelltext.</p>
+            <p class="lead" data-i18n="hero_lead">MailVault sichert die E-Mails aus Ihren Postfächern, aus Outlook und Thunderbird in einem durchsuchbaren Archiv auf Ihrem eigenen PC – vollständig, unabhängig vom Anbieter und auf Wunsch verschlüsselt. Die Postfächer werden dabei nur gelesen, nie verändert. Ohne Konto, ohne Cloud, mit offenem Quelltext.</p>
             <a class="knopf-laden" href="{{SETUP}}" id="download">
               <svg aria-hidden="true"><use href="#i-down"/></svg>
               <span class="knopf-laden-text">
@@ -118,11 +120,37 @@
       </div>
     </section>
 
+    <!-- ============================================================ Warum ein Archiv? -->
+    <section class="abschnitt ablage warum" id="warum" aria-labelledby="warum-titel">
+      <div class="rahmen">
+        <div class="warum-kopf">
+          <h2 id="warum-titel" data-i18n="why_title">Warum ein Archiv? Ein Postfach ist keine Sicherung.</h2>
+          <div class="warum-text">
+            <p data-i18n="why_p1">E-Mail-Programme und Postfächer – Outlook, Thunderbird, Gmail oder das Webmail Ihres Anbieters – sind zum Lesen und Schreiben gemacht, nicht zum dauerhaften Aufbewahren. Was dort gelöscht wird, ist meist endgültig weg. Und das geschieht öfter durch einen Fehlgriff als durch einen technischen Defekt.</p>
+            <p data-i18n="why_p2">Viele wissen außerdem nicht, dass ihre E-Mails – gerade wenn sie auf dem Handy gelesen werden – nur auf den Servern des Anbieters liegen. Eine eigene Kopie gibt es dann nirgends.</p>
+          </div>
+        </div>
+        <div class="risiken" role="table" aria-labelledby="warum-titel">
+          <div class="risiko risiko-kopf" role="row">
+            <span role="columnheader" data-i18n="why_col_risk">Was passieren kann</span>
+            <span role="columnheader" data-i18n="why_col_answer">Was MailVault dafür tut</span>
+          </div>
+          <div class="risiko" role="row"><span class="risiko-fall" role="cell" data-i18n="r1_t">Versehentlich gelöscht – auf einem Gerät und durch die Synchronisierung auf allen anderen</span><span class="risiko-hilfe" role="cell" data-i18n="r1_d">Was einmal archiviert ist, bleibt im Archiv, auch wenn es im Postfach später fehlt.</span></div>
+          <div class="risiko" role="row"><span class="risiko-fall" role="cell" data-i18n="r2_t">Postfach voll, Ordner geleert, alte E-Mails aufgeräumt</span><span class="risiko-hilfe" role="cell" data-i18n="r2_d">Sie können im Postfach Platz schaffen. Die alten E-Mails bleiben im Archiv vollständig und durchsuchbar.</span></div>
+          <div class="risiko" role="row"><span class="risiko-fall" role="cell" data-i18n="r3_t">Anbieter oder PC gewechselt, Konto gekündigt</span><span class="risiko-hilfe" role="cell" data-i18n="r3_d">Das Archiv hängt an keinem Anbieter. Neue Postfächer kommen einfach dazu; für einen neuen PC kopieren Sie den Archivordner.</span></div>
+          <div class="risiko" role="row"><span class="risiko-fall" role="cell" data-i18n="r4_t">Konto gehackt, Server gestört oder ausgefallen</span><span class="risiko-hilfe" role="cell" data-i18n="r4_d">Auf Ihrem PC liegt eine vollständige, vom Anbieter unabhängige Kopie – auf Wunsch mit AES-256 verschlüsselt.</span></div>
+          <div class="risiko" role="row"><span class="risiko-fall" role="cell" data-i18n="r5_t">Der Anbieter schließt das Konto oder stellt den Dienst ein</span><span class="risiko-hilfe" role="cell" data-i18n="r5_d">Ihre E-Mails bleiben im Archiv lesbar und lassen sich jederzeit als EML oder MBOX exportieren.</span></div>
+        </div>
+        <p class="warum-fuss"><svg aria-hidden="true"><use href="#i-shield"/></svg><span data-i18n="why_note">Dabei liest MailVault Ihre Postfächer nur. Es löscht, verschiebt und markiert dort nichts – das Postfach bleibt genau so, wie es ist.</span></p>
+        <p class="warum-hinweis" data-i18n="why_backup">Ein Archiv auf dem PC ersetzt keine Datensicherung des PCs. Kopieren Sie den Archivordner deshalb gelegentlich auf ein externes Laufwerk.</p>
+      </div>
+    </section>
+
     <!-- ============================================================ Suche und echte Oberfläche -->
     <section class="abschnitt suche" id="funktionen" aria-labelledby="suche-titel">
       <div class="rahmen suche-innen">
         <div class="suche-text">
-          <h2 id="suche-titel" data-i18n="search_title">Finden in Sekunden, auch nach Jahren</h2>
+          <h2 id="suche-titel" data-i18n="search_title">Volltextsuche über alle Postfächer und Jahre</h2>
           <p data-i18n="search_text">Die Suche durchsucht Betreff, Absender, Text und sogar den Inhalt von PDF-, Word- und Excel-Anhängen. Filter schreiben Sie einfach mit hinein:</p>
           <dl class="syntax">
             <div><dt><code data-i18n="code_from">von:schule</code></dt><dd data-i18n="syn_from">Absender</dd></div>
@@ -143,11 +171,11 @@
       </div>
     </section>
 
-    <!-- ============================================================ Zusagen (gelbes Plakat) -->
-    <section class="plakat" aria-labelledby="zusagen-titel">
+    <!-- ============================================================ Zusagen -->
+    <section class="abschnitt ablage zusagen" aria-labelledby="zusagen-titel">
       <div class="rahmen">
-        <h2 id="zusagen-titel" data-i18n="promises_title">Vier Zusagen, die nicht verhandelbar sind</h2>
-        <dl class="fahrplan">
+        <h2 id="zusagen-titel" data-i18n="promises_title">Vier Grundsätze, die in jeder Version gelten</h2>
+        <dl class="register">
           <div>
             <dt data-i18n="p1_t">Am Postfach wird nichts gelöscht</dt>
             <dd data-i18n="p1_d">MailVault liest nur. Es gibt keine Funktion, die auf dem Server löscht, verschiebt oder als gelesen markiert – automatische Tests sichern das bei jeder Version ab.</dd>
@@ -165,14 +193,14 @@
             <dd data-i18n="p4_d">Neue Versionen kommen signiert von dieser Seite. Vor jeder Umstellung wird gesichert; startet etwas nicht, kehrt MailVault von selbst zur alten Version zurück.</dd>
           </div>
         </dl>
-        <p class="plakat-fuss"><svg aria-hidden="true"><use href="#i-shield"/></svg><span data-i18n="privacy_page">Und diese Seite? Keine Cookies, keine Zählpixel, nichts von fremden Servern – auch die Schriften liegen hier.</span></p>
+        <p class="zusagen-fuss"><svg aria-hidden="true"><use href="#i-shield"/></svg><span data-i18n="privacy_page">Auch diese Webseite setzt keine Cookies, verwendet keine Zählpixel und lädt nichts von fremden Servern.</span></p>
       </div>
     </section>
 
     <!-- ============================================================ Funktionen -->
     <section class="abschnitt funktionen" aria-labelledby="funktionen-titel">
       <div class="rahmen">
-        <h2 id="funktionen-titel" data-i18n="features_title">Was MailVault kann</h2>
+        <h2 id="funktionen-titel" data-i18n="features_title">Funktionen im Überblick</h2>
         <dl class="liste">
           <div><dt data-i18n="f1_t">Alle üblichen Quellen</dt><dd data-i18n="f1_d">IMAP und POP3 (Gmail, GMX, WEB.DE, Outlook.com, T-Online …) mit automatischer Einrichtung, Outlook-Dateien (.pst/.ost) auch ohne installiertes Outlook, Thunderbird, EML- und MBOX-Dateien.</dd></div>
           <div><dt data-i18n="f2_t">Archiviert von selbst</dt><dd data-i18n="f2_d">Zeitplan pro Postfach, läuft im Infobereich mit, holt verpasste Termine nach und meldet sich per E-Mail, wenn etwas nicht klappt.</dd></div>
@@ -187,18 +215,18 @@
     </section>
 
     <!-- ============================================================ Offen gebaut -->
-    <section class="tafel offen" id="mitmachen" aria-labelledby="offen-titel">
+    <section class="abschnitt ablage offen" id="mitmachen" aria-labelledby="offen-titel">
       <div class="rahmen offen-innen">
         <div class="offen-text">
-          <h2 id="offen-titel" data-i18n="open_title">Offen gebaut – mit einer KI am Tisch</h2>
-          <p data-i18n="open_p1">Ganz ehrlich: MailVault ist „vibe-coded“. Das Programm ist im Gespräch mit einer KI entstanden, mit Claude von Anthropic – beschrieben, ausprobiert, verworfen, verbessert. Ein Mensch hat entschieden, was hineinkommt; geschrieben hat die KI sehr viel davon.</p>
-          <p data-i18n="open_p2">Gerade deshalb liegt der gesamte Quelltext offen auf GitHub. Sie müssen niemandem glauben, dass am Postfach nichts gelöscht wird: Die Tests, die genau das prüfen, kann jeder lesen und selbst ausführen.</p>
+          <h2 id="offen-titel" data-i18n="open_title">Offener Quelltext, mit KI-Unterstützung entwickelt</h2>
+          <p data-i18n="open_p1">MailVault ist „vibe-coded“: Das Programm wurde im Dialog mit einer KI entwickelt, mit Claude von Anthropic. Ein Mensch hat festgelegt, was MailVault tun soll und was nicht; einen großen Teil des Codes hat die KI geschrieben.</p>
+          <p data-i18n="open_p2">Deshalb liegt der gesamte Quelltext offen auf GitHub. So lässt sich nachprüfen, dass MailVault am Postfach nichts löscht: Die Tests, die genau das sicherstellen, kann jeder lesen und selbst ausführen.</p>
           <a class="knopf-rand" href="{{REPO_URL}}" rel="noopener">
             <svg aria-hidden="true"><use href="#i-code"/></svg><span data-i18n="open_repo">Quelltext auf GitHub ansehen</span>
           </a>
         </div>
         <nav class="gleise" aria-labelledby="gleise-titel">
-          <p class="gleise-titel" id="gleise-titel" data-i18n="open_board">Mitmachen ausdrücklich erwünscht</p>
+          <p class="gleise-titel" id="gleise-titel" data-i18n="open_board">Mitarbeit auf GitHub ist willkommen</p>
           <ul>
             <li><a href="{{REPO_URL}}/issues" rel="noopener"><span class="gleis-was" data-i18n="row_bug_t">Fehler gefunden?</span><span class="gleis-wohin"><span data-i18n="row_bug_d">Issue anlegen</span><svg aria-hidden="true"><use href="#i-arrow"/></svg></span></a></li>
             <li><a href="{{REPO_URL}}/issues" rel="noopener"><span class="gleis-was" data-i18n="row_idea_t">Eine Idee?</span><span class="gleis-wohin"><span data-i18n="row_idea_d">Vorschlag als Issue</span><svg aria-hidden="true"><use href="#i-arrow"/></svg></span></a></li>
@@ -213,7 +241,7 @@
     <section class="abschnitt installation" id="installation" aria-labelledby="installation-titel">
       <div class="rahmen installation-innen">
         <div>
-          <h2 id="installation-titel" data-i18n="install_title">In zwei Minuten installiert</h2>
+          <h2 id="installation-titel" data-i18n="install_title">Installation in drei Schritten</h2>
           <ol class="schritte">
             <li data-i18n-html="s1"><a href="{{SETUP}}">Setup herunterladen</a> und starten.</li>
             <li data-i18n-html="s2">Windows SmartScreen warnt beim ersten Start, weil das Setup nicht mit einem gekauften Zertifikat signiert ist. Klicken Sie auf <b>Weitere Informationen → Trotzdem ausführen</b>.</li>
@@ -234,13 +262,13 @@
     </section>
 
     <!-- ============================================================ Unterstützen -->
-    <section class="abschnitt unterstuetzen" id="unterstuetzen" aria-labelledby="unterstuetzen-titel">
+    <section class="abschnitt ablage unterstuetzen" id="unterstuetzen" aria-labelledby="unterstuetzen-titel">
       <div class="rahmen unterstuetzen-innen">
         <div>
           <h2 id="unterstuetzen-titel" data-i18n="support_title">MailVault unterstützen</h2>
           <p data-i18n="support_p1">MailVault ist kostenlos und bleibt es. Wer mag, hilft dem Entwickler mit einem Beitrag, Server und Weiterentwicklung zu bezahlen.</p>
           <p data-i18n="support_p2">Der Beitrag ändert nichts: Sie bekommen dieselbe App wie alle anderen, ohne Konto, ohne Freischaltung, ohne Werbung. Er ist deshalb kein Preis für eine Leistung, sondern ein freiwilliger Zuschuss.</p>
-          <a class="knopf-gelb" rel="noopener" target="_blank"
+          <a class="knopf-zweit" rel="noopener" target="_blank"
              href="https://www.paypal.com/cgi-bin/webscr?cmd=_xclick&amp;business=flusu%40zerze.de&amp;currency_code=EUR&amp;item_name=Kostenbeitrag+zu+Betrieb+und+Pflege+von+MailVault">
             <span data-i18n="support_btn">Mit PayPal unterstützen</span><svg aria-hidden="true"><use href="#i-out"/></svg>
           </a>
@@ -270,9 +298,9 @@
     </section>
 
     <!-- ============================================================ Schluss -->
-    <section class="tafel schluss" aria-labelledby="schluss-titel">
+    <section class="schluss" aria-labelledby="schluss-titel">
       <div class="rahmen schluss-innen">
-        <h2 id="schluss-titel" class="klapptitel" data-i18n="cta_title">Fangen Sie mit einem Postfach an.</h2>
+        <h2 id="schluss-titel" class="klapptitel" data-i18n="cta_title">MailVault kostenlos herunterladen</h2>
         <div class="schluss-laden">
           <a class="knopf-laden" href="{{SETUP}}">
             <svg aria-hidden="true"><use href="#i-down"/></svg>

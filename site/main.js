@@ -92,7 +92,7 @@
 
   function run(owner, tiles) {
     clock.clear(owner);
-    var state = tiles.map(function (k, i) { return { k: k, n: 2 + Math.floor(i * 0.55) + Math.floor(Math.random() * 3) }; });
+    var state = tiles.map(function (k, i) { return { k: k, n: 1 + Math.floor(i * 0.3) + Math.floor(Math.random() * 2) }; });
     state.forEach(function (s) { if (/\S/.test(s.k.dataset.c) && !/[\s.,!?–-]/.test(s.k.dataset.c)) s.k.textContent = randFor(s.k.dataset.c); else s.n = 0; });
     var job = function () {
       var busy = false;

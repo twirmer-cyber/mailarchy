@@ -6,7 +6,7 @@ using MailVault.Core.Localization;
 
 namespace MailVault.Core;
 
-/// <summary>Führt ein Archivierungsprofil aus: Quelle lesen, filtern, Duplikate erkennen, speichern, optional löschen.</summary>
+/// <summary>Führt ein Archivierungsprofil aus: Quelle lesen, filtern, Duplikate erkennen, speichern. Die Quelle wird nie verändert.</summary>
 public static class ImportJob
 {
     public static async Task<ImportResult> RunAsync(MailArchive archive, ArchiveProfile profile,
