@@ -102,7 +102,7 @@ if (-not $SiteOnly) {
     # Setup-Datei fuer den Download: kleiner Entpacker (.NET Framework 4.8) mit dem Paket als Ressource
     $setupOut = Join-Path $outDir "setup"
     if (Test-Path $setupOut) { Remove-Item $setupOut -Recurse -Force }
-    dotnet build (Join-Path $root "tools\MailVault.Setup") -c Release --nologo -v q "-p:Payload=$zip" "-p:Version=$($Matches[1])" -o $setupOut
+    dotnet build (Join-Path $root "tools\MailVault.Setup") -c Release --nologo -v q "-p:Payload=$zip" "-p:Version=$propsVersion" -o $setupOut
     if ($LASTEXITCODE -ne 0) { throw "Setup-Datei konnte nicht gebaut werden" }
     $setupName = "MailVault-Setup-$Version.exe"
     Copy-Item (Join-Path $setupOut "MailVault-Setup.exe") (Join-Path $siteOut "download\$setupName")
