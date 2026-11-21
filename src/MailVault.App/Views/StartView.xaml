@@ -1,0 +1,134 @@
+<UserControl x:Class="MailVault.App.Views.StartView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:loc="clr-namespace:MailVault.App.Localization"
+             xmlns:views="clr-namespace:MailVault.App.Views">
+    <!-- Startseite: zuerst die Suche (häufigste Aufgabe), darunter Archivzustand und Profile.
+         Die Bereiche selbst erreicht man über die Seitenleiste; hier keine doppelten Kacheln. -->
+    <ScrollViewer VerticalScrollBarVisibility="Auto">
+        <StackPanel Margin="40,32,40,32" MaxWidth="960" HorizontalAlignment="Left">
+            <TextBlock Style="{StaticResource H1}" Text="{loc:T Nav_Start}" />
+
+            <DockPanel Margin="0,0,0,8">
+                <Button DockPanel.Dock="Right" Content="{loc:T Common_Search}" Style="{StaticResource PrimaryButton}" Margin="8,0,0,0" MinHeight="38"
+                        Command="{Binding SearchCommand}" />
+                <TextBox Text="{Binding QuickSearch, UpdateSourceTrigger=PropertyChanged}" FontSize="14" MinHeight="38" Padding="10,6"
+                         views:Field.Placeholder="{loc:T Start_SearchPlaceholder}"
+                         AutomationProperties.Name="{loc:T Start_SearchName}">
+                    <TextBox.InputBindings>
+                        <KeyBinding Key="Enter" Command="{Binding SearchCommand}" />
+                    </TextBox.InputBindings>
+                </TextBox>
+            </DockPanel>
+            <TextBlock Style="{StaticResource Muted}" FontSize="12" Margin="0,0,0,24"
+                       Text="{loc:T Start_SearchHint}" />
+
+            <Border Background="{DynamicResource WarnBackBrush}" CornerRadius="6" Padding="14,10" Margin="0,0,0,24"
+                    Visibility="{Binding ShowRecoveryWarning, Converter={StaticResource BoolToVis}}">
+                <DockPanel>
+                    <TextBlock DockPanel.Dock="Left" Text="&#xE7BA;" Style="{StaticResource Icon}" Foreground="{DynamicResource WarnBrush}"
+                               VerticalAlignment="Top" Margin="0,1,10,0" />
+                    <TextBlock TextWrapping="Wrap" Foreground="{DynamicResource WarnTextBrush}">
+                        <Run Text="{loc:T Start_RecoveryWarning}" />
+                        <Hyperlink Command="{Binding GoSettingsCommand}"><Run Text="{loc:T Start_SaveNow}" /></Hyperlink>
+                    </TextBlock>
+                </DockPanel>
+            </Border>
+
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="40" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+
+                <!-- Archiv -->
+                <StackPanel>
+                    <TextBlock Style="{StaticResource H2}" Margin="0,0,0,8" Text="{loc:T Start_Archive}" />
+                    <Border BorderBrush="{DynamicResource BorderBrush}" BorderThickness="0,1,0,0">
+                        <Grid Typography.NumeralAlignment="Tabular">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto" />
+                                <ColumnDefinition />
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition /><RowDefinition /><RowDefinition /><RowDefinition /><RowDefinition />
+                            </Grid.RowDefinitions>
+                            <Grid.Resources>
+                                <Style x:Key="Key" TargetType="TextBlock" BasedOn="{StaticResource Muted}">
+                                    <Setter Property="Margin" Value="0,7,24,7" />
+                                </Style>
+                                <Style x:Key="Val" TargetType="TextBlock">
+                                    <Setter Property="Margin" Value="0,7" />
+                                    <Setter Property="TextTrimming" Value="CharacterEllipsis" />
+                                </Style>
+                            </Grid.Resources>
+                            <TextBlock Style="{StaticResource Key}" Text="{loc:T Common_Emails}" />
+                            <TextBlock Grid.Column="1" Style="{StaticResource Val}" Text="{Binding MessageCount}" FontWeight="SemiBold" />
+                            <TextBlock Grid.Row="1" Style="{StaticResource Key}" Text="{loc:T Start_Size}" />
+                            <TextBlock Grid.Row="1" Grid.Column="1" Style="{StaticResource Val}" Text="{Binding ArchiveSize}" />
+                            <TextBlock Grid.Row="2" Style="{StaticResource Key}" Text="{loc:T Start_Period}" />
+                            <TextBlock Grid.Row="2" Grid.Column="1" Style="{StaticResource Val}" Text="{Binding DateRange}" />
+                            <TextBlock Grid.Row="3" Style="{StaticResource Key}" Text="{loc:T Start_LastArchived}" />
+                            <TextBlock Grid.Row="3" Grid.Column="1" Style="{StaticResource Val}" Text="{Binding LastArchived}" />
+                            <TextBlock Grid.Row="4" Style="{StaticResource Key}" Text="{loc:T Start_Protection}" />
+                            <TextBlock Grid.Row="4" Grid.Column="1" Style="{StaticResource Val}">
+                                <Run Text="{Binding ProtectionText, Mode=OneWay}" />
+                                <Hyperlink Command="{Binding GoSettingsCommand}"><Run Text="{loc:T Start_Change}" /></Hyperlink>
+                            </TextBlock>
+                        </Grid>
+                    </Border>
+                </StackPanel>
+
+                <!-- Profile -->
+                <StackPanel Grid.Column="2">
+                    <DockPanel Margin="0,0,0,8">
+                        <TextBlock DockPanel.Dock="Right" VerticalAlignment="Bottom">
+                            <Hyperlink Command="{Binding GoArchiveCommand}"><Run Text="{loc:T Start_AllProfiles}" /></Hyperlink>
+                        </TextBlock>
+                        <TextBlock Style="{StaticResource H2}" Margin="0" Text="{loc:T Start_RecentProfiles}" />
+                    </DockPanel>
+                    <Border BorderBrush="{DynamicResource BorderBrush}" BorderThickness="0,1,0,0">
+                        <Grid>
+                            <!-- Leerer Zustand: nächster Schritt -->
+                            <StackPanel Margin="0,12,0,0">
+                                <StackPanel.Style>
+                                    <Style TargetType="StackPanel">
+                                        <Setter Property="Visibility" Value="Collapsed" />
+                                        <Style.Triggers>
+                                            <DataTrigger Binding="{Binding RecentProfiles.Count}" Value="0">
+                                                <Setter Property="Visibility" Value="Visible" />
+                                            </DataTrigger>
+                                        </Style.Triggers>
+                                    </Style>
+                                </StackPanel.Style>
+                                <TextBlock Style="{StaticResource Muted}" Margin="0,0,0,10"
+                                           Text="{loc:T Start_NoProfiles}" />
+                                <Button Content="{loc:T Start_FirstMailbox}" HorizontalAlignment="Left" Command="{Binding GoArchiveCommand}" />
+                            </StackPanel>
+                            <ItemsControl ItemsSource="{Binding RecentProfiles}" Focusable="False">
+                                <ItemsControl.ItemTemplate>
+                                    <DataTemplate>
+                                        <Border BorderBrush="{DynamicResource BorderBrush}" BorderThickness="0,0,0,1" Padding="0,8">
+                                            <DockPanel>
+                                                <Button DockPanel.Dock="Right" Content="{loc:T Common_Run}" Margin="12,0,0,0" Padding="12,4" MinWidth="0"
+                                                        AutomationProperties.Name="{Binding Name, StringFormat={loc:T Start_RunProfileName}}"
+                                                        Command="{Binding DataContext.RunProfileCommand, RelativeSource={RelativeSource AncestorType=UserControl}}"
+                                                        CommandParameter="{Binding}" />
+                                                <StackPanel VerticalAlignment="Center">
+                                                    <TextBlock Text="{Binding Name}" FontWeight="SemiBold" TextTrimming="CharacterEllipsis" />
+                                                    <TextBlock Text="{Binding LastResult, TargetNullValue={loc:T Common_NotRunYet}}" Style="{StaticResource Muted}"
+                                                               FontSize="12" TextTrimming="CharacterEllipsis" TextWrapping="NoWrap" />
+                                                </StackPanel>
+                                            </DockPanel>
+                                        </Border>
+                                    </DataTemplate>
+                                </ItemsControl.ItemTemplate>
+                            </ItemsControl>
+                        </Grid>
+                    </Border>
+                </StackPanel>
+            </Grid>
+        </StackPanel>
+    </ScrollViewer>
+</UserControl>

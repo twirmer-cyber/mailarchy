@@ -1,0 +1,31 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net8.0-windows</TargetFramework>
+    <UseWPF>true</UseWPF>
+    <!-- nur für das Symbol im Infobereich (NotifyIcon) -->
+    <UseWindowsForms>true</UseWindowsForms>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <LangVersion>latest</LangVersion>
+    <AssemblyName>MailVault</AssemblyName>
+    <RootNamespace>MailVault.App</RootNamespace>
+    <ApplicationManifest>app.manifest</ApplicationManifest>
+    <!-- nur die Sprachressourcen der unterstützten Oberflächensprachen ins Paket (kleiner) -->
+    <SatelliteResourceLanguages>de;en;fr;es</SatelliteResourceLanguages>
+    <!-- Resources/Strings.resx (ohne Sprachkürzel) ist Deutsch -->
+    <NeutralLanguage>de</NeutralLanguage>
+  </PropertyGroup>
+  <ItemGroup>
+    <PackageReference Include="CommunityToolkit.Mvvm" Version="8.3.2" />
+    <PackageReference Include="Microsoft.Web.WebView2" Version="1.0.2903.40" />
+  </ItemGroup>
+  <ItemGroup>
+    <Using Remove="System.Windows.Forms" />
+    <Using Remove="System.Drawing" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\MailVault.Core\MailVault.Core.csproj" />
+    <ProjectReference Include="..\MailVault.Web\MailVault.Web.csproj" />
+  </ItemGroup>
+</Project>

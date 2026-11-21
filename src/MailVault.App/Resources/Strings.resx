@@ -1,0 +1,839 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <resheader name="resmimetype"><value>text/microsoft-resx</value></resheader>
+  <resheader name="version"><value>2.0</value></resheader>
+  <resheader name="reader"><value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value></resheader>
+  <resheader name="writer"><value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value></resheader>
+  <data name="Common_Cancel" xml:space="preserve"><value>Abbrechen</value></data>
+  <data name="Common_Close" xml:space="preserve"><value>Schließen</value></data>
+  <data name="Common_Apply" xml:space="preserve"><value>Übernehmen</value></data>
+  <data name="Common_Save" xml:space="preserve"><value>Speichern</value></data>
+  <data name="Common_Browse" xml:space="preserve"><value>Durchsuchen...</value></data>
+  <data name="Common_Copy" xml:space="preserve"><value>Kopieren</value></data>
+  <data name="Common_NoSubject" xml:space="preserve"><value>(ohne Betreff)</value></data>
+  <data name="Common_TextFileFilter" xml:space="preserve"><value>Textdatei|*.txt</value></data>
+  <data name="Common_Progress" xml:space="preserve"><value>Fortschritt</value></data>
+  <data name="Common_NewPassword" xml:space="preserve"><value>Neues Kennwort</value></data>
+  <data name="Common_NewPasswordLabel" xml:space="preserve"><value>Neues Kennwort:</value></data>
+  <data name="Common_ConfirmPassword" xml:space="preserve"><value>Kennwort bestätigen</value></data>
+  <data name="Common_ConfirmPasswordLabel" xml:space="preserve"><value>Kennwort bestätigen:</value></data>
+  <data name="Common_RecoveryKey" xml:space="preserve"><value>Wiederherstellungsschlüssel</value></data>
+  <data name="Common_RecoveryKeyLabel" xml:space="preserve"><value>Wiederherstellungsschlüssel:</value></data>
+  <data name="Common_Email" xml:space="preserve"><value>E-Mail</value></data>
+  <data name="Dialog_Progress_CopyLog" xml:space="preserve"><value>Protokoll kopieren</value></data>
+  <data name="Dialog_Progress_Log" xml:space="preserve"><value>Protokoll</value></data>
+  <data name="Dialog_Progress_Start" xml:space="preserve"><value>Start: {0:G}</value></data>
+  <data name="Dialog_Progress_Canceled" xml:space="preserve"><value>Abgebrochen.</value></data>
+  <data name="Dialog_Progress_CanceledLog" xml:space="preserve"><value>Vorgang wurde abgebrochen.</value></data>
+  <data name="Dialog_Progress_ErrorLog" xml:space="preserve"><value>FEHLER: {0}</value></data>
+  <data name="Dialog_Progress_Canceling" xml:space="preserve"><value>Wird abgebrochen...</value></data>
+  <data name="FirstRun_Title" xml:space="preserve"><value>MailVault Home – Erste Schritte</value></data>
+  <data name="FirstRun_Welcome" xml:space="preserve"><value>Willkommen bei MailVault Home</value></data>
+  <data name="FirstRun_Intro" xml:space="preserve"><value>MailVault speichert Ihre E-Mails dauerhaft in einem lokalen Archiv. Wählen Sie, wo das Archiv gespeichert werden soll. Der Ordner kann auch auf einem USB-Laufwerk liegen.</value></data>
+  <data name="FirstRun_PathLabel" xml:space="preserve"><value>Speicherort des Archivs:</value></data>
+  <data name="FirstRun_PathName" xml:space="preserve"><value>Speicherort des Archivs</value></data>
+  <data name="FirstRun_Create" xml:space="preserve"><value>Archiv anlegen</value></data>
+  <data name="FirstRun_PickFolder" xml:space="preserve"><value>Speicherort des Archivs wählen</value></data>
+  <data name="FirstRun_FolderUnusable" xml:space="preserve"><value>Der Ordner kann nicht verwendet werden:&#10;{0}&#10;&#10;Bitte wählen Sie einen anderen Ordner, z. B. in Ihren Dokumenten.</value></data>
+  <data name="Password_Title" xml:space="preserve"><value>Archivkennwort</value></data>
+  <data name="Password_CurrentLabel" xml:space="preserve"><value>Aktuelles Kennwort:</value></data>
+  <data name="Password_Current" xml:space="preserve"><value>Aktuelles Kennwort</value></data>
+  <data name="Password_Set" xml:space="preserve"><value>Kennwort festlegen</value></data>
+  <data name="Password_Change" xml:space="preserve"><value>Kennwort ändern</value></data>
+  <data name="Password_Confirm" xml:space="preserve"><value>Bestätigen</value></data>
+  <data name="Password_TooShort" xml:space="preserve"><value>Das Kennwort muss mindestens {0} Zeichen lang sein.</value></data>
+  <data name="Password_Mismatch" xml:space="preserve"><value>Die Kennwörter stimmen nicht überein.</value></data>
+  <data name="Password_EnterCurrent" xml:space="preserve"><value>Bitte geben Sie Ihr aktuelles Kennwort ein.</value></data>
+  <data name="Recovery_Success" xml:space="preserve"><value>Ihr Archiv wurde erfolgreich mit einem Kennwort geschützt.</value></data>
+  <data name="Recovery_Intro" xml:space="preserve"><value>Mit diesem Wiederherstellungsschlüssel kommen Sie an Ihr Archiv, wenn Sie das Kennwort vergessen. Niemand sonst kann helfen – auch nicht der Entwickler: Ohne Kennwort und ohne Schlüssel sind die E-Mails unwiederbringlich verloren.</value></data>
+  <data name="Recovery_SaveFile" xml:space="preserve"><value>Notfallblatt speichern…</value></data>
+  <data name="Recovery_ConfirmBox" xml:space="preserve"><value>Ich habe den Wiederherstellungsschlüssel sicher aufbewahrt.</value></data>
+  <data name="Recovery_FileName" xml:space="preserve"><value>MailVault-Notfallblatt.txt</value></data>
+  <data name="Recovery_FileContent" xml:space="preserve"><value>MailVault Home – Wiederherstellungsschlüssel&#10;Erstellt: {0:G}&#10;&#10;{1}&#10;</value></data>
+  <data name="Recovery_PleaseConfirm" xml:space="preserve"><value>Bitte bestätigen Sie, dass Sie den Wiederherstellungsschlüssel aufbewahrt haben.</value></data>
+  <data name="Login_Title" xml:space="preserve"><value>MailVault Home – Anmelden</value></data>
+  <data name="Login_Header" xml:space="preserve"><value>Archiv geschützt</value></data>
+  <data name="Login_EnterPassword" xml:space="preserve"><value>Bitte geben Sie Ihr Archivkennwort ein.</value></data>
+  <data name="Login_Forgot" xml:space="preserve"><value>Kennwort vergessen?</value></data>
+  <data name="Login_RecoveryIntro" xml:space="preserve"><value>Geben Sie Ihren Wiederherstellungsschlüssel ein und legen Sie ein neues Kennwort fest.</value></data>
+  <data name="Login_SignIn" xml:space="preserve"><value>Anmelden</value></data>
+  <data name="Login_Restore" xml:space="preserve"><value>Wiederherstellen</value></data>
+  <data name="Login_WrongRecoveryKey" xml:space="preserve"><value>Der angegebene Wiederherstellungsschlüssel ist falsch.</value></data>
+  <data name="Login_WrongPassword" xml:space="preserve"><value>Das angegebene Kennwort ist falsch.</value></data>
+  <data name="Common_Password" xml:space="preserve"><value>Kennwort</value></data>
+  <data name="Common_PasswordLabel" xml:space="preserve"><value>Kennwort:</value></data>
+  <data name="Common_UserName" xml:space="preserve"><value>Benutzername</value></data>
+  <data name="Common_UserNameLabel" xml:space="preserve"><value>Benutzername:</value></data>
+  <data name="Common_Folders" xml:space="preserve"><value>Ordner</value></data>
+  <data name="Profile_Title" xml:space="preserve"><value>Archivierungsprofil</value></data>
+  <data name="Profile_SaveAndRun" xml:space="preserve"><value>Speichern und starten</value></data>
+  <data name="Profile_NameLabel" xml:space="preserve"><value>Profilname:</value></data>
+  <data name="Profile_Name" xml:space="preserve"><value>Profilname</value></data>
+  <data name="Profile_Server" xml:space="preserve"><value>Server</value></data>
+  <data name="Profile_EmailLabel" xml:space="preserve"><value>E-Mail-Adresse:</value></data>
+  <data name="Profile_Email" xml:space="preserve"><value>E-Mail-Adresse</value></data>
+  <data name="Profile_AutoConfig" xml:space="preserve"><value>Automatisch einrichten</value></data>
+  <data name="Profile_AutoConfigTip" xml:space="preserve"><value>Servereinstellungen über die Anbieter-Konfiguration, die Mozilla-Anbieterdatenbank und DNS ermitteln</value></data>
+  <data name="Profile_ServerLabel" xml:space="preserve"><value>Server:</value></data>
+  <data name="Profile_SecurityLabel" xml:space="preserve"><value>Zugriff über:</value></data>
+  <data name="Profile_Security" xml:space="preserve"><value>Zugriff über</value></data>
+  <data name="Profile_SecurityAuto" xml:space="preserve"><value>Automatisch</value></data>
+  <data name="Profile_SecurityNone" xml:space="preserve"><value>Unverschlüsselt (nicht empfohlen)</value></data>
+  <data name="Profile_PortLabel" xml:space="preserve"><value>Port:</value></data>
+  <data name="Profile_PortTip" xml:space="preserve"><value>Leer = Standardport</value></data>
+  <data name="Profile_Port" xml:space="preserve"><value>Port</value></data>
+  <data name="Profile_IgnoreCert" xml:space="preserve"><value>Ungültige Serverzertifikate akzeptieren (nicht empfohlen)</value></data>
+  <data name="Profile_Test" xml:space="preserve"><value>Verbindung testen und Ordner laden</value></data>
+  <data name="Profile_AppPasswordHint" xml:space="preserve"><value>Gmail, Outlook.com und viele Anbieter verlangen ein App-Kennwort, wenn die Zwei-Faktor-Anmeldung aktiv ist. Bei Gmail muss IMAP in den Einstellungen aktiviert sein.</value></data>
+  <data name="Profile_Source" xml:space="preserve"><value>Quelle</value></data>
+  <data name="Profile_ThunderbirdProfile" xml:space="preserve"><value>Thunderbird-Profil</value></data>
+  <data name="Profile_Recursive" xml:space="preserve"><value>Unterordner einbeziehen</value></data>
+  <data name="Profile_OutlookHint" xml:space="preserve"><value>Outlook muss dafür nicht installiert sein. Ist Outlook geöffnet, kann die Datei gesperrt sein – dann Outlook vorher schließen. .ost-Dateien sind der lokale Zwischenspeicher eines Exchange-, Microsoft-365- oder IMAP-Kontos und enthalten nur die heruntergeladenen E-Mails.</value></data>
+  <data name="Profile_LoadFolders" xml:space="preserve"><value>Ordner laden</value></data>
+  <data name="Profile_SkipSpecial" xml:space="preserve"><value>Papierkorb, Entwürfe, Junk-E-Mail und Postausgang überspringen</value></data>
+  <data name="Profile_FolderHint" xml:space="preserve"><value>Laden Sie die Ordner, um einzelne Ordner auszuschließen. Ohne Auswahl werden alle Ordner archiviert.</value></data>
+  <data name="Profile_ExcludedLabel" xml:space="preserve"><value>Derzeit ausgeschlossen (ein Ordnerpfad pro Zeile):</value></data>
+  <data name="Profile_Excluded" xml:space="preserve"><value>Ausgeschlossene Ordner</value></data>
+  <data name="Profile_Filter" xml:space="preserve"><value>Filter</value></data>
+  <data name="Profile_NewerThan" xml:space="preserve"><value>Nur E-Mails archivieren, die neuer sind als</value></data>
+  <data name="Profile_NewerThanDays" xml:space="preserve"><value>Neuer als Tage</value></data>
+  <data name="Profile_Days" xml:space="preserve"><value>Tage</value></data>
+  <data name="Profile_TargetLabel" xml:space="preserve"><value>Archivieren in Ordner:</value></data>
+  <data name="Profile_Target" xml:space="preserve"><value>Archivieren in Ordner</value></data>
+  <data name="Profile_TargetTip" xml:space="preserve"><value>Leer lassen für automatischen Namen</value></data>
+  <data name="Profile_Schedule" xml:space="preserve"><value>Automatisch archivieren</value></data>
+  <data name="Profile_ScheduleManual" xml:space="preserve"><value>Nur manuell</value></data>
+  <data name="Profile_ScheduleInterval" xml:space="preserve"><value>Regelmäßig</value></data>
+  <data name="Profile_ScheduleDaily" xml:space="preserve"><value>Täglich</value></data>
+  <data name="Profile_Interval" xml:space="preserve"><value>Intervall</value></data>
+  <data name="Profile_At" xml:space="preserve"><value>um</value></data>
+  <data name="Profile_Time" xml:space="preserve"><value>Uhrzeit</value></data>
+  <data name="Profile_TimeTip" xml:space="preserve"><value>Uhrzeit, z. B. 08:00</value></data>
+  <data name="Profile_OClock" xml:space="preserve"><value>Uhr</value></data>
+  <data name="Profile_ScheduleHint" xml:space="preserve"><value>Automatische Abrufe laufen im Hintergrund, solange MailVault geöffnet ist oder im Infobereich läuft (Verwaltung → „Mit Windows starten“). Verpasste Termine werden beim nächsten Start nachgeholt.</value></data>
+  <data name="Profile_ReadOnlyNote" xml:space="preserve"><value>MailVault liest das Postfach nur. Es wird nie etwas auf dem Server gelöscht, verschoben oder als gelesen markiert.</value></data>
+  <data name="Profile_MainFolder" xml:space="preserve"><value>(Hauptordner)</value></data>
+  <data name="Profile_MboxFile" xml:space="preserve"><value>MBOX-Datei</value></data>
+  <data name="Profile_EmlFolder" xml:space="preserve"><value>Ordner mit .eml-Dateien</value></data>
+  <data name="Profile_OutlookFile" xml:space="preserve"><value>Outlook-Datendatei (.pst/.ost)</value></data>
+  <data name="Profile_AllThunderbird" xml:space="preserve"><value>(Alle Thunderbird-Profile)</value></data>
+  <data name="Profile_NoOutlookFiles" xml:space="preserve"><value>(Keine Outlook-Datendateien an den Standardorten gefunden)</value></data>
+  <data name="Profile_FoundOutlookFiles" xml:space="preserve"><value>(Gefundene Outlook-Datendateien)</value></data>
+  <data name="Profile_Every15" xml:space="preserve"><value>alle 15 Minuten</value></data>
+  <data name="Profile_Every30" xml:space="preserve"><value>alle 30 Minuten</value></data>
+  <data name="Profile_Hourly" xml:space="preserve"><value>stündlich</value></data>
+  <data name="Profile_EveryHours" xml:space="preserve"><value>alle {0} Stunden</value></data>
+  <data name="Profile_InvalidDays" xml:space="preserve"><value>Bitte eine gültige Anzahl Tage für den Datumsfilter angeben.</value></data>
+  <data name="Profile_InvalidTime" xml:space="preserve"><value>Bitte eine gültige Uhrzeit für den täglichen Abruf angeben (z. B. 08:00).</value></data>
+  <data name="Profile_EnterServer" xml:space="preserve"><value>Bitte geben Sie den Server an.</value></data>
+  <data name="Profile_EnterUser" xml:space="preserve"><value>Bitte geben Sie den Benutzernamen an.</value></data>
+  <data name="Profile_MboxMissing" xml:space="preserve"><value>Die MBOX-Datei existiert nicht.</value></data>
+  <data name="Profile_FolderMissing" xml:space="preserve"><value>Der Ordner existiert nicht.</value></data>
+  <data name="Profile_PstMissing" xml:space="preserve"><value>Bitte wählen Sie eine vorhandene Outlook-Datendatei (.pst oder .ost) aus.</value></data>
+  <data name="Profile_EnterFullAddress" xml:space="preserve"><value>Bitte zuerst die vollständige E-Mail-Adresse eingeben.</value></data>
+  <data name="Profile_Discovering" xml:space="preserve"><value>Servereinstellungen werden ermittelt ...</value></data>
+  <data name="Profile_NothingFound" xml:space="preserve"><value>Es wurden keine Einstellungen gefunden. Bitte tragen Sie den Server selbst ein (siehe Hilfeseiten Ihres Anbieters).</value></data>
+  <data name="Profile_NoImap" xml:space="preserve"><value>Dieser Anbieter bietet kein IMAP an. Bitte ein POP3-Profil anlegen.</value></data>
+  <data name="Profile_NoPop3" xml:space="preserve"><value>Dieser Anbieter bietet kein POP3 an. Bitte ein IMAP-Profil anlegen (IMAP archiviert zudem alle Ordner).</value></data>
+  <data name="Profile_Configured" xml:space="preserve"><value>Eingerichtet: {0}, Port {1}, {2} – Quelle: {3}.</value></data>
+  <data name="Profile_DiscoveryTimeout" xml:space="preserve"><value>Die Suche nach den Einstellungen hat zu lange gedauert.</value></data>
+  <data name="Profile_DiscoveryFailed" xml:space="preserve"><value>Automatische Einrichtung fehlgeschlagen: {0}</value></data>
+  <data name="Profile_SecUnencrypted" xml:space="preserve"><value>unverschlüsselt</value></data>
+  <data name="Profile_SecAutomatic" xml:space="preserve"><value>automatisch</value></data>
+  <data name="Profile_MboxFilter" xml:space="preserve"><value>MBOX-Dateien|*.mbox;*.mbx;*.*</value></data>
+  <data name="Profile_PickMbox" xml:space="preserve"><value>MBOX-Datei auswählen</value></data>
+  <data name="Profile_PstFilter" xml:space="preserve"><value>Outlook-Datendateien (*.pst;*.ost)|*.pst;*.ost</value></data>
+  <data name="Profile_PickPst" xml:space="preserve"><value>Outlook-Datendatei auswählen</value></data>
+  <data name="Profile_PickFolder" xml:space="preserve"><value>Ordner auswählen</value></data>
+  <data name="Profile_FoldersFound" xml:space="preserve"><value>{0} Ordner gefunden. Entfernen Sie das Häkchen, um einen Ordner (samt Unterordnern) auszuschließen.</value></data>
+  <data name="Profile_ConnectFailed" xml:space="preserve"><value>Verbindung fehlgeschlagen: {0}</value></data>
+  <data name="WebUser_Title" xml:space="preserve"><value>Benutzer für den Webzugriff</value></data>
+  <data name="WebUser_New" xml:space="preserve"><value>Neuer Benutzer</value></data>
+  <data name="WebUser_RepeatLabel" xml:space="preserve"><value>Wiederholen:</value></data>
+  <data name="WebUser_Repeat" xml:space="preserve"><value>Kennwort wiederholen</value></data>
+  <data name="WebUser_MinLength" xml:space="preserve"><value>Mindestens 8 Zeichen.</value></data>
+  <data name="WebUser_Enabled" xml:space="preserve"><value>Anmeldung erlaubt</value></data>
+  <data name="WebUser_Admin" xml:space="preserve"><value>Administrator – darf alle Archive sehen</value></data>
+  <data name="WebUser_SharedMailboxes" xml:space="preserve"><value>Freigegebene Postfächer</value></data>
+  <data name="WebUser_SharedHint" xml:space="preserve"><value>Der Benutzer sieht nur die angehakten Ordner samt Unterordnern. Neue E-Mails in diesen Ordnern sind automatisch sichtbar.</value></data>
+  <data name="WebUser_Edit" xml:space="preserve"><value>Benutzer bearbeiten</value></data>
+  <data name="WebUser_KeepPassword" xml:space="preserve"><value>Leer lassen, um das Kennwort nicht zu ändern.</value></data>
+  <data name="WebUser_EnterName" xml:space="preserve"><value>Bitte einen Benutzernamen angeben.</value></data>
+  <data name="WebUser_NameExists" xml:space="preserve"><value>Diesen Benutzernamen gibt es bereits.</value></data>
+  <data name="WebUser_NoFolderConfirm" xml:space="preserve"><value>Es ist kein Postfach freigegeben – der Benutzer sieht dann nichts. Trotzdem speichern?</value></data>
+  <data name="Common_Run" xml:space="preserve"><value>Starten</value></data>
+  <data name="Common_Delete" xml:space="preserve"><value>Löschen</value></data>
+  <data name="Common_Edit" xml:space="preserve"><value>Bearbeiten...</value></data>
+  <data name="Common_Search" xml:space="preserve"><value>Suchen</value></data>
+  <data name="Common_Emails" xml:space="preserve"><value>E-Mails</value></data>
+  <data name="Common_Export" xml:space="preserve"><value>Exportieren</value></data>
+  <data name="Common_ProfileName" xml:space="preserve"><value>Profilname</value></data>
+  <data name="Common_NotRunYet" xml:space="preserve"><value>Noch nicht ausgeführt</value></data>
+  <data name="Nav_Start" xml:space="preserve"><value>Startseite</value></data>
+  <data name="Nav_Archive" xml:space="preserve"><value>E-Mails archivieren</value></data>
+  <data name="Nav_Search" xml:space="preserve"><value>E-Mails suchen</value></data>
+  <data name="Nav_Ai" xml:space="preserve"><value>KI-Assistent</value></data>
+  <data name="Nav_Export" xml:space="preserve"><value>E-Mails exportieren</value></data>
+  <data name="Nav_Settings" xml:space="preserve"><value>Verwaltung</value></data>
+  <data name="Main_FolderTree" xml:space="preserve"><value>Archivordner</value></data>
+  <data name="Main_SearchInFolder" xml:space="preserve"><value>Suchen in diesem Ordner...</value></data>
+  <data name="Main_ExportFolder" xml:space="preserve"><value>Exportieren...</value></data>
+  <data name="Main_RenameFolder" xml:space="preserve"><value>Umbenennen...</value></data>
+  <data name="Start_SearchPlaceholder" xml:space="preserve"><value>In allen E-Mails suchen, z. B. rechnung von:telekom jahr:2024</value></data>
+  <data name="Start_SearchName" xml:space="preserve"><value>In allen E-Mails suchen</value></data>
+  <data name="Start_SearchHint" xml:space="preserve"><value>Strg+F öffnet die Suche von überall. Filter wie von:, an:, jahr: oder anhang:ja lassen sich direkt eintippen.</value></data>
+  <data name="Start_RecoveryWarning" xml:space="preserve"><value>Der Wiederherstellungsschlüssel wurde noch nicht gespeichert. Ohne Kennwort oder Schlüssel ist kein Zugriff auf das Archiv möglich.</value></data>
+  <data name="Start_SaveNow" xml:space="preserve"><value>Jetzt sichern</value></data>
+  <data name="Start_Archive" xml:space="preserve"><value>Archiv</value></data>
+  <data name="Start_Size" xml:space="preserve"><value>Größe</value></data>
+  <data name="Start_Period" xml:space="preserve"><value>Zeitraum</value></data>
+  <data name="Start_LastArchived" xml:space="preserve"><value>Zuletzt archiviert</value></data>
+  <data name="Start_Protection" xml:space="preserve"><value>Schutz</value></data>
+  <data name="Start_Change" xml:space="preserve"><value>ändern</value></data>
+  <data name="Start_AllProfiles" xml:space="preserve"><value>Alle Profile</value></data>
+  <data name="Start_RecentProfiles" xml:space="preserve"><value>Zuletzt verwendete Profile</value></data>
+  <data name="Start_NoProfiles" xml:space="preserve"><value>Noch keine Profile. Ein Profil merkt sich, welches Postfach oder Programm archiviert wird, und kann jederzeit erneut laufen.</value></data>
+  <data name="Start_FirstMailbox" xml:space="preserve"><value>Erstes Postfach archivieren</value></data>
+  <data name="Start_RunProfileName" xml:space="preserve"><value>{0} starten</value></data>
+  <data name="Archive_Intro" xml:space="preserve"><value>Wählen Sie eine Quelle, um ein Archivierungsprofil anzulegen. Profile lassen sich jederzeit erneut ausführen; bereits archivierte E-Mails werden erkannt und übersprungen.</value></data>
+  <data name="Archive_DeleteTip" xml:space="preserve"><value>Löscht nur das Profil. Archivierte E-Mails und das Postfach bleiben unverändert.</value></data>
+  <data name="Archive_SavedProfiles" xml:space="preserve"><value>Gespeicherte Profile</value></data>
+  <data name="Archive_ColTarget" xml:space="preserve"><value>Archivieren in</value></data>
+  <data name="Archive_ColLastRun" xml:space="preserve"><value>Zuletzt ausgeführt</value></data>
+  <data name="Archive_ColResult" xml:space="preserve"><value>Ergebnis</value></data>
+  <data name="Archive_NoProfiles" xml:space="preserve"><value>Noch keine Profile. Wählen Sie oben eine Quelle aus.</value></data>
+  <data name="Export_Intro" xml:space="preserve"><value>Kopieren Sie archivierte E-Mails als einzelne .eml-Dateien oder als MBOX-Datei, z. B. zur Sicherung oder zum Import in ein E-Mail-Programm. Alternativ können Sie im Ordnerbaum mit der rechten Maustaste auf den zu exportierenden Ordner klicken.</value></data>
+  <data name="Export_Scope" xml:space="preserve"><value>Umfang der Sicherung bzw. des Exports</value></data>
+  <data name="Export_Format" xml:space="preserve"><value>Format</value></data>
+  <data name="Export_Eml" xml:space="preserve"><value>Einzelne E-Mail-Dateien (.eml)</value></data>
+  <data name="Export_Mbox" xml:space="preserve"><value>MBOX-Datei (z. B. für Thunderbird, Apple Mail)</value></data>
+  <data name="Export_KeepStructure" xml:space="preserve"><value>Ordnerstruktur beibehalten</value></data>
+  <data name="Export_Target" xml:space="preserve"><value>Exportieren nach</value></data>
+  <data name="Common_From" xml:space="preserve"><value>Von</value></data>
+  <data name="Common_Subject" xml:space="preserve"><value>Betreff</value></data>
+  <data name="Common_Date" xml:space="preserve"><value>Datum</value></data>
+  <data name="Common_Size" xml:space="preserve"><value>Größe</value></data>
+  <data name="Common_Folder" xml:space="preserve"><value>Ordner</value></data>
+  <data name="Common_Attachment" xml:space="preserve"><value>Anhang</value></data>
+  <data name="Common_To" xml:space="preserve"><value>bis</value></data>
+  <data name="Common_Open" xml:space="preserve"><value>Öffnen</value></data>
+  <data name="Common_SaveAs" xml:space="preserve"><value>Speichern unter...</value></data>
+  <data name="Common_Refresh" xml:space="preserve"><value>Aktualisieren</value></data>
+  <data name="Search_Reset" xml:space="preserve"><value>Zurücksetzen</value></data>
+  <data name="Search_QueryName" xml:space="preserve"><value>Suchbegriffe</value></data>
+  <data name="Search_Placeholder" xml:space="preserve"><value>Suchen … z. B. rechnung von:telekom jahr:2024</value></data>
+  <data name="Search_AllPeriods" xml:space="preserve"><value>Alle Zeiträume</value></data>
+  <data name="Search_Last30" xml:space="preserve"><value>Letzte 30 Tage</value></data>
+  <data name="Search_ThisYear" xml:space="preserve"><value>Dieses Jahr</value></data>
+  <data name="Search_LastYear" xml:space="preserve"><value>Letztes Jahr</value></data>
+  <data name="Search_WithAttachment" xml:space="preserve"><value>Mit Anhang</value></data>
+  <data name="Search_BestFirst" xml:space="preserve"><value>Beste Treffer zuerst</value></data>
+  <data name="Search_BestFirstTip" xml:space="preserve"><value>Sonst: neueste zuerst. Wirkt nur mit Suchbegriff.</value></data>
+  <data name="Search_MoreFilters" xml:space="preserve"><value>Weitere Filter</value></data>
+  <data name="Search_Help" xml:space="preserve"><value>Hilfe zur Suche</value></data>
+  <data name="Search_HelpIntro" xml:space="preserve"><value>Filter lassen sich direkt ins Suchfeld schreiben. Klick auf ein Beispiel fügt es ein.</value></data>
+  <data name="Search_SearchIn" xml:space="preserve"><value>Suchen in:</value></data>
+  <data name="Search_FromTo" xml:space="preserve"><value>Absender/Empfänger</value></data>
+  <data name="Search_Body" xml:space="preserve"><value>Nachrichtentext</value></data>
+  <data name="Search_AttachmentNames" xml:space="preserve"><value>Anhangdateinamen</value></data>
+  <data name="Search_AttachmentContents" xml:space="preserve"><value>Anhanginhalte</value></data>
+  <data name="Search_FromLabel" xml:space="preserve"><value>Von:</value></data>
+  <data name="Search_ToLabel" xml:space="preserve"><value>An / Cc:</value></data>
+  <data name="Search_To" xml:space="preserve"><value>An / Cc</value></data>
+  <data name="Search_DateLabel" xml:space="preserve"><value>Datum:</value></data>
+  <data name="Search_DateFrom" xml:space="preserve"><value>Datum von</value></data>
+  <data name="Search_DateTo" xml:space="preserve"><value>Datum bis</value></data>
+  <data name="Search_DayCount" xml:space="preserve"><value>Anzahl Tage</value></data>
+  <data name="Search_FolderLabel" xml:space="preserve"><value>Ordner:</value></data>
+  <data name="Search_AttachmentsLabel" xml:space="preserve"><value>Anhänge:</value></data>
+  <data name="Search_Attachments" xml:space="preserve"><value>Anhänge</value></data>
+  <data name="Search_PriorityLabel" xml:space="preserve"><value>Priorität:</value></data>
+  <data name="Search_Priority" xml:space="preserve"><value>Priorität</value></data>
+  <data name="Search_SizeLabel" xml:space="preserve"><value>Größe (KB):</value></data>
+  <data name="Search_AtLeast" xml:space="preserve"><value>mindestens</value></data>
+  <data name="Search_SizeMin" xml:space="preserve"><value>Größe mindestens (KB)</value></data>
+  <data name="Search_AtMost" xml:space="preserve"><value>höchstens</value></data>
+  <data name="Search_SizeMax" xml:space="preserve"><value>Größe höchstens (KB)</value></data>
+  <data name="Search_EmptyTitle" xml:space="preserve"><value>Was suchen Sie?</value></data>
+  <data name="Search_EmptyHint" xml:space="preserve"><value>Ergebnisse erscheinen beim Tippen. Wörter werden auch als Wortanfang gefunden (rechnung findet Rechnungen). Filter wie von:, an: oder jahr: stehen unter „Hilfe zur Suche“.</value></data>
+  <data name="List_OpenTip" xml:space="preserve"><value>Im Standard-E-Mail-Programm öffnen (Enter)</value></data>
+  <data name="List_DeleteTip" xml:space="preserve"><value>Endgültig aus dem Archiv löschen (Entf)</value></data>
+  <data name="List_CopyList" xml:space="preserve"><value>Liste kopieren</value></data>
+  <data name="List_AskAi" xml:space="preserve"><value>Zusammenhänge mit KI finden...</value></data>
+  <data name="List_SortByAttachment" xml:space="preserve"><value>Nach Anhang sortieren</value></data>
+  <data name="Preview_Empty" xml:space="preserve"><value>Wählen Sie eine E-Mail aus, um sie anzuzeigen.</value></data>
+  <data name="Preview_ToLabel" xml:space="preserve"><value>An:</value></data>
+  <data name="Preview_To" xml:space="preserve"><value>An</value></data>
+  <data name="Preview_CcLabel" xml:space="preserve"><value>Cc:</value></data>
+  <data name="Preview_AttachmentTip" xml:space="preserve"><value>Klicken zum Öffnen, Rechtsklick zum Speichern</value></data>
+  <data name="Preview_Blocked" xml:space="preserve"><value>Externe Inhalte wurden zum Schutz Ihrer Privatsphäre blockiert.</value></data>
+  <data name="Preview_LoadExternal" xml:space="preserve"><value>Für diese E-Mail laden</value></data>
+  <data name="Preview_AttachmentName" xml:space="preserve"><value>Anhang {0}</value></data>
+  <data name="Preview_OpenLink" xml:space="preserve"><value>Link im Browser öffnen?&#10;&#10;{0}</value></data>
+  <data name="Preview_LoadFailed" xml:space="preserve"><value>Die Nachricht konnte nicht geladen werden: {0}</value></data>
+  <data name="Preview_AttachmentOpenFailed" xml:space="preserve"><value>Der Anhang konnte nicht geöffnet werden: {0}</value></data>
+  <data name="Ai_TabAsk" xml:space="preserve"><value>Archiv befragen</value></data>
+  <data name="Ai_Examples" xml:space="preserve"><value>Beispiele – anklicken, anpassen, senden</value></data>
+  <data name="Ai_SearchIn" xml:space="preserve"><value>Suchen in</value></data>
+  <data name="Ai_NewConversation" xml:space="preserve"><value>Neues Gespräch</value></data>
+  <data name="Ai_QuestionName" xml:space="preserve"><value>Frage an den KI-Assistenten</value></data>
+  <data name="Ai_QuestionPlaceholder" xml:space="preserve"><value>Frage zum Archiv stellen …</value></data>
+  <data name="Ai_QuestionTip" xml:space="preserve"><value>Enter = senden, Umschalt+Enter = neue Zeile</value></data>
+  <data name="Ai_Ask" xml:space="preserve"><value>Fragen</value></data>
+  <data name="Ai_History" xml:space="preserve"><value>Gesprächsverlauf</value></data>
+  <data name="Ai_TabNetwork" xml:space="preserve"><value>Wer kennt wen</value></data>
+  <data name="Ai_PeriodLabel" xml:space="preserve"><value>Zeitraum:</value></data>
+  <data name="Ai_WholeArchive" xml:space="preserve"><value>Gesamtes Archiv</value></data>
+  <data name="Ai_Last12Months" xml:space="preserve"><value>Letzte 12 Monate</value></data>
+  <data name="Ai_Last3Years" xml:space="preserve"><value>Letzte 3 Jahre</value></data>
+  <data name="Ai_Last5Years" xml:space="preserve"><value>Letzte 5 Jahre</value></data>
+  <data name="Ai_ContactsLabel" xml:space="preserve"><value>Kontakte:</value></data>
+  <data name="Ai_ContactCount" xml:space="preserve"><value>Anzahl Kontakte</value></data>
+  <data name="Ai_HideAutomated" xml:space="preserve"><value>Newsletter &amp; Systemabsender ausblenden</value></data>
+  <data name="Ai_Interpret" xml:space="preserve"><value>Mit KI deuten</value></data>
+  <data name="Ai_InterpretTip" xml:space="preserve"><value>Claude ordnet die Kontakte Gruppen zu und beschreibt, wer wen kennt (übertragen werden nur Namen, Adressen und Zahlen)</value></data>
+  <data name="Ai_Network" xml:space="preserve"><value>Beziehungsnetz</value></data>
+  <data name="Settings_Location" xml:space="preserve"><value>Archiv Speicherort</value></data>
+  <data name="Settings_Portable" xml:space="preserve"><value>Portable Version: Alle Daten liegen im Programmordner.</value></data>
+  <data name="Settings_OpenFolder" xml:space="preserve"><value>Ordner öffnen</value></data>
+  <data name="Settings_ChangeLocation" xml:space="preserve"><value>Anderen Speicherort wählen...</value></data>
+  <data name="Settings_Protection" xml:space="preserve"><value>Archivschutz</value></data>
+  <data name="Settings_ProtectionIntro" xml:space="preserve"><value>Mit einem Archivkennwort wird das gesamte Archiv – E-Mails, Suchindex und Metadaten – mit AES-256 (SQLCipher-kompatibel) verschlüsselt. Beim Programmstart muss dann das Kennwort eingegeben werden.</value></data>
+  <data name="Settings_Protect" xml:space="preserve"><value>Archiv mit Kennwort schützen...</value></data>
+  <data name="Settings_ChangePassword" xml:space="preserve"><value>Kennwort ändern...</value></data>
+  <data name="Settings_RemoveProtection" xml:space="preserve"><value>Schutz entfernen...</value></data>
+  <data name="Settings_Privacy" xml:space="preserve"><value>Datenschutz</value></data>
+  <data name="Settings_BlockExternal" xml:space="preserve"><value>Externe Inhalte (Bilder, Schriften) in E-Mails blockieren</value></data>
+  <data name="Settings_BlockExternalHint" xml:space="preserve"><value>Verhindert, dass Absender über Tracking-Pixel erfahren, wann Sie eine archivierte E-Mail ansehen. Gilt auch für den Webzugriff. JavaScript ist in der Anzeige immer deaktiviert.</value></data>
+  <data name="Settings_Maintenance" xml:space="preserve"><value>Wartung</value></data>
+  <data name="Settings_RebuildIndex" xml:space="preserve"><value>Suchindex neu aufbauen</value></data>
+  <data name="Settings_Compact" xml:space="preserve"><value>Archiv komprimieren</value></data>
+  <data name="Settings_Verify" xml:space="preserve"><value>Archiv überprüfen</value></data>
+  <data name="Settings_BackupHint" xml:space="preserve"><value>Zur Datensicherung beenden Sie MailVault und kopieren den kompletten Archivordner (bei Kennwortschutz inklusive archive.keys.json).</value></data>
+  <data name="Settings_Appearance" xml:space="preserve"><value>Darstellung</value></data>
+  <data name="Settings_LikeWindows" xml:space="preserve"><value>Wie Windows</value></data>
+  <data name="Settings_Light" xml:space="preserve"><value>Hell</value></data>
+  <data name="Settings_Dark" xml:space="preserve"><value>Dunkel</value></data>
+  <data name="Settings_AppearanceHint" xml:space="preserve"><value>Ist in Windows ein Kontrastdesign aktiv, verwendet MailVault dessen Farben. E-Mails selbst erscheinen immer auf hellem Grund, so wie der Absender sie gestaltet hat.</value></data>
+  <data name="Settings_Language" xml:space="preserve"><value>Sprache</value></data>
+  <data name="Settings_LanguageHint" xml:space="preserve"><value>Wird nach einem Neustart von MailVault wirksam.</value></data>
+  <data name="Settings_RestartNow" xml:space="preserve"><value>MailVault jetzt neu starten</value></data>
+  <data name="Settings_TabAutomation" xml:space="preserve"><value>Automatik &amp; Benachrichtigung</value></data>
+  <data name="Settings_Background" xml:space="preserve"><value>Hintergrundbetrieb</value></data>
+  <data name="Settings_StartWithWindows" xml:space="preserve"><value>MailVault mit Windows starten (unsichtbar im Infobereich)</value></data>
+  <data name="Settings_CloseToTray" xml:space="preserve"><value>Beim Schließen des Fensters im Infobereich weiterlaufen (wenn automatischer Abruf oder Webzugriff aktiv ist)</value></data>
+  <data name="Settings_ScheduleHint" xml:space="preserve"><value>Den Zeitplan legen Sie pro Profil fest (E-Mails archivieren → Profil bearbeiten → „Automatisch archivieren“). Es läuft immer nur ein Abruf gleichzeitig; verpasste Termine werden nachgeholt.</value></data>
+  <data name="Settings_Schedules" xml:space="preserve"><value>Zeitpläne und letzter Status</value></data>
+  <data name="Settings_ColProfile" xml:space="preserve"><value>Profil</value></data>
+  <data name="Settings_ColSchedule" xml:space="preserve"><value>Zeitplan</value></data>
+  <data name="Settings_ColNext" xml:space="preserve"><value>Nächster Abruf</value></data>
+  <data name="Settings_ColLastRun" xml:space="preserve"><value>Letzter Lauf</value></data>
+  <data name="Settings_Notify" xml:space="preserve"><value>E-Mail-Benachrichtigung bei Problemen</value></data>
+  <data name="Settings_NotifyEnabled" xml:space="preserve"><value>Per E-Mail benachrichtigen, wenn ein Postfach nicht abgerufen werden kann</value></data>
+  <data name="Settings_RecipientLabel" xml:space="preserve"><value>Empfänger:</value></data>
+  <data name="Settings_Recipient" xml:space="preserve"><value>Empfänger</value></data>
+  <data name="Settings_RecipientTip" xml:space="preserve"><value>Mehrere Adressen mit Komma trennen</value></data>
+  <data name="Settings_SenderLabel" xml:space="preserve"><value>Absender (Ihr Konto):</value></data>
+  <data name="Settings_Sender" xml:space="preserve"><value>Absender (Ihr Konto)</value></data>
+  <data name="Settings_SmtpServerLabel" xml:space="preserve"><value>SMTP-Server:</value></data>
+  <data name="Settings_SmtpServer" xml:space="preserve"><value>SMTP-Server</value></data>
+  <data name="Settings_SmtpPort" xml:space="preserve"><value>SMTP-Port</value></data>
+  <data name="Settings_Encryption" xml:space="preserve"><value>Verschlüsselung</value></data>
+  <data name="Settings_Unencrypted" xml:space="preserve"><value>Unverschlüsselt</value></data>
+  <data name="Settings_SmtpUser" xml:space="preserve"><value>SMTP-Benutzername</value></data>
+  <data name="Settings_SmtpPassword" xml:space="preserve"><value>SMTP-Kennwort</value></data>
+  <data name="Settings_NotifyAfterLabel" xml:space="preserve"><value>Benachrichtigen nach:</value></data>
+  <data name="Settings_NotifyAfter" xml:space="preserve"><value>Benachrichtigen nach Fehlschlägen in Folge</value></data>
+  <data name="Settings_FailuresRepeat" xml:space="preserve"><value>Fehlschlägen in Folge, Erinnerung höchstens alle</value></data>
+  <data name="Settings_RepeatHours" xml:space="preserve"><value>Erinnerung höchstens alle Stunden</value></data>
+  <data name="Settings_Hours" xml:space="preserve"><value>Stunden</value></data>
+  <data name="Settings_NotifyRecovery" xml:space="preserve"><value>Entwarnung senden, sobald es wieder klappt</value></data>
+  <data name="Settings_SendTest" xml:space="preserve"><value>Testnachricht senden</value></data>
+  <data name="Settings_FromProfile" xml:space="preserve"><value>Daten aus einem Postfach-Profil übernehmen</value></data>
+  <data name="Settings_NotifyTip" xml:space="preserve"><value>Tipp: Als Absender eignet sich Ihr eigenes Postfach (Postausgangsserver Ihres Anbieters). Gmail/iCloud/Yahoo benötigen ein App-Passwort. Kurze Aussetzer (z. B. WLAN weg) lösen dank der Schwelle keine Nachricht aus. Manuelle Läufe melden Fehler direkt im Fenster.</value></data>
+  <data name="Settings_TabWeb" xml:space="preserve"><value>Webzugriff im Heimnetz</value></data>
+  <data name="Settings_WebTitle" xml:space="preserve"><value>Archiv im Browser durchsuchen</value></data>
+  <data name="Settings_WebIntro" xml:space="preserve"><value>Familienmitglieder können das Archiv mit Browser, Tablet oder Handy im Heimnetz durchsuchen – jeder sieht nur die für ihn freigegebenen Postfächer. Der PC mit MailVault muss dafür eingeschaltet sein.</value></data>
+  <data name="Settings_WebEnable" xml:space="preserve"><value>Webzugriff einschalten</value></data>
+  <data name="Settings_WebPort" xml:space="preserve"><value>Port für den Webzugriff</value></data>
+  <data name="Settings_LanAccess" xml:space="preserve"><value>Aus dem ganzen Heimnetz erreichbar (sonst nur auf diesem PC)</value></data>
+  <data name="Settings_BrowserAddress" xml:space="preserve"><value>Adresse im Browser</value></data>
+  <data name="Settings_OpenInBrowser" xml:space="preserve"><value>Im Browser öffnen</value></data>
+  <data name="Settings_FirewallHint" xml:space="preserve"><value>Beim ersten Einschalten fragt die Windows-Firewall nach – bitte „Private Netzwerke“ erlauben. Die Verbindung ist im Heimnetz unverschlüsselt (HTTP): nicht in öffentlichen oder Gast-WLANs verwenden und den Port nicht im Router freigeben.</value></data>
+  <data name="Settings_Users" xml:space="preserve"><value>Benutzer</value></data>
+  <data name="Settings_ColRole" xml:space="preserve"><value>Rolle</value></data>
+  <data name="Settings_ColShared" xml:space="preserve"><value>Freigegeben</value></data>
+  <data name="Settings_ColStatus" xml:space="preserve"><value>Status</value></data>
+  <data name="Settings_AddUser" xml:space="preserve"><value>Benutzer hinzufügen...</value></data>
+  <data name="Settings_Claude" xml:space="preserve"><value>Claude von Anthropic</value></data>
+  <data name="Settings_AiIntro" xml:space="preserve"><value>Der KI-Assistent nutzt Ihren eigenen API-Schlüssel. Die Kosten rechnet Anthropic nach Verbrauch mit Ihnen ab (typisch wenige Cent pro Frage); nach jeder Antwort zeigt MailVault den Verbrauch an.</value></data>
+  <data name="Settings_ApiKeyLabel" xml:space="preserve"><value>API-Schlüssel:</value></data>
+  <data name="Settings_CreateKey" xml:space="preserve"><value>Schlüssel erstellen ↗</value></data>
+  <data name="Settings_ApiKey" xml:space="preserve"><value>API-Schlüssel</value></data>
+  <data name="Settings_ModelLabel" xml:space="preserve"><value>Modell:</value></data>
+  <data name="Settings_Model" xml:space="preserve"><value>Modell</value></data>
+  <data name="Settings_MaxReadLabel" xml:space="preserve"><value>E-Mails lesen pro Frage:</value></data>
+  <data name="Settings_MaxRead" xml:space="preserve"><value>E-Mails lesen pro Frage</value></data>
+  <data name="Settings_MaxReadHint" xml:space="preserve"><value>höchstens (Volltext; Suchtreffer zeigen nur kurze Ausschnitte)</value></data>
+  <data name="Settings_PrivacyRead" xml:space="preserve"><value>Datenschutz – bitte lesen</value></data>
+  <data name="Settings_AiPrivacy" xml:space="preserve"><value>Ihr Archiv bleibt auf diesem PC. Für eine Frage sucht Claude über lokale Werkzeuge; an Anthropic übertragen werden nur die Suchergebnisse (Absender, Empfänger, Betreff, Datum, kurze Ausschnitte) und der Text der E-Mails, die Claude zum Beantworten liest. Anthropic verwendet API-Daten nach eigenen Angaben nicht zum Training und löscht sie nach kurzer Frist. Das Beziehungsnetz wird lokal berechnet; nur auf Wunsch („Mit KI deuten“) gehen Namen, Adressen und Zahlen an Claude – keine Inhalte. Beachten Sie, dass E-Mails auch persönliche Daten Dritter enthalten.</value></data>
+  <data name="Settings_AiConsent" xml:space="preserve"><value>Verstanden – ich möchte den KI-Assistenten nutzen</value></data>
+  <data name="Settings_TestConnection" xml:space="preserve"><value>Verbindung testen</value></data>
+  <data name="Settings_TabUpdates" xml:space="preserve"><value>Updates</value></data>
+  <data name="Settings_About" xml:space="preserve"><value>MailVault Home · Tonio Wirmer IT-Dienstleistungen · mailvault.zerze.de. Verwendet MailKit/MimeKit, SQLite3 Multiple Ciphers, PdfPig, XstReader, Zstandard, WebView2, ASP.NET Core und das Anthropic SDK.</value></data>
+  <data name="Settings_ColUser" xml:space="preserve"><value>Benutzer</value></data>
+  <data name="Start_Never" xml:space="preserve"><value>noch nie</value></data>
+  <data name="Start_Protected" xml:space="preserve"><value>Kennwortgeschützt (verschlüsselt)</value></data>
+  <data name="Start_NotProtected" xml:space="preserve"><value>Nicht geschützt</value></data>
+  <data name="Source_ImapTitle" xml:space="preserve"><value>E-Mail-Server (IMAP)</value></data>
+  <data name="Source_ImapDesc" xml:space="preserve"><value>Gmail, GMX, WEB.DE, Outlook.com, T-Online und andere Postfächer über IMAP.</value></data>
+  <data name="Source_Pop3Title" xml:space="preserve"><value>E-Mail-Server (POP3)</value></data>
+  <data name="Source_Pop3Desc" xml:space="preserve"><value>Ein einzelnes POP3-Postfach archivieren (nur Posteingang).</value></data>
+  <data name="Source_OutlookDesc" xml:space="preserve"><value>Outlook-Datendateien (.pst/.ost) einlesen, auch ohne installiertes Outlook.</value></data>
+  <data name="Source_ThunderbirdDesc" xml:space="preserve"><value>E-Mails aus den lokalen Thunderbird-Ordnern kopieren.</value></data>
+  <data name="Source_EmlTitle" xml:space="preserve"><value>E-Mail-Dateien (.eml)</value></data>
+  <data name="Source_EmlDesc" xml:space="preserve"><value>Einen Ordner mit .eml-Dateien einlesen, Unterordner bleiben erhalten.</value></data>
+  <data name="Source_MboxDesc" xml:space="preserve"><value>MBOX-Datei, z. B. aus Google Takeout, Apple Mail oder einem Export.</value></data>
+  <data name="Archive_RunTitle" xml:space="preserve"><value>Archivieren: {0}</value></data>
+  <data name="Archive_WaitForScheduled" xml:space="preserve"><value>Warte auf den laufenden automatischen Abruf ...</value></data>
+  <data name="Archive_WaitForScheduledLog" xml:space="preserve"><value>Ein automatischer Abruf läuft gerade; dieser Lauf startet danach.</value></data>
+  <data name="Archive_DeleteConfirm" xml:space="preserve"><value>Profil '{0}' löschen?&#10;&#10;Das Löschen von Profilen hat keinerlei Auswirkung auf bereits archivierte E-Mails.</value></data>
+  <data name="Export_DefaultFolder" xml:space="preserve"><value>MailVault-Export</value></data>
+  <data name="Export_PickTarget" xml:space="preserve"><value>Zielordner für den Export</value></data>
+  <data name="Export_NoTarget" xml:space="preserve"><value>Bitte wählen Sie einen Zielordner.</value></data>
+  <data name="Export_FolderEmpty" xml:space="preserve"><value>Der gewählte Ordner enthält keine E-Mails.</value></data>
+  <data name="Export_Done" xml:space="preserve"><value>{0:N0} E-Mails nach {1} exportiert.</value></data>
+  <data name="Export_OpenTarget" xml:space="preserve"><value>{0}&#10;&#10;Zielordner öffnen?</value></data>
+  <data name="Search_Any" xml:space="preserve"><value>Beliebig</value></data>
+  <data name="Search_Today" xml:space="preserve"><value>Heute</value></data>
+  <data name="Search_Yesterday" xml:space="preserve"><value>Gestern</value></data>
+  <data name="Search_ThisWeek" xml:space="preserve"><value>Diese Woche</value></data>
+  <data name="Search_LastWeek" xml:space="preserve"><value>Letzte Woche</value></data>
+  <data name="Search_ThisMonth" xml:space="preserve"><value>Dieser Monat</value></data>
+  <data name="Search_LastMonth" xml:space="preserve"><value>Letzter Monat</value></data>
+  <data name="Search_NotOlderThan" xml:space="preserve"><value>Nicht älter als ... Tage</value></data>
+  <data name="Search_OlderThan" xml:space="preserve"><value>Älter als ... Tage</value></data>
+  <data name="Search_CustomRange" xml:space="preserve"><value>Zeitraum ...</value></data>
+  <data name="Search_DontCare" xml:space="preserve"><value>Egal</value></data>
+  <data name="Search_WithAttachments" xml:space="preserve"><value>Mit Anhängen</value></data>
+  <data name="Search_WithoutAttachments" xml:space="preserve"><value>Ohne Anhänge</value></data>
+  <data name="Search_PrioHigh" xml:space="preserve"><value>Hoch</value></data>
+  <data name="Search_PrioNormal" xml:space="preserve"><value>Normal</value></data>
+  <data name="Search_PrioLow" xml:space="preserve"><value>Niedrig</value></data>
+  <data name="Search_AllFolders" xml:space="preserve"><value>Alle Ordner</value></data>
+  <data name="Search_EnterTerm" xml:space="preserve"><value>Bitte einen Suchbegriff eingeben oder einen Filter wählen.</value></data>
+  <data name="Search_Result" xml:space="preserve"><value>Suchergebnis</value></data>
+  <data name="Search_ResultFor" xml:space="preserve"><value>Suchergebnis für „{0}“</value></data>
+  <data name="Settings_Stats" xml:space="preserve"><value>{0:N0} E-Mails, Originalgröße {1}, Archivdatei {2}</value></data>
+  <data name="Settings_PickArchive" xml:space="preserve"><value>Anderes Archiv öffnen oder neues anlegen</value></data>
+  <data name="Settings_LocationChanged" xml:space="preserve"><value>Der neue Speicherort wird beim nächsten Programmstart verwendet.&#10;&#10;Um ein bestehendes Archiv umzuziehen, beenden Sie MailVault und kopieren Sie den gesamten Archivordner an den neuen Ort.</value></data>
+  <data name="Settings_ProtectTitle" xml:space="preserve"><value>Archiv mit Kennwort schützen</value></data>
+  <data name="Settings_Encrypting" xml:space="preserve"><value>Archiv wird verschlüsselt</value></data>
+  <data name="Settings_EncryptingStatus" xml:space="preserve"><value>Alle Daten werden in ein verschlüsseltes Archiv übertragen...</value></data>
+  <data name="Settings_Encrypted" xml:space="preserve"><value>Das Archiv ist jetzt verschlüsselt und kennwortgeschützt.</value></data>
+  <data name="Settings_ChangePasswordTitle" xml:space="preserve"><value>Archivkennwort ändern</value></data>
+  <data name="Settings_PasswordChanged" xml:space="preserve"><value>Ihr Archivkennwort wurde erfolgreich geändert.</value></data>
+  <data name="Settings_OldPasswordWrong" xml:space="preserve"><value>Das angegebene alte Kennwort ist nicht korrekt.</value></data>
+  <data name="Settings_RemoveProtectionTitle" xml:space="preserve"><value>Kennwortschutz entfernen – bitte Kennwort bestätigen</value></data>
+  <data name="Settings_Decrypting" xml:space="preserve"><value>Archiv wird entschlüsselt</value></data>
+  <data name="Settings_Decrypted" xml:space="preserve"><value>Der Kennwortschutz Ihres Archivs wurde deaktiviert.</value></data>
+  <data name="Settings_RebuildConfirm" xml:space="preserve"><value>Der Suchindex wird aus den archivierten E-Mails neu aufgebaut. Das kann bei großen Archiven längere Zeit dauern. Fortfahren?</value></data>
+  <data name="Settings_Rebuilt" xml:space="preserve"><value>Der Suchindex wurde neu aufgebaut.</value></data>
+  <data name="Settings_CompactResult" xml:space="preserve"><value>Archivgröße: {0} → {1}</value></data>
+  <data name="Settings_Checking" xml:space="preserve"><value>Integrität wird geprüft...</value></data>
+  <data name="Settings_ArchiveOk" xml:space="preserve"><value>Das Archiv ist in Ordnung.</value></data>
+  <data name="Settings_ArchiveProblems" xml:space="preserve"><value>Probleme gefunden: {0}</value></data>
+  <data name="App_OpenFailed" xml:space="preserve"><value>Das Archiv in '{0}' konnte nicht geöffnet werden:&#10;&#10;{1}</value></data>
+  <data name="App_Updated" xml:space="preserve"><value>MailVault wurde aktualisiert</value></data>
+  <data name="App_UpdatedVersion" xml:space="preserve"><value>Jetzt läuft Version {0}.</value></data>
+  <data name="App_UpdateFailed" xml:space="preserve"><value>Die neue Version ließ sich nicht starten. Die bisherige Version wurde automatisch wiederhergestellt; Ihr Archiv ist unverändert.&#10;&#10;Protokoll: {0}</value></data>
+  <data name="App_UpdateTitle" xml:space="preserve"><value>MailVault-Update</value></data>
+  <data name="App_InstallQuestion" xml:space="preserve"><value>MailVault {0} wird installiert nach:&#10;{1}&#10;&#10;Es werden keine Administratorrechte benötigt. Danach steht MailVault im Startmenü, und Updates kommen automatisch.</value></data>
+  <data name="App_ReplaceQuestion" xml:space="preserve"><value>In {0} ist bereits MailVault {1} installiert. Durch Version {2} ersetzen?&#10;&#10;Archiv und Einstellungen bleiben erhalten.</value></data>
+  <data name="App_InstallTitle" xml:space="preserve"><value>MailVault installieren</value></data>
+  <data name="App_AlreadyRunning" xml:space="preserve"><value>MailVault läuft bereits. Bitte zuerst beenden (Rechtsklick auf das Symbol im Infobereich → Beenden) und dann erneut installieren.</value></data>
+  <data name="App_InstallFailed" xml:space="preserve"><value>Die Installation ist fehlgeschlagen:&#10;&#10;{0}</value></data>
+  <data name="App_ExitWhileArchiving" xml:space="preserve"><value>Das Postfach „{0}“ wird gerade archiviert. Trotzdem beenden?&#10;&#10;Bereits archivierte E-Mails bleiben erhalten; der Rest folgt beim nächsten Abruf.</value></data>
+  <data name="App_UnexpectedError" xml:space="preserve"><value>Ein unerwarteter Fehler ist aufgetreten:&#10;&#10;{0}</value></data>
+  <data name="Main_MyArchive" xml:space="preserve"><value>Mein Archiv</value></data>
+  <data name="Main_MyArchiveCount" xml:space="preserve"><value>Mein Archiv ({0:N0})</value></data>
+  <data name="Main_RenameTitle" xml:space="preserve"><value>Ordner umbenennen</value></data>
+  <data name="Main_NewName" xml:space="preserve"><value>Neuer Name:</value></data>
+  <data name="Main_Rename" xml:space="preserve"><value>Umbenennen</value></data>
+  <data name="Main_DeleteFolderConfirm" xml:space="preserve"><value>Möchten Sie den Ordner '{0}' mit allen Unterordnern und {1:N0} E-Mails endgültig aus dem Archiv löschen?&#10;&#10;Diese Aktion kann nicht rückgängig gemacht werden.</value></data>
+  <data name="List_Loading" xml:space="preserve"><value>Wird geladen...</value></data>
+  <data name="List_NoneFound" xml:space="preserve"><value>Keine E-Mails gefunden.</value></data>
+  <data name="List_OneEmail" xml:space="preserve"><value>1 E-Mail</value></data>
+  <data name="List_Count" xml:space="preserve"><value>{0:N0} E-Mails</value></data>
+  <data name="List_EmlFilter" xml:space="preserve"><value>E-Mail (*.eml)|*.eml</value></data>
+  <data name="List_SaveManyTitle" xml:space="preserve"><value>{0} E-Mails speichern unter</value></data>
+  <data name="List_Saving" xml:space="preserve"><value>E-Mails speichern</value></data>
+  <data name="List_Saved" xml:space="preserve"><value>{0:N0} E-Mails gespeichert.</value></data>
+  <data name="List_DeleteOne" xml:space="preserve"><value>Möchten Sie die E-Mail '{0}' endgültig aus dem Archiv löschen?</value></data>
+  <data name="List_DeleteMany" xml:space="preserve"><value>Möchten Sie {0:N0} E-Mails endgültig aus dem Archiv löschen?</value></data>
+  <data name="List_Deleted" xml:space="preserve"><value>{0:N0} E-Mails gelöscht.</value></data>
+  <data name="Auto_OtherAutostart" xml:space="preserve"><value>Hinweis: Es ist noch ein Autostart-Eintrag für einen anderen Programmort vorhanden ({0}). Einschalten ersetzt ihn.</value></data>
+  <data name="Auto_Running" xml:space="preserve"><value>läuft gerade</value></data>
+  <data name="Auto_Due" xml:space="preserve"><value>fällig</value></data>
+  <data name="Auto_NextFormat" xml:space="preserve"><value>{0:ddd dd.MM. HH:mm}</value></data>
+  <data name="Auto_Error" xml:space="preserve"><value>Fehler ({0}× in Folge): {1}</value></data>
+  <data name="Auto_LastRun" xml:space="preserve"><value>{0:dd.MM. HH:mm}: {1}</value></data>
+  <data name="Auto_NotRunYet" xml:space="preserve"><value>noch nicht ausgeführt</value></data>
+  <data name="Auto_AutostartOn" xml:space="preserve"><value>MailVault startet bei der Windows-Anmeldung unsichtbar im Infobereich und ruft die Postfächer nach Zeitplan ab.</value></data>
+  <data name="Auto_AutostartFailed" xml:space="preserve"><value>Autostart konnte nicht geändert werden: {0}</value></data>
+  <data name="Auto_IncompleteFull" xml:space="preserve"><value>Bitte Empfänger, SMTP-Server und Absender (oder einen Benutzernamen mit E-Mail-Adresse) angeben.</value></data>
+  <data name="Auto_SavedOn" xml:space="preserve"><value>Gespeichert. Sie werden benachrichtigt, wenn ein automatischer Abruf scheitert.</value></data>
+  <data name="Auto_SavedOff" xml:space="preserve"><value>Gespeichert (Benachrichtigung ausgeschaltet).</value></data>
+  <data name="Auto_Incomplete" xml:space="preserve"><value>Bitte Empfänger, SMTP-Server und Absender angeben.</value></data>
+  <data name="Auto_Sending" xml:space="preserve"><value>Testnachricht wird gesendet ...</value></data>
+  <data name="Auto_Sent" xml:space="preserve"><value>Testnachricht an {0} gesendet. Bitte Posteingang (und Spam-Ordner) prüfen.</value></data>
+  <data name="Auto_SendFailed" xml:space="preserve"><value>Senden fehlgeschlagen: {0}</value></data>
+  <data name="Auto_EnterSender" xml:space="preserve"><value>Bitte zuerst die Absenderadresse (Ihr E-Mail-Konto) eintragen.</value></data>
+  <data name="Auto_Discovering" xml:space="preserve"><value>Postausgangsserver wird ermittelt ...</value></data>
+  <data name="Auto_NoSmtp" xml:space="preserve"><value>Kein Postausgangsserver gefunden – bitte die Angaben Ihres Anbieters eintragen.</value></data>
+  <data name="Auto_Found" xml:space="preserve"><value>Gefunden: {0}, Port {1} ({2}). Kennwort eintragen und „Testnachricht senden“.</value></data>
+  <data name="Auto_NoProfile" xml:space="preserve"><value>Kein IMAP/POP3-Profil mit E-Mail-Adresse vorhanden.</value></data>
+  <data name="Web_RoleAdmin" xml:space="preserve"><value>Administrator (alle Archive)</value></data>
+  <data name="Web_RoleUser" xml:space="preserve"><value>Benutzer</value></data>
+  <data name="Web_LastLogin" xml:space="preserve"><value>zuletzt {0:g}</value></data>
+  <data name="Web_NeverLoggedIn" xml:space="preserve"><value>noch nie angemeldet</value></data>
+  <data name="Web_Locked" xml:space="preserve"><value>gesperrt</value></data>
+  <data name="Web_All" xml:space="preserve"><value>alle</value></data>
+  <data name="Web_NothingShared" xml:space="preserve"><value>(nichts freigegeben)</value></data>
+  <data name="Web_DeletedFolder" xml:space="preserve"><value>(gelöschter Ordner {0})</value></data>
+  <data name="Web_StartFailed" xml:space="preserve"><value>Webzugriff konnte nicht gestartet werden: {0}</value></data>
+  <data name="Web_RunningNoUsers" xml:space="preserve"><value>Der Webzugriff läuft. Legen Sie unten einen Benutzer an, damit sich jemand anmelden kann.</value></data>
+  <data name="Web_Running" xml:space="preserve"><value>Der Webzugriff läuft. Im Browser eines Geräts im Heimnetz eine dieser Adressen öffnen:</value></data>
+  <data name="Web_Off" xml:space="preserve"><value>Der Webzugriff ist ausgeschaltet.</value></data>
+  <data name="Web_InvalidPort" xml:space="preserve"><value>Bitte einen Port zwischen 1024 und 65535 angeben.</value></data>
+  <data name="Web_Starting" xml:space="preserve"><value>Wird gestartet ...</value></data>
+  <data name="Web_Stopping" xml:space="preserve"><value>Wird beendet ...</value></data>
+  <data name="Web_DeleteUserConfirm" xml:space="preserve"><value>Benutzer '{0}' löschen? Er kann sich danach nicht mehr anmelden.</value></data>
+  <data name="AiSet_KeyStored" xml:space="preserve"><value>Ein API-Schlüssel ist gespeichert (verschlüsselt für Ihr Windows-Konto).</value></data>
+  <data name="AiSet_NotAKey" xml:space="preserve"><value>Das sieht nicht wie ein Claude-API-Schlüssel aus (beginnt mit „sk-ant-“).</value></data>
+  <data name="AiSet_Saved" xml:space="preserve"><value>Gespeichert.</value></data>
+  <data name="AiSet_EnterKey" xml:space="preserve"><value>Bitte zuerst einen API-Schlüssel eintragen.</value></data>
+  <data name="AiSet_Testing" xml:space="preserve"><value>Verbindung zu Claude wird geprüft ...</value></data>
+  <data name="AiSet_TestOk" xml:space="preserve"><value>Verbindung funktioniert. Claude antwortet: „{0}“</value></data>
+  <data name="AiSet_TestFailed" xml:space="preserve"><value>Die Verbindung zu Claude funktioniert nicht: {0}</value></data>
+  <data name="Ai_NeedKey" xml:space="preserve"><value>Für den KI-Assistenten wird ein Claude-API-Schlüssel benötigt. Bitte unter Verwaltung → KI-Assistent eintragen. Das Beziehungsnetz funktioniert auch ohne.</value></data>
+  <data name="Ai_NeedConsent" xml:space="preserve"><value>Bitte bestätigen Sie unter Verwaltung → KI-Assistent den Datenschutzhinweis.</value></data>
+  <data name="Ai_AllMailboxes" xml:space="preserve"><value>Alle Postfächer</value></data>
+  <data name="Ai_CitationFormat" xml:space="preserve"><value>{0:d} · {1} · {2}</value></data>
+  <data name="Ai_PlaceholderConfirm" xml:space="preserve"><value>Die Frage enthält noch einen Platzhalter in [eckigen Klammern]. Trotzdem so absenden?</value></data>
+  <data name="Ai_ScopeChanged" xml:space="preserve"><value>_Suchbereich geändert: {0}. Neues Gespräch begonnen._</value></data>
+  <data name="Ai_Searching" xml:space="preserve"><value>Durchsucht das Archiv</value></data>
+  <data name="Ai_Meta" xml:space="preserve"><value>{0} · {1} Werkzeugaufrufe, {2} E-Mails gelesen · {3:N0} + {4:N0} Tokens</value></data>
+  <data name="Ai_Canceled" xml:space="preserve"><value>_Abgebrochen._</value></data>
+  <data name="Ai_Error" xml:space="preserve"><value>**Fehler:** {0}</value></data>
+  <data name="Ai_MessageGone" xml:space="preserve"><value>Diese E-Mail ist nicht (mehr) im Archiv.</value></data>
+  <data name="Ai_MessagePrompt" xml:space="preserve"><value>Zeige mir alles, was mit der E-Mail [#{0}] („{1}“) zusammenhängt, und erstelle eine Chronologie: wer hat wann was geschrieben, was wurde entschieden, was ist noch offen.</value></data>
+  <data name="Ai_NetworkComputing" xml:space="preserve"><value>Kontaktnetz wird berechnet ...</value></data>
+  <data name="Ai_NetworkTooFew" xml:space="preserve"><value>Noch zu wenige E-Mails für ein Kontaktnetz.</value></data>
+  <data name="Ai_NetworkStats" xml:space="preserve"><value>{0} Kontakte aus {1:N0} E-Mails · lokal berechnet, nichts wurde übertragen</value></data>
+  <data name="Ai_NetworkTooSmall" xml:space="preserve"><value>Das Kontaktnetz ist noch zu klein für eine Auswertung.</value></data>
+  <data name="Ai_InterpretConfirm" xml:space="preserve"><value>Für die Deutung werden Namen, E-Mail-Adressen und die Anzahl gemeinsamer E-Mails der angezeigten Kontakte an Claude übertragen (keine E-Mail-Inhalte). Fortfahren?</value></data>
+  <data name="Ai_InterpretQuestion" xml:space="preserve"><value>Deute mein Beziehungsnetz: Wer gehört zu welcher Gruppe, wer kennt wen?</value></data>
+  <data name="Ai_Interpreting" xml:space="preserve"><value>Claude deutet das Beziehungsnetz</value></data>
+  <data name="Ai_InterpretMeta" xml:space="preserve"><value>{0:N0} + {1:N0} Tokens · übertragen: nur Namen, Adressen, Zählwerte</value></data>
+  <data name="Ai_AnswerLanguage" xml:space="preserve"><value>Deutsch</value></data>
+  <data name="Tray_RunAll" xml:space="preserve"><value>Jetzt alle Postfächer abrufen</value></data>
+  <data name="Tray_Open" xml:space="preserve"><value>MailVault öffnen</value></data>
+  <data name="Tray_Exit" xml:space="preserve"><value>Beenden</value></data>
+  <data name="Tray_NoScheduled" xml:space="preserve"><value>Es gibt keine Profile mit automatischem Abruf. Legen Sie den Zeitplan im jeweiligen Profil fest.</value></data>
+  <data name="Tray_RunFailed" xml:space="preserve"><value>Postfach „{0}“ nicht abgerufen</value></data>
+  <data name="Tray_StillRunning" xml:space="preserve"><value>MailVault läuft im Hintergrund weiter</value></data>
+  <data name="Tray_StillRunningText" xml:space="preserve"><value>Geplante Abrufe werden weiter ausgeführt. Zum Beenden: Rechtsklick auf das Symbol → Beenden.</value></data>
+  <data name="Tray_Archiving" xml:space="preserve"><value>Archiviert gerade: {0}</value></data>
+  <data name="Tray_NoAutomatic" xml:space="preserve"><value>Kein automatischer Abruf eingerichtet</value></data>
+  <data name="Tray_Next" xml:space="preserve"><value>Nächster Abruf: {0}</value></data>
+  <data name="Tray_Now" xml:space="preserve"><value>jetzt</value></data>
+  <data name="Tray_At" xml:space="preserve"><value>{0:HH:mm} Uhr</value></data>
+  <data name="Tray_Failing" xml:space="preserve"><value>{0} Postfach/Postfächer mit Fehler</value></data>
+  <data name="Ui_DangerousFile" xml:space="preserve"><value>'{0}' ist ein ausführbarer Dateityp und kann Ihren Computer schädigen.&#10;Trotzdem öffnen?</value></data>
+  <data name="Ui_KB" xml:space="preserve"><value>{0:N0} KB</value></data>
+  <data name="Ui_MB" xml:space="preserve"><value>{0:N1} MB</value></data>
+  <data name="Ui_GB" xml:space="preserve"><value>{0:N2} GB</value></data>
+  <data name="Ui_Bytes" xml:space="preserve"><value>{0} B</value></data>
+  <data name="Web_PortInUse" xml:space="preserve"><value>Port {0} ist bereits belegt. Bitte einen anderen Port wählen.</value></data>
+  <data name="Shortcut_NoScriptHost" xml:space="preserve"><value>Windows Script Host fehlt.</value></data>
+  <data name="Shortcut_Description" xml:space="preserve"><value>MailVault Home – E-Mail-Archiv</value></data>
+  <data name="Md_MissingCitation" xml:space="preserve"><value>Diese E-Mail ist nicht im Archiv</value></data>
+  <data name="AiHtml_EmptyTitle" xml:space="preserve"><value>Fragen Sie Ihr Archiv in eigenen Worten</value></data>
+  <data name="AiHtml_EmptyExample" xml:space="preserve"><value>Zum Beispiel: „Welche Verträge laufen noch, und wann kann ich kündigen?“</value></data>
+  <data name="AiHtml_EmptyHint" xml:space="preserve"><value>Jede Aussage wird mit nummerierten Quellen belegt; ein Klick öffnet die E-Mail. Beispiele finden Sie links.</value></data>
+  <data name="AiHtml_NetHint" xml:space="preserve"><value>Ziehen zum Verschieben · Mausrad zum Zoomen · Klick auf eine Person zeigt ihre E-Mails · Linien = gemeinsam in E-Mails</value></data>
+  <data name="AiHtml_PerMonth" xml:space="preserve"><value>E-Mails pro Monat</value></data>
+  <data name="AiHtml_TopContacts" xml:space="preserve"><value>Wichtigste Kontakte</value></data>
+  <data name="AiHtml_Me" xml:space="preserve"><value>Ich</value></data>
+  <data name="AiHtml_Tip" xml:space="preserve"><value>{0} E-Mails von, {1} an</value></data>
+  <data name="AiHtml_Range" xml:space="preserve"><value>{0} bis {1} · {2} E-Mails</value></data>
+  <data name="Upd_ProgramVersion" xml:space="preserve">
+    <value>Programmversion</value>
+  </data>
+  <data name="Upd_InstalledLabel" xml:space="preserve">
+    <value>Installiert: </value>
+  </data>
+  <data name="Upd_NotInstalledHint" xml:space="preserve">
+    <value>Diese Kopie ist nicht installiert. Nach dem Installieren steht MailVault im Startmenü und aktualisiert sich selbst. Zielordner: </value>
+  </data>
+  <data name="Upd_InstallButton" xml:space="preserve">
+    <value>MailVault installieren</value>
+  </data>
+  <data name="Upd_Title" xml:space="preserve">
+    <value>Updates</value>
+  </data>
+  <data name="Upd_ServerLabel" xml:space="preserve">
+    <value>Update-Server:</value>
+  </data>
+  <data name="Upd_ServerTip" xml:space="preserve">
+    <value>Jede Update-Liste ist signiert; MailVault installiert nur Pakete mit gültiger Signatur und passender Prüfsumme.</value>
+  </data>
+  <data name="Upd_ChannelLabel" xml:space="preserve">
+    <value>Versionen:</value>
+  </data>
+  <data name="Upd_ChannelName" xml:space="preserve">
+    <value>Versionen</value>
+  </data>
+  <data name="Upd_ChannelStable" xml:space="preserve">
+    <value>Nur fertige Versionen</value>
+  </data>
+  <data name="Upd_ChannelBeta" xml:space="preserve">
+    <value>Auch Vorabversionen (zum Ausprobieren)</value>
+  </data>
+  <data name="Upd_AutoCheck" xml:space="preserve">
+    <value>Automatisch nach Updates suchen</value>
+  </data>
+  <data name="Upd_AutoInstall" xml:space="preserve">
+    <value>Updates automatisch installieren, sobald MailVault gerade nicht benutzt wird</value>
+  </data>
+  <data name="Upd_CheckButton" xml:space="preserve">
+    <value>Nach Updates suchen</value>
+  </data>
+  <data name="Upd_ChangesLabel" xml:space="preserve">
+    <value>Änderungen:</value>
+  </data>
+  <data name="Upd_InstallNow" xml:space="preserve">
+    <value>Jetzt aktualisieren</value>
+  </data>
+  <data name="Upd_InstallHint" xml:space="preserve">
+    <value>Die neue Version wird heruntergeladen und geprüft, MailVault startet danach neu. Archiv und Einstellungen bleiben unverändert; startet die neue Version nicht, wird die alte automatisch wiederhergestellt.</value>
+  </data>
+  <data name="Upd_NotInstalledStatus" xml:space="preserve">
+    <value>Diese Kopie ist nicht installiert (z. B. direkt aus dem Download-Ordner oder eine Entwicklerversion). Updates gibt es nur für installierte Versionen.</value>
+  </data>
+  <data name="Upd_ChannelBetaStatus" xml:space="preserve">
+    <value>Sie erhalten auch Vorabversionen (zum Ausprobieren, können Fehler enthalten).</value>
+  </data>
+  <data name="Upd_ChannelStableStatus" xml:space="preserve">
+    <value>Sie erhalten nur fertige Versionen.</value>
+  </data>
+  <data name="Upd_OnlyInstalled" xml:space="preserve">
+    <value>Updates sind nur für installierte Versionen möglich.</value>
+  </data>
+  <data name="Upd_Searching" xml:space="preserve">
+    <value>Suche nach Updates ...</value>
+  </data>
+  <data name="Upd_CheckFailed" xml:space="preserve">
+    <value>Die Suche nach Updates ist fehlgeschlagen: {0}</value>
+  </data>
+  <data name="Upd_AvailableTitle" xml:space="preserve">
+    <value>Version {0} ist verfügbar</value>
+  </data>
+  <data name="Upd_UpToDate" xml:space="preserve">
+    <value>MailVault ist auf dem neuesten Stand (neueste Version: {0}).</value>
+  </data>
+  <data name="Upd_ConfirmInstall" xml:space="preserve">
+    <value>MailVault wird auf Version {0} aktualisiert.
+
+Die neue Version wird heruntergeladen, dann beendet sich MailVault kurz und startet neu. Ihr Archiv und Ihre Einstellungen bleiben unverändert; die bisherige Version wird gesichert und bei Problemen automatisch wiederhergestellt.
+
+Jetzt aktualisieren?</value>
+  </data>
+  <data name="Upd_ProgressTitle" xml:space="preserve">
+    <value>Update auf Version {0}</value>
+  </data>
+  <data name="Upd_Ready" xml:space="preserve">
+    <value>Die neue Version ist bereit. MailVault startet jetzt neu.</value>
+  </data>
+  <data name="Upd_TrayAvailableTitle" xml:space="preserve">
+    <value>Update verfügbar</value>
+  </data>
+  <data name="Upd_TrayAvailableText" xml:space="preserve">
+    <value>Version {0} – Verwaltung → Updates → „Jetzt aktualisieren“.</value>
+  </data>
+  <data name="Upd_TrayPreparingTitle" xml:space="preserve">
+    <value>Update wird vorbereitet</value>
+  </data>
+  <data name="Upd_TrayPreparingText" xml:space="preserve">
+    <value>Version {0} ist geladen und wird installiert, sobald MailVault gerade nicht benutzt wird (dauert wenige Sekunden).</value>
+  </data>
+  <data name="Recovery_Print" xml:space="preserve">
+    <value>Notfallblatt drucken…</value>
+  </data>
+  <data name="Recovery_Copied" xml:space="preserve">
+    <value>Kopiert. Die Zwischenablage wird in 60 Sekunden geleert und der Schlüssel erscheint nicht im Windows-Verlauf.</value>
+  </data>
+  <data name="Recovery_Saved" xml:space="preserve">
+    <value>Gespeichert: {0}</value>
+  </data>
+  <data name="Recovery_Printed" xml:space="preserve">
+    <value>An den Drucker gesendet.</value>
+  </data>
+  <data name="Recovery_ReplacedHeader" xml:space="preserve">
+    <value>Neuer Wiederherstellungsschlüssel – der bisherige gilt nicht mehr.</value>
+  </data>
+  <data name="Recovery_AdviceTitle" xml:space="preserve">
+    <value>So bewahren Sie ihn richtig auf</value>
+  </data>
+  <data name="Recovery_Advice" xml:space="preserve">
+    <value>• Drucken Sie das Notfallblatt aus und legen Sie es zu wichtigen Unterlagen (Ordner, Tresor). Papier übersteht jeden Festplattendefekt.
+• Zweite Kopie in einem Passwortmanager (z. B. Bitwarden, KeePass, 1Password).
+• Nicht unverschlüsselt neben dem Archiv, im selben Cloudordner oder per E-Mail aufbewahren – wer Archiv und Schlüssel zusammen findet, kann alles lesen.
+• Das Notfallblatt enthält zusätzlich eine Kopie der Schlüsseldatei. Damit klappt die Wiederherstellung sogar dann, wenn die Schlüsseldatei im Archivordner verloren geht.</value>
+  </data>
+  <data name="Recovery_SheetText" xml:space="preserve">
+    <value>MAILVAULT HOME – NOTFALLBLATT
+Erstellt: {0:G} auf {3}
+Archivordner: {2}
+
+Wiederherstellungsschlüssel:
+
+    {1}
+
+Wenn Sie Ihr Kennwort vergessen haben:
+  MailVault starten → „Kennwort vergessen?“ → Schlüssel eingeben → neues Kennwort festlegen.
+
+Wenn die Schlüsseldatei (archive.keys.json) fehlt:
+  MailVault starten → „Notfallblatt wählen…“ → diese Datei auswählen → neues Kennwort festlegen.
+  Ausgedruckt: den Block unten Zeichen für Zeichen in eine Textdatei abtippen.
+
+Dieses Blatt ist so geheim wie Ihr Archiv. Sicher und getrennt vom Computer aufbewahren.</value>
+  </data>
+  <data name="Recovery_SaveNextToArchive" xml:space="preserve">
+    <value>Sie speichern das Notfallblatt im Archivordner. Wer diesen Ordner kopiert, hätte dann Archiv und Schlüssel zusammen. Trotzdem hier speichern?</value>
+  </data>
+  <data name="Login_KeyFileMissingHeader" xml:space="preserve">
+    <value>Schlüsseldatei fehlt</value>
+  </data>
+  <data name="Login_KeyFileMissingIntro" xml:space="preserve">
+    <value>Das Archiv in {0} ist verschlüsselt, aber die Schlüsseldatei archive.keys.json fehlt. Wählen Sie Ihr Notfallblatt (oder eine gesicherte Schlüsseldatei), geben Sie den Wiederherstellungsschlüssel ein und legen Sie ein neues Kennwort fest.</value>
+  </data>
+  <data name="Login_PickSheet" xml:space="preserve">
+    <value>Notfallblatt wählen…</value>
+  </data>
+  <data name="Login_SheetFilter" xml:space="preserve">
+    <value>Notfallblatt oder Schlüsseldatei (*.txt;*.json)|*.txt;*.json|Alle Dateien (*.*)|*.*</value>
+  </data>
+  <data name="Login_SheetLoaded" xml:space="preserve">
+    <value>Geladen: {0}</value>
+  </data>
+  <data name="Login_SheetInvalid" xml:space="preserve">
+    <value>Diese Datei enthält keine gültige MailVault-Schlüsseldatei.</value>
+  </data>
+  <data name="Login_SheetRequired" xml:space="preserve">
+    <value>Bitte zuerst das Notfallblatt wählen.</value>
+  </data>
+  <data name="Password_Hint" xml:space="preserve">
+    <value>Tipp: Ein Satz aus vier bis fünf zufälligen Wörtern ist stark und gut zu merken.</value>
+  </data>
+  <data name="Password_StrengthVeryWeak" xml:space="preserve">
+    <value>Sehr schwach – in kurzer Zeit zu erraten.</value>
+  </data>
+  <data name="Password_StrengthWeak" xml:space="preserve">
+    <value>Schwach – bitte länger machen.</value>
+  </data>
+  <data name="Password_StrengthFair" xml:space="preserve">
+    <value>Mittel – noch ein, zwei Wörter mehr wären gut.</value>
+  </data>
+  <data name="Password_StrengthStrong" xml:space="preserve">
+    <value>Stark.</value>
+  </data>
+  <data name="Password_StrengthVeryStrong" xml:space="preserve">
+    <value>Sehr stark.</value>
+  </data>
+  <data name="Password_WeakConfirm" xml:space="preserve">
+    <value>Dieses Kennwort ist schwach. Gerät die Archivdatei in falsche Hände (gestohlener Laptop, Sicherung in der Cloud), kann es durch Ausprobieren geknackt werden. Trotzdem verwenden?</value>
+  </data>
+  <data name="Settings_RemoveProtectionConfirm" xml:space="preserve">
+    <value>Danach liegt das Archiv unverschlüsselt auf der Festplatte und jeder mit Zugriff auf den Ordner kann die E-Mails lesen. Schutz wirklich aufheben?</value>
+  </data>
+  <data name="Settings_NewRecoveryKeyTitle" xml:space="preserve">
+    <value>Neuen Wiederherstellungsschlüssel erzeugen – bitte Kennwort bestätigen</value>
+  </data>
+  <data name="Settings_NewRecoveryKey" xml:space="preserve">
+    <value>Neuer Wiederherstellungsschlüssel…</value>
+  </data>
+  <data name="Settings_CheckRecoveryKey" xml:space="preserve">
+    <value>Schlüssel prüfen…</value>
+  </data>
+  <data name="Settings_CheckRecoveryKeyPrompt" xml:space="preserve">
+    <value>Geben Sie Ihren aufbewahrten Wiederherstellungsschlüssel ein. Es wird nur geprüft, nichts geändert.</value>
+  </data>
+  <data name="Settings_CheckRecoveryKeyButton" xml:space="preserve">
+    <value>Prüfen</value>
+  </data>
+  <data name="Settings_RecoveryKeyValid" xml:space="preserve">
+    <value>Der Wiederherstellungsschlüssel passt zu diesem Archiv.</value>
+  </data>
+  <data name="Settings_RecoveryKeyInvalid" xml:space="preserve">
+    <value>Dieser Schlüssel passt nicht. Erzeugen Sie am besten jetzt einen neuen und bewahren Sie ihn sicher auf.</value>
+  </data>
+  <data name="Settings_BackupKeyFile" xml:space="preserve">
+    <value>Schlüsseldatei sichern…</value>
+  </data>
+  <data name="Settings_KeyFileFilter" xml:space="preserve">
+    <value>Schlüsseldatei (*.json)|*.json</value>
+  </data>
+  <data name="Settings_KeyFileSaved" xml:space="preserve">
+    <value>Schlüsseldatei gesichert: {0}
+
+Allein ist sie nutzlos; zusammen mit Kennwort oder Wiederherstellungsschlüssel öffnet sie das Archiv.</value>
+  </data>
+  <data name="Settings_RecoveryKeyMissingHint" xml:space="preserve">
+    <value>Für dieses Archiv wurde noch kein Notfallblatt gespeichert oder gedruckt. Erzeugen Sie einen neuen Wiederherstellungsschlüssel, sonst gibt es bei vergessenem Kennwort keinen Weg zurück.</value>
+  </data>
+  <data name="Settings_SecurityHelpTitle" xml:space="preserve">
+    <value>So schützt MailVault Ihr Archiv</value>
+  </data>
+  <data name="Help_WhatTitle" xml:space="preserve">
+    <value>Was verschlüsselt wird</value>
+  </data>
+  <data name="Help_What" xml:space="preserve">
+    <value>Die gesamte Archivdatei: E-Mails mit Anhängen, Ordner, Metadaten und Suchindex – mit AES-256 im SQLCipher-4-Format, jede Datenbankseite zusätzlich mit HMAC gegen Manipulation gesichert. Ohne Kennwort ist die Datei nicht von Zufallsdaten zu unterscheiden. Zugangsdaten für Postfächer und KI-Schlüssel liegen getrennt davon mit Windows-DPAPI verschlüsselt und sind nur in Ihrem Windows-Konto lesbar.</value>
+  </data>
+  <data name="Help_KeysTitle" xml:space="preserve">
+    <value>Kennwort, Wiederherstellungsschlüssel, Schlüsseldatei</value>
+  </data>
+  <data name="Help_Keys" xml:space="preserve">
+    <value>Das Archiv wird mit einem zufälligen 256-Bit-Schlüssel verschlüsselt. Dieser liegt in archive.keys.json zweimal verpackt: einmal mit Ihrem Kennwort, einmal mit dem Wiederherstellungsschlüssel (je PBKDF2 mit 600 000 Runden und AES-GCM). Darum können Sie das Kennwort ändern, ohne das Archiv neu zu verschlüsseln. Die Schlüsseldatei wird doppelt geschrieben (archive.keys.json.backup); fehlen beide, hilft nur das Notfallblatt.</value>
+  </data>
+  <data name="Help_StoreTitle" xml:space="preserve">
+    <value>Den Wiederherstellungsschlüssel sichern</value>
+  </data>
+  <data name="Help_Store" xml:space="preserve">
+    <value>Er wird nur einmal angezeigt und nirgends gespeichert. Drucken Sie das Notfallblatt aus und bewahren Sie es getrennt vom Computer auf; eine zweite Kopie gehört in einen Passwortmanager. Prüfen Sie ab und zu mit „Schlüssel prüfen…“, ob Ihr aufbewahrter Schlüssel noch passt. Ist er verloren oder könnte ihn jemand gesehen haben: „Neuer Wiederherstellungsschlüssel…“ – der alte wird sofort ungültig.</value>
+  </data>
+  <data name="Help_PasswordTitle" xml:space="preserve">
+    <value>Ein gutes Kennwort</value>
+  </data>
+  <data name="Help_Password" xml:space="preserve">
+    <value>Die Verschlüsselung selbst ist praktisch nicht zu brechen – angreifbar ist nur ein erratbares Kennwort. Länge schlägt Sonderzeichen: Vier bis fünf zufällige Wörter (z. B. „Kiesel Laterne trotzig Ofen Mai“) sind stärker als „P@ssw0rt1“. Verwenden Sie das Kennwort nirgendwo sonst.</value>
+  </data>
+  <data name="Help_LimitsTitle" xml:space="preserve">
+    <value>Was die Verschlüsselung nicht abdeckt</value>
+  </data>
+  <data name="Help_Limits" xml:space="preserve">
+    <value>• Exporte (EML, MBOX, PDF …) sind unverschlüsselt – legen Sie sie nur an sichere Orte.
+• Geöffnete Anhänge liegen kurz entschlüsselt im Temp-Ordner; MailVault räumt sie beim Beenden und beim nächsten Start weg.
+• Der Webzugriff im Heimnetz läuft über HTTP ohne Verschlüsselung der Verbindung – nur in vertrauenswürdigen Netzen einschalten.
+• Während MailVault läuft, ist das Archiv entsperrt. Sperren Sie Windows (Win+L), wenn Sie den Platz verlassen.
+• Auf SSDs lässt sich eine früher unverschlüsselte Archivdatei nicht garantiert spurlos löschen. Für vollständigen Schutz zusätzlich BitLocker (Geräteverschlüsselung) einschalten.</value>
+  </data>
+  <data name="Help_BackupTitle" xml:space="preserve">
+    <value>Sicherungen</value>
+  </data>
+  <data name="Help_Backup" xml:space="preserve">
+    <value>Sichern Sie immer den ganzen Archivordner – archive.db zusammen mit archive.keys.json und archive.keys.json.backup. Eine Sicherung ohne Schlüsseldatei ist wertlos, und eine verschlüsselte Sicherung bleibt verschlüsselt: Sie können sie bedenkenlos auf eine externe Platte oder in die Cloud legen, solange das Notfallblatt nicht danebenliegt.</value>
+  </data>
+</root>

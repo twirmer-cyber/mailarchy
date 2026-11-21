@@ -1,0 +1,15 @@
+# /etc/logrotate.d/mailvault
+# Sieben Tage, täglich gedreht. Genau diese Frist steht in der Datenschutzerklärung (site/index.html, site/i18n.js).
+/var/log/nginx/mailvault/*.log {
+    daily
+    rotate 7
+    missingok
+    notifempty
+    compress
+    delaycompress
+    create 0640 www-data adm
+    sharedscripts
+    postrotate
+        [ -f /var/run/nginx.pid ] && kill -USR1 `cat /var/run/nginx.pid`
+    endscript
+}

@@ -1,0 +1,38 @@
+{
+  "de": [
+    "Notfallblatt: Wiederherstellungsschlüssel und eine Kopie der Schlüsseldatei zum Drucken oder Speichern – damit kommen Sie auch dann an Ihr Archiv, wenn Kennwort und Schlüsseldatei verloren sind",
+    "Neuen Wiederherstellungsschlüssel erzeugen und aufbewahrten Schlüssel prüfen (Verwaltung → Archiv)",
+    "Schlüsseldatei wird doppelt und stromausfallsicher gespeichert; Verschlüsseln und Entschlüsseln überstehen jetzt auch einen Absturz",
+    "Anzeige der Kennwortstärke und Rückfrage bei schwachen Kennwörtern",
+    "Wiederherstellungsschlüssel landet beim Kopieren nicht mehr im Windows-Zwischenablageverlauf",
+    "Geöffnete Anhänge werden beim Beenden aus dem Temp-Ordner entfernt",
+    "Neue Hilfe „So schützt MailVault Ihr Archiv“"
+  ],
+  "en": [
+    "Emergency sheet: recovery key plus a copy of the key file to print or save – gets you into your archive even if password and key file are lost",
+    "Create a new recovery key and check the one you kept (Administration → Archive)",
+    "The key file is saved twice and safe against power loss; encrypting and decrypting now survive a crash",
+    "Password strength indicator and a warning for weak passwords",
+    "Copying the recovery key no longer puts it into the Windows clipboard history",
+    "Opened attachments are removed from the temp folder on exit",
+    "New help: “How MailVault protects your archive”"
+  ],
+  "fr": [
+    "Fiche d'urgence : clé de récupération et copie du fichier de clés à imprimer ou enregistrer – accès à l'archive même si mot de passe et fichier de clés sont perdus",
+    "Créer une nouvelle clé de récupération et vérifier celle que vous avez conservée (Administration → Archive)",
+    "Le fichier de clés est enregistré en double et résiste aux coupures de courant ; chiffrer et déchiffrer survivent désormais à un plantage",
+    "Indicateur de robustesse du mot de passe et avertissement pour les mots de passe faibles",
+    "La clé de récupération copiée n'apparaît plus dans l'historique du presse-papiers Windows",
+    "Les pièces jointes ouvertes sont supprimées du dossier temporaire à la fermeture",
+    "Nouvelle aide : « Comment MailVault protège votre archive »"
+  ],
+  "es": [
+    "Hoja de emergencia: clave de recuperación y copia del archivo de claves para imprimir o guardar; acceso al archivo aunque se pierdan contraseña y archivo de claves",
+    "Crear una nueva clave de recuperación y comprobar la que guardó (Administración → Archivo)",
+    "El archivo de claves se guarda por duplicado y resiste cortes de luz; cifrar y descifrar ahora sobreviven a un bloqueo",
+    "Indicador de robustez de la contraseña y aviso para contraseñas débiles",
+    "Al copiar la clave de recuperación ya no queda en el historial del portapapeles de Windows",
+    "Los adjuntos abiertos se eliminan de la carpeta temporal al salir",
+    "Nueva ayuda: «Cómo protege MailVault su archivo»"
+  ]
+}

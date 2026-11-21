@@ -1,0 +1,13 @@
+<Project>
+  <!--
+    Version des gesamten Produkts. Für eine Veröffentlichung erhöhen, committen und build\release.ps1 ausführen
+    (siehe docs/UPDATES.md): Das Skript baut das Paket, trägt es in die signierten Update-Listen ein und lädt
+    alles auf mailvault.zerze.de. Das .NET-SDK hängt den Git-Commit an die Produktversion an (z. B. 0.5.0+d4430b4…).
+  -->
+  <PropertyGroup>
+    <Version>0.6.0</Version>
+    <Product>MailVault Home</Product>
+    <Company>Tonio Wirmer IT-Dienstleistungen</Company>
+    <Copyright>© Tonio Wirmer</Copyright>
+  </PropertyGroup>
+</Project>

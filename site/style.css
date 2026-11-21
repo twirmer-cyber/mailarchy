@@ -1,0 +1,380 @@
+/* MailVault – mailvault.zerze.de
+   Gestaltung: Fallblattanzeige. Tafel-Anthrazit trägt Kopf, Suche und Schluss, Signalgelb ist die einzige Farbe
+   (Hauptaktion, Treffer, Zusagen-Plakat). Keine fremden Ressourcen, keine Inline-Stile (CSP).
+
+   Schriften (selbst gehostet, Teilmenge „latin“, woff2):
+   - Barlow und Barlow Semi Condensed © 2017 The Barlow Project Authors (https://github.com/jpt/barlow),
+     SIL Open Font License 1.1 (https://openfontlicense.org)
+   - Chivo Mono © 2022 The Chivo Mono Project Authors (https://github.com/Omnibus-Type/ChivoMono),
+     SIL Open Font License 1.1 */
+
+@font-face { font-family: "Barlow"; font-style: normal; font-weight: 400; font-display: swap; src: url("schriften/barlow-400-latin.woff2") format("woff2"); }
+@font-face { font-family: "Barlow"; font-style: normal; font-weight: 600; font-display: swap; src: url("schriften/barlow-600-latin.woff2") format("woff2"); }
+@font-face { font-family: "Barlow Semi Condensed"; font-style: normal; font-weight: 600; font-display: swap; src: url("schriften/barlow-semi-condensed-600-latin.woff2") format("woff2"); }
+@font-face { font-family: "Chivo Mono"; font-style: normal; font-weight: 400; font-display: swap; src: url("schriften/chivo-mono-400-latin.woff2") format("woff2"); }
+
+/* ------------------------------------------------------------ Farben */
+:root {
+  --f-text: "Barlow", system-ui, "Segoe UI", sans-serif;
+  --f-klapp: "Barlow Semi Condensed", "Barlow", system-ui, "Segoe UI", sans-serif;
+  --f-mono: "Chivo Mono", ui-monospace, Consolas, monospace;
+
+  /* Tafel (in beiden Modi dunkel – sie ist ein Gegenstand) */
+  --board: #15171a;
+  --board-2: #1c1f23;
+  --flap: #25282e;
+  --flap-top: #2e3239;
+  --seam: #0b0c0e;
+  --board-line: #33373e;
+  --board-ink: #f2f1ec;
+  --board-ink-2: #b4b8be;
+
+  /* Signalgelb */
+  --signal: #f5c400;
+  --signal-hover: #ffd633;
+  --on-signal: #15171a;
+  --on-signal-2: #3d3200;
+
+  /* Bahnsteig (Seitengrund) */
+  --ground: #f4f4f1;
+  --shelf: #e9e9e4;
+  --surface: #ffffff;
+  --line: #d4d4cd;
+  --ink: #17191c;
+  --ink-2: #4f545b;
+  --link-line: #b39000;
+  --focus: #15171a;
+
+  --rahmen: 74rem;
+  --rand: clamp(16px, 4vw, 48px);
+  --takt: clamp(4rem, 9vw, 7rem);
+  color-scheme: light;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --board: #1a1d21;
+    --board-2: #212429;
+    --ground: #0e0f11;
+    --shelf: #16181b;
+    --surface: #17191c;
+    --line: #2b2e33;
+    --ink: #ecebe6;
+    --ink-2: #a7abb2;
+    --link-line: #8a7000;
+    --focus: #f5c400;
+    --signal: #eebd00;
+    color-scheme: dark;
+  }
+}
+
+/* ------------------------------------------------------------ Grundlagen */
+*, *::before, *::after { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; text-size-adjust: 100%; scrollbar-color: var(--ink-2) var(--ground); }
+@media (prefers-reduced-motion: no-preference) { html { scroll-behavior: smooth; } }
+body {
+  margin: 0;
+  background: var(--ground);
+  color: var(--ink);
+  font: 400 1.0625rem/1.6 var(--f-text);
+  font-kerning: normal;
+  overflow-x: hidden;
+}
+::selection { background: var(--signal); color: var(--on-signal); }
+img, svg { display: block; max-width: 100%; }
+h1, h2, h3 { font-family: var(--f-klapp); font-weight: 600; line-height: 1.1; margin: 0; text-wrap: balance; letter-spacing: -0.005em; }
+h2 { font-size: clamp(1.85rem, 3.8vw, 2.9rem); margin-bottom: .55em; }
+h3 { font-size: 1.3rem; margin-bottom: .5em; }
+p { margin: 0 0 1em; max-width: 64ch; text-wrap: pretty; }
+a { color: inherit; text-decoration-line: underline; text-decoration-thickness: 1px; text-underline-offset: .2em; text-decoration-color: var(--link-line); }
+a:hover { text-decoration-thickness: 2px; text-decoration-color: currentColor; }
+:focus-visible { outline: 3px solid var(--focus); outline-offset: 3px; border-radius: 2px; }
+b, strong { font-weight: 600; }
+code { font-family: var(--f-mono); font-size: .88em; }
+.zahl { font-variant-numeric: tabular-nums; }
+.sr { position: absolute; width: 1px; height: 1px; margin: -1px; overflow: hidden; clip: rect(0 0 0 0); clip-path: inset(50%); white-space: nowrap; }
+.sprite { position: absolute; width: 0; height: 0; overflow: hidden; }
+svg use { fill: none; stroke: currentColor; stroke-width: 1.5; stroke-linecap: round; stroke-linejoin: round; }
+#i-play path { fill: currentColor; }
+.rahmen { width: 100%; max-width: calc(var(--rahmen) + 2 * var(--rand)); margin-inline: auto; padding-inline: var(--rand); }
+.skip { position: absolute; left: var(--rand); top: -4rem; z-index: 10; background: var(--signal); color: var(--on-signal); padding: .6rem 1rem; border-radius: 3px; font-weight: 600; text-decoration: none; }
+.skip:focus { top: .75rem; }
+
+/* ------------------------------------------------------------ Tafel */
+.tafel { background: var(--board); color: var(--board-ink); --focus: var(--signal); --link-line: #8d7a2e; }
+.tafel p { color: var(--board-ink-2); }
+
+.kopf-innen { display: flex; align-items: center; gap: 1.5rem; min-height: 4.25rem; }
+.marke { display: inline-flex; align-items: center; gap: .55rem; font: 600 1.3rem/1 var(--f-klapp); text-decoration: none; color: var(--board-ink); letter-spacing: .01em; }
+.marke .mark { width: 26px; height: 26px; color: var(--signal); }
+.kopf-nav { display: flex; gap: 1.6rem; margin-left: auto; }
+.kopf-nav a { color: var(--board-ink-2); text-decoration: none; font-size: .975rem; padding-block: .4rem; }
+.kopf-nav a:hover { color: var(--board-ink); text-decoration: underline; text-decoration-color: var(--signal); text-decoration-thickness: 2px; }
+.sprachen { display: flex; gap: 3px; }
+.sprachen button {
+  position: relative; overflow: hidden;
+  font: 600 .875rem/1 var(--f-klapp); letter-spacing: .04em;
+  min-width: 2.35rem; padding: .55rem .45rem; border: 0; border-radius: 3px;
+  background: var(--flap); color: var(--board-ink-2); cursor: pointer;
+}
+.sprachen button::after { content: ""; position: absolute; left: 0; right: 0; top: 50%; height: 1px; background: var(--seam); }
+.sprachen button:hover { color: var(--board-ink); }
+.sprachen button[aria-pressed="true"] { background: var(--signal); color: var(--on-signal); }
+.sprachen button[aria-pressed="true"]::after { background: rgba(0, 0, 0, .18); }
+
+/* ------------------------------------------------------------ Klappen (Fallblatt) */
+.klapptitel { font-size: clamp(1.95rem, 8.2vw, 4rem); line-height: 1.08; }
+.klapptitel .zeile { display: block; }
+.klappen { display: block; }
+.kz { display: block; }
+.wort { display: inline-block; white-space: nowrap; margin-right: .26em; margin-bottom: .1em; }
+.k {
+  position: relative; display: inline-block; overflow: hidden;
+  min-width: .5em; padding: .03em .035em 0; margin-right: .035em;
+  text-align: center; line-height: 1.14;
+  background: var(--flap); color: var(--board-ink); border-radius: .07em;
+}
+.k::after { content: ""; position: absolute; left: 0; right: 0; top: 50%; height: max(1px, .02em); background: var(--seam); }
+.k::before, .anzeige-liste li > span::before, .sprachen button::before, .gleise a::before {
+  content: ""; position: absolute; left: 0; right: 0; top: 0; bottom: 50%;
+  background: var(--flap-top); transform-origin: 50% 100%; transform: scaleY(0); z-index: 1; pointer-events: none;
+}
+.fl::before, .gleise a:hover::before { animation: klapp 120ms cubic-bezier(.25, .8, .3, 1); }
+.fl2::before { animation: klapp2 120ms cubic-bezier(.25, .8, .3, 1); }
+@keyframes klapp { from { transform: scaleY(1); } to { transform: scaleY(0); } }
+@keyframes klapp2 { from { transform: scaleY(1); } to { transform: scaleY(0); } }
+.kz.leise .k { color: var(--board-ink-2); }
+
+/* ------------------------------------------------------------ Einstieg */
+.buehne { padding-top: clamp(1.75rem, 5vw, 4rem); }
+.buehne-innen { position: relative; }
+.buehne .klapptitel { margin-bottom: clamp(1.75rem, 4vw, 3rem); }
+.buehne-unten {
+  display: grid; gap: clamp(2rem, 4vw, 3.5rem);
+  grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); align-items: end;
+}
+.lead { font-size: clamp(1.1rem, 1.6vw, 1.25rem); line-height: 1.5; color: var(--board-ink); max-width: 34rem; margin-bottom: 1.6rem; }
+.tafel .lead { color: var(--board-ink); }
+.laden { padding-bottom: clamp(5rem, 9vw, 7.5rem); }
+
+.knopf-laden {
+  display: inline-flex; align-items: center; gap: .9rem;
+  padding: .9rem 1.4rem .9rem 1.1rem; border-radius: 4px;
+  background: var(--signal); color: var(--on-signal); text-decoration: none;
+  transition: background-color 160ms ease-out;
+}
+.knopf-laden > svg { width: 26px; height: 26px; flex: none; transition: transform 160ms ease-out; }
+.knopf-laden > svg use { stroke-width: 1.75; }
+.knopf-laden:hover { background: var(--signal-hover); text-decoration: none; }
+.knopf-laden:hover > svg { transform: translateY(2px); }
+.knopf-laden:focus-visible { outline-color: var(--board-ink); }
+.knopf-laden-text { display: flex; flex-direction: column; gap: .15rem; }
+.knopf-laden-titel { font: 600 1.3rem/1.1 var(--f-klapp); }
+.knopf-laden-datei { font-size: .875rem; line-height: 1.3; color: var(--on-signal-2); overflow-wrap: anywhere; }
+.laden-info { margin: .9rem 0 .2rem; font-size: .9rem; }
+.laden-neben { margin: 0; font-size: .9rem; display: flex; flex-wrap: wrap; gap: .35rem .6rem; }
+.tafel .laden-neben a, .tafel .laden-neben { color: var(--board-ink-2); }
+.tafel .laden-neben a:hover { color: var(--board-ink); }
+
+/* Anzeigetafel */
+.anzeige {
+  position: relative; z-index: 2; margin: 0 0 -4.5rem;
+  background: var(--board-2); border: 1px solid var(--board-line); border-radius: 6px;
+  padding: .9rem .9rem .8rem; color: var(--board-ink);
+  box-shadow: 0 24px 48px -24px rgba(0, 0, 0, .55);
+  font-size: .95rem;
+}
+.anzeige-kopf { display: flex; align-items: center; gap: .75rem; margin-bottom: .7rem; }
+.anzeige-titel { font: 600 1rem/1 var(--f-klapp); letter-spacing: .02em; }
+.anzeige-demo { white-space: nowrap; font-size: .8rem; color: var(--board-ink-2); border: 1px solid var(--board-line); border-radius: 3px; padding: .1rem .4rem; }
+.anzeige-pause {
+  margin-left: auto; display: grid; place-items: center; width: 2rem; height: 2rem;
+  border: 1px solid var(--board-line); border-radius: 3px; background: transparent; color: var(--board-ink-2); cursor: pointer;
+}
+.anzeige-pause:hover { color: var(--board-ink); border-color: var(--board-ink-2); }
+.anzeige-pause svg { width: 14px; height: 14px; }
+.anzeige-pause .ic-play, .anzeige-pause[aria-pressed="true"] .ic-pause { display: none; }
+.anzeige-pause[aria-pressed="true"] .ic-play { display: block; }
+.anzeige-feld {
+  display: flex; align-items: center; gap: .6rem;
+  background: #0d0e10; border: 1px solid var(--board-line); border-radius: 3px;
+  padding: .6rem .75rem; margin-bottom: .7rem; font-family: var(--f-mono); font-size: .9rem;
+}
+.anzeige-feld svg { width: 16px; height: 16px; color: var(--board-ink-2); flex: none; }
+.anzeige-eingabe { white-space: pre; overflow: hidden; text-overflow: ellipsis; min-width: 0; }
+.anzeige-eingabe::after { content: ""; display: inline-block; width: 2px; height: 1.05em; margin-left: 2px; vertical-align: -.15em; background: var(--signal); }
+.anzeige-spalten, .anzeige-liste li { display: grid; grid-template-columns: 6.4em minmax(0, 10em) minmax(0, 1fr); gap: 3px; }
+.anzeige-spalten { padding: 0 0 .35rem; font-size: .78rem; color: var(--board-ink-2); }
+.anzeige-spalten span { padding-left: .6rem; }
+.anzeige-liste { list-style: none; margin: 0; padding: 0; display: grid; gap: 3px; }
+.anzeige-liste li > span {
+  position: relative; overflow: hidden; display: block;
+  background: var(--flap); border-radius: 2px;
+  padding: .42rem .6rem; min-height: 2.2rem; line-height: 1.35;
+  white-space: nowrap; text-overflow: ellipsis;
+}
+.anzeige-liste li > span::after { content: ""; position: absolute; left: 0; right: 0; top: 50%; height: 1px; background: var(--seam); }
+.anzeige-liste .datum { font-variant-numeric: tabular-nums; color: var(--board-ink-2); }
+.anzeige-liste .von { font-weight: 600; }
+.anzeige-liste .betreff svg { display: inline-block; width: 13px; height: 13px; margin-right: .4em; vertical-align: -.1em; color: var(--board-ink-2); }
+.anzeige-liste mark { background: none; color: var(--signal); font-weight: 600; }
+.anzeige-fuss { margin: .6rem 0 0; font-size: .82rem; color: var(--board-ink-2); }
+
+/* ------------------------------------------------------------ Abschnitte auf dem Bahnsteig */
+.abschnitt { padding-block: var(--takt); }
+.suche { padding-top: calc(var(--takt) + 4.5rem); }
+.suche-innen { display: grid; gap: 0 clamp(2rem, 5vw, 4.5rem); grid-template-columns: minmax(0, 6fr) minmax(0, 5fr); grid-template-rows: auto 1fr auto; align-items: start; }
+.suche-text { display: contents; }
+.suche-text h2, .suche-text > p { grid-column: 1; }
+.suche-text h2 { align-self: start; }
+.syntax { grid-column: 2; grid-row: 1 / span 2; align-self: start; margin: .4rem 0 0; border-top: 1px solid var(--line); }
+.syntax div { display: grid; grid-template-columns: minmax(9.5rem, auto) 1fr; gap: 1rem; padding: .7rem 0; border-bottom: 1px solid var(--line); }
+.syntax dt code { background: var(--surface); border: 1px solid var(--line); border-radius: 3px; padding: .15rem .45rem; }
+.syntax dd { margin: 0; color: var(--ink-2); }
+.bild { grid-column: 1 / -1; margin: clamp(2rem, 4vw, 3.5rem) 0 0; }
+.bild img {
+  width: 100%; height: auto; border-radius: 6px; border: 1px solid var(--line);
+  box-shadow: 0 30px 60px -30px rgba(21, 23, 26, .35);
+}
+.bild figcaption { margin-top: .8rem; font-size: .9rem; color: var(--ink-2); }
+
+/* Zusagen: gelbes Fahrplanplakat */
+.plakat { background: var(--signal); color: var(--on-signal); padding-block: var(--takt); --focus: var(--on-signal); --link-line: currentColor; }
+.plakat h2 { font-size: clamp(2.1rem, 5vw, 3.6rem); max-width: 18ch; margin-bottom: .8em; }
+.fahrplan { margin: 0; border-top: 3px solid var(--on-signal); }
+.fahrplan div { display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); gap: .5rem 2.5rem; padding: 1.35rem 0 1.5rem; border-bottom: 1px solid rgba(21, 23, 26, .45); }
+.fahrplan dt { font: 600 clamp(1.35rem, 2.3vw, 1.75rem)/1.15 var(--f-klapp); }
+.fahrplan dd { margin: 0; color: var(--on-signal-2); max-width: 58ch; }
+.plakat-fuss { display: flex; gap: .7rem; align-items: flex-start; margin: 1.75rem 0 0; color: var(--on-signal); font-weight: 600; max-width: none; }
+.plakat-fuss svg { width: 20px; height: 20px; flex: none; margin-top: .15rem; }
+
+/* Funktionen */
+.liste { margin: 0; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); column-gap: clamp(2rem, 5vw, 4.5rem); }
+.liste div { padding: 1.15rem 0 1.3rem; border-top: 1px solid var(--line); }
+.liste dt { font-weight: 600; font-size: 1.125rem; margin-bottom: .3rem; }
+.liste dd { margin: 0; color: var(--ink-2); max-width: 56ch; }
+
+/* Offen gebaut */
+.offen { padding-block: var(--takt); }
+.offen-innen { display: grid; grid-template-columns: minmax(0, 7fr) minmax(0, 5fr); gap: clamp(2rem, 5vw, 4.5rem); align-items: center; }
+.offen p { color: #c9ccd1; }
+.knopf-rand {
+  display: inline-flex; align-items: center; gap: .6rem; margin-top: .6rem;
+  padding: .75rem 1.1rem; border: 1px solid var(--board-ink-2); border-radius: 4px;
+  color: var(--board-ink); text-decoration: none; font-weight: 600;
+  transition: border-color 160ms ease-out, color 160ms ease-out;
+}
+.knopf-rand svg { width: 18px; height: 18px; color: var(--signal); }
+.knopf-rand:hover { border-color: var(--signal); text-decoration: none; }
+.gleise-titel { font: 600 1rem/1.2 var(--f-klapp); color: var(--board-ink-2); margin-bottom: .7rem; }
+.tafel .gleise-titel { color: var(--board-ink-2); }
+.gleise ul { list-style: none; margin: 0; padding: 0; display: grid; gap: 3px; }
+.gleise a {
+  position: relative; overflow: hidden; display: flex; justify-content: space-between; align-items: center; gap: 1rem;
+  background: var(--flap); border-radius: 3px; padding: .95rem 1.1rem; text-decoration: none; color: var(--board-ink);
+}
+.gleise a::after { content: ""; position: absolute; left: 0; right: 0; top: 50%; height: 1px; background: var(--seam); }
+.gleis-was { font: 600 1.15rem/1.2 var(--f-klapp); position: relative; z-index: 2; }
+.gleis-wohin { display: inline-flex; align-items: center; gap: .5rem; color: var(--signal); font-size: .95rem; text-align: right; position: relative; z-index: 2; }
+.gleis-wohin svg { width: 16px; height: 16px; flex: none; transition: transform 160ms ease-out; }
+.gleise a:hover .gleis-wohin svg { transform: translateX(3px); }
+
+/* Installation */
+.installation-innen { display: grid; grid-template-columns: minmax(0, 6fr) minmax(0, 5fr); gap: clamp(2rem, 5vw, 4.5rem); align-items: start; }
+.schritte { list-style: none; counter-reset: s; margin: 0 0 1.5rem; padding: 0; }
+.schritte li { counter-increment: s; position: relative; padding: .15rem 0 1.25rem 3.6rem; min-height: 3rem; }
+.schritte li::before {
+  content: counter(s); position: absolute; left: 0; top: 0;
+  width: 2.4rem; height: 2.7rem; display: grid; place-items: center;
+  background: var(--board); color: var(--board-ink); border-radius: 3px;
+  font: 600 1.6rem/1 var(--f-klapp);
+}
+.schritte li::after { content: ""; position: absolute; left: 0; top: 1.35rem; width: 2.4rem; height: 1px; background: var(--seam); }
+.hinweis { color: var(--ink-2); }
+.steckbrief { margin: 0; background: var(--surface); border: 1px solid var(--line); border-radius: 6px; padding: .4rem 1.4rem; }
+.steckbrief div { display: grid; grid-template-columns: 8.5rem minmax(0, 1fr); gap: 1rem; padding: .75rem 0; border-bottom: 1px solid var(--line); }
+.steckbrief div:last-child { border-bottom: 0; }
+.steckbrief dt { color: var(--ink-2); font-size: .95rem; }
+.steckbrief dd { margin: 0; overflow-wrap: anywhere; }
+.steckbrief .klein { display: block; color: var(--ink-2); font-size: .875rem; margin-top: .2rem; }
+.steckbrief .pruef dd { font-family: var(--f-mono); font-size: .8rem; line-height: 1.5; word-break: break-all; }
+
+/* Unterstützen */
+.unterstuetzen { background: var(--shelf); }
+.unterstuetzen-innen { display: grid; grid-template-columns: minmax(0, 7fr) minmax(0, 5fr); gap: clamp(2rem, 5vw, 4.5rem); align-items: start; }
+.knopf-gelb {
+  display: inline-flex; align-items: center; gap: .6rem; margin-top: .4rem;
+  padding: .8rem 1.2rem; border-radius: 4px; background: var(--signal); color: var(--on-signal);
+  font-weight: 600; text-decoration: none; transition: background-color 160ms ease-out;
+}
+.knopf-gelb svg { width: 16px; height: 16px; }
+.knopf-gelb:hover { background: var(--signal-hover); text-decoration: none; }
+.beleg { border-top: 3px solid var(--ink); padding-top: 1.25rem; }
+.beleg p { color: var(--ink-2); font-size: .975rem; }
+
+/* Fragen */
+.fragen-innen { display: grid; grid-template-columns: minmax(0, 4fr) minmax(0, 8fr); gap: clamp(1rem, 5vw, 4.5rem); align-items: start; }
+.fragen-liste { border-top: 1px solid var(--line); }
+.fragen details { border-bottom: 1px solid var(--line); }
+.fragen summary {
+  list-style: none; cursor: pointer; position: relative;
+  padding: 1.05rem 2.5rem 1.05rem 0; font-weight: 600; font-size: 1.1rem;
+}
+.fragen summary::-webkit-details-marker { display: none; }
+.fragen summary::after {
+  content: ""; position: absolute; right: .35rem; top: 1.35rem; width: .55rem; height: .55rem;
+  border-right: 1.5px solid currentColor; border-bottom: 1.5px solid currentColor;
+  transform: rotate(45deg); transition: transform 160ms ease-out;
+}
+.fragen details[open] summary::after { transform: translateY(.25rem) rotate(-135deg); }
+.fragen summary:hover { text-decoration: underline; text-decoration-color: var(--link-line); text-underline-offset: .2em; }
+.fragen details p { color: var(--ink-2); padding-bottom: 1.1rem; margin: 0; }
+
+/* Schluss */
+.schluss { padding-block: var(--takt); }
+.schluss-innen { display: grid; gap: 2rem; }
+.schluss .klapptitel { font-size: clamp(1.85rem, 6.5vw, 3.5rem); margin: 0; }
+.schluss-laden .laden-neben { margin-top: 1rem; }
+
+/* Rechtliches */
+.fuss { padding-block: clamp(3rem, 6vw, 4.5rem) 2rem; font-size: .9rem; color: var(--ink-2); }
+.recht-hinweis { font-style: italic; }
+.recht { display: grid; grid-template-columns: minmax(0, 4fr) minmax(0, 8fr); gap: clamp(1.5rem, 5vw, 4.5rem); }
+.recht h2 { font-size: 1.35rem; color: var(--ink); margin-bottom: .7rem; }
+.recht h3 { font: 600 .95rem/1.3 var(--f-text); color: var(--ink); margin: 1.2rem 0 .3rem; }
+.recht p { max-width: 75ch; }
+.fuss-zeile { display: flex; flex-wrap: wrap; gap: .5rem 1.5rem; margin: 2.5rem 0 0; padding-top: 1.25rem; border-top: 1px solid var(--line); max-width: none; }
+
+/* ------------------------------------------------------------ Schmal */
+@media (max-width: 960px) {
+  .buehne-unten, .offen-innen, .installation-innen, .unterstuetzen-innen, .fragen-innen, .recht { grid-template-columns: minmax(0, 1fr); }
+  .laden { padding-bottom: 0; }
+  .suche-innen { grid-template-columns: minmax(0, 1fr); grid-template-rows: none; }
+  .syntax { grid-column: 1; grid-row: auto; margin-top: .75rem; }
+}
+@media (max-width: 760px) {
+  .kopf-nav { display: none; }
+  .sprachen { margin-left: auto; }
+  .liste { grid-template-columns: minmax(0, 1fr); }
+  .fahrplan div { grid-template-columns: minmax(0, 1fr); }
+  .anzeige { font-size: .9rem; padding: .7rem .6rem .6rem; }
+  .anzeige-spalten { display: none; }
+  .anzeige-liste li { grid-template-columns: 7em minmax(0, 1fr); }
+  .anzeige-liste li .betreff { grid-column: 1 / -1; }
+  .anzeige-liste { gap: 6px; }
+  .anzeige-liste li { row-gap: 2px; }
+  .anzeige-liste li:nth-child(n+4) { display: none; }
+  .knopf-laden { width: 100%; }
+  .steckbrief { padding-inline: 1rem; }
+  .steckbrief div { grid-template-columns: minmax(0, 1fr); gap: .15rem; }
+}
+
+/* ------------------------------------------------------------ Bewegung reduziert */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation: none !important; transition: none !important; }
+}
+
+/* Fuge hinter der Schrift, damit sie nicht wie durchgestrichen wirkt */
+.k, .anzeige-liste li > span, .sprachen button, .gleise a { isolation: isolate; }
+.k::after, .anzeige-liste li > span::after, .sprachen button::after, .gleise a::after { z-index: -1; }
+.anzeige-pause[hidden] { display: none; }
+html:not(.js) .sprachen { display: none; }

@@ -1,0 +1,123 @@
+<UserControl x:Class="MailVault.App.Views.AiView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:loc="clr-namespace:MailVault.App.Localization"
+             xmlns:wv2="clr-namespace:Microsoft.Web.WebView2.Wpf;assembly=Microsoft.Web.WebView2.Wpf"
+             xmlns:views="clr-namespace:MailVault.App.Views">
+    <DockPanel Margin="24,20,24,12">
+        <StackPanel DockPanel.Dock="Top">
+            <TextBlock Style="{StaticResource H1}" Text="{loc:T Nav_Ai}" Margin="0,0,0,4" />
+            <Border Background="{DynamicResource WarnBackBrush}" CornerRadius="4" Padding="10,6" Margin="0,4,0,8">
+                <Border.Style>
+                    <Style TargetType="Border">
+                        <Style.Triggers>
+                            <DataTrigger Binding="{Binding SetupHint}" Value="">
+                                <Setter Property="Visibility" Value="Collapsed" />
+                            </DataTrigger>
+                        </Style.Triggers>
+                    </Style>
+                </Border.Style>
+                <TextBlock Text="{Binding SetupHint}" TextWrapping="Wrap" />
+            </Border>
+        </StackPanel>
+
+        <TabControl SelectedIndex="{Binding SelectedTab}" BorderThickness="0,1,0,0">
+            <!-- ======================================== Fragen -->
+            <TabItem Header="{loc:T Ai_TabAsk}">
+                <Grid Margin="0,10,0,0">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="290" />
+                        <ColumnDefinition Width="12" />
+                        <ColumnDefinition />
+                    </Grid.ColumnDefinitions>
+
+                    <!-- Beispiel-Fragen -->
+                    <DockPanel>
+                        <TextBlock DockPanel.Dock="Top" Text="{loc:T Ai_Examples}" Style="{StaticResource Muted}" FontSize="12" Margin="2,0,0,6" />
+                        <ScrollViewer VerticalScrollBarVisibility="Auto">
+                            <ItemsControl ItemsSource="{Binding Categories}">
+                                <ItemsControl.ItemTemplate>
+                                    <DataTemplate>
+                                        <Expander Margin="0,0,0,4" IsExpanded="False" AutomationProperties.Name="{Binding Name}">
+                                            <Expander.Header>
+                                                <StackPanel Orientation="Horizontal">
+                                                    <TextBlock Text="{Binding Icon}" FontFamily="Segoe MDL2 Assets" Margin="0,0,8,0" VerticalAlignment="Center" Foreground="{DynamicResource AccentBrush}" />
+                                                    <TextBlock Text="{Binding Name}" FontWeight="SemiBold" />
+                                                </StackPanel>
+                                            </Expander.Header>
+                                            <ItemsControl ItemsSource="{Binding Prompts}" Margin="4,4,0,4">
+                                                <ItemsControl.ItemTemplate>
+                                                    <DataTemplate>
+                                                        <Button HorizontalContentAlignment="Left" Margin="0,2" Padding="8,5" ToolTip="{Binding Prompt}" AutomationProperties.Name="{Binding Title}"
+                                                                Command="{Binding DataContext.UsePromptCommand, RelativeSource={RelativeSource AncestorType=UserControl}}"
+                                                                CommandParameter="{Binding}">
+                                                            <TextBlock Text="{Binding Title}" TextWrapping="Wrap" />
+                                                        </Button>
+                                                    </DataTemplate>
+                                                </ItemsControl.ItemTemplate>
+                                            </ItemsControl>
+                                        </Expander>
+                                    </DataTemplate>
+                                </ItemsControl.ItemTemplate>
+                            </ItemsControl>
+                        </ScrollViewer>
+                    </DockPanel>
+
+                    <!-- Gespräch -->
+                    <DockPanel Grid.Column="2">
+                        <DockPanel DockPanel.Dock="Bottom" Margin="0,8,0,0">
+                            <DockPanel DockPanel.Dock="Top" Margin="0,0,0,6">
+                                <TextBlock Text="{loc:T Search_SearchIn}" VerticalAlignment="Center" Margin="0,0,6,0" />
+                                <ComboBox AutomationProperties.Name="{loc:T Ai_SearchIn}" ItemsSource="{Binding Scopes}" SelectedItem="{Binding Scope}" DisplayMemberPath="Display" MinWidth="260" />
+                                <Button Content="{loc:T Ai_NewConversation}" Command="{Binding NewConversationCommand}" HorizontalAlignment="Right" />
+                            </DockPanel>
+                            <TextBlock DockPanel.Dock="Bottom" Text="{Binding StatusText}" Style="{StaticResource Muted}" FontSize="12" AutomationProperties.LiveSetting="Polite" Margin="2,4,0,0" />
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition />
+                                    <ColumnDefinition Width="Auto" />
+                                </Grid.ColumnDefinitions>
+                                <TextBox x:Name="QuestionBox" AutomationProperties.Name="{loc:T Ai_QuestionName}" views:Field.Placeholder="{loc:T Ai_QuestionPlaceholder}" Text="{Binding Question, UpdateSourceTrigger=PropertyChanged}" AcceptsReturn="True" TextWrapping="Wrap"
+                                         MinHeight="58" MaxHeight="150" VerticalScrollBarVisibility="Auto" PreviewKeyDown="Question_KeyDown"
+                                         ToolTip="{loc:T Ai_QuestionTip}" />
+                                <StackPanel Grid.Column="1" Margin="8,0,0,0">
+                                    <Button Content="{loc:T Ai_Ask}" Style="{StaticResource PrimaryButton}" Command="{Binding AskCommand}" Margin="0,0,0,4" MinWidth="90" />
+                                    <Button Content="{loc:T Common_Cancel}" Command="{Binding CancelCommand}" Margin="0"
+                                            Visibility="{Binding IsBusy, Converter={StaticResource BoolToVis}}" />
+                                </StackPanel>
+                            </Grid>
+                        </DockPanel>
+                        <Border BorderBrush="{DynamicResource BorderBrush}" BorderThickness="1" CornerRadius="4">
+                            <wv2:WebView2 x:Name="ChatView" AutomationProperties.Name="{loc:T Ai_History}" />
+                        </Border>
+                    </DockPanel>
+                </Grid>
+            </TabItem>
+
+            <!-- ======================================== Beziehungsnetz -->
+            <TabItem Header="{loc:T Ai_TabNetwork}">
+                <DockPanel Margin="0,10,0,0">
+                    <WrapPanel DockPanel.Dock="Top" Margin="0,0,0,8">
+                        <TextBlock Text="{loc:T Ai_PeriodLabel}" VerticalAlignment="Center" Margin="0,0,6,0" />
+                        <ComboBox AutomationProperties.Name="{loc:T Start_Period}" SelectedIndex="{Binding NetworkRange}" MinWidth="150" Margin="0,0,16,0">
+                            <ComboBoxItem Content="{loc:T Ai_WholeArchive}" />
+                            <ComboBoxItem Content="{loc:T Ai_Last12Months}" />
+                            <ComboBoxItem Content="{loc:T Ai_Last3Years}" />
+                            <ComboBoxItem Content="{loc:T Ai_Last5Years}" />
+                        </ComboBox>
+                        <TextBlock Text="{loc:T Ai_ContactsLabel}" VerticalAlignment="Center" Margin="0,0,6,0" />
+                        <Slider AutomationProperties.Name="{loc:T Ai_ContactCount}" Minimum="15" Maximum="150" Width="150" Value="{Binding NetworkSize, Delay=400}" IsSnapToTickEnabled="True" TickFrequency="5" VerticalAlignment="Center" />
+                        <TextBlock Text="{Binding NetworkSize}" VerticalAlignment="Center" Margin="6,0,16,0" Width="28" />
+                        <CheckBox Content="{loc:T Ai_HideAutomated}" IsChecked="{Binding HideAutomated}" VerticalAlignment="Center" Margin="0,0,16,0" />
+                        <Button Content="{loc:T Ai_Interpret}" Style="{StaticResource PrimaryButton}" Command="{Binding InterpretNetworkCommand}"
+                                ToolTip="{loc:T Ai_InterpretTip}" />
+                    </WrapPanel>
+                    <TextBlock DockPanel.Dock="Bottom" Text="{Binding NetworkStatus}" Style="{StaticResource Muted}" FontSize="12" AutomationProperties.LiveSetting="Polite" Margin="2,4,0,0" />
+                    <Border BorderBrush="{DynamicResource BorderBrush}" BorderThickness="1" CornerRadius="4">
+                        <wv2:WebView2 x:Name="NetworkView" AutomationProperties.Name="{loc:T Ai_Network}" />
+                    </Border>
+                </DockPanel>
+            </TabItem>
+        </TabControl>
+    </DockPanel>
+</UserControl>

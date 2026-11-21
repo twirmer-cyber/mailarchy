@@ -1,0 +1,30 @@
+{
+  "de": [
+    "MailVault spricht jetzt Deutsch, Englisch, Französisch und Spanisch (Verwaltung → Archiv → Sprache).",
+    "Dunkelmodus und Windows-Kontrastdesign; überarbeitete, ruhigere Bedienelemente.",
+    "Strg+F springt von überall in die Suche.",
+    "Updates kommen jetzt signiert von mailvault.zerze.de und werden vor der Installation geprüft.",
+    "Bessere Unterstützung für Sprachausgabe und Tastaturbedienung."
+  ],
+  "en": [
+    "MailVault now speaks German, English, French and Spanish (Management → Archive → Language).",
+    "Dark mode and Windows contrast themes; redesigned, calmer controls.",
+    "Ctrl+F jumps to the search from anywhere.",
+    "Updates now come signed from mailvault.zerze.de and are verified before installation.",
+    "Better support for screen readers and keyboard use."
+  ],
+  "fr": [
+    "MailVault parle désormais allemand, anglais, français et espagnol (Gestion → Archive → Langue).",
+    "Mode sombre et modes de contraste de Windows ; commandes repensées, plus sobres.",
+    "Ctrl+F mène à la recherche depuis n’importe où.",
+    "Les mises à jour arrivent désormais signées depuis mailvault.zerze.de et sont vérifiées avant l’installation.",
+    "Meilleure prise en charge des lecteurs d’écran et du clavier."
+  ],
+  "es": [
+    "MailVault ya habla alemán, inglés, francés y español (Administración → Archivo → Idioma).",
+    "Modo oscuro y temas de contraste de Windows; controles rediseñados, más tranquilos.",
+    "Ctrl+F lleva a la búsqueda desde cualquier lugar.",
+    "Las actualizaciones llegan ahora firmadas desde mailvault.zerze.de y se comprueban antes de instalarlas.",
+    "Mejor compatibilidad con lectores de pantalla y uso con teclado."
+  ]
+}

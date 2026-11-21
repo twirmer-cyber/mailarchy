@@ -1,0 +1,811 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="Err_AppPasswordRequired" xml:space="preserve">
+    <value>Sign-in rejected: the provider requires an app password.</value>
+  </data>
+  <data name="Err_AuthFailed" xml:space="preserve">
+    <value>Sign-in rejected – wrong user name or password, password changed, app password required, or IMAP/POP3 disabled by the provider.</value>
+  </data>
+  <data name="Err_ServerDetail" xml:space="preserve">
+    <value> (server: {0})</value>
+  </data>
+  <data name="Err_Tls" xml:space="preserve">
+    <value>Secure connection failed (check the certificate or the encryption setting).</value>
+  </data>
+  <data name="Err_HostNotFound" xml:space="preserve">
+    <value>Server name not found – check the internet connection or the server address.</value>
+  </data>
+  <data name="Err_ConnectionRefused" xml:space="preserve">
+    <value>The server refused the connection – check the port or the encryption.</value>
+  </data>
+  <data name="Err_Timeout" xml:space="preserve">
+    <value>Timeout – the server is not responding.</value>
+  </data>
+  <data name="Err_Network" xml:space="preserve">
+    <value>Network error: {0}</value>
+  </data>
+  <data name="Err_Imap" xml:space="preserve">
+    <value>The IMAP server reports an error: {0}</value>
+  </data>
+  <data name="Err_Pop3" xml:space="preserve">
+    <value>The POP3 server reports an error: {0}</value>
+  </data>
+  <data name="Err_Smtp" xml:space="preserve">
+    <value>The SMTP server reports an error ({0}): {1}</value>
+  </data>
+  <data name="Err_Protocol" xml:space="preserve">
+    <value>The connection to the server was interrupted unexpectedly.</value>
+  </data>
+  <data name="Err_NotConnected" xml:space="preserve">
+    <value>The connection to the server was lost.</value>
+  </data>
+  <data name="Err_FileNotFound" xml:space="preserve">
+    <value>File not found: {0}</value>
+  </data>
+  <data name="Err_DirectoryNotFound" xml:space="preserve">
+    <value>Folder not found: {0}</value>
+  </data>
+  <data name="Err_Io" xml:space="preserve">
+    <value>Connection error: {0}</value>
+  </data>
+  <data name="Err_AccessDenied" xml:space="preserve">
+    <value>Access denied – the file is locked or permissions are missing (is Outlook open, for example?).</value>
+  </data>
+  <data name="Schedule_Hourly" xml:space="preserve">
+    <value>hourly</value>
+  </data>
+  <data name="Schedule_EveryHours" xml:space="preserve">
+    <value>every {0} hours</value>
+  </data>
+  <data name="Schedule_EveryMinutes" xml:space="preserve">
+    <value>every {0} minutes</value>
+  </data>
+  <data name="Schedule_Daily" xml:space="preserve">
+    <value>daily at {0}</value>
+  </data>
+  <data name="Schedule_Manual" xml:space="preserve">
+    <value>manual</value>
+  </data>
+  <data name="Status_Error" xml:space="preserve">
+    <value>Error: {0}</value>
+  </data>
+  <data name="Status_NeverRun" xml:space="preserve">
+    <value>not run yet</value>
+  </data>
+  <data name="ProfileType_Imap" xml:space="preserve">
+    <value>IMAP mailbox</value>
+  </data>
+  <data name="ProfileType_Pop3" xml:space="preserve">
+    <value>POP3 mailbox</value>
+  </data>
+  <data name="ProfileType_EmlFolder" xml:space="preserve">
+    <value>Email files (.eml)</value>
+  </data>
+  <data name="ProfileType_Mbox" xml:space="preserve">
+    <value>MBOX file</value>
+  </data>
+  <data name="Result_Summary" xml:space="preserve">
+    <value>{0:N0} archived, {1:N0} already archived, {2:N0} filtered, {3:N0} errors</value>
+  </data>
+  <data name="Result_Cancelled" xml:space="preserve">
+    <value> (cancelled)</value>
+  </data>
+  <data name="Run_Failed" xml:space="preserve">
+    <value>Failed: {0}</value>
+  </data>
+  <data name="Mail_Never" xml:space="preserve">
+    <value>never</value>
+  </data>
+  <data name="Mail_LocalTime" xml:space="preserve">
+    <value>{0:yyyy-MM-dd HH:mm}</value>
+  </data>
+  <data name="Mail_ServerSource" xml:space="preserve">
+    <value>{0} on {1}</value>
+  </data>
+  <data name="Mail_Reminder_Subject" xml:space="preserve">
+    <value>Reminder: {0}</value>
+  </data>
+  <data name="Mail_Failure_Subject" xml:space="preserve">
+    <value>MailVault: mailbox “{0}” could not be archived</value>
+  </data>
+  <data name="Mail_Failure_Body" xml:space="preserve">
+    <value>Hello,
+
+MailVault Home failed to retrieve the mailbox “{0}” ({1}) {2} times in a row.
+
+Error: {3}
+
+Last successful retrieval: {4}
+Last attempt: {5}
+Schedule: {6}
+
+What you can do:
+- Changed your password? Open the profile in MailVault and enter the new password.
+- Gmail, iCloud, Yahoo: an app password is required.
+- GMX/WEB.DE: is IMAP/POP3 access still allowed in the webmail settings?
+- Is the PC online and the server reachable?
+
+Until the problem is fixed, new emails from this mailbox will not be archived.
+Nothing was deleted or changed on the server - MailVault only reads.
+
+MailVault reminds you again at most at the configured intervals and lets you know as soon as it works again.</value>
+  </data>
+  <data name="Mail_Recovery_Subject" xml:space="preserve">
+    <value>MailVault: mailbox “{0}” is being archived again</value>
+  </data>
+  <data name="Mail_Recovery_Body" xml:space="preserve">
+    <value>Hello,
+
+the mailbox “{0}” ({1}) could be retrieved again after {2} failed attempts.
+
+Result: {3}
+
+This email was sent automatically by MailVault Home.</value>
+  </data>
+  <data name="Mail_Test_Subject" xml:space="preserve">
+    <value>MailVault: test message</value>
+  </data>
+  <data name="Mail_Test_Body" xml:space="preserve">
+    <value>This test message confirms that MailVault Home can notify you by email when a mailbox cannot be retrieved.</value>
+  </data>
+  <data name="Notify_InvalidRecipient" xml:space="preserve">
+    <value>Invalid recipient address: {0}</value>
+  </data>
+  <data name="Notify_NotConfigured" xml:space="preserve">
+    <value>Email notification is not fully set up (SMTP server, sender, recipient).</value>
+  </data>
+  <data name="Import_Connecting" xml:space="preserve">
+    <value>Connecting to {0} ...</value>
+  </data>
+  <data name="Import_Connected" xml:space="preserve">
+    <value>Connected.</value>
+  </data>
+  <data name="Import_MessageError" xml:space="preserve">
+    <value>Error with a message in {0}: {1}</value>
+  </data>
+  <data name="Import_Progress" xml:space="preserve">
+    <value>{0:N0} archived, {1:N0} already present – {2}</value>
+  </data>
+  <data name="Import_Done" xml:space="preserve">
+    <value>Done</value>
+  </data>
+  <data name="Export_Progress" xml:space="preserve">
+    <value>{0:N0} of {1:N0} exported</value>
+  </data>
+  <data name="Export_NoSubject" xml:space="preserve">
+    <value>(no subject)</value>
+  </data>
+  <data name="Source_EmlFolder" xml:space="preserve">
+    <value>Email files {0}</value>
+  </data>
+  <data name="Source_OutlookFile" xml:space="preserve">
+    <value>Outlook data file {0}</value>
+  </data>
+  <data name="Source_FolderMissing" xml:space="preserve">
+    <value>The folder '{0}' does not exist.</value>
+  </data>
+  <data name="Source_FileMissing" xml:space="preserve">
+    <value>The file '{0}' does not exist.</value>
+  </data>
+  <data name="Source_InvalidMbox" xml:space="preserve">
+    <value>The file '{0}' is not a valid MBOX file.</value>
+  </data>
+  <data name="Source_MboxReadError" xml:space="preserve">
+    <value>MBOX read error after {0} messages: {1}</value>
+  </data>
+  <data name="Source_NoThunderbird" xml:space="preserve">
+    <value>No Thunderbird profile was found.</value>
+  </data>
+  <data name="Source_ReadingFolder" xml:space="preserve">
+    <value>Reading folder {0}...</value>
+  </data>
+  <data name="Source_FolderLog" xml:space="preserve">
+    <value>Folder: {0}</value>
+  </data>
+  <data name="Source_FolderStatus" xml:space="preserve">
+    <value>Folder {0}</value>
+  </data>
+  <data name="Source_OutlookReading" xml:space="preserve">
+    <value>Reading folder {0} ({1} items)</value>
+  </data>
+  <data name="Source_FolderOpenFailed" xml:space="preserve">
+    <value>Folder {0} cannot be opened: {1}</value>
+  </data>
+  <data name="Source_OutlookMissing" xml:space="preserve">
+    <value>The Outlook data file '{0}' does not exist.</value>
+  </data>
+  <data name="Source_OutlookLocked" xml:space="preserve">
+    <value>The Outlook data file is currently in use by Outlook. Please close Outlook and try again.</value>
+  </data>
+  <data name="Source_OutlookInvalid" xml:space="preserve">
+    <value>'{0}' is not a valid Outlook data file (.pst/.ost).</value>
+  </data>
+  <data name="Source_NotConnected" xml:space="preserve">
+    <value>Not connected.</value>
+  </data>
+  <data name="AutoCfg_Provider" xml:space="preserve">
+    <value>Provider configuration ({0})</value>
+  </data>
+  <data name="AutoCfg_Ispdb" xml:space="preserve">
+    <value>Mozilla provider database</value>
+  </data>
+  <data name="AutoCfg_IspdbMx" xml:space="preserve">
+    <value>Mozilla provider database (mail server of {0})</value>
+  </data>
+  <data name="AutoCfg_Dns" xml:space="preserve">
+    <value>DNS records of the domain (RFC 6186)</value>
+  </data>
+  <data name="AutoCfg_Guess" xml:space="preserve">
+    <value>Connection test (common server names)</value>
+  </data>
+  <data name="AutoCfg_GuessHint" xml:space="preserve">
+    <value>The settings were guessed. Please check them with “Test connection”.</value>
+  </data>
+  <data name="AutoCfg_OAuthOnly" xml:space="preserve">
+    <value>This provider only allows sign-in via OAuth (browser sign-in). MailVault does not support this yet.</value>
+  </data>
+  <data name="AutoCfg_Hint_Google" xml:space="preserve">
+    <value>Google: with two-factor sign-in, an app password is required (Google Account → Security → App passwords).</value>
+  </data>
+  <data name="AutoCfg_Hint_Microsoft" xml:space="preserve">
+    <value>For Outlook.com/Hotmail and Microsoft 365, Microsoft only allows OAuth sign-in. MailVault does not support this yet.</value>
+  </data>
+  <data name="AutoCfg_Hint_ICloud" xml:space="preserve">
+    <value>iCloud: an app-specific password is required (appleid.apple.com → Sign-In and Security).</value>
+  </data>
+  <data name="AutoCfg_Hint_Yahoo" xml:space="preserve">
+    <value>Yahoo: an app password is required (Account security → Generate app password).</value>
+  </data>
+  <data name="AutoCfg_Hint_Gmx" xml:space="preserve">
+    <value>GMX/WEB.DE: access via IMAP/POP3 must be allowed once in the webmail settings.</value>
+  </data>
+  <data name="Key_EmptyFile" xml:space="preserve">
+    <value>The key file is empty.</value>
+  </data>
+  <data name="Key_WrongPassword" xml:space="preserve">
+    <value>The password is incorrect.</value>
+  </data>
+  <data name="Archive_PasswordRequired" xml:space="preserve">
+    <value>The archive is password-protected.</value>
+  </data>
+  <data name="Archive_NewerFormat" xml:space="preserve">
+    <value>This archive was created with a newer version of MailVault (archive format {0}, this version knows {1}). Please update MailVault. The archive was not changed.</value>
+  </data>
+  <data name="Archive_EmptyPath" xml:space="preserve">
+    <value>Empty folder path.</value>
+  </data>
+  <data name="Archive_InvalidFolderName" xml:space="preserve">
+    <value>Invalid folder name.</value>
+  </data>
+  <data name="Archive_FolderExists" xml:space="preserve">
+    <value>A folder named '{0}' already exists.</value>
+  </data>
+  <data name="Archive_DictionaryMissing" xml:space="preserve">
+    <value>Compression dictionary {0} is missing from the archive.</value>
+  </data>
+  <data name="Archive_UnknownFormat" xml:space="preserve">
+    <value>Unknown storage format {0}.</value>
+  </data>
+  <data name="Archive_MessageNotFound" xml:space="preserve">
+    <value>Message {0} not found.</value>
+  </data>
+  <data name="Archive_AttachmentMissing" xml:space="preserve">
+    <value>An attachment of this message is missing from the archive (part {0}).</value>
+  </data>
+  <data name="Archive_InvalidQuery" xml:space="preserve">
+    <value>The search query is invalid: {0}</value>
+  </data>
+  <data name="Archive_MessageError" xml:space="preserve">
+    <value>Message {0}: {1}</value>
+  </data>
+  <data name="Archive_Reindexing" xml:space="preserve">
+    <value>Rebuilding the index...</value>
+  </data>
+  <data name="Archive_Converting" xml:space="preserve">
+    <value>Converting messages...</value>
+  </data>
+  <data name="Archive_OptimizingCompression" xml:space="preserve">
+    <value>Optimizing compression...</value>
+  </data>
+  <data name="Archive_Shrinking" xml:space="preserve">
+    <value>Shrinking the archive file...</value>
+  </data>
+  <data name="Archive_AlreadyProtected" xml:space="preserve">
+    <value>The archive is already protected.</value>
+  </data>
+  <data name="Archive_NotProtected" xml:space="preserve">
+    <value>The archive is not protected.</value>
+  </data>
+  <data name="Storage_UnknownSegment" xml:space="preserve">
+    <value>Unknown segment in the message store.</value>
+  </data>
+  <data name="Storage_UnknownCompression" xml:space="preserve">
+    <value>Unknown compression of an attachment.</value>
+  </data>
+  <data name="SearchHelp_1_Example" xml:space="preserve">
+    <value>invoice telekom</value>
+  </data>
+  <data name="SearchHelp_1_Meaning" xml:space="preserve">
+    <value>both words (also invoices, telekom-…)</value>
+  </data>
+  <data name="SearchHelp_2_Example" xml:space="preserve">
+    <value>"contract cancelled"</value>
+  </data>
+  <data name="SearchHelp_2_Meaning" xml:space="preserve">
+    <value>exactly this phrase</value>
+  </data>
+  <data name="SearchHelp_3_Example" xml:space="preserve">
+    <value>holiday OR trip</value>
+  </data>
+  <data name="SearchHelp_3_Meaning" xml:space="preserve">
+    <value>either of the words</value>
+  </data>
+  <data name="SearchHelp_4_Example" xml:space="preserve">
+    <value>offer -newsletter</value>
+  </data>
+  <data name="SearchHelp_4_Meaning" xml:space="preserve">
+    <value>without the word newsletter</value>
+  </data>
+  <data name="SearchHelp_5_Example" xml:space="preserve">
+    <value>from:bank</value>
+  </data>
+  <data name="SearchHelp_5_Meaning" xml:space="preserve">
+    <value>sender contains “bank”</value>
+  </data>
+  <data name="SearchHelp_6_Example" xml:space="preserve">
+    <value>to:"Anna Berg"</value>
+  </data>
+  <data name="SearchHelp_6_Meaning" xml:space="preserve">
+    <value>recipient (To/Cc) contains “Anna Berg”</value>
+  </data>
+  <data name="SearchHelp_7_Example" xml:space="preserve">
+    <value>subject:invoice</value>
+  </data>
+  <data name="SearchHelp_7_Meaning" xml:space="preserve">
+    <value>subject contains “invoice”</value>
+  </data>
+  <data name="SearchHelp_8_Example" xml:space="preserve">
+    <value>attachment:yes</value>
+  </data>
+  <data name="SearchHelp_8_Meaning" xml:space="preserve">
+    <value>only with attachment (attachment:no = without)</value>
+  </data>
+  <data name="SearchHelp_9_Example" xml:space="preserve">
+    <value>year:2024</value>
+  </data>
+  <data name="SearchHelp_9_Meaning" xml:space="preserve">
+    <value>only from 2024</value>
+  </data>
+  <data name="SearchHelp_10_Example" xml:space="preserve">
+    <value>after:2023-05  before:2023-09</value>
+  </data>
+  <data name="SearchHelp_10_Meaning" xml:space="preserve">
+    <value>time period (day, month or year)</value>
+  </data>
+  <data name="Search_BadAttachment" xml:space="preserve">
+    <value>“{0}” is not understood – please use attachment:yes or attachment:no.</value>
+  </data>
+  <data name="Search_BadYear" xml:space="preserve">
+    <value>“{0}” is not a valid year.</value>
+  </data>
+  <data name="Search_BadDate" xml:space="preserve">
+    <value>“{0}” is not a valid date (e.g. 2024-03-15, 2024-03 or 2024).</value>
+  </data>
+  <data name="Ai_NoKey" xml:space="preserve">
+    <value>No Claude API key has been stored (Administration → AI assistant).</value>
+  </data>
+  <data name="Ai_AnswerLanguage" xml:space="preserve">
+    <value>Englisch</value>
+  </data>
+  <data name="Ai_Searching" xml:space="preserve">
+    <value>Searching the archive</value>
+  </data>
+  <data name="Ai_Evaluating" xml:space="preserve">
+    <value>Evaluating the results</value>
+  </data>
+  <data name="Ai_Refused" xml:space="preserve">
+    <value>_Claude declined this request._</value>
+  </data>
+  <data name="Ai_Truncated" xml:space="preserve">
+    <value>_(The answer was cut off because of the length limit.)_</value>
+  </data>
+  <data name="Ai_NoAnswer" xml:space="preserve">
+    <value>Claude did not return an answer. Please rephrase the question.</value>
+  </data>
+  <data name="Ai_KeyRejected" xml:space="preserve">
+    <value>The Claude API key was rejected. Please check it under Administration → AI assistant.</value>
+  </data>
+  <data name="Ai_RateLimited" xml:space="preserve">
+    <value>Claude is busy right now or the quota of your API key has been reached. Please try again in a minute.</value>
+  </data>
+  <data name="Ai_BadRequest" xml:space="preserve">
+    <value>Claude rejected the request: {0}</value>
+  </data>
+  <data name="Ai_ServerError" xml:space="preserve">
+    <value>The Claude service reported a server error. Please try again later.</value>
+  </data>
+  <data name="Ai_NoConnection" xml:space="preserve">
+    <value>No connection to the Claude service (api.anthropic.com): {0}</value>
+  </data>
+  <data name="Ai_Step_Search" xml:space="preserve">
+    <value>Search: {0}</value>
+  </data>
+  <data name="Ai_Step_From" xml:space="preserve">
+    <value>from {0}</value>
+  </data>
+  <data name="Ai_Step_To" xml:space="preserve">
+    <value>to {0}</value>
+  </data>
+  <data name="Ai_Step_After" xml:space="preserve">
+    <value>from {0}</value>
+  </data>
+  <data name="Ai_Step_Before" xml:space="preserve">
+    <value>until {0}</value>
+  </data>
+  <data name="Ai_Step_Read" xml:space="preserve">
+    <value>Reading email #{0}</value>
+  </data>
+  <data name="Ai_Step_Folders" xml:space="preserve">
+    <value>Looking at the folders</value>
+  </data>
+  <data name="Ai_Step_Contacts" xml:space="preserve">
+    <value>Analyzing contacts</value>
+  </data>
+  <data name="Ai_Step_ContactsFilter" xml:space="preserve">
+    <value>Analyzing contacts: {0}</value>
+  </data>
+  <data name="Ai_Step_VolumeYear" xml:space="preserve">
+    <value>Counting emails per year</value>
+  </data>
+  <data name="Ai_Step_VolumeMonth" xml:space="preserve">
+    <value>Counting emails per month</value>
+  </data>
+  <data name="Ai_Step_Related" xml:space="preserve">
+    <value>Looking for connections to email #{0}</value>
+  </data>
+  <data name="Ai_Test_System" xml:space="preserve">
+    <value>Reply with exactly one short sentence in English.</value>
+  </data>
+  <data name="Ai_Test_User" xml:space="preserve">
+    <value>Confirm that the connection works.</value>
+  </data>
+  <data name="Web_Started" xml:space="preserve">
+    <value>Web access started: {0}</value>
+  </data>
+  <data name="Web_Stopped" xml:space="preserve">
+    <value>Web access stopped.</value>
+  </data>
+  <data name="Web_RequestError" xml:space="preserve">
+    <value>Error with {0} {1}: {2}</value>
+  </data>
+  <data name="Web_LoginFailedLog" xml:space="preserve">
+    <value>Failed sign-in for '{0}' from {1}.</value>
+  </data>
+  <data name="Web_InternalError" xml:space="preserve">
+    <value>Internal error.</value>
+  </data>
+  <data name="Web_Forbidden" xml:space="preserve">
+    <value>Request rejected.</value>
+  </data>
+  <data name="Web_NotSignedIn" xml:space="preserve">
+    <value>Not signed in.</value>
+  </data>
+  <data name="Web_NotFound" xml:space="preserve">
+    <value>Not found.</value>
+  </data>
+  <data name="Web_BadRequest" xml:space="preserve">
+    <value>Invalid request.</value>
+  </data>
+  <data name="Web_LoginFailed" xml:space="preserve">
+    <value>Wrong user name or password.</value>
+  </data>
+  <data name="Web_TooManyAttempts" xml:space="preserve">
+    <value>Too many failed attempts. Please try again in {0} seconds.</value>
+  </data>
+  <data name="Web_BadDate" xml:space="preserve">
+    <value>Invalid date (expected YYYY-MM-DD).</value>
+  </data>
+  <data name="Web_BadFolder" xml:space="preserve">
+    <value>Invalid folder.</value>
+  </data>
+  <data name="Web_BadSort" xml:space="preserve">
+    <value>Unknown sort order (allowed: date or relevance).</value>
+  </data>
+  <data name="Web_BadRange" xml:space="preserve">
+    <value>Unknown time period (allowed: all, 30d, thisyear, lastyear).</value>
+  </data>
+  <data name="Web_Truncated" xml:space="preserve">
+    <value>[…truncated]</value>
+  </data>
+  <data name="Web_MessageFileName" xml:space="preserve">
+    <value>Message</value>
+  </data>
+  <data name="Web_AttachmentFileName" xml:space="preserve">
+    <value>Attachment</value>
+  </data>
+  <data name="Web_InvalidPort" xml:space="preserve">
+    <value>Invalid port.</value>
+  </data>
+  <data name="Web_InvalidUserName" xml:space="preserve">
+    <value>Invalid user name (1–64 characters, no control characters).</value>
+  </data>
+  <data name="Web_PasswordRequired" xml:space="preserve">
+    <value>A password is required for new users.</value>
+  </data>
+  <data name="Web_LoginLog" xml:space="preserve">
+    <value>Sign-in: '{0}' from {1}.</value>
+  </data>
+  <data name="Web_PasswordTooShort" xml:space="preserve">
+    <value>The password must be at least {0} characters long.</value>
+  </data>
+  <data name="AiCat_Find" xml:space="preserve">
+    <value>Find</value>
+  </data>
+  <data name="AiP_Find_1_Title" xml:space="preserve">
+    <value>Natural search</value>
+  </data>
+  <data name="AiP_Find_1_Text" xml:space="preserve">
+    <value>Find the email in which someone sent me the Wi-Fi login details for the holiday home.</value>
+  </data>
+  <data name="AiP_Find_2_Title" xml:space="preserve">
+    <value>Vaguely remembered</value>
+  </data>
+  <data name="AiP_Find_2_Text" xml:space="preserve">
+    <value>Last spring a tradesman sent me a quote for new windows – I no longer remember the name. Find it and summarize the quote.</value>
+  </data>
+  <data name="AiP_Find_3_Title" xml:space="preserve">
+    <value>Find a document</value>
+  </data>
+  <data name="AiP_Find_3_Text" xml:space="preserve">
+    <value>Where is the PDF with my rental agreement? Name the email and the file name of the attachment.</value>
+  </data>
+  <data name="AiP_Find_4_Title" xml:space="preserve">
+    <value>Confirmations</value>
+  </data>
+  <data name="AiP_Find_4_Text" xml:space="preserve">
+    <value>List all booking confirmations (flights, hotels, trains) from 2025 as a table: travel date, provider, destination, booking number (last 4 characters only), price – unknown fields as “not found”.</value>
+  </data>
+  <data name="AiP_Find_5_Title" xml:space="preserve">
+    <value>Serial numbers &amp; licenses</value>
+  </data>
+  <data name="AiP_Find_5_Text" xml:space="preserve">
+    <value>Which software licenses, serial numbers or warranty cards have I received by email? Table with product, date, email – do not write out the keys themselves.</value>
+  </data>
+  <data name="AiCat_Money" xml:space="preserve">
+    <value>Money &amp; contracts</value>
+  </data>
+  <data name="AiP_Money_1_Title" xml:space="preserve">
+    <value>Invoices as a table</value>
+  </data>
+  <data name="AiP_Money_1_Text" xml:space="preserve">
+    <value>Create a table of all invoices from [2025]: invoice date, sender, amount, due date, invoice number. Missing details as “not found”, do not estimate anything. Add totals per sender at the end.</value>
+  </data>
+  <data name="AiP_Money_2_Title" xml:space="preserve">
+    <value>Ongoing contracts &amp; subscriptions</value>
+  </data>
+  <data name="AiP_Money_2_Text" xml:space="preserve">
+    <value>Which ongoing contracts and subscriptions do I have (electricity, mobile phone, insurance, streaming, magazines)? For each contract: provider, fee, payment frequency, term/notice period, latest email about it.</value>
+  </data>
+  <data name="AiP_Money_3_Title" xml:space="preserve">
+    <value>Notice periods</value>
+  </data>
+  <data name="AiP_Money_3_Text" xml:space="preserve">
+    <value>Are there contracts whose notice period ends in the next 3 months? Name the deadline, the provider, how to cancel, and the email as evidence.</value>
+  </data>
+  <data name="AiP_Money_4_Title" xml:space="preserve">
+    <value>Price increases</value>
+  </data>
+  <data name="AiP_Money_4_Text" xml:space="preserve">
+    <value>Find all announcements of price or fee increases from the last 2 years. Old price, new price, effective from when, special right of termination?</value>
+  </data>
+  <data name="AiP_Money_5_Title" xml:space="preserve">
+    <value>Tax documents</value>
+  </data>
+  <data name="AiP_Money_5_Text" xml:space="preserve">
+    <value>Collect everything I need for the [2025] tax return: donation receipts, tradesman invoices, insurance certificates, work equipment, training courses. Grouped by category with amounts and evidence.</value>
+  </data>
+  <data name="AiP_Money_6_Title" xml:space="preserve">
+    <value>Check contract clauses</value>
+  </data>
+  <data name="AiP_Money_6_Text" xml:space="preserve">
+    <value>Read the email [#ID] with the contract. Summarize the term, costs, termination, automatic renewal and any unusual or disadvantageous clauses.</value>
+  </data>
+  <data name="AiP_Money_7_Title" xml:space="preserve">
+    <value>Outstanding payments</value>
+  </data>
+  <data name="AiP_Money_7_Text" xml:space="preserve">
+    <value>Are there dunning letters, payment reminders or invoices that look unpaid and were not followed by a payment confirmation?</value>
+  </data>
+  <data name="AiCat_Deadlines" xml:space="preserve">
+    <value>Deadlines &amp; tasks</value>
+  </data>
+  <data name="AiP_Deadlines_1_Title" xml:space="preserve">
+    <value>All deadlines</value>
+  </data>
+  <data name="AiP_Deadlines_1_Text" xml:space="preserve">
+    <value>Which appointments and deadlines appear in my emails from the last 3 months? Table: date, what it is about, who is responsible, source [#ID]. Sorted by urgency.</value>
+  </data>
+  <data name="AiP_Deadlines_2_Title" xml:space="preserve">
+    <value>Unanswered</value>
+  </data>
+  <data name="AiP_Deadlines_2_Text" xml:space="preserve">
+    <value>Which emails from real people (no newsletters) from the last 4 weeks contain a question or request to me that I apparently have not answered?</value>
+  </data>
+  <data name="AiP_Deadlines_3_Title" xml:space="preserve">
+    <value>Commitments</value>
+  </data>
+  <data name="AiP_Deadlines_3_Text" xml:space="preserve">
+    <value>What have I promised or committed to others in my sent emails ("I'll take care of it", "I'll send it to you")? With date and evidence.</value>
+  </data>
+  <data name="AiP_Deadlines_4_Title" xml:space="preserve">
+    <value>Warranty expiring</value>
+  </data>
+  <data name="AiP_Deadlines_4_Text" xml:space="preserve">
+    <value>For which purchases from the last 2 years is the statutory or manufacturer's warranty about to expire? Purchase date, product, retailer, expiry date (2 years unless stated otherwise – then mark it as an assumption).</value>
+  </data>
+  <data name="AiCat_Connections" xml:space="preserve">
+    <value>Connections</value>
+  </data>
+  <data name="AiP_Connections_1_Title" xml:space="preserve">
+    <value>History of an email</value>
+  </data>
+  <data name="AiP_Connections_1_Text" xml:space="preserve">
+    <value>Show me everything related to email [#ID] and create a chronology: who wrote what and when, what was decided, what is still open.</value>
+  </data>
+  <data name="AiP_Connections_2_Title" xml:space="preserve">
+    <value>A topic over the years</value>
+  </data>
+  <data name="AiP_Connections_2_Text" xml:space="preserve">
+    <value>Follow the topic [house construction] through the entire archive: key milestones as a timeline with evidence, people and companies involved.</value>
+  </data>
+  <data name="AiP_Connections_3_Title" xml:space="preserve">
+    <value>Everything about one person</value>
+  </data>
+  <data name="AiP_Connections_3_Text" xml:space="preserve">
+    <value>Summarize my entire correspondence with [Name]: since when, how often, main topics, important events, latest status.</value>
+  </data>
+  <data name="AiP_Connections_4_Title" xml:space="preserve">
+    <value>Who was involved?</value>
+  </data>
+  <data name="AiP_Connections_4_Text" xml:space="preserve">
+    <value>Who was involved in planning [family celebration/project], and who took on which task?</value>
+  </data>
+  <data name="AiP_Connections_5_Title" xml:space="preserve">
+    <value>Document a dispute</value>
+  </data>
+  <data name="AiP_Connections_5_Text" xml:space="preserve">
+    <value>For the dispute with [company], compile all relevant emails in chronological order: commitments, complaints, replies, deadlines. Only documented facts, each with [#ID].</value>
+  </data>
+  <data name="AiCat_Analysis" xml:space="preserve">
+    <value>Analyses</value>
+  </data>
+  <data name="AiP_Analysis_1_Title" xml:space="preserve">
+    <value>Who writes to me most?</value>
+  </data>
+  <data name="AiP_Analysis_1_Text" xml:space="preserve">
+    <value>Who are my 15 most important contacts (real people, no newsletters), how has the contact developed over the years, and which groups (family, friends, work, authorities, companies) do they fall into?</value>
+  </data>
+  <data name="AiP_Analysis_2_Title" xml:space="preserve">
+    <value>Dormant contacts</value>
+  </data>
+  <data name="AiP_Analysis_2_Text" xml:space="preserve">
+    <value>Which people did I use to be in regular contact with, but not for more than a year? When was the last exchange and what was it about?</value>
+  </data>
+  <data name="AiP_Analysis_3_Title" xml:space="preserve">
+    <value>Year in review</value>
+  </data>
+  <data name="AiP_Analysis_3_Text" xml:space="preserve">
+    <value>Create a review of the year [2025] from my emails: key events per month, trips, purchases, new contacts, email volume.</value>
+  </data>
+  <data name="AiP_Analysis_4_Title" xml:space="preserve">
+    <value>Newsletter overview</value>
+  </data>
+  <data name="AiP_Analysis_4_Text" xml:space="preserve">
+    <value>Which senders send me the most automated emails (newsletters, advertising, notifications)? List with count per month – candidates for unsubscribing.</value>
+  </data>
+  <data name="AiP_Analysis_5_Title" xml:space="preserve">
+    <value>Purchases</value>
+  </data>
+  <data name="AiP_Analysis_5_Text" xml:space="preserve">
+    <value>What did I order online in [2025]? Table with date, shop, item, price; total per shop.</value>
+  </data>
+  <data name="AiP_Analysis_6_Title" xml:space="preserve">
+    <value>Tone</value>
+  </data>
+  <data name="AiP_Analysis_6_Text" xml:space="preserve">
+    <value>How has the tone in the correspondence with [name/company] changed over time? Back up turning points with emails.</value>
+  </data>
+  <data name="AiCat_Security" xml:space="preserve">
+    <value>Security</value>
+  </data>
+  <data name="AiP_Security_1_Title" xml:space="preserve">
+    <value>Login details in the archive</value>
+  </data>
+  <data name="AiP_Security_1_Text" xml:space="preserve">
+    <value>Which emails contain passwords, PINs or login details in plain text? Only name the emails and the service, do not reproduce the data itself – so that I can change them.</value>
+  </data>
+  <data name="AiP_Security_2_Title" xml:space="preserve">
+    <value>Suspected phishing</value>
+  </data>
+  <data name="AiP_Security_2_Text" xml:space="preserve">
+    <value>Find emails from the last 6 months that look like phishing (urgent account suspension, parcel customs fees, prize draws, mismatched sender domains) and explain why in each case.</value>
+  </data>
+  <data name="AiP_Security_3_Title" xml:space="preserve">
+    <value>Account inventory</value>
+  </data>
+  <data name="AiP_Security_3_Text" xml:space="preserve">
+    <value>Which online services do I have an account with, according to registration and welcome emails? Table: service, sign-up date, email address used.</value>
+  </data>
+  <data name="AiP_Security_4_Title" xml:space="preserve">
+    <value>Personal data</value>
+  </data>
+  <data name="AiP_Security_4_Text" xml:space="preserve">
+    <value>Where have I sent or received ID, tax or insurance numbers by email? Only name where they occur.</value>
+  </data>
+  <data name="Update_InsecureServer" xml:space="preserve">
+    <value>The update server cannot be reached over an encrypted connection (https). For security reasons nothing is downloaded.</value>
+  </data>
+  <data name="Update_NoReleaseYet" xml:space="preserve">
+    <value>There is no published version on mailvault.zerze.de yet.</value>
+  </data>
+  <data name="Update_ServerError" xml:space="preserve">
+    <value>The update server responded with error {0}. Please try again later.</value>
+  </data>
+  <data name="Update_Unreachable" xml:space="preserve">
+    <value>The update server cannot be reached. Are you connected to the internet?</value>
+  </data>
+  <data name="Update_BadSignature" xml:space="preserve">
+    <value>The update list is not correctly signed. For security reasons nothing is installed.</value>
+  </data>
+  <data name="Update_NothingSelected" xml:space="preserve">
+    <value>No update selected.</value>
+  </data>
+  <data name="Update_Downloading" xml:space="preserve">
+    <value>Downloading version {0} ...</value>
+  </data>
+  <data name="Update_DownloadingProgress" xml:space="preserve">
+    <value>Downloading version {0} ... {1:N0} of {2:N0} MB</value>
+  </data>
+  <data name="Update_PackageMissing" xml:space="preserve">
+    <value>The update package cannot be downloaded (error {0}).</value>
+  </data>
+  <data name="Update_Verifying" xml:space="preserve">
+    <value>Checking checksum ...</value>
+  </data>
+  <data name="Update_ChecksumMismatch" xml:space="preserve">
+    <value>The downloaded package is damaged or has been altered (checksum mismatch). Nothing was installed.</value>
+  </data>
+  <data name="Update_Extracting" xml:space="preserve">
+    <value>Extracting package ...</value>
+  </data>
+  <data name="Update_NoProgramInPackage" xml:space="preserve">
+    <value>The update package does not contain a MailVault program.</value>
+  </data>
+  <data name="Update_WrongVersion" xml:space="preserve">
+    <value>The package contains version {0}, but {1} was expected.</value>
+  </data>
+  <data name="Key_WrongRecoveryKey" xml:space="preserve">
+    <value>The recovery key is incorrect.</value>
+  </data>
+  <data name="Key_Corrupt" xml:space="preserve">
+    <value>The key file is damaged and its backup copy is unusable too. Restore it from a backup or the emergency sheet.</value>
+  </data>
+  <data name="Key_Missing" xml:space="preserve">
+    <value>The archive is encrypted but the key file is missing. Restore it with the emergency sheet.</value>
+  </data>
+  <data name="Key_OtherArchive" xml:space="preserve">
+    <value>The key is correct but belongs to a different archive. Please choose the matching emergency sheet.</value>
+  </data>
+</root>

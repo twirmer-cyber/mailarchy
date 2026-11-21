@@ -1,0 +1,24 @@
+# Build
+bin/
+obj/
+publish/
+dist/
+*.user
+.vs/
+*.suo
+TestResults/
+
+# Lokale Daten / Analysen (nicht ins Repository)
+*.db
+*.db-shm
+*.db-wal
+settings.json
+profiles.json
+webusers.json
+
+# Werkzeuge
+.claude/
+
+# Zugangsdaten fuer die Veroeffentlichung (nur lokal)
+build/deploy.local.json
+*.local.json

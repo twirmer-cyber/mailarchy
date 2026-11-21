@@ -1,0 +1,72 @@
+<UserControl x:Class="MailVault.App.Views.MessagePreview"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:loc="clr-namespace:MailVault.App.Localization"
+             xmlns:wv2="clr-namespace:Microsoft.Web.WebView2.Wpf;assembly=Microsoft.Web.WebView2.Wpf">
+    <Grid>
+        <TextBlock x:Name="EmptyText" Text="{loc:T Preview_Empty}" HorizontalAlignment="Center"
+                   VerticalAlignment="Center" Style="{StaticResource Muted}" />
+        <DockPanel x:Name="ContentPanel" Visibility="Collapsed">
+            <Border DockPanel.Dock="Top" Background="{DynamicResource SidebarBrush}" BorderBrush="{DynamicResource BorderBrush}"
+                    BorderThickness="0,0,0,1" Padding="14,10">
+                <StackPanel>
+                    <TextBlock x:Name="SubjectText" FontSize="20" FontWeight="SemiBold" TextWrapping="Wrap" Margin="0,0,0,6" />
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto" />
+                            <ColumnDefinition />
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition /><RowDefinition /><RowDefinition /><RowDefinition /><RowDefinition />
+                        </Grid.RowDefinitions>
+                        <TextBlock Text="{loc:T Search_FromLabel}" Style="{StaticResource Muted}" Margin="0,0,10,0" />
+                        <TextBox x:Name="FromText" AutomationProperties.Name="{loc:T Common_From}" Grid.Column="1" IsReadOnly="True" BorderThickness="0" Background="Transparent" Padding="0" MinHeight="0" Margin="-2,0,0,0" TextWrapping="Wrap" />
+                        <TextBlock Grid.Row="1" Text="{loc:T Preview_ToLabel}" Style="{StaticResource Muted}" Margin="0,0,10,0" />
+                        <TextBox x:Name="ToText" AutomationProperties.Name="{loc:T Preview_To}" Grid.Row="1" Grid.Column="1" IsReadOnly="True" BorderThickness="0" Background="Transparent" Padding="0" MinHeight="0" Margin="-2,0,0,0" TextWrapping="Wrap" />
+                        <TextBlock x:Name="CcLabel" Grid.Row="2" Text="{loc:T Preview_CcLabel}" Style="{StaticResource Muted}" Margin="0,0,10,0" />
+                        <TextBox x:Name="CcText" AutomationProperties.Name="{loc:T Preview_CcLabel}" Grid.Row="2" Grid.Column="1" IsReadOnly="True" BorderThickness="0" Background="Transparent" Padding="0" MinHeight="0" Margin="-2,0,0,0" TextWrapping="Wrap" />
+                        <TextBlock Grid.Row="3" Text="{loc:T Search_DateLabel}" Style="{StaticResource Muted}" Margin="0,0,10,0" />
+                        <TextBlock x:Name="DateText" Grid.Row="3" Grid.Column="1" />
+                        <TextBlock Grid.Row="4" Text="{loc:T Search_FolderLabel}" Style="{StaticResource Muted}" Margin="0,0,10,0" />
+                        <TextBlock x:Name="FolderText" Grid.Row="4" Grid.Column="1" TextTrimming="CharacterEllipsis" />
+                    </Grid>
+                    <ItemsControl x:Name="AttachmentList" Margin="0,8,0,0" AutomationProperties.Name="{loc:T Search_Attachments}">
+                        <ItemsControl.ItemsPanel>
+                            <ItemsPanelTemplate>
+                                <WrapPanel />
+                            </ItemsPanelTemplate>
+                        </ItemsControl.ItemsPanel>
+                        <ItemsControl.ItemTemplate>
+                            <DataTemplate>
+                                <Button Margin="0,4,6,0" Padding="8,3" MinWidth="0" Click="Attachment_Click" Tag="{Binding}" AutomationProperties.Name="{Binding Display, StringFormat={loc:T Preview_AttachmentName}}"
+                                        ToolTip="{loc:T Preview_AttachmentTip}">
+                                    <Button.ContextMenu>
+                                        <ContextMenu>
+                                            <MenuItem Header="{loc:T Common_Open}" Click="AttachmentOpen_Click" Tag="{Binding}" />
+                                            <MenuItem Header="{loc:T Common_SaveAs}" Click="AttachmentSave_Click" Tag="{Binding}" />
+                                        </ContextMenu>
+                                    </Button.ContextMenu>
+                                    <StackPanel Orientation="Horizontal">
+                                        <TextBlock Text="&#xE723;" FontFamily="Segoe MDL2 Assets" Margin="0,0,6,0" VerticalAlignment="Center" />
+                                        <TextBlock Text="{Binding Display}" />
+                                    </StackPanel>
+                                </Button>
+                            </DataTemplate>
+                        </ItemsControl.ItemTemplate>
+                    </ItemsControl>
+                    <Border x:Name="BlockedBar" Visibility="Collapsed" Background="{DynamicResource WarnBackBrush}" Padding="8,4" Margin="0,8,0,0" CornerRadius="3">
+                        <TextBlock FontSize="12">
+                            <Run Text="{loc:T Preview_Blocked}" />
+                            <Hyperlink Click="LoadExternal_Click"><Run Text="{loc:T Preview_LoadExternal}" /></Hyperlink>
+                        </TextBlock>
+                    </Border>
+                </StackPanel>
+            </Border>
+            <Grid>
+                <wv2:WebView2 x:Name="Browser" DefaultBackgroundColor="White" AutomationProperties.Name="{loc:T Search_Body}" />
+                <TextBox x:Name="FallbackText" AutomationProperties.Name="{loc:T Search_Body}" Visibility="Collapsed" IsReadOnly="True" TextWrapping="Wrap" BorderThickness="0"
+                         VerticalScrollBarVisibility="Auto" FontFamily="Consolas" Padding="12" />
+            </Grid>
+        </DockPanel>
+    </Grid>
+</UserControl>

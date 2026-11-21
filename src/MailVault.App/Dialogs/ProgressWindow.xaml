@@ -1,0 +1,18 @@
+<Window x:Class="MailVault.App.Dialogs.ProgressWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:loc="clr-namespace:MailVault.App.Localization"
+        Width="640" Height="440" WindowStartupLocation="CenterOwner" Style="{StaticResource BaseWindow}"
+        ShowInTaskbar="False">
+    <DockPanel Margin="20">
+        <TextBlock x:Name="TitleText" DockPanel.Dock="Top" Style="{StaticResource H2}" Margin="0,0,0,8" />
+        <TextBlock x:Name="StatusText" AutomationProperties.LiveSetting="Polite" DockPanel.Dock="Top" TextTrimming="CharacterEllipsis" Margin="0,0,0,6" />
+        <ProgressBar x:Name="Bar" AutomationProperties.Name="{loc:T Common_Progress}" DockPanel.Dock="Top" Height="6" IsIndeterminate="True" Margin="0,0,0,12" />
+        <StackPanel DockPanel.Dock="Bottom" Orientation="Horizontal" HorizontalAlignment="Right" Margin="0,12,0,0">
+            <Button x:Name="CopyButton" Content="{loc:T Dialog_Progress_CopyLog}" Click="Copy_Click" />
+            <Button x:Name="ActionButton" Content="{loc:T Common_Cancel}" Margin="0" Click="Action_Click" Style="{StaticResource PrimaryButton}" />
+        </StackPanel>
+        <TextBox x:Name="LogBox" AutomationProperties.Name="{loc:T Dialog_Progress_Log}" IsReadOnly="True" FontFamily="Consolas" FontSize="12" TextWrapping="NoWrap" VerticalContentAlignment="Top"
+                 VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto" Background="{DynamicResource PageBrush}" />
+    </DockPanel>
+</Window>

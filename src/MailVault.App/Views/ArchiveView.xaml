@@ -1,0 +1,70 @@
+<UserControl x:Class="MailVault.App.Views.ArchiveView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:loc="clr-namespace:MailVault.App.Localization"
+             xmlns:views="clr-namespace:MailVault.App.Views">
+    <DockPanel Margin="40,32,40,32">
+        <StackPanel DockPanel.Dock="Top" MaxWidth="960" HorizontalAlignment="Left">
+            <TextBlock Style="{StaticResource H1}" Text="{loc:T Nav_Archive}" />
+            <TextBlock Style="{StaticResource Muted}" Margin="0,0,0,16" MaxWidth="720" HorizontalAlignment="Left"
+                       Text="{loc:T Archive_Intro}" />
+
+            <!-- Quellen: eine Fläche, Auswahlzeilen statt Kacheln -->
+            <Border Background="{DynamicResource SurfaceBrush}" BorderBrush="{DynamicResource BorderBrush}" BorderThickness="1"
+                    CornerRadius="6" Padding="4">
+                <ItemsControl ItemsSource="{Binding Sources}" Focusable="False">
+                    <ItemsControl.ItemsPanel>
+                        <ItemsPanelTemplate><UniformGrid Columns="2" /></ItemsPanelTemplate>
+                    </ItemsControl.ItemsPanel>
+                    <ItemsControl.ItemTemplate>
+                        <DataTemplate>
+                            <Button Style="{StaticResource OptionButton}" AutomationProperties.Name="{Binding Title}"
+                                    AutomationProperties.HelpText="{Binding Description}"
+                                    Command="{Binding DataContext.NewProfileCommand, RelativeSource={RelativeSource AncestorType=UserControl}}"
+                                    CommandParameter="{Binding}">
+                                <DockPanel>
+                                    <TextBlock DockPanel.Dock="Left" Text="{Binding Icon}" Style="{StaticResource Icon}" FontSize="20"
+                                               Foreground="{DynamicResource AccentBrush}" Margin="0,1,14,0" VerticalAlignment="Top" />
+                                    <TextBlock DockPanel.Dock="Right" Text="&#xE76C;" Style="{StaticResource Icon}" FontSize="12"
+                                               Foreground="{DynamicResource MutedTextBrush}" Margin="8,0,0,0" />
+                                    <StackPanel>
+                                        <TextBlock Text="{Binding Title}" FontWeight="SemiBold" />
+                                        <TextBlock Text="{Binding Description}" Style="{StaticResource Muted}" FontSize="12" Margin="0,2,0,0" />
+                                    </StackPanel>
+                                </DockPanel>
+                            </Button>
+                        </DataTemplate>
+                    </ItemsControl.ItemTemplate>
+                </ItemsControl>
+            </Border>
+
+            <DockPanel Margin="0,32,0,10">
+                <StackPanel DockPanel.Dock="Right" Orientation="Horizontal">
+                    <Button Content="{loc:T Common_Run}" Style="{StaticResource PrimaryButton}" Command="{Binding RunProfileCommand}" />
+                    <Button Content="{loc:T Common_Edit}" Command="{Binding EditProfileCommand}" />
+                    <Button Content="{loc:T Common_Delete}" Style="{StaticResource DangerButton}" Margin="0" Command="{Binding DeleteProfileCommand}"
+                            ToolTip="{loc:T Archive_DeleteTip}" />
+                </StackPanel>
+                <TextBlock Style="{StaticResource H2}" Margin="0" VerticalAlignment="Center" Text="{loc:T Archive_SavedProfiles}" />
+            </DockPanel>
+        </StackPanel>
+        <Grid>
+            <DataGrid x:Name="ProfilesGrid" ItemsSource="{Binding Profiles}" SelectedItem="{Binding SelectedProfile}" SelectionMode="Single"
+                      MouseDoubleClick="Profiles_DoubleClick" AutomationProperties.Name="{loc:T Archive_SavedProfiles}">
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="{loc:T Common_ProfileName}" Binding="{Binding Name}" Width="2*" />
+                    <DataGridTextColumn Header="{loc:T Profile_Source}" Binding="{Binding TypeDisplayName}" Width="*" />
+                    <DataGridTextColumn Header="{loc:T Archive_ColTarget}" Binding="{Binding EffectiveTargetFolder}" Width="*" />
+                    <DataGridTextColumn Header="{loc:T Archive_ColLastRun}" Binding="{Binding LastRunLocal, StringFormat=g, TargetNullValue=–}" Width="140" />
+                    <DataGridTextColumn Header="{loc:T Archive_ColResult}" Binding="{Binding LastResult}" Width="2*" />
+                </DataGrid.Columns>
+            </DataGrid>
+            <TextBlock Style="{StaticResource Muted}" HorizontalAlignment="Center" VerticalAlignment="Center" IsHitTestVisible="False"
+                       Text="{loc:T Archive_NoProfiles}">
+                <TextBlock.Visibility>
+                    <Binding Path="Profiles.Count" Converter="{x:Static views:ZeroToVisibleConverter.Instance}" />
+                </TextBlock.Visibility>
+            </TextBlock>
+        </Grid>
+    </DockPanel>
+</UserControl>

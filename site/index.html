@@ -1,0 +1,334 @@
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="light dark">
+  <title>MailVault – Ihr E-Mail-Archiv für Windows</title>
+  <meta name="description" content="MailVault archiviert Postfächer, Outlook und Thunderbird in ein durchsuchbares Archiv auf Ihrem eigenen PC. Kostenlos, ohne Konto, ohne Cloud, mit offenem Quelltext.">
+  <meta name="referrer" content="strict-origin-when-cross-origin">
+  <meta name="theme-color" content="#15171A">
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="preload" href="schriften/barlow-semi-condensed-600-latin.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="schriften/barlow-400-latin.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="style.css">
+  <script>
+    // Sprache vor dem ersten Zeichnen setzen (gespeicherte Wahl, sonst Browser); JS-Klasse für die Klappen-Darstellung
+    document.documentElement.className += ' js';
+    try {
+      var l = new URLSearchParams(location.search).get('lang') || localStorage.getItem('mailvault.lang') ||
+              (navigator.language || 'de').slice(0, 2);
+      if (['de', 'en', 'fr', 'es'].indexOf(l) >= 0 && l !== 'de') document.documentElement.dataset.lang = l;
+    } catch (e) {}
+  </script>
+  <script src="i18n.js" defer></script>
+  <script src="main.js" defer></script>
+</head>
+<body>
+  <a class="skip" href="#inhalt" data-i18n="skip">Zum Inhalt springen</a>
+
+  <svg class="sprite" aria-hidden="true" focusable="false">
+    <symbol id="i-mark" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="5" rx="1"/><path d="M4.5 9v9.5a1.5 1.5 0 0 0 1.5 1.5h12a1.5 1.5 0 0 0 1.5-1.5V9"/><path d="M9.5 13h5"/></symbol>
+    <symbol id="i-down" viewBox="0 0 16 16"><path d="M8 2.5v8M4.75 7.25 8 10.5l3.25-3.25M3 13.5h10"/></symbol>
+    <symbol id="i-search" viewBox="0 0 16 16"><circle cx="7" cy="7" r="4.75"/><path d="M10.5 10.5 14 14"/></symbol>
+    <symbol id="i-clip" viewBox="0 0 16 16"><path d="M10.5 5.5 6 10a1.4 1.4 0 0 0 2 2l5-5a2.8 2.8 0 0 0-4-4l-5 5a4.2 4.2 0 0 0 6 6l4-4"/></symbol>
+    <symbol id="i-out" viewBox="0 0 16 16"><path d="M9.5 2.5h4v4M13.5 2.5 7.5 8.5M11.5 9.5v3a1 1 0 0 1-1 1h-7a1 1 0 0 1-1-1v-7a1 1 0 0 1 1-1h3"/></symbol>
+    <symbol id="i-arrow" viewBox="0 0 16 16"><path d="M2.5 8h11M9.5 4l4 4-4 4"/></symbol>
+    <symbol id="i-code" viewBox="0 0 16 16"><path d="M5.5 4.5 2 8l3.5 3.5M10.5 4.5 14 8l-3.5 3.5M9 3 7 13"/></symbol>
+    <symbol id="i-pause" viewBox="0 0 16 16"><path d="M5.5 3.5v9M10.5 3.5v9"/></symbol>
+    <symbol id="i-play" viewBox="0 0 16 16"><path d="M5 3.5v9l7-4.5z"/></symbol>
+    <symbol id="i-shield" viewBox="0 0 16 16"><path d="M8 1.75 2.75 3.75v4c0 3.1 2.2 5.4 5.25 6.5 3.05-1.1 5.25-3.4 5.25-6.5v-4z"/><path d="m5.75 8 1.6 1.6 3-3.1"/></symbol>
+  </svg>
+
+  <!-- ============================================================ Tafel: Kopf und Einstieg -->
+  <header class="tafel kopf">
+    <div class="rahmen kopf-innen">
+      <a class="marke" href="#inhalt" aria-label="MailVault" data-i18n-attr="aria-label:home_label">
+        <svg class="mark" aria-hidden="true"><use href="#i-mark"/></svg><span>MailVault</span>
+      </a>
+      <nav class="kopf-nav" aria-label="Seite" data-i18n-attr="aria-label:nav_label">
+        <a href="#funktionen" data-i18n="nav_features">Funktionen</a>
+        <a href="#installation" data-i18n="nav_install">Installation</a>
+        <a href="#mitmachen" data-i18n="nav_join">Mitmachen</a>
+        <a href="#unterstuetzen" data-i18n="nav_support">Unterstützen</a>
+      </nav>
+      <div class="sprachen" role="group" aria-label="Sprache" data-i18n-attr="aria-label:lang_label">
+        <button type="button" data-lang="de" lang="de">DE</button>
+        <button type="button" data-lang="en" lang="en">EN</button>
+        <button type="button" data-lang="fr" lang="fr">FR</button>
+        <button type="button" data-lang="es" lang="es">ES</button>
+      </div>
+    </div>
+  </header>
+
+  <main id="inhalt">
+    <section class="tafel buehne" aria-labelledby="titel">
+      <div class="rahmen buehne-innen">
+        <h1 id="titel" class="klapptitel" data-i18n-html="hero_title"><span class="zeile">Ihre E-Mails.</span> <span class="zeile">Auf Ihrem PC.</span> <span class="zeile">Jederzeit wiederzufinden.</span></h1>
+
+        <div class="buehne-unten">
+          <div class="laden">
+            <p class="lead" data-i18n="hero_lead">MailVault sammelt Postfächer, Outlook und Thunderbird in einem durchsuchbaren Archiv auf Ihrem eigenen Rechner. Kostenlos, ohne Konto, ohne Cloud – und mit offenem Quelltext.</p>
+            <a class="knopf-laden" href="{{SETUP}}" id="download">
+              <svg aria-hidden="true"><use href="#i-down"/></svg>
+              <span class="knopf-laden-text">
+                <span class="knopf-laden-titel" data-i18n="download_btn">Für Windows herunterladen</span>
+                <span class="knopf-laden-datei"><span class="zahl">MailVault-Setup-{{VERSION}}.exe</span> · <span class="zahl">{{SETUP_MB}}</span> MB</span>
+              </span>
+            </a>
+            <p class="laden-info">
+              <span data-i18n="dl_system">Windows 10 und 11, 64 Bit</span> ·
+              <span data-i18n="version">Version</span> <span class="zahl">{{VERSION}}</span> ·
+              <span class="zahl">{{DATE}}</span>
+            </p>
+            <p class="laden-neben">
+              <a href="{{ZIP}}"><span data-i18n="dl_zip">Portable ZIP</span> (<span class="zahl">{{SIZE_MB}}</span> MB)</a>
+              <span aria-hidden="true">·</span>
+              <a href="#pruefsumme" data-i18n="dl_check">SHA-256 und Versionsangaben</a>
+            </p>
+          </div>
+
+          <!-- Anzeigetafel: Suchvorführung mit erfundenen Demo-Daten -->
+          <figure class="anzeige" aria-labelledby="anzeige-titel">
+            <figcaption class="anzeige-kopf">
+              <span id="anzeige-titel" class="anzeige-titel" data-i18n="board_title">Archiv-Suche</span>
+              <span class="anzeige-demo" data-i18n="board_demo">Demo-Daten</span>
+              <button type="button" class="anzeige-pause" id="anzeige-pause" aria-pressed="false" hidden>
+                <svg class="ic-pause" aria-hidden="true"><use href="#i-pause"/></svg><svg class="ic-play" aria-hidden="true"><use href="#i-play"/></svg>
+                <span class="sr" id="anzeige-pause-text">Vorführung anhalten</span>
+              </button>
+            </figcaption>
+            <div class="anzeige-feld">
+              <svg aria-hidden="true"><use href="#i-search"/></svg>
+              <span class="anzeige-eingabe" id="anzeige-eingabe">rechnung jahr:2024</span>
+            </div>
+            <div class="anzeige-spalten" aria-hidden="true">
+              <span data-i18n="col_date">Datum</span><span data-i18n="col_from">Von</span><span data-i18n="col_subject">Betreff</span>
+            </div>
+            <ol class="anzeige-liste" id="anzeige-liste">
+              <li><span class="datum">16.11.2024</span><span class="von">Stadtwerke Lindenau</span><span class="betreff"><svg aria-hidden="true"><use href="#i-clip"/></svg>Ihre Jahresabrechnung 2024 – Strom und Gas</span></li>
+              <li><span class="datum">07.11.2024</span><span class="von">Mobilfunk Nord</span><span class="betreff"><svg aria-hidden="true"><use href="#i-clip"/></svg>Ihre Rechnung für Oktober 2024</span></li>
+              <li><span class="datum">07.10.2024</span><span class="von">Mobilfunk Nord</span><span class="betreff"><svg aria-hidden="true"><use href="#i-clip"/></svg>Ihre Rechnung für September 2024</span></li>
+              <li class="leer"><span></span><span></span><span></span></li>
+              <li class="leer"><span></span><span></span><span></span></li>
+            </ol>
+            <p class="anzeige-fuss"><span id="anzeige-zahl" class="zahl">3</span> <span data-i18n="board_hits">Treffer</span></p>
+          </figure>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================ Suche und echte Oberfläche -->
+    <section class="abschnitt suche" id="funktionen" aria-labelledby="suche-titel">
+      <div class="rahmen suche-innen">
+        <div class="suche-text">
+          <h2 id="suche-titel" data-i18n="search_title">Finden in Sekunden, auch nach Jahren</h2>
+          <p data-i18n="search_text">Die Suche durchsucht Betreff, Absender, Text und sogar den Inhalt von PDF-, Word- und Excel-Anhängen. Filter schreiben Sie einfach mit hinein:</p>
+          <dl class="syntax">
+            <div><dt><code data-i18n="code_from">von:schule</code></dt><dd data-i18n="syn_from">Absender</dd></div>
+            <div><dt><code data-i18n="code_year">jahr:2024</code></dt><dd data-i18n="syn_year">Jahr</dd></div>
+            <div><dt><code data-i18n="code_att">anhang:ja</code></dt><dd data-i18n="syn_att">nur mit Anhang</dd></div>
+            <div><dt><code data-i18n="code_phrase">"exakte Phrase"</code></dt><dd data-i18n="syn_phrase">genau so</dd></div>
+          </dl>
+        </div>
+        <figure class="bild">
+          <picture>
+            <source srcset="bilder/app-dark-de.png" media="(prefers-color-scheme: dark)" data-shot-dark>
+            <img src="bilder/app-light-de.png" width="1264" height="811" loading="lazy" decoding="async" data-shot
+                 alt="MailVault mit einer Suche nach Rechnungen aus 2024: links der Ordnerbaum, in der Mitte die Trefferliste, darunter die geöffnete E-Mail."
+                 data-i18n-attr="alt:shot_alt">
+          </picture>
+          <figcaption data-i18n="shot_caption">Echte Oberfläche, erfundene Demo-Daten.</figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <!-- ============================================================ Zusagen (gelbes Plakat) -->
+    <section class="plakat" aria-labelledby="zusagen-titel">
+      <div class="rahmen">
+        <h2 id="zusagen-titel" data-i18n="promises_title">Vier Zusagen, die nicht verhandelbar sind</h2>
+        <dl class="fahrplan">
+          <div>
+            <dt data-i18n="p1_t">Am Postfach wird nichts gelöscht</dt>
+            <dd data-i18n="p1_d">MailVault liest nur. Es gibt keine Funktion, die auf dem Server löscht, verschiebt oder als gelesen markiert – automatische Tests sichern das bei jeder Version ab.</dd>
+          </div>
+          <div>
+            <dt data-i18n="p2_t">Das Archiv bleibt auf Ihrem PC</dt>
+            <dd data-i18n="p2_d">Keine Cloud, kein Konto, keine Telemetrie. Nichts verlässt Ihren Rechner, solange Sie es nicht ausdrücklich wollen.</dd>
+          </div>
+          <div>
+            <dt data-i18n="p3_t">Jede E-Mail kommt bytegenau zurück</dt>
+            <dd data-i18n="p3_d">Komprimiert gespeichert, Anhänge nur einmal abgelegt – und trotzdem exakt so wiederherstellbar, wie sie ankam. Export als EML oder MBOX jederzeit.</dd>
+          </div>
+          <div>
+            <dt data-i18n="p4_t">Updates verlieren nie Daten</dt>
+            <dd data-i18n="p4_d">Neue Versionen kommen signiert von dieser Seite. Vor jeder Umstellung wird gesichert; startet etwas nicht, kehrt MailVault von selbst zur alten Version zurück.</dd>
+          </div>
+        </dl>
+        <p class="plakat-fuss"><svg aria-hidden="true"><use href="#i-shield"/></svg><span data-i18n="privacy_page">Und diese Seite? Keine Cookies, keine Zählpixel, nichts von fremden Servern – auch die Schriften liegen hier.</span></p>
+      </div>
+    </section>
+
+    <!-- ============================================================ Funktionen -->
+    <section class="abschnitt funktionen" aria-labelledby="funktionen-titel">
+      <div class="rahmen">
+        <h2 id="funktionen-titel" data-i18n="features_title">Was MailVault kann</h2>
+        <dl class="liste">
+          <div><dt data-i18n="f1_t">Alle üblichen Quellen</dt><dd data-i18n="f1_d">IMAP und POP3 (Gmail, GMX, WEB.DE, Outlook.com, T-Online …) mit automatischer Einrichtung, Outlook-Dateien (.pst/.ost) auch ohne installiertes Outlook, Thunderbird, EML- und MBOX-Dateien.</dd></div>
+          <div><dt data-i18n="f2_t">Archiviert von selbst</dt><dd data-i18n="f2_d">Zeitplan pro Postfach, läuft im Infobereich mit, holt verpasste Termine nach und meldet sich per E-Mail, wenn etwas nicht klappt.</dd></div>
+          <div><dt data-i18n="f3_t">Auf Wunsch verschlüsselt</dt><dd data-i18n="f3_d">Das ganze Archiv mit AES-256 geschützt – mit Ihrem Kennwort, dazu ein Wiederherstellungsschlüssel für den Notfall.</dd></div>
+          <div><dt data-i18n="f4_t">Sicher anzeigen</dt><dd data-i18n="f4_d">Externe Bilder und Tracking-Pixel bleiben blockiert, Skripte laufen nie.</dd></div>
+          <div><dt data-i18n="f5_t">Im Heimnetz auf dem Handy</dt><dd data-i18n="f5_d">Optionaler Webzugriff zum Lesen für Familienmitglieder – jeder sieht nur die Postfächer, die Sie freigeben.</dd></div>
+          <div><dt data-i18n="f6_t">KI-Assistent, wenn Sie wollen</dt><dd data-i18n="f6_d">Fragen Sie Ihr Archiv in eigenen Worten („Welche Verträge laufen noch?“) – mit Ihrem eigenen Claude-Schlüssel und Belegen zu jeder Aussage. Ohne Schlüssel bleibt alles lokal.</dd></div>
+          <div><dt data-i18n="f7_t">Export jederzeit</dt><dd data-i18n="f7_d">Einzelne Ordner oder das ganze Archiv als EML-Dateien oder MBOX – Ihre Daten bleiben Ihre Daten.</dd></div>
+          <div><dt data-i18n="f8_t">Hell, dunkel, vier Sprachen</dt><dd data-i18n="f8_d">Folgt der Windows-Einstellung und dem Kontrastdesign; Deutsch, Englisch, Französisch und Spanisch.</dd></div>
+        </dl>
+      </div>
+    </section>
+
+    <!-- ============================================================ Offen gebaut -->
+    <section class="tafel offen" id="mitmachen" aria-labelledby="offen-titel">
+      <div class="rahmen offen-innen">
+        <div class="offen-text">
+          <h2 id="offen-titel" data-i18n="open_title">Offen gebaut – mit einer KI am Tisch</h2>
+          <p data-i18n="open_p1">Ganz ehrlich: MailVault ist „vibe-coded“. Das Programm ist im Gespräch mit einer KI entstanden, mit Claude von Anthropic – beschrieben, ausprobiert, verworfen, verbessert. Ein Mensch hat entschieden, was hineinkommt; geschrieben hat die KI sehr viel davon.</p>
+          <p data-i18n="open_p2">Gerade deshalb liegt der gesamte Quelltext offen auf GitHub. Sie müssen niemandem glauben, dass am Postfach nichts gelöscht wird: Die Tests, die genau das prüfen, kann jeder lesen und selbst ausführen.</p>
+          <a class="knopf-rand" href="{{REPO_URL}}" rel="noopener">
+            <svg aria-hidden="true"><use href="#i-code"/></svg><span data-i18n="open_repo">Quelltext auf GitHub ansehen</span>
+          </a>
+        </div>
+        <nav class="gleise" aria-labelledby="gleise-titel">
+          <p class="gleise-titel" id="gleise-titel" data-i18n="open_board">Mitmachen ausdrücklich erwünscht</p>
+          <ul>
+            <li><a href="{{REPO_URL}}/issues" rel="noopener"><span class="gleis-was" data-i18n="row_bug_t">Fehler gefunden?</span><span class="gleis-wohin"><span data-i18n="row_bug_d">Issue anlegen</span><svg aria-hidden="true"><use href="#i-arrow"/></svg></span></a></li>
+            <li><a href="{{REPO_URL}}/issues" rel="noopener"><span class="gleis-was" data-i18n="row_idea_t">Eine Idee?</span><span class="gleis-wohin"><span data-i18n="row_idea_d">Vorschlag als Issue</span><svg aria-hidden="true"><use href="#i-arrow"/></svg></span></a></li>
+            <li><a href="{{REPO_URL}}/pulls" rel="noopener"><span class="gleis-was" data-i18n="row_pr_t">Code verbessert?</span><span class="gleis-wohin"><span data-i18n="row_pr_d">Pull Request schicken</span><svg aria-hidden="true"><use href="#i-arrow"/></svg></span></a></li>
+            <li><a href="{{REPO_URL}}" rel="noopener"><span class="gleis-was" data-i18n="row_read_t">Nur neugierig?</span><span class="gleis-wohin"><span data-i18n="row_read_d">Code lesen</span><svg aria-hidden="true"><use href="#i-arrow"/></svg></span></a></li>
+          </ul>
+        </nav>
+      </div>
+    </section>
+
+    <!-- ============================================================ Installation -->
+    <section class="abschnitt installation" id="installation" aria-labelledby="installation-titel">
+      <div class="rahmen installation-innen">
+        <div>
+          <h2 id="installation-titel" data-i18n="install_title">In zwei Minuten installiert</h2>
+          <ol class="schritte">
+            <li data-i18n-html="s1"><a href="{{SETUP}}">Setup herunterladen</a> und starten.</li>
+            <li data-i18n-html="s2">Windows SmartScreen warnt beim ersten Start, weil das Setup nicht mit einem gekauften Zertifikat signiert ist. Klicken Sie auf <b>Weitere Informationen → Trotzdem ausführen</b>.</li>
+            <li data-i18n="s3">Ein Postfach oder eine Outlook-Datei hinzufügen. Fertig.</li>
+          </ol>
+          <p class="hinweis" data-i18n="updates_note">Danach kommen Updates direkt über die App – signiert und vor der Installation geprüft.</p>
+        </div>
+        <dl class="steckbrief" id="pruefsumme">
+          <div><dt data-i18n="sb_version">Aktuelle Version</dt><dd class="zahl">{{VERSION}}</dd></div>
+          <div><dt data-i18n="sb_date">Veröffentlicht</dt><dd class="zahl">{{DATE}}</dd></div>
+          <div><dt data-i18n="sb_setup">Setup</dt><dd><a href="{{SETUP}}" class="zahl">MailVault-Setup-{{VERSION}}.exe</a> · <span class="zahl">{{SETUP_MB}}</span> MB</dd></div>
+          <div><dt data-i18n="sb_zip">Portable ZIP</dt><dd><a href="{{ZIP}}" data-i18n="sb_zip_link">herunterladen</a> · <span class="zahl">{{SIZE_MB}}</span> MB<span class="klein" data-i18n="sb_zip_note">Ohne Setup: entpacken und starten. Mit einer leeren Datei portable.txt neben MailVault.exe bleibt alles im Programmordner, etwa auf einem USB-Stick.</span></dd></div>
+          <div><dt data-i18n="sb_system">System</dt><dd data-i18n="sb_system_v">Windows 10 oder 11, 64 Bit</dd></div>
+          <div><dt data-i18n="sb_price">Preis</dt><dd data-i18n="sb_price_v">Kostenlos</dd></div>
+          <div class="pruef"><dt data-i18n="sb_sha">SHA-256 (ZIP)</dt><dd class="zahl">{{SHA256}}</dd></div>
+        </dl>
+      </div>
+    </section>
+
+    <!-- ============================================================ Unterstützen -->
+    <section class="abschnitt unterstuetzen" id="unterstuetzen" aria-labelledby="unterstuetzen-titel">
+      <div class="rahmen unterstuetzen-innen">
+        <div>
+          <h2 id="unterstuetzen-titel" data-i18n="support_title">MailVault unterstützen</h2>
+          <p data-i18n="support_p1">MailVault ist kostenlos und bleibt es. Wer mag, hilft dem Entwickler mit einem Beitrag, Server und Weiterentwicklung zu bezahlen.</p>
+          <p data-i18n="support_p2">Der Beitrag ändert nichts: Sie bekommen dieselbe App wie alle anderen, ohne Konto, ohne Freischaltung, ohne Werbung. Er ist deshalb kein Preis für eine Leistung, sondern ein freiwilliger Zuschuss.</p>
+          <a class="knopf-gelb" rel="noopener" target="_blank"
+             href="https://www.paypal.com/cgi-bin/webscr?cmd=_xclick&amp;business=flusu%40zerze.de&amp;currency_code=EUR&amp;item_name=Kostenbeitrag+zu+Betrieb+und+Pflege+von+MailVault">
+            <span data-i18n="support_btn">Mit PayPal unterstützen</span><svg aria-hidden="true"><use href="#i-out"/></svg>
+          </a>
+        </div>
+        <div class="beleg">
+          <h3 data-i18n="receipt_title">Bestätigung gewünscht?</h3>
+          <p data-i18n-html="receipt_p1">Auf Wunsch gibt es eine Zahlungsbestätigung mit Datum, Betrag und den Anbieterangaben aus dem Impressum. Schicken Sie dazu nach der Zahlung die PayPal-Transaktionsnummer an <a href="mailto:mailvault@zerze.de">mailvault@zerze.de</a>.</p>
+          <p data-i18n="receipt_p2">Keine Umsatzsteuer ausgewiesen: Der Beitrag ist freiwillig und hängt mit keiner Gegenleistung zusammen (echter Zuschuss). MailVault ist nicht gemeinnützig; eine Spendenquittung ist daher nicht möglich.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================ Fragen -->
+    <section class="abschnitt fragen" aria-labelledby="fragen-titel">
+      <div class="rahmen fragen-innen">
+        <h2 id="fragen-titel" data-i18n="faq_title">Häufige Fragen</h2>
+        <div class="fragen-liste">
+          <details><summary data-i18n="q1">Braucht MailVault eine Internetverbindung?</summary><p data-i18n="a1">Nur zum Abholen von E-Mails aus Postfächern und für die Update-Suche (abschaltbar). Suchen, Lesen und Exportieren funktionieren komplett offline.</p></details>
+          <details><summary data-i18n="q2">Wo liegen meine Daten?</summary><p data-i18n="a2">In einem Ordner Ihrer Wahl auf Ihrem PC – zum Sichern einfach den Ordner kopieren. Wer das ZIP mit einer Datei portable.txt neben MailVault.exe nutzt, hat alles im Programmordner, etwa auf einem USB-Stick.</p></details>
+          <details><summary data-i18n="q7">Warum warnt Windows beim ersten Start?</summary><p data-i18n="a7">SmartScreen kennt Programme ohne gekauftes Signaturzertifikat noch nicht und warnt deshalb. Was im Setup steckt, können Sie im offenen Quelltext auf GitHub nachlesen. Updates prüft MailVault danach selbst anhand einer Signatur.</p></details>
+          <details><summary data-i18n="q3">Funktioniert Gmail mit Zwei-Faktor-Anmeldung?</summary><p data-i18n="a3">Ja, mit einem App-Passwort, das Sie in Ihrem Google-Konto erzeugen. MailVault erklärt das beim Einrichten.</p></details>
+          <details><summary data-i18n="q4">Gibt es MailVault für Mac oder Linux?</summary><p data-i18n="a4">Nein, MailVault läuft unter Windows 10 und 11. Der Webzugriff im Heimnetz funktioniert aber mit jedem Browser, auch auf Mac, iPhone und Android.</p></details>
+          <details><summary data-i18n="q5">Was passiert mit meinen E-Mails beim KI-Assistenten?</summary><p data-i18n="a5">Nichts, solange Sie ihn nicht einschalten. Mit Ihrem eigenen Claude-Schlüssel gehen nur die Auszüge an Anthropic, die zur Beantwortung Ihrer Frage nötig sind – Sie sehen jede Quelle.</p></details>
+          <details><summary data-i18n="q6">Wie entferne ich MailVault wieder?</summary><p data-i18n="a6">MailVault beenden, den Ordner %LOCALAPPDATA%\Programs\MailVault und die Verknüpfung im Startmenü löschen – fertig, Administratorrechte braucht es nicht. Ihr Archiv liegt getrennt davon und bleibt, bis Sie es selbst löschen.</p></details>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================ Schluss -->
+    <section class="tafel schluss" aria-labelledby="schluss-titel">
+      <div class="rahmen schluss-innen">
+        <h2 id="schluss-titel" class="klapptitel" data-i18n="cta_title">Fangen Sie mit einem Postfach an.</h2>
+        <div class="schluss-laden">
+          <a class="knopf-laden" href="{{SETUP}}">
+            <svg aria-hidden="true"><use href="#i-down"/></svg>
+            <span class="knopf-laden-text">
+              <span class="knopf-laden-titel" data-i18n="download_btn">Für Windows herunterladen</span>
+              <span class="knopf-laden-datei"><span class="zahl">MailVault-Setup-{{VERSION}}.exe</span> · <span class="zahl">{{SETUP_MB}}</span> MB</span>
+            </span>
+          </a>
+          <p class="laden-neben">
+            <a href="{{ZIP}}"><span data-i18n="dl_zip">Portable ZIP</span> (<span class="zahl">{{SIZE_MB}}</span> MB)</a>
+            <span aria-hidden="true">·</span>
+            <a href="{{REPO_URL}}" rel="noopener" data-i18n="foot_source">Quelltext auf GitHub</a>
+          </p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ============================================================ Rechtliches -->
+  <footer class="fuss" id="rechtliches">
+    <div class="rahmen">
+      <p class="recht-hinweis" data-i18n="legal_note" hidden>Die rechtlichen Angaben sind auf Deutsch; maßgeblich ist die deutsche Fassung.</p>
+      <div class="recht" lang="de">
+        <div class="recht-impressum">
+          <h2>Impressum</h2>
+          <p>Angaben nach § 5 DDG:<br>
+            Tonio Wirmer<br>Tonio Wirmer IT-Dienstleistungen<br>Atzelbergstr. 127<br>60389 Frankfurt am Main<br>
+            E-Mail: <a href="mailto:mailvault@zerze.de">mailvault@zerze.de</a><br>
+            <span class="zahl">USt-IdNr. DE262950960</span></p>
+          <p>Inhaltlich verantwortlich: Tonio Wirmer, Anschrift wie oben.</p>
+        </div>
+        <div class="recht-datenschutz">
+          <h2>Datenschutzerklärung</h2>
+          <h3>Verantwortlicher</h3>
+          <p>Tonio Wirmer, Anschrift und E-Mail siehe Impressum.</p>
+          <h3>Beim Besuch dieser Seite</h3>
+          <p>Der Server, der diese Seite ausliefert, protokolliert wie jeder Webserver die Abrufe: IP-Adresse, Zeitpunkt, angeforderte Adresse und Browserkennung. Das dient der Betriebssicherheit und der Fehlersuche. Diese Protokolle werden nach 7 Tagen automatisch gelöscht. Rechtsgrundlage ist Art. 6 Abs. 1 lit. f DSGVO. Es findet keine Zusammenführung mit anderen Daten und keine Auswertung des Nutzungsverhaltens statt.</p>
+          <p>Der Server wird bei der netcup GmbH betrieben und steht in einem Rechenzentrum in Nürnberg (Deutschland). Sie verarbeitet die Daten als Auftragsverarbeiter nach Art. 28 DSGVO weisungsgebunden; ein entsprechender Vertrag besteht. Die Daten verlassen die Europäische Union nicht.</p>
+          <p>Diese Seite setzt keine Cookies und lädt nichts von fremden Servern; auch die Schriften liegen hier. Nur wenn Sie eine Sprache wählen, merkt sich Ihr Browser diese Wahl lokal (§ 25 Abs. 2 Nr. 2 TDDDG). Es gibt keine Zählpixel, keine Werbung und keine Reichweitenmessung.</p>
+          <h3>Update-Suche des Programms</h3>
+          <p>Ist die automatische Update-Suche eingeschaltet (Voreinstellung), ruft MailVault etwa alle vier Stunden die Update-Liste von dieser Seite ab. Dabei fallen dieselben Protokolldaten an wie oben, die Browserkennung enthält die Programmversion. Inhalte Ihres Archivs, Kennungen oder Konten werden nicht übertragen. Sie können die Suche unter Verwaltung → Updates abschalten.</p>
+          <h3>E-Mail</h3>
+          <p>Schreiben Sie an mailvault@zerze.de, wird Ihre Nachricht nur zur Beantwortung verwendet und gelöscht, wenn sie erledigt ist und keine Aufbewahrungspflicht besteht. Das Postfach liegt ebenfalls bei der netcup GmbH.</p>
+          <h3>PayPal und GitHub</h3>
+          <p>Der Knopf „Mit PayPal unterstützen“ ist ein gewöhnlicher Verweis. Solange Sie ihn nicht anklicken, erfährt PayPal nichts von Ihrem Besuch. Danach gilt die Datenschutzerklärung der PayPal (Europe) S.à r.l. et Cie, S.C.A., Luxemburg, die über die Zahlungsdaten selbst entscheidet.</p>
+          <p>Auch die Verweise auf GitHub sind gewöhnliche Links. Erst wenn Sie einen anklicken, verarbeitet die GitHub, Inc. (USA) Daten nach ihrer eigenen Datenschutzerklärung.</p>
+          <h3>Ihre Rechte</h3>
+          <p>Sie haben das Recht auf Auskunft (Art. 15), Berichtigung (Art. 16), Löschung (Art. 17), Einschränkung der Verarbeitung (Art. 18), Datenübertragbarkeit (Art. 20) und Widerspruch (Art. 21 DSGVO). Sie können sich außerdem bei einer Datenschutz-Aufsichtsbehörde beschweren; zuständig für den Anbieter ist der Hessische Beauftragte für Datenschutz und Informationsfreiheit.</p>
+        </div>
+      </div>
+      <p class="fuss-zeile">
+        <span>MailVault Home</span>
+        <a href="mailto:mailvault@zerze.de">mailvault@zerze.de</a>
+        <a href="{{REPO_URL}}" rel="noopener" data-i18n="foot_source">Quelltext auf GitHub</a>
+      </p>
+    </div>
+  </footer>
+</body>
+</html>

@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="referrer" content="no-referrer">
+  <meta name="color-scheme" content="light dark">
+  <title>MailVault</title>
+  <link rel="stylesheet" href="/app.css">
+  <script src="/i18n.js" defer></script>
+  <script src="/app.js" defer></script>
+</head>
+<body>
+  <noscript><p class="noscript" lang="de">Bitte aktivieren Sie JavaScript, um das Archiv zu öffnen.</p><p class="noscript" lang="en">Please enable JavaScript to open the archive.</p></noscript>
+
+  <!-- Symbole: Inline-SVG, 1,5 px Strich, currentColor -->
+  <svg class="sprite" aria-hidden="true" focusable="false">
+    <symbol id="i-mark" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="5" rx="1"/><path d="M4.5 9v9.5a1.5 1.5 0 0 0 1.5 1.5h12a1.5 1.5 0 0 0 1.5-1.5V9"/><path d="M9.5 13h5"/></symbol>
+    <symbol id="i-search" viewBox="0 0 16 16"><circle cx="7" cy="7" r="4.75"/><path d="M10.5 10.5 14 14"/></symbol>
+    <symbol id="i-close" viewBox="0 0 16 16"><path d="M4 4l8 8M12 4l-8 8"/></symbol>
+    <symbol id="i-back" viewBox="0 0 16 16"><path d="M10 3.5 5.5 8l4.5 4.5"/></symbol>
+    <symbol id="i-download" viewBox="0 0 16 16"><path d="M8 2.5v8M4.75 7.25 8 10.5l3.25-3.25M3 13.5h10"/></symbol>
+    <symbol id="i-help" viewBox="0 0 16 16"><circle cx="8" cy="8" r="6"/><path d="M6.4 6.3a1.7 1.7 0 0 1 3.3.5c0 1.1-1.7 1.4-1.7 2.5"/><path d="M8 11.4v.1"/></symbol>
+    <symbol id="i-logout" viewBox="0 0 16 16"><path d="M6.5 2.5h-3a1 1 0 0 0-1 1v9a1 1 0 0 0 1 1h3"/><path d="M10 5l3 3-3 3M13 8H6"/></symbol>
+  </svg>
+
+  <section id="login" class="login" hidden>
+    <form id="login-form" class="login-card" autocomplete="on" novalidate>
+      <div class="brand brand-lg"><svg class="mark" aria-hidden="true"><use href="#i-mark"/></svg><span>MailVault</span></div>
+      <h1 class="login-title" data-i18n="login.title">Anmelden</h1>
+      <p class="login-lead" data-i18n="login.lead">Melden Sie sich an, um Ihr E-Mail-Archiv zu öffnen.</p>
+      <label class="field">
+        <span class="field-label" data-i18n="login.user">Benutzername</span>
+        <input id="login-user" name="username" autocomplete="username" required maxlength="64" autocapitalize="off" spellcheck="false">
+      </label>
+      <label class="field">
+        <span class="field-label" data-i18n="login.pass">Kennwort</span>
+        <input id="login-pass" name="password" type="password" autocomplete="current-password" required maxlength="1024">
+      </label>
+      <p id="login-error" class="form-error" role="alert" hidden></p>
+      <button type="submit" class="btn btn-primary btn-block" id="login-btn" data-i18n="login.submit">Anmelden</button>
+      <p class="login-foot" data-i18n="login.foot">Kein Zugang? Die Person, die MailVault auf dem PC eingerichtet hat, kann Ihnen einen anlegen.</p>
+    </form>
+  </section>
+
+  <div id="app" class="app" hidden>
+    <header class="topbar">
+      <div class="brand"><svg class="mark" aria-hidden="true"><use href="#i-mark"/></svg><span class="brand-text">MailVault</span></div>
+      <form id="search-form" class="search" role="search" autocomplete="off">
+        <svg class="icon search-icon" aria-hidden="true"><use href="#i-search"/></svg>
+        <input id="search-q" type="search" enterkeyhint="search" placeholder="Suchen, z. B. von:bank rechnung jahr:2024"
+               aria-label="Archiv durchsuchen" data-i18n-aria-label="search.aria" aria-describedby="search-error" maxlength="500" spellcheck="false">
+        <button type="button" id="search-clear" class="icon-btn search-clear" aria-label="Suche leeren" title="Suche leeren"
+                data-i18n-aria-label="search.clear" data-i18n-title="search.clear" hidden>
+          <svg class="icon" aria-hidden="true"><use href="#i-close"/></svg>
+        </button>
+      </form>
+      <div class="user">
+        <span id="user-name" class="user-name"></span>
+        <button type="button" id="logout-btn" class="btn btn-quiet" title="Abmelden" data-i18n-title="logout">
+          <svg class="icon" aria-hidden="true"><use href="#i-logout"/></svg><span class="logout-text" data-i18n="logout">Abmelden</span>
+        </button>
+      </div>
+    </header>
+
+    <div class="filterbar" role="toolbar" aria-label="Suchfilter" data-i18n-aria-label="filter.toolbar">
+      <div class="chips" id="range-chips" role="group" aria-label="Zeitraum" data-i18n-aria-label="filter.range">
+        <button type="button" class="chip" data-range="all" aria-pressed="true" data-i18n="range.all">Alle</button>
+        <button type="button" class="chip" data-range="30d" aria-pressed="false" data-i18n="range.30d">Letzte 30 Tage</button>
+        <button type="button" class="chip" data-range="thisyear" aria-pressed="false" data-i18n="range.thisyear">Dieses Jahr</button>
+        <button type="button" class="chip" data-range="lastyear" aria-pressed="false" data-i18n="range.lastyear">Letztes Jahr</button>
+      </div>
+      <span class="divider" aria-hidden="true"></span>
+      <button type="button" class="chip" id="att-chip" aria-pressed="false" data-i18n="filter.att">Mit Anhang</button>
+      <button type="button" class="chip" id="scope-chip" aria-pressed="false" hidden></button>
+      <span class="divider" aria-hidden="true"></span>
+      <div class="segmented" role="group" aria-label="Sortierung" data-i18n-aria-label="filter.sort">
+        <button type="button" data-sort="date" aria-pressed="true" data-i18n="sort.date">Neueste</button>
+        <button type="button" data-sort="relevance" aria-pressed="false" data-i18n="sort.relevance">Beste Treffer</button>
+      </div>
+      <button type="button" id="help-btn" class="btn btn-quiet help-btn" aria-expanded="false" aria-controls="search-help">
+        <svg class="icon" aria-hidden="true"><use href="#i-help"/></svg><span data-i18n="help.button">Suchhilfe</span>
+      </button>
+    </div>
+    <p id="search-error" class="search-error" role="alert" hidden></p>
+    <section id="search-help" class="search-help" hidden aria-labelledby="search-help-title">
+      <h2 id="search-help-title" data-i18n="help.title">So suchen Sie gezielt</h2>
+      <p class="help-lead" data-i18n="help.lead">Schreiben Sie Filter direkt ins Suchfeld und kombinieren Sie sie mit Suchwörtern. Ein Klick auf ein Beispiel übernimmt es.</p>
+      <dl id="help-list" class="help-list"></dl>
+    </section>
+
+    <main class="panes" id="panes" data-view="list">
+      <nav class="pane folders" id="folders-pane" aria-labelledby="folders-title">
+        <div class="pane-head"><h2 id="folders-title" class="pane-title" data-i18n="folders.title">Ordner</h2></div>
+        <div id="folder-tree" class="tree" aria-busy="true"></div>
+      </nav>
+
+      <section class="pane list" aria-labelledby="list-title">
+        <div class="pane-head list-head">
+          <button type="button" id="folders-back" class="btn btn-quiet back-btn only-phone" aria-label="Zurück zu den Ordnern" data-i18n-aria-label="folders.back">
+            <svg class="icon" aria-hidden="true"><use href="#i-back"/></svg><span data-i18n="folders.title">Ordner</span>
+          </button>
+          <h2 id="list-title" class="pane-title list-title" data-i18n="list.inbox">Posteingang</h2>
+          <span id="list-count" class="list-count" aria-live="polite"></span>
+          <label class="check" id="recursive-wrap"><input id="recursive" type="checkbox"> <span data-i18n="list.recursive">mit Unterordnern</span></label>
+        </div>
+        <div id="message-list" class="messages" role="list" aria-labelledby="list-title"></div>
+        <div class="pager" id="pager" hidden>
+          <button type="button" id="prev-btn" class="btn" disabled data-i18n="pager.prev">Vorherige</button>
+          <span id="page-info" class="page-info"></span>
+          <button type="button" id="next-btn" class="btn" disabled data-i18n="pager.next">Nächste</button>
+        </div>
+      </section>
+
+      <section class="pane reader" aria-label="Nachricht" data-i18n-aria-label="reader.aria">
+        <div id="reader-empty" class="empty reader-empty">
+          <p class="empty-title" data-i18n="reader.emptyTitle">Keine Nachricht geöffnet</p>
+          <p class="empty-text" data-i18n="reader.emptyText">Wählen Sie eine Nachricht aus der Liste, um sie hier zu lesen.</p>
+        </div>
+        <article id="reader" class="reader-content" hidden>
+          <div class="reader-head">
+            <button type="button" id="back-btn" class="btn btn-quiet back-btn only-narrow">
+              <svg class="icon" aria-hidden="true"><use href="#i-back"/></svg><span data-i18n="reader.back">Zur Liste</span>
+            </button>
+            <h1 id="r-subject" class="r-subject"></h1>
+            <dl class="meta">
+              <dt data-i18n="meta.from">Von</dt><dd id="r-from"></dd>
+              <dt data-i18n="meta.to">An</dt><dd id="r-to"></dd>
+              <dt id="r-cc-label" data-i18n="meta.cc">Cc</dt><dd id="r-cc"></dd>
+              <dt data-i18n="meta.date">Datum</dt><dd id="r-date" class="num"></dd>
+              <dt data-i18n="meta.folder">Ordner</dt><dd id="r-folder"></dd>
+            </dl>
+            <ul id="r-attachments" class="attachments" aria-label="Anhänge" data-i18n-aria-label="reader.attachments"></ul>
+            <div class="actions">
+              <a id="r-eml" class="btn" download>
+                <svg class="icon" aria-hidden="true"><use href="#i-download"/></svg><span data-i18n="reader.eml">Original herunterladen (.eml)</span>
+              </a>
+            </div>
+          </div>
+          <div class="body-wrap">
+            <iframe id="r-body" class="body-frame" title="Nachrichtentext" data-i18n-title="reader.body"
+                    sandbox="allow-popups allow-popups-to-escape-sandbox" referrerpolicy="no-referrer"></iframe>
+          </div>
+        </article>
+      </section>
+    </main>
+  </div>
+</body>
+</html>
