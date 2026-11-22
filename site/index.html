@@ -10,7 +10,7 @@
   <meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)">
   <meta name="theme-color" content="#121417" media="(prefers-color-scheme: dark)">
   <link rel="icon" href="favicon.svg" type="image/svg+xml">
-  <link rel="preload" href="schriften/barlow-semi-condensed-600-latin.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="schriften/barlow-600-latin.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="preload" href="schriften/barlow-400-latin.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="stylesheet" href="style.css">
   <script>
@@ -71,21 +71,21 @@
         <div class="buehne-unten">
           <div class="laden">
             <p class="lead" data-i18n="hero_lead">MailVault sichert die E-Mails aus Ihren Postfächern, aus Outlook und Thunderbird in einem durchsuchbaren Archiv auf Ihrem eigenen PC – vollständig, unabhängig vom Anbieter und auf Wunsch verschlüsselt. Die Postfächer werden dabei nur gelesen, nie verändert. Ohne Konto, ohne Cloud, mit offenem Quelltext.</p>
-            <a class="knopf-laden" href="{{SETUP}}" id="download">
-              <svg aria-hidden="true"><use href="#i-down"/></svg>
-              <span class="knopf-laden-text">
-                <span class="knopf-laden-titel" data-i18n="download_btn">Für Windows herunterladen</span>
-                <span class="knopf-laden-datei"><span class="zahl">MailVault-Setup-{{VERSION}}.exe</span> · <span class="zahl">{{SETUP_MB}}</span> MB</span>
-              </span>
-            </a>
+            <div class="knopfreihe">
+              <a class="knopf knopf-haupt" href="{{SETUP}}" id="download">
+                <svg aria-hidden="true"><use href="#i-down"/></svg>
+                <span data-i18n="download_btn">Für Windows herunterladen</span>
+              </a>
+              <a class="knopf knopf-neben" href="{{ZIP}}">
+                <span data-i18n="dl_zip">Portable ZIP</span>
+                <span class="knopf-mass zahl">{{SIZE_MB}} MB</span>
+              </a>
+            </div>
             <p class="laden-info">
-              <span data-i18n="dl_system">Windows 10 und 11, 64 Bit</span> ·
-              <span data-i18n="version">Version</span> <span class="zahl">{{VERSION}}</span> ·
-              <span class="zahl">{{DATE}}</span>
-            </p>
-            <p class="laden-neben">
-              <a href="{{ZIP}}"><span data-i18n="dl_zip">Portable ZIP</span> (<span class="zahl">{{SIZE_MB}}</span> MB)</a>
-              <span aria-hidden="true">·</span>
+              <span class="zahl">MailVault-Setup-{{VERSION}}.exe · {{SETUP_MB}} MB</span>
+              <span class="trenn" aria-hidden="true">·</span>
+              <span data-i18n="dl_system">Windows 10 und 11, 64 Bit</span>
+              <span class="trenn" aria-hidden="true">·</span>
               <a href="#pruefsumme" data-i18n="dl_check">SHA-256 und Versionsangaben</a>
             </p>
           </div>
@@ -221,7 +221,7 @@
           <h2 id="offen-titel" data-i18n="open_title">Offener Quelltext, mit KI-Unterstützung entwickelt</h2>
           <p data-i18n="open_p1">MailVault ist „vibe-coded“: Das Programm wurde im Dialog mit einer KI entwickelt, mit Claude von Anthropic. Ein Mensch hat festgelegt, was MailVault tun soll und was nicht; einen großen Teil des Codes hat die KI geschrieben.</p>
           <p data-i18n="open_p2">Deshalb liegt der gesamte Quelltext offen auf GitHub. So lässt sich nachprüfen, dass MailVault am Postfach nichts löscht: Die Tests, die genau das sicherstellen, kann jeder lesen und selbst ausführen.</p>
-          <a class="knopf-rand" href="{{REPO_URL}}" rel="noopener">
+          <a class="knopf knopf-neben" href="{{REPO_URL}}" rel="noopener">
             <svg aria-hidden="true"><use href="#i-code"/></svg><span data-i18n="open_repo">Quelltext auf GitHub ansehen</span>
           </a>
         </div>
@@ -268,7 +268,7 @@
           <h2 id="unterstuetzen-titel" data-i18n="support_title">MailVault unterstützen</h2>
           <p data-i18n="support_p1">MailVault ist kostenlos und bleibt es. Wer mag, hilft dem Entwickler mit einem Beitrag, Server und Weiterentwicklung zu bezahlen.</p>
           <p data-i18n="support_p2">Der Beitrag ändert nichts: Sie bekommen dieselbe App wie alle anderen, ohne Konto, ohne Freischaltung, ohne Werbung. Er ist deshalb kein Preis für eine Leistung, sondern ein freiwilliger Zuschuss.</p>
-          <a class="knopf-zweit" rel="noopener" target="_blank"
+          <a class="knopf knopf-neben" rel="noopener" target="_blank"
              href="https://www.paypal.com/cgi-bin/webscr?cmd=_xclick&amp;business=flusu%40zerze.de&amp;currency_code=EUR&amp;item_name=Kostenbeitrag+zu+Betrieb+und+Pflege+von+MailVault">
             <span data-i18n="support_btn">Mit PayPal unterstützen</span><svg aria-hidden="true"><use href="#i-out"/></svg>
           </a>
@@ -302,17 +302,20 @@
       <div class="rahmen schluss-innen">
         <h2 id="schluss-titel" class="klapptitel" data-i18n="cta_title">MailVault kostenlos herunterladen</h2>
         <div class="schluss-laden">
-          <a class="knopf-laden" href="{{SETUP}}">
-            <svg aria-hidden="true"><use href="#i-down"/></svg>
-            <span class="knopf-laden-text">
-              <span class="knopf-laden-titel" data-i18n="download_btn">Für Windows herunterladen</span>
-              <span class="knopf-laden-datei"><span class="zahl">MailVault-Setup-{{VERSION}}.exe</span> · <span class="zahl">{{SETUP_MB}}</span> MB</span>
-            </span>
-          </a>
-          <p class="laden-neben">
+          <div class="knopfreihe">
+            <a class="knopf knopf-haupt" href="{{SETUP}}">
+              <svg aria-hidden="true"><use href="#i-down"/></svg>
+              <span data-i18n="download_btn">Für Windows herunterladen</span>
+            </a>
+            <a class="knopf knopf-neben" href="{{REPO_URL}}" rel="noopener">
+              <svg aria-hidden="true"><use href="#i-code"/></svg>
+              <span data-i18n="foot_source">Quelltext auf GitHub</span>
+            </a>
+          </div>
+          <p class="laden-info">
+            <span class="zahl">MailVault-Setup-{{VERSION}}.exe · {{SETUP_MB}} MB</span>
+            <span class="trenn" aria-hidden="true">·</span>
             <a href="{{ZIP}}"><span data-i18n="dl_zip">Portable ZIP</span> (<span class="zahl">{{SIZE_MB}}</span> MB)</a>
-            <span aria-hidden="true">·</span>
-            <a href="{{REPO_URL}}" rel="noopener" data-i18n="foot_source">Quelltext auf GitHub</a>
           </p>
         </div>
       </div>

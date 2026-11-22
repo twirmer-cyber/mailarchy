@@ -93,13 +93,14 @@
   function run(owner, tiles) {
     clock.clear(owner);
     var state = tiles.map(function (k, i) { return { k: k, n: 1 + Math.floor(i * 0.3) + Math.floor(Math.random() * 2) }; });
-    state.forEach(function (s) { if (/\S/.test(s.k.dataset.c) && !/[\s.,!?–-]/.test(s.k.dataset.c)) s.k.textContent = randFor(s.k.dataset.c); else s.n = 0; });
+    state.forEach(function (s) { if (/\S/.test(s.k.dataset.c) && !/[\s.,!?–-]/.test(s.k.dataset.c)) { s.k.textContent = randFor(s.k.dataset.c); s.k.classList.add('roll'); } else s.n = 0; });
     var job = function () {
       var busy = false;
       state.forEach(function (s) {
         if (s.n <= 0) return;
         s.n--;
         s.k.textContent = s.n === 0 ? s.k.dataset.c : randFor(s.k.dataset.c);
+        if (s.n === 0) s.k.classList.remove('roll');
         flip(s.k);
         busy = true;
       });

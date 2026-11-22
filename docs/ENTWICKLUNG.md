@@ -196,7 +196,7 @@ Prüfen nach Änderungen: `nginx -t && systemctl reload nginx`, `curl -I https:/
 
 ## 7. Webseite
 - `site/index.html` (Deutsch, funktioniert ohne JavaScript), `i18n.js` (en/fr/es), `main.js` (Fallblatt-Animation, Suchvorführung,
-  Sprachwahl; respektiert `prefers-reduced-motion`), `style.css`, Schriften Barlow / Barlow Semi Condensed / Chivo Mono (OFL) lokal.
+  Sprachwahl; respektiert `prefers-reduced-motion`), `style.css`, Schriften Barlow / Chivo Mono (OFL) lokal.
 - Keine fremden Ressourcen, keine Cookies, kein Tracking. CSP verbietet `style=`-Attribute und `<style>`-Blöcke.
 - Name/Anschrift des Betreibers **nur** in Impressum und Datenschutzerklärung (gesetzliches Minimum nach § 5 DDG / DSGVO).
 - Bildschirmfotos nur mit erfundenen Demo-Daten. Gestaltungsvertrag: `.impeccable/surfaces/site-index-html.md`.

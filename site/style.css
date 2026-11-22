@@ -1,23 +1,21 @@
 /* MailVault – mailvault.zerze.de
    Gestaltung: helles Büro. Weißes Papier, hellgraue Ablage, klare Haarlinien, Tintenblau als einzige Aktionsfarbe.
-   Die Überschrift steht auf hellen Klappen wie ein Tischkalender; Treffer sind mit Textmarker hervorgehoben.
+   Die Überschrift ist groß und eng gesetzt; ihre Buchstaben rollen beim Laden kurz durch. Treffer sind mit Textmarker hervorgehoben.
    Keine fremden Ressourcen, keine Inline-Stile (CSP).
 
    Schriften (selbst gehostet, Teilmenge „latin“, woff2):
-   - Barlow und Barlow Semi Condensed © 2017 The Barlow Project Authors (https://github.com/jpt/barlow),
+   - Barlow © 2017 The Barlow Project Authors (https://github.com/jpt/barlow),
      SIL Open Font License 1.1 (https://openfontlicense.org)
    - Chivo Mono © 2022 The Chivo Mono Project Authors (https://github.com/Omnibus-Type/ChivoMono),
      SIL Open Font License 1.1 */
 
 @font-face { font-family: "Barlow"; font-style: normal; font-weight: 400; font-display: swap; src: url("schriften/barlow-400-latin.woff2") format("woff2"); }
 @font-face { font-family: "Barlow"; font-style: normal; font-weight: 600; font-display: swap; src: url("schriften/barlow-600-latin.woff2") format("woff2"); }
-@font-face { font-family: "Barlow Semi Condensed"; font-style: normal; font-weight: 600; font-display: swap; src: url("schriften/barlow-semi-condensed-600-latin.woff2") format("woff2"); }
 @font-face { font-family: "Chivo Mono"; font-style: normal; font-weight: 400; font-display: swap; src: url("schriften/chivo-mono-400-latin.woff2") format("woff2"); }
 
 /* ------------------------------------------------------------ Farben */
 :root {
   --f-text: "Barlow", system-ui, "Segoe UI", sans-serif;
-  --f-klapp: "Barlow Semi Condensed", "Barlow", system-ui, "Segoe UI", sans-serif;
   --f-mono: "Chivo Mono", ui-monospace, Consolas, monospace;
 
   --paper: #ffffff;        /* Seite */
@@ -88,10 +86,9 @@ body {
 }
 ::selection { background: var(--accent-soft); color: var(--ink); }
 img, svg { display: block; max-width: 100%; }
-h1, h2, h3 { font-weight: 600; line-height: 1.15; margin: 0; text-wrap: balance; }
-h1 { font-family: var(--f-klapp); }
-h2 { font-size: clamp(1.7rem, 3.2vw, 2.4rem); letter-spacing: -0.01em; margin-bottom: .6em; }
-h3 { font-size: 1.2rem; margin-bottom: .5em; }
+h1, h2, h3 { font-weight: 600; line-height: 1.12; margin: 0; text-wrap: balance; }
+h2 { font-size: clamp(2rem, 3.8vw, 3rem); line-height: 1.06; letter-spacing: -0.025em; margin-bottom: .55em; }
+h3 { font-size: 1.25rem; letter-spacing: -0.01em; margin-bottom: .5em; }
 p { margin: 0 0 1em; max-width: 64ch; text-wrap: pretty; }
 a { color: var(--accent-ink); text-decoration-line: underline; text-decoration-thickness: 1px; text-underline-offset: .2em; text-decoration-color: var(--link-line); }
 a:hover { text-decoration-thickness: 2px; text-decoration-color: currentColor; }
@@ -108,77 +105,81 @@ svg use { fill: none; stroke: currentColor; stroke-width: 1.5; stroke-linecap: r
 .skip:focus { top: .75rem; }
 
 /* ------------------------------------------------------------ Kopf */
-.kopf { background: var(--paper); border-bottom: 1px solid var(--line); }
+.kopf { position: sticky; top: 0; z-index: 20; background: var(--paper); background: color-mix(in srgb, var(--paper) 86%, transparent); border-bottom: 1px solid var(--line); -webkit-backdrop-filter: saturate(1.4) blur(12px); backdrop-filter: saturate(1.4) blur(12px); }
 .kopf-innen { display: flex; align-items: center; gap: 1.5rem; min-height: 4rem; }
 .marke { display: inline-flex; align-items: center; gap: .55rem; font: 600 1.25rem/1 var(--f-text); text-decoration: none; color: var(--ink); }
 .marke .mark { width: 24px; height: 24px; color: var(--accent-ink); }
 .kopf-nav { display: flex; gap: 1.6rem; margin-left: auto; }
 .kopf-nav a { color: var(--ink-2); text-decoration: none; font-size: .975rem; padding-block: .4rem; }
 .kopf-nav a:hover { color: var(--ink); text-decoration: underline; text-decoration-color: var(--accent-ink); }
-.sprachen { display: flex; border: 1px solid var(--line-strong); border-radius: 4px; overflow: hidden; }
+.sprachen { display: flex; gap: 2px; padding: 2px; border: 1px solid var(--line); border-radius: 999px; background: var(--shelf); }
 .sprachen button {
   position: relative; overflow: hidden;
   font: 600 .8125rem/1 var(--f-text); letter-spacing: .04em;
-  min-width: 2.4rem; padding: .55rem .5rem; border: 0; border-left: 1px solid var(--line);
-  background: var(--paper); color: var(--ink-2); cursor: pointer;
+  min-width: 2.3rem; padding: .45rem .55rem; border: 0; border-radius: 999px;
+  background: transparent; color: var(--ink-2); cursor: pointer; transition: background-color 160ms ease-out, color 160ms ease-out;
 }
-.sprachen button:first-child { border-left: 0; }
-.sprachen button:hover { color: var(--ink); background: var(--shelf); }
+.sprachen button:hover { color: var(--ink); background: var(--surface); }
 .sprachen button[aria-pressed="true"] { background: var(--accent); color: var(--on-accent); }
 
-/* ------------------------------------------------------------ Klappen (heller Tischkalender) */
-.klapptitel { font-size: clamp(1.95rem, 8vw, 3.9rem); line-height: 1.1; color: var(--ink); }
+/* ------------------------------------------------------------ Überschrift mit rollenden Buchstaben */
+.klapptitel { font-size: clamp(2.5rem, 6.4vw, 5rem); line-height: 1.02; letter-spacing: -0.035em; color: var(--ink); }
 .klapptitel .zeile { display: block; }
+.klapptitel .zeile + .zeile, .kz + .kz { color: var(--accent-ink); }
 .klappen, .kz { display: block; }
-.wort { display: inline-block; white-space: nowrap; margin-right: .24em; margin-bottom: .1em; }
-.k {
-  position: relative; display: inline-block; overflow: hidden; isolation: isolate;
-  min-width: .5em; padding: .03em .035em 0; margin-right: .03em;
-  text-align: center; line-height: 1.14;
-  background: var(--tile); color: var(--tile-ink); border-radius: .06em;
-}
-.k::after, .anzeige-liste li > span::after { content: ""; position: absolute; left: 0; right: 0; top: 50%; height: 1px; background: var(--seam); z-index: -1; }
-.k::before, .anzeige-liste li > span::before, .gleise a::before {
+.wort { display: inline-block; white-space: nowrap; margin-right: .22em; }
+.k { position: relative; display: inline-block; overflow: hidden; text-align: center; vertical-align: bottom; transition: color 200ms ease-out; }
+.k.roll { color: var(--line-strong); }
+/* Zeilen der Suchvorführung klappen weiterhin um */
+.anzeige-liste li > span::before {
   content: ""; position: absolute; left: 0; right: 0; top: 0; bottom: 50%;
   background: var(--tile-top); transform-origin: 50% 100%; transform: scaleY(0); z-index: 1; pointer-events: none;
 }
-.fl::before, .gleise a:hover::before { animation: klapp 110ms cubic-bezier(.25, .8, .3, 1); }
-.fl2::before { animation: klapp2 110ms cubic-bezier(.25, .8, .3, 1); }
+.anzeige-liste .fl::before { animation: klapp 110ms cubic-bezier(.25, .8, .3, 1); }
+.anzeige-liste .fl2::before { animation: klapp2 110ms cubic-bezier(.25, .8, .3, 1); }
 @keyframes klapp { from { transform: scaleY(1); } to { transform: scaleY(0); } }
 @keyframes klapp2 { from { transform: scaleY(1); } to { transform: scaleY(0); } }
 
 /* ------------------------------------------------------------ Einstieg */
-.buehne { padding-top: clamp(2.5rem, 6vw, 4.5rem); background: var(--paper); }
+.buehne { padding-top: clamp(3rem, 8vw, 6rem); background: var(--paper); }
 .buehne-innen { position: relative; }
-.buehne .klapptitel { margin-bottom: clamp(1.5rem, 3.5vw, 2.5rem); }
+.buehne .klapptitel { margin-bottom: clamp(1.75rem, 4vw, 3rem); }
 .buehne-unten {
   display: grid; gap: clamp(2rem, 4vw, 3.5rem);
-  grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); align-items: end;
+  grid-template-columns: minmax(0, 6fr) minmax(0, 6fr); align-items: end;
 }
-.lead { font-size: clamp(1.1rem, 1.6vw, 1.25rem); line-height: 1.55; color: var(--ink); max-width: 34rem; margin-bottom: 1.6rem; }
+.lead { font-size: clamp(1.125rem, 1.5vw, 1.3rem); line-height: 1.55; color: var(--ink-2); max-width: 36rem; margin-bottom: 2rem; }
 .laden { padding-bottom: clamp(4.5rem, 8vw, 6.5rem); }
 
-.knopf-laden {
-  display: inline-flex; align-items: center; gap: .9rem;
-  padding: .95rem 1.5rem .95rem 1.15rem; border-radius: 6px;
-  background: var(--accent); color: var(--on-accent); text-decoration: none;
-  box-shadow: 0 10px 24px -14px rgba(31, 78, 140, .7);
-  transition: background-color 160ms ease-out;
+/* Knöpfe: eine Höhe, eine Schrift, eine Rundung */
+.knopfreihe { display: flex; flex-wrap: wrap; gap: .75rem; }
+.knopf {
+  display: inline-flex; align-items: center; justify-content: center; gap: .6rem;
+  min-height: 3.25rem; padding: 0 1.4rem; border-radius: 10px;
+  font: 600 1.0625rem/1.2 var(--f-text); text-decoration: none; white-space: nowrap;
+  border: 1px solid transparent;
+  transition: background-color 160ms ease-out, border-color 160ms ease-out, transform 160ms ease-out, box-shadow 160ms ease-out;
 }
-.knopf-laden > svg { width: 26px; height: 26px; flex: none; transition: transform 160ms ease-out; }
-.knopf-laden > svg use { stroke-width: 1.75; }
-.knopf-laden:hover { background: var(--accent-hover); text-decoration: none; }
-.knopf-laden:hover > svg { transform: translateY(2px); }
-.knopf-laden-text { display: flex; flex-direction: column; gap: .15rem; }
-.knopf-laden-titel { font: 600 1.25rem/1.15 var(--f-text); }
-.knopf-laden-datei { font-size: .875rem; line-height: 1.3; opacity: .88; overflow-wrap: anywhere; }
-.laden-info { margin: .9rem 0 .2rem; font-size: .9rem; color: var(--ink-2); }
-.laden-neben { margin: 0; font-size: .9rem; display: flex; flex-wrap: wrap; gap: .35rem .6rem; color: var(--ink-2); }
+.knopf svg { width: 18px; height: 18px; flex: none; transition: transform 160ms ease-out; }
+.knopf svg use { stroke-width: 1.8; }
+.knopf:hover { text-decoration: none; }
+.knopf:active { transform: translateY(1px); }
+.knopf-haupt { background: var(--accent); color: var(--on-accent); box-shadow: 0 1px 2px rgba(16, 32, 64, .2), 0 8px 20px -10px rgba(31, 78, 140, .55); }
+.knopf-haupt:hover { background: var(--accent-hover); box-shadow: 0 1px 2px rgba(16, 32, 64, .2), 0 12px 26px -12px rgba(31, 78, 140, .65); }
+.knopf-haupt:hover svg { transform: translateY(1px); }
+.knopf-neben { background: var(--surface); color: var(--ink); border-color: var(--line-strong); }
+.knopf-neben svg { color: var(--accent-ink); }
+.knopf-neben:hover { border-color: var(--accent); background: var(--accent-soft); }
+.knopf-mass { color: var(--ink-2); font-weight: 400; font-size: .9375rem; }
+.laden-info { display: flex; flex-wrap: wrap; align-items: baseline; gap: .25rem .55rem; margin: 1rem 0 0; max-width: none; font-size: .875rem; color: var(--ink-2); }
+.laden-info .trenn { color: var(--line-strong); }
+.laden-info a { color: var(--ink-2); text-decoration-color: var(--line-strong); }
+.laden-info a:hover { color: var(--accent-ink); }
 
 /* Suchvorführung: kleines Programmfenster */
 .anzeige {
   position: relative; z-index: 2; margin: 0 0 -4.5rem;
-  background: var(--surface); border: 1px solid var(--line-strong); border-radius: 8px;
+  background: var(--surface); border: 1px solid var(--line-strong); border-radius: 12px;
   padding: .9rem .9rem .8rem; color: var(--ink);
   box-shadow: var(--shadow);
   font-size: .95rem;
@@ -217,7 +218,6 @@ svg use { fill: none; stroke: currentColor; stroke-width: 1.5; stroke-linecap: r
 .anzeige-liste .von { font-weight: 600; }
 .anzeige-liste .betreff svg { display: inline-block; width: 13px; height: 13px; margin-right: .4em; vertical-align: -.1em; color: var(--ink-2); }
 .anzeige-liste mark { background: var(--marker); color: var(--marker-ink); border-radius: 2px; }
-.anzeige-liste li > span::after { display: none; }
 .anzeige-fuss { margin: .6rem 0 0; font-size: .82rem; color: var(--ink-2); }
 
 /* ------------------------------------------------------------ Abschnitte */
@@ -232,7 +232,7 @@ svg use { fill: none; stroke: currentColor; stroke-width: 1.5; stroke-linecap: r
 .syntax dt code { background: var(--surface); border: 1px solid var(--line); border-radius: 3px; padding: .15rem .45rem; }
 .syntax dd { margin: 0; color: var(--ink-2); }
 .bild { grid-column: 1 / -1; margin: clamp(2rem, 4vw, 3.5rem) 0 0; }
-.bild img { width: 100%; height: auto; border-radius: 8px; border: 1px solid var(--line-strong); box-shadow: var(--shadow); }
+.bild img { width: 100%; height: auto; border-radius: 12px; border: 1px solid var(--line-strong); box-shadow: var(--shadow); }
 .bild figcaption { margin-top: .8rem; font-size: .9rem; color: var(--ink-2); }
 
 /* Zusagen: Registerblatt */
@@ -253,21 +253,15 @@ svg use { fill: none; stroke: currentColor; stroke-width: 1.5; stroke-linecap: r
 
 /* Offen gebaut */
 .offen-innen { display: grid; grid-template-columns: minmax(0, 7fr) minmax(0, 5fr); gap: clamp(2rem, 5vw, 4.5rem); align-items: center; }
-.knopf-rand {
-  display: inline-flex; align-items: center; gap: .6rem; margin-top: .6rem;
-  padding: .75rem 1.1rem; border: 1px solid var(--line-strong); border-radius: 6px;
-  color: var(--ink); text-decoration: none; font-weight: 600; background: var(--surface);
-  transition: border-color 160ms ease-out;
-}
-.knopf-rand svg { width: 18px; height: 18px; color: var(--accent-ink); }
-.knopf-rand:hover { border-color: var(--accent); text-decoration: none; }
+.offen-text .knopf, .unterstuetzen-innen .knopf { margin-top: .75rem; }
 .gleise-titel { font: 600 .95rem/1.2 var(--f-text); color: var(--ink-2); margin-bottom: .7rem; }
-.gleise ul { list-style: none; margin: 0; padding: 0; border: 1px solid var(--line-strong); border-radius: 8px; overflow: hidden; background: var(--surface); }
+.gleise ul { list-style: none; margin: 0; padding: 0; border: 1px solid var(--line-strong); border-radius: 12px; overflow: hidden; background: var(--surface); }
 .gleise li + li { border-top: 1px solid var(--line); }
 .gleise a {
   position: relative; overflow: hidden; display: flex; justify-content: space-between; align-items: center; gap: 1rem;
   padding: .95rem 1.1rem; text-decoration: none; color: var(--ink);
 }
+.gleise a { transition: background-color 160ms ease-out; }
 .gleise a:hover { background: var(--accent-soft); }
 .gleis-was { font-weight: 600; position: relative; z-index: 2; }
 .gleis-wohin { display: inline-flex; align-items: center; gap: .5rem; color: var(--accent-ink); font-size: .95rem; text-align: right; position: relative; z-index: 2; }
@@ -281,12 +275,12 @@ svg use { fill: none; stroke: currentColor; stroke-width: 1.5; stroke-linecap: r
 .schritte li { counter-increment: s; position: relative; padding: .2rem 0 1.25rem 3.4rem; min-height: 3rem; }
 .schritte li::before {
   content: counter(s); position: absolute; left: 0; top: 0;
-  width: 2.2rem; height: 2.4rem; display: grid; place-items: center;
-  background: var(--surface); color: var(--accent-ink); border: 1px solid var(--line-strong); border-radius: 4px;
-  font: 600 1.35rem/1 var(--f-klapp);
+  width: 2.25rem; height: 2.25rem; display: grid; place-items: center;
+  background: var(--accent-soft); color: var(--accent-ink); border-radius: 999px;
+  font: 600 1.05rem/1 var(--f-text);
 }
 .hinweis { color: var(--ink-2); }
-.steckbrief { margin: 0; background: var(--surface); border: 1px solid var(--line-strong); border-radius: 8px; padding: .4rem 1.4rem; }
+.steckbrief { margin: 0; background: var(--surface); border: 1px solid var(--line-strong); border-radius: 12px; padding: .4rem 1.4rem; }
 .steckbrief div { display: grid; grid-template-columns: 8.5rem minmax(0, 1fr); gap: 1rem; padding: .75rem 0; border-bottom: 1px solid var(--line); }
 .steckbrief div:last-child { border-bottom: 0; }
 .steckbrief dt { color: var(--ink-2); font-size: .95rem; }
@@ -296,15 +290,7 @@ svg use { fill: none; stroke: currentColor; stroke-width: 1.5; stroke-linecap: r
 
 /* Unterstützen */
 .unterstuetzen-innen { display: grid; grid-template-columns: minmax(0, 7fr) minmax(0, 5fr); gap: clamp(2rem, 5vw, 4.5rem); align-items: start; }
-.knopf-zweit {
-  display: inline-flex; align-items: center; gap: .6rem; margin-top: .4rem;
-  padding: .75rem 1.15rem; border-radius: 6px; border: 1px solid var(--accent);
-  background: var(--surface); color: var(--accent-ink);
-  font-weight: 600; text-decoration: none; transition: background-color 160ms ease-out;
-}
-.knopf-zweit svg { width: 16px; height: 16px; }
-.knopf-zweit:hover { background: var(--accent-soft); text-decoration: none; }
-.beleg { background: var(--surface); border: 1px solid var(--line-strong); border-radius: 8px; padding: 1.25rem 1.4rem .4rem; }
+.beleg { background: var(--surface); border: 1px solid var(--line-strong); border-radius: 12px; padding: 1.25rem 1.4rem .4rem; }
 .beleg p { color: var(--ink-2); font-size: .975rem; }
 
 /* Fragen */
@@ -328,10 +314,8 @@ svg use { fill: none; stroke: currentColor; stroke-width: 1.5; stroke-linecap: r
 
 /* Schluss */
 .schluss { background: var(--accent-soft); border-block: 1px solid var(--line); padding-block: var(--takt); }
-.schluss-innen { display: grid; gap: 1.75rem; }
-.schluss .klapptitel { font-size: clamp(1.8rem, 6vw, 3.2rem); margin: 0; }
-.schluss .k { background: var(--surface); }
-.schluss-laden .laden-neben { margin-top: 1rem; }
+.schluss-innen { display: grid; grid-template-columns: minmax(0, 6fr) minmax(0, 6fr); gap: 1.75rem clamp(2rem, 5vw, 4.5rem); align-items: end; }
+.schluss .klapptitel { font-size: clamp(2rem, 4.6vw, 3.5rem); margin: 0; }
 
 /* Rechtliches */
 .fuss { padding-block: clamp(3rem, 6vw, 4.5rem) 2rem; font-size: .9rem; color: var(--ink-2); }
@@ -345,7 +329,7 @@ html:not(.js) .sprachen { display: none; }
 
 /* ------------------------------------------------------------ Schmal */
 @media (max-width: 960px) {
-  .buehne-unten, .offen-innen, .installation-innen, .unterstuetzen-innen, .fragen-innen, .recht { grid-template-columns: minmax(0, 1fr); }
+  .schluss-innen, .buehne-unten, .offen-innen, .installation-innen, .unterstuetzen-innen, .fragen-innen, .recht { grid-template-columns: minmax(0, 1fr); }
   .laden { padding-bottom: 0; }
   .suche-innen { grid-template-columns: minmax(0, 1fr); grid-template-rows: none; }
   .syntax { grid-column: 1; grid-row: auto; margin-top: .75rem; }
@@ -361,7 +345,9 @@ html:not(.js) .sprachen { display: none; }
   .anzeige-liste li .betreff { grid-column: 1 / -1; }
   .anzeige-liste { gap: 6px; }
   .anzeige-liste li:nth-child(n+4) { display: none; }
-  .knopf-laden { width: 100%; }
+  .knopfreihe .knopf { flex: 1 1 100%; }
+  .laden-info { flex-direction: column; gap: .2rem; }
+  .laden-info .trenn { display: none; }
   .steckbrief { padding-inline: 1rem; }
   .steckbrief div { grid-template-columns: minmax(0, 1fr); gap: .15rem; }
 }
@@ -375,7 +361,7 @@ html:not(.js) .sprachen { display: none; }
 .warum-kopf { display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); gap: 1rem clamp(2rem, 5vw, 4.5rem); align-items: start; margin-bottom: clamp(1.75rem, 3vw, 2.5rem); }
 .warum-kopf h2 { margin: 0; }
 .warum-text p:last-child { margin-bottom: 0; }
-.risiken { background: var(--surface); border: 1px solid var(--line-strong); border-radius: 8px; overflow: hidden; }
+.risiken { background: var(--surface); border: 1px solid var(--line-strong); border-radius: 12px; overflow: hidden; }
 .risiko { display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); gap: .35rem clamp(2rem, 5vw, 4.5rem); padding: 1rem 1.4rem; border-top: 1px solid var(--line); }
 .risiko-kopf { border-top: 0; background: var(--accent-soft); font-size: .875rem; font-weight: 600; color: var(--accent-ink); padding-block: .7rem; }
 .risiko-fall { font-weight: 600; }
