@@ -1,0 +1,40 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 880 420" role="img" aria-labelledby="t">
+  <title id="t">Schema: Google-Konto, Seite App-Passwörter. App-Name MailVault eingeben, Erstellen, angezeigtes 16-stelliges Passwort kopieren.</title>
+  <style>
+    text { font-family: "Segoe UI", Arial, sans-serif; fill: #1a1f26; }
+    .m { fill: #535a65; font-size: 15px; }
+    .h { font-size: 24px; font-weight: 600; }
+    .l { font-size: 15px; }
+    .v { font-size: 17px; }
+    .code { font-family: Consolas, "Courier New", monospace; font-size: 26px; letter-spacing: 1px; }
+    .k { fill: #ffffff; font-size: 16px; font-weight: 600; }
+    .n { fill: #ffffff; font-size: 15px; font-weight: 600; }
+  </style>
+  <rect width="880" height="420" fill="#f4f5f7"/>
+  <!-- linke Karte: Seite -->
+  <rect x="24" y="24" width="420" height="372" rx="12" fill="#ffffff" stroke="#c3c8d0"/>
+  <text x="48" y="58" class="m">myaccount.google.com/apppasswords</text>
+  <line x1="24" y1="76" x2="444" y2="76" stroke="#dde0e5"/>
+  <text x="48" y="118" class="h">App-Passwörter</text>
+  <text x="48" y="148" class="m">Nur sichtbar, wenn die Bestätigung in zwei</text>
+  <text x="48" y="168" class="m">Schritten eingeschaltet ist.</text>
+  <text x="48" y="214" class="l">App-Name</text>
+  <rect x="48" y="226" width="372" height="44" rx="6" fill="#ffffff" stroke="#1f4e8c" stroke-width="2"/>
+  <text x="62" y="254" class="v">MailVault</text>
+  <rect x="300" y="300" width="120" height="42" rx="21" fill="#1f4e8c"/>
+  <text x="360" y="327" class="k" text-anchor="middle">Erstellen</text>
+  <circle cx="275" cy="321" r="13" fill="#1f4e8c"/><text x="275" y="326" class="n" text-anchor="middle">1</text>
+  <!-- Pfeil -->
+  <path d="M458 210 h28 m-10 -9 l10 9 l-10 9" fill="none" stroke="#535a65" stroke-width="2"/>
+  <!-- rechte Karte: Ergebnis -->
+  <rect x="500" y="24" width="356" height="372" rx="12" fill="#ffffff" stroke="#c3c8d0"/>
+  <text x="524" y="80" class="h">Generiertes</text>
+  <text x="524" y="110" class="h">App-Passwort</text>
+  <rect x="524" y="140" width="308" height="64" rx="8" fill="#fff6c4" stroke="#e6c94a"/>
+  <text x="678" y="182" class="code" text-anchor="middle">abcd efgh ijkl mnop</text>
+  <text x="524" y="240" class="m">Demo-Wert. Ihr Passwort wird nur einmal</text>
+  <text x="524" y="260" class="m">angezeigt – gleich in MailVault einfügen</text>
+  <text x="524" y="280" class="m">(Leerzeichen sind egal).</text>
+  <circle cx="524" cy="330" r="13" fill="#1f4e8c"/><text x="524" y="335" class="n" text-anchor="middle">2</text>
+  <text x="546" y="336" class="l">In MailVault als Kennwort eintragen</text>
+</svg>

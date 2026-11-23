@@ -8,6 +8,18 @@ einmal angelegt. Die daraus entstehenden Client-IDs werden beim Bauen in die App
 
 > Ohne Registrierung bleibt alles wie bisher: Die Auswahl „Anmeldung“ im Profil zeigt dann nur „Kennwort bzw. App-Passwort“.
 
+**Wer welche Client-ID nutzt:**
+
+- **Download-Version von mailvault.zerze.de:** enthält die Client-IDs des Herausgebers (eingebettet beim Bauen von `build\release.ps1`).
+  Stand 0.7.0: Google eingebaut (Status „In Produktion, nicht überprüft“), Microsoft folgt.
+- **Öffentliches Repository / selbst gebaute Version:** enthält keine Client-IDs. Benutzer tragen eigene unter
+  **Verwaltung → Anmeldung (OAuth)** ein (`AppSettings.OAuth`, Google-Secret per DPAPI verschlüsselt). Eingetragene Werte haben Vorrang
+  vor eingebauten; Feld leeren = wieder die eingebaute verwenden (`OAuthProviders.ApplyUserClients`).
+- Jede Anmeldung merkt sich die Client-ID, mit der sie ausgestellt wurde (`OAuthAccount.ClientId`). Passt sie nicht mehr zur gültigen
+  Client-ID, gilt das Profil als „neu anmelden“ und wird – wie eine abgelaufene Anmeldung – sofort per E-Mail gemeldet. Dasselbe gilt für
+  `invalid_client`/`unauthorized_client` und eine entfernte Client-ID.
+- Bebilderte Anleitungen für Benutzer stehen auf der Webseite (`site/index.html#anleitungen`).
+
 ---
 
 ## 1. Microsoft (Outlook.com, Hotmail, Microsoft 365)

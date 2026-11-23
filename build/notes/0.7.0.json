@@ -1,29 +1,33 @@
 {
   "de": [
-    "Neu: Anmeldung mit Microsoft-Konto (Outlook.com, Hotmail, Microsoft 365) und Google-Konto (Gmail) – im Browser, ohne App-Passwort",
+    "Neu: Gmail mit dem Google-Konto anmelden – im Browser, ohne App-Passwort",
+    "Neu: Verwaltung → Anmeldung (OAuth) für eigene Client-IDs bei Google und Microsoft – damit gehen auch Outlook.com, Hotmail und Microsoft 365; die eingebaute Microsoft-Anmeldung folgt",
     "Läuft eine Microsoft- oder Google-Anmeldung ab, meldet MailVault das sofort per E-Mail-Benachrichtigung – mit Anleitung zur neuen Anmeldung",
     "Neu: Gesichertes Archiv einbinden – eine Sicherung oder das Archiv vom alten PC übernehmen oder darauf umstellen (Verwaltung → Archiv)",
     "Beim Übernehmen werden doppelte E-Mails erkannt; die Sicherung selbst bleibt unverändert, auch verschlüsselte Archive mit Kennwort, Wiederherstellungsschlüssel oder Notfallblatt",
     "Schneller: „Nur E-Mails neuer als …“ lässt bei IMAP den Server vorsortieren – große Postfächer werden nicht mehr komplett durchsucht"
   ],
   "en": [
-    "New: sign in with a Microsoft account (Outlook.com, Hotmail, Microsoft 365) or a Google account (Gmail) – in the browser, no app password",
+    "New: sign in to Gmail with your Google account – in the browser, no app password",
+    "New: Management → Sign-in (OAuth) for your own Google and Microsoft client IDs – this also makes Outlook.com, Hotmail and Microsoft 365 work; built-in Microsoft sign-in will follow",
     "If a Microsoft or Google sign-in expires, MailVault reports it immediately by email notification – with instructions for signing in again",
-    "New: add a backed-up archive – take over a backup or the archive from your old PC, or switch to it (Settings → Archive)",
+    "New: add a backed-up archive – take over a backup or the archive from your old PC, or switch to it (Management → Archive)",
     "Duplicates are detected when taking over; the backup itself stays unchanged, including encrypted archives with password, recovery key or emergency sheet",
     "Faster: “Only emails newer than …” lets the IMAP server preselect – large mailboxes are no longer scanned in full"
   ],
   "fr": [
-    "Nouveau : connexion avec un compte Microsoft (Outlook.com, Hotmail, Microsoft 365) ou Google (Gmail) – dans le navigateur, sans mot de passe d'application",
+    "Nouveau : connexion à Gmail avec le compte Google – dans le navigateur, sans mot de passe d'application",
+    "Nouveau : Gestion → Connexion (OAuth) pour vos propres ID clients Google et Microsoft – Outlook.com, Hotmail et Microsoft 365 fonctionnent ainsi aussi ; la connexion Microsoft intégrée suivra",
     "Si une connexion Microsoft ou Google expire, MailVault le signale immédiatement par notification e-mail – avec la marche à suivre pour se reconnecter",
-    "Nouveau : intégrer une archive sauvegardée – reprendre une sauvegarde ou l'archive de l'ancien PC, ou basculer dessus (Paramètres → Archive)",
+    "Nouveau : intégrer une archive sauvegardée – reprendre une sauvegarde ou l'archive de l'ancien PC, ou basculer dessus (Gestion → Archive)",
     "Les doublons sont détectés lors de la reprise ; la sauvegarde elle-même reste inchangée, y compris les archives chiffrées (mot de passe, clé de récupération ou fiche d'urgence)",
     "Plus rapide : « Uniquement les e-mails plus récents que … » laisse le serveur IMAP présélectionner – les grandes boîtes ne sont plus parcourues entièrement"
   ],
   "es": [
-    "Nuevo: inicio de sesión con una cuenta de Microsoft (Outlook.com, Hotmail, Microsoft 365) o de Google (Gmail), en el navegador y sin contraseña de aplicación",
+    "Nuevo: iniciar sesión en Gmail con la cuenta de Google, en el navegador y sin contraseña de aplicación",
+    "Nuevo: Administración → Inicio de sesión (OAuth) para sus propios ID de cliente de Google y Microsoft; así también funcionan Outlook.com, Hotmail y Microsoft 365. El inicio de sesión de Microsoft integrado llegará más adelante",
     "Si caduca un inicio de sesión de Microsoft o Google, MailVault lo notifica de inmediato por correo, con instrucciones para volver a iniciar sesión",
-    "Nuevo: integrar un archivo de copia de seguridad: incorporar una copia o el archivo del PC antiguo, o cambiar a él (Configuración → Archivo)",
+    "Nuevo: integrar un archivo de copia de seguridad: incorporar una copia o el archivo del PC antiguo, o cambiar a él (Administración → Archivo)",
     "Al incorporar se detectan los duplicados; la copia de seguridad no se modifica, incluidos los archivos cifrados con contraseña, clave de recuperación u hoja de emergencia",
     "Más rápido: «Solo correos más recientes que …» deja que el servidor IMAP preseleccione; los buzones grandes ya no se recorren por completo"
   ]

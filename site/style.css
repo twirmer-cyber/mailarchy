@@ -288,6 +288,37 @@ svg use { fill: none; stroke: currentColor; stroke-width: 1.5; stroke-linecap: r
 .steckbrief .klein { display: block; color: var(--ink-2); font-size: .875rem; margin-top: .2rem; }
 .steckbrief .pruef dd { font-family: var(--f-mono); font-size: .8rem; line-height: 1.5; word-break: break-all; }
 
+/* Anmeldung bei Gmail und Outlook */
+.anmeldung-innen { display: grid; grid-template-columns: minmax(0, 7fr) minmax(0, 5fr); gap: clamp(2rem, 5vw, 4.5rem); align-items: start; }
+.anmeldung-innen p { max-width: 62ch; }
+.anbieter div { grid-template-columns: minmax(0, 1fr); gap: .2rem; }
+.anbieter dt { color: var(--ink); font-weight: 600; font-size: 1rem; }
+.anbieter dd { color: var(--ink-2); font-size: .95rem; }
+
+/* Anleitungen */
+.anleitungen-lead { max-width: 62ch; margin-bottom: 1.5rem; }
+.anleitungen-liste { border-top: 1px solid var(--line-strong); }
+.anleitung { border-bottom: 1px solid var(--line); }
+.anleitung summary {
+  list-style: none; cursor: pointer; position: relative;
+  padding: 1.1rem 2.5rem 1.1rem 0; font-weight: 600; font-size: 1.15rem;
+}
+.anleitung summary::-webkit-details-marker { display: none; }
+.anleitung summary::after {
+  content: ""; position: absolute; right: .35rem; top: 1.4rem; width: .55rem; height: .55rem;
+  border-right: 1.5px solid var(--accent-ink); border-bottom: 1.5px solid var(--accent-ink);
+  transform: rotate(45deg); transition: transform 160ms ease-out;
+}
+.anleitung[open] summary::after { transform: translateY(.25rem) rotate(-135deg); }
+.anleitung summary:hover { color: var(--accent-ink); }
+.anleitung-inhalt { padding: .4rem 0 2rem; max-width: 56rem; }
+.anleitung-inhalt .schritte { margin-bottom: 1rem; }
+.anleitung-inhalt .hinweis { max-width: 62ch; }
+.anleitung-inhalt code { font-family: var(--f-mono); font-size: .85em; background: var(--shelf); border: 1px solid var(--line); border-radius: 3px; padding: .05rem .35rem; overflow-wrap: anywhere; }
+.anleitung-bild { margin: 1.25rem 0 1.5rem; }
+.anleitung-bild img { border-radius: 8px; box-shadow: none; }
+.bilder-reihe { display: grid; gap: 0; }
+
 /* Unterstützen */
 .unterstuetzen-innen { display: grid; grid-template-columns: minmax(0, 7fr) minmax(0, 5fr); gap: clamp(2rem, 5vw, 4.5rem); align-items: start; }
 .beleg { background: var(--surface); border: 1px solid var(--line-strong); border-radius: 12px; padding: 1.25rem 1.4rem .4rem; }
@@ -329,6 +360,7 @@ html:not(.js) .sprachen { display: none; }
 
 /* ------------------------------------------------------------ Schmal */
 @media (max-width: 960px) {
+  .anmeldung-innen { grid-template-columns: minmax(0, 1fr); }
   .schluss-innen, .buehne-unten, .offen-innen, .installation-innen, .unterstuetzen-innen, .fragen-innen, .recht { grid-template-columns: minmax(0, 1fr); }
   .laden { padding-bottom: 0; }
   .suche-innen { grid-template-columns: minmax(0, 1fr); grid-template-rows: none; }

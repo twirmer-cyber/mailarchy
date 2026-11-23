@@ -51,6 +51,7 @@
         <a href="#warum" data-i18n="nav_why">Warum ein Archiv?</a>
         <a href="#funktionen" data-i18n="nav_features">Funktionen</a>
         <a href="#installation" data-i18n="nav_install">Installation</a>
+        <a href="#anmeldung" data-i18n="nav_signin">Gmail &amp; Outlook</a>
         <a href="#mitmachen" data-i18n="nav_join">Mitmachen</a>
         <a href="#unterstuetzen" data-i18n="nav_support">Unterstützen</a>
       </nav>
@@ -202,7 +203,7 @@
       <div class="rahmen">
         <h2 id="funktionen-titel" data-i18n="features_title">Funktionen im Überblick</h2>
         <dl class="liste">
-          <div><dt data-i18n="f1_t">Alle üblichen Quellen</dt><dd data-i18n="f1_d">IMAP und POP3 (Gmail, GMX, WEB.DE, Outlook.com, T-Online …) mit automatischer Einrichtung, Outlook-Dateien (.pst/.ost) auch ohne installiertes Outlook, Thunderbird, EML- und MBOX-Dateien.</dd></div>
+          <div><dt data-i18n="f1_t">Alle üblichen Quellen</dt><dd data-i18n="f1_d">IMAP und POP3 (Gmail mit Google-Anmeldung, GMX, WEB.DE, T-Online …) mit automatischer Einrichtung, Outlook-Dateien (.pst/.ost) auch ohne installiertes Outlook, Thunderbird, EML- und MBOX-Dateien.</dd></div>
           <div><dt data-i18n="f2_t">Archiviert von selbst</dt><dd data-i18n="f2_d">Zeitplan pro Postfach, läuft im Infobereich mit, holt verpasste Termine nach und meldet sich per E-Mail, wenn etwas nicht klappt.</dd></div>
           <div><dt data-i18n="f3_t">Auf Wunsch verschlüsselt</dt><dd data-i18n="f3_d">Das ganze Archiv mit AES-256 geschützt – mit Ihrem Kennwort, dazu ein Wiederherstellungsschlüssel für den Notfall.</dd></div>
           <div><dt data-i18n="f4_t">Sicher anzeigen</dt><dd data-i18n="f4_d">Externe Bilder und Tracking-Pixel bleiben blockiert, Skripte laufen nie.</dd></div>
@@ -261,6 +262,136 @@
       </div>
     </section>
 
+    <!-- ============================================================ Anmeldung bei Gmail und Outlook -->
+    <section class="abschnitt ablage anmeldung" id="anmeldung" aria-labelledby="anmeldung-titel">
+      <div class="rahmen anmeldung-innen">
+        <div>
+          <h2 id="anmeldung-titel" data-i18n="signin_title">Gmail und Outlook: mit dem Konto anmelden statt mit Passwort</h2>
+          <p data-i18n-html="signin_p1">Gmail ist in der Download-Version schnell eingerichtet: Adresse eingeben, <b>Automatisch einrichten</b>, dann <b>Bei Google anmelden …</b>. Die Anmeldung läuft in Ihrem Browser direkt bei Google. MailVault bekommt nur die Erlaubnis, Ihre E-Mails zu lesen, und nie Ihr Kennwort.</p>
+          <p data-i18n="signin_p2">Diese Anmeldung heißt OAuth. Damit ein Programm sie nutzen darf, muss es beim E-Mail-Anbieter als App registriert sein und dessen Client-ID kennen. Die Download-Version von dieser Seite bringt die Registrierung für Google mit. Wer MailVault selbst aus dem Quelltext baut oder die Registrierung seiner Firma verwenden muss, trägt eigene Client-IDs unter Verwaltung → Anmeldung (OAuth) ein – die Anleitungen unten zeigen, wie das geht.</p>
+        </div>
+        <dl class="steckbrief anbieter">
+          <div><dt data-i18n="prov_gmail">Gmail, Google Workspace</dt><dd data-i18n="prov_gmail_v">Mit Google-Konto anmelden (in der Download-Version eingebaut) oder mit App-Passwort.</dd></div>
+          <div><dt data-i18n="prov_ms">Outlook.com, Hotmail, Microsoft 365</dt><dd data-i18n="prov_ms_v">Nur mit Microsoft-Konto: App-Passwörter nimmt Microsoft für fremde Mailprogramme seit September 2024 nicht mehr an. Die eingebaute Microsoft-Anmeldung folgt mit einem Update. Bis dahin eine eigene Client-ID eintragen oder die Outlook-Datendatei (.pst/.ost) einlesen.</dd></div>
+          <div><dt data-i18n="prov_other">GMX, WEB.DE, T-Online, iCloud, Yahoo …</dt><dd data-i18n="prov_other_v">Mit Kennwort bzw. App-Passwort; die Servereinstellungen ermittelt MailVault selbst. Bei GMX und WEB.DE muss der Zugriff per IMAP/POP3 im Postfach eingeschaltet sein.</dd></div>
+        </dl>
+      </div>
+    </section>
+
+    <!-- ============================================================ Anleitungen -->
+    <section class="abschnitt anleitungen" id="anleitungen" aria-labelledby="anleitungen-titel">
+      <div class="rahmen">
+        <h2 id="anleitungen-titel" data-i18n="guides_title">Anleitungen</h2>
+        <p class="hinweis anleitungen-lead" data-i18n="guides_lead">Für die Download-Version reicht meist die erste Anleitung. Die übrigen brauchen Sie nur ohne Google-Anmeldung, für eine selbst gebaute Version oder für Microsoft.</p>
+        <div class="anleitungen-liste">
+
+          <details class="anleitung" id="anleitung-gmail">
+            <summary data-i18n="g1_t">Gmail mit Google-Konto verbinden</summary>
+            <div class="anleitung-inhalt">
+              <ol class="schritte">
+                <li data-i18n-html="g1_s1">In MailVault <b>E-Mails archivieren</b> → <b>E-Mail-Server (IMAP)</b> wählen, die Gmail-Adresse eintragen und <b>Automatisch einrichten</b> klicken.</li>
+                <li data-i18n-html="g1_s2">Unter <b>Anmeldung</b> steht dann <b>Google-Konto (Gmail, Google Workspace)</b>. Auf <b>Bei Google anmelden …</b> klicken – der Browser öffnet sich.</li>
+                <li data-i18n-html="g1_s3">Konto wählen. Den Hinweis „Google hat diese App nicht überprüft“ mit <b>Erweitert → Weiter zu MailVault</b> bestätigen: Die Prüfung durch Google steht für MailVault noch aus.</li>
+                <li data-i18n-html="g1_s4"><b>Wichtig:</b> Auf der Seite mit den Berechtigungen das Häkchen bei <b>Gmail</b> setzen. Google wählt es nicht vor; ohne Häkchen gibt Google nur die Anmeldung frei, nicht die E-Mails.</li>
+                <li data-i18n-html="g1_s5">Zurück in MailVault: <b>Verbindung testen und Ordner laden</b>, Ordner wählen, speichern. Fertig.</li>
+              </ol>
+              <p class="hinweis" data-i18n="g1_note">Google beschreibt die Berechtigung als „lesen, schreiben, senden und endgültig löschen“, weil es für IMAP keine engere gibt. MailVault liest trotzdem nur – das sichern die öffentlichen Tests im Quelltext ab.</p>
+            </div>
+          </details>
+
+          <details class="anleitung" id="anleitung-app-passwort">
+            <summary data-i18n="g2_t">Gmail-App-Passwort anlegen</summary>
+            <div class="anleitung-inhalt">
+              <ol class="schritte">
+                <li data-i18n-html="g2_s1">Im Google-Konto die <b>Bestätigung in zwei Schritten</b> einschalten (Google-Konto → Sicherheit). Ohne sie gibt es keine App-Passwörter.</li>
+                <li data-i18n-html="g2_s2"><b>myaccount.google.com/apppasswords</b> öffnen, als App-Name <b>MailVault</b> eingeben und <b>Erstellen</b> klicken.</li>
+                <li data-i18n-html="g2_s3">Das angezeigte 16-stellige Passwort kopieren. Google zeigt es nur einmal an.</li>
+                <li data-i18n-html="g2_s4">In MailVault unter <b>Anmeldung</b> „Kennwort bzw. App-Passwort“ wählen und das App-Passwort als Kennwort einfügen.</li>
+              </ol>
+              <figure class="bild anleitung-bild">
+                <img src="bilder/schema-app-passwort.svg" width="880" height="420" loading="lazy"
+                     alt="Schema der Google-Seite App-Passwörter: App-Name MailVault, Erstellen, dann das angezeigte 16-stellige Passwort kopieren."
+                     data-i18n-attr="alt:g2_alt">
+                <figcaption data-i18n="g2_cap">Schema mit Demo-Werten; die Seite bei Google sieht ähnlich aus.</figcaption>
+              </figure>
+            </div>
+          </details>
+
+          <details class="anleitung" id="anleitung-google-client">
+            <summary data-i18n="g3_t">Eigene Google-Client-ID anlegen (selbst gebaute Version)</summary>
+            <div class="anleitung-inhalt">
+              <ol class="schritte">
+                <li data-i18n-html="g3_s1"><b>console.cloud.google.com</b> öffnen, ein neues Projekt „MailVault“ anlegen und unter <b>APIs &amp; Dienste → Bibliothek</b> die <b>Gmail API</b> aktivieren.</li>
+                <li data-i18n-html="g3_s2"><b>Google Auth Platform → Branding</b>: App-Name, Support-E-Mail und Links zu Startseite und Datenschutzerklärung eintragen.</li>
+                <li data-i18n-html="g3_s3"><b>Zielgruppe</b>: <i>Extern</i>. Für den Alltag <b>App veröffentlichen</b> („In Produktion“). Im Status „Test“ läuft die Anmeldung nach 7 Tagen ab.</li>
+                <li data-i18n-html="g3_s4"><b>Datenzugriff → Bereiche hinzufügen</b>: <code>https://mail.google.com/</code>, <code>openid</code> und <code>…/auth/userinfo.email</code>.</li>
+                <li data-i18n-html="g3_s5"><b>Clients → Client erstellen</b>, Anwendungstyp <b>Desktopanwendung</b>, <b>Erstellen</b>. Client-ID und Clientschlüssel kopieren und in MailVault eintragen (letzte Anleitung).</li>
+              </ol>
+              <div class="bilder-reihe">
+                <figure class="bild anleitung-bild">
+                  <img src="bilder/g-zielgruppe.png" width="1078" height="658" loading="lazy"
+                       alt="Google Auth Platform, Seite Zielgruppe: Veröffentlichungsstatus In Produktion, Nutzertyp Extern."
+                       data-i18n-attr="alt:g3_alt1">
+                  <figcaption data-i18n="g3_cap1">Zielgruppe: „In Produktion“, Nutzertyp „Extern“.</figcaption>
+                </figure>
+                <figure class="bild anleitung-bild">
+                  <img src="bilder/g-datenzugriff.png" width="1078" height="658" loading="lazy"
+                       alt="Google Auth Platform, Seite Datenzugriff: userinfo.email und openid, dazu der eingeschränkte Gmail-Bereich https://mail.google.com/."
+                       data-i18n-attr="alt:g3_alt2">
+                  <figcaption data-i18n="g3_cap2">Datenzugriff: drei Bereiche, darunter der Gmail-Bereich.</figcaption>
+                </figure>
+                <figure class="bild anleitung-bild">
+                  <img src="bilder/g-client-erstellen.png" width="914" height="519" loading="lazy"
+                       alt="Google Auth Platform, OAuth-Client-ID erstellen: Anwendungstyp Desktopanwendung, Name, Knopf Erstellen."
+                       data-i18n-attr="alt:g3_alt3">
+                  <figcaption data-i18n="g3_cap3">Client erstellen: Typ „Desktopanwendung“.</figcaption>
+                </figure>
+              </div>
+              <p class="hinweis" data-i18n="g3_note">Ohne Überprüfung durch Google können höchstens 100 Konten die Client-ID nutzen, und beim Anmelden erscheint ein Warnhinweis. Für den eigenen Haushalt reicht das.</p>
+            </div>
+          </details>
+
+          <details class="anleitung" id="anleitung-microsoft">
+            <summary data-i18n="g4_t">Eigene Microsoft-Client-ID anlegen (Outlook.com, Hotmail, Microsoft 365)</summary>
+            <div class="anleitung-inhalt">
+              <ol class="schritte">
+                <li data-i18n-html="g4_s1">Sie brauchen ein Microsoft-Entra-Verzeichnis: ein Microsoft-365-Firmenkonto oder ein kostenloses Azure-Konto. Azure verlangt dabei eine Kreditkarte zur Identitätsprüfung; die Registrierung selbst kostet nichts. Ein reines Outlook.com-Konto genügt nicht.</li>
+                <li data-i18n-html="g4_s2"><b>entra.microsoft.com</b> → <b>Anwendungen → App-Registrierungen → Neue Registrierung</b>. Name <b>MailVault</b>, Kontotyp <b>Konten in einem beliebigen Organisationsverzeichnis und persönliche Microsoft-Konten</b>.</li>
+                <li data-i18n-html="g4_s3">Umleitungs-URI: Plattform <b>Öffentlicher Client/nativ (mobil und Desktop)</b>, Wert <code>http://localhost</code> – ohne Port. Dann <b>Registrieren</b>.</li>
+                <li data-i18n-html="g4_s4">Unter <b>API-Berechtigungen → Microsoft Graph → Delegiert</b> hinzufügen: <code>IMAP.AccessAsUser.All</code>, <code>POP.AccessAsUser.All</code>, <code>offline_access</code>, <code>openid</code>, <code>email</code>, <code>profile</code>.</li>
+                <li data-i18n-html="g4_s5">Auf der Übersicht die <b>Anwendungs-ID (Client)</b> kopieren. Ein Geheimnis (Secret) wird nicht gebraucht.</li>
+              </ol>
+              <figure class="bild anleitung-bild">
+                <img src="bilder/schema-entra.svg" width="880" height="520" loading="lazy"
+                     alt="Schema der Microsoft-Entra-Registrierung: Name MailVault, Kontotyp mit persönlichen Microsoft-Konten, Umleitungs-URI http://localhost, danach die Anwendungs-ID kopieren."
+                     data-i18n-attr="alt:g4_alt">
+                <figcaption data-i18n="g4_cap">Schema mit Demo-Werten; die Felder heißen in Entra genauso.</figcaption>
+              </figure>
+              <p class="hinweis" data-i18n="g4_note">Bei Firmenkonten muss IMAP bzw. POP3 für das Postfach erlaubt sein, und der IT-Admin muss der App unter Umständen zustimmen.</p>
+            </div>
+          </details>
+
+          <details class="anleitung" id="anleitung-eintragen">
+            <summary data-i18n="g5_t">Client-IDs in MailVault eintragen</summary>
+            <div class="anleitung-inhalt">
+              <ol class="schritte">
+                <li data-i18n-html="g5_s1">In MailVault <b>Verwaltung → Anmeldung (OAuth)</b> öffnen.</li>
+                <li data-i18n-html="g5_s2">Bei Google Client-ID und Client-Secret eintragen, bei Microsoft nur die Client-ID. <b>Speichern</b>.</li>
+                <li data-i18n-html="g5_s3">Darüber zeigt MailVault, welche Client-ID gilt. Ein leeres Feld bedeutet: die eingebaute verwenden.</li>
+                <li data-i18n-html="g5_s4">Postfächer, die schon mit einer anderen Client-ID angemeldet waren, einmal neu anmelden (Profil öffnen → <b>Erneut … anmelden</b>). MailVault nennt sie nach dem Speichern.</li>
+              </ol>
+              <figure class="bild anleitung-bild">
+                <img src="bilder/mv-oauth-einstellungen.png" width="1280" height="820" loading="lazy"
+                     alt="MailVault, Verwaltung, Registerkarte Anmeldung (OAuth): Felder für Google-Client-ID und Client-Secret sowie Microsoft-Client-ID mit Statusanzeige."
+                     data-i18n-attr="alt:g5_alt">
+                <figcaption data-i18n="g5_cap">Verwaltung → Anmeldung (OAuth) in MailVault.</figcaption>
+              </figure>
+            </div>
+          </details>
+        </div>
+      </div>
+    </section>
+
     <!-- ============================================================ Unterstützen -->
     <section class="abschnitt ablage unterstuetzen" id="unterstuetzen" aria-labelledby="unterstuetzen-titel">
       <div class="rahmen unterstuetzen-innen">
@@ -289,7 +420,8 @@
           <details><summary data-i18n="q1">Braucht MailVault eine Internetverbindung?</summary><p data-i18n="a1">Nur zum Abholen von E-Mails aus Postfächern und für die Update-Suche (abschaltbar). Suchen, Lesen und Exportieren funktionieren komplett offline.</p></details>
           <details><summary data-i18n="q2">Wo liegen meine Daten?</summary><p data-i18n="a2">In einem Ordner Ihrer Wahl auf Ihrem PC – zum Sichern einfach den Ordner kopieren. Wer das ZIP mit einer Datei portable.txt neben MailVault.exe nutzt, hat alles im Programmordner, etwa auf einem USB-Stick.</p></details>
           <details><summary data-i18n="q7">Warum warnt Windows beim ersten Start?</summary><p data-i18n="a7">SmartScreen kennt Programme ohne gekauftes Signaturzertifikat noch nicht und warnt deshalb. Was im Setup steckt, können Sie im offenen Quelltext auf GitHub nachlesen. Updates prüft MailVault danach selbst anhand einer Signatur.</p></details>
-          <details><summary data-i18n="q3">Funktioniert Gmail mit Zwei-Faktor-Anmeldung?</summary><p data-i18n="a3">Ja, mit einem App-Passwort, das Sie in Ihrem Google-Konto erzeugen. MailVault erklärt das beim Einrichten.</p></details>
+          <details><summary data-i18n="q3">Funktioniert Gmail mit Zwei-Faktor-Anmeldung?</summary><p data-i18n="a3">Ja. Am einfachsten melden Sie sich in MailVault mit Ihrem Google-Konto an – dann braucht es kein Passwort in MailVault. Alternativ geht ein App-Passwort aus Ihrem Google-Konto. Beides steht oben in den Anleitungen.</p></details>
+          <details><summary data-i18n="q8">Und Outlook.com, Hotmail oder Microsoft 365?</summary><p data-i18n="a8">Microsoft lässt fremde Mailprogramme nur noch mit der Microsoft-Anmeldung (OAuth) zu, App-Passwörter funktionieren dort nicht mehr. Die eingebaute Microsoft-Anmeldung kommt mit einem Update. Bis dahin können Sie eine eigene Client-ID eintragen oder, wenn Outlook auf dem PC eingerichtet ist, dessen Datendatei (.pst/.ost) archivieren.</p></details>
           <details><summary data-i18n="q4">Gibt es MailVault für Mac oder Linux?</summary><p data-i18n="a4">Nein, MailVault läuft unter Windows 10 und 11. Der Webzugriff im Heimnetz funktioniert aber mit jedem Browser, auch auf Mac, iPhone und Android.</p></details>
           <details><summary data-i18n="q5">Was passiert mit meinen E-Mails beim KI-Assistenten?</summary><p data-i18n="a5">Nichts, solange Sie ihn nicht einschalten. Mit Ihrem eigenen Claude-Schlüssel gehen nur die Auszüge an Anthropic, die zur Beantwortung Ihrer Frage nötig sind – Sie sehen jede Quelle.</p></details>
           <details><summary data-i18n="q6">Wie entferne ich MailVault wieder?</summary><p data-i18n="a6">MailVault beenden, den Ordner %LOCALAPPDATA%\Programs\MailVault und die Verknüpfung im Startmenü löschen – fertig, Administratorrechte braucht es nicht. Ihr Archiv liegt getrennt davon und bleibt, bis Sie es selbst löschen.</p></details>
@@ -345,6 +477,8 @@
           <p>Diese Seite setzt keine Cookies und lädt nichts von fremden Servern; auch die Schriften liegen hier. Nur wenn Sie eine Sprache wählen, merkt sich Ihr Browser diese Wahl lokal (§ 25 Abs. 2 Nr. 2 TDDDG). Es gibt keine Zählpixel, keine Werbung und keine Reichweitenmessung.</p>
           <h3>Update-Suche des Programms</h3>
           <p>Ist die automatische Update-Suche eingeschaltet (Voreinstellung), ruft MailVault etwa alle vier Stunden die Update-Liste von dieser Seite ab. Dabei fallen dieselben Protokolldaten an wie oben, die Browserkennung enthält die Programmversion. Inhalte Ihres Archivs, Kennungen oder Konten werden nicht übertragen. Sie können die Suche unter Verwaltung → Updates abschalten.</p>
+          <h3>Anmeldung bei Google und Microsoft</h3>
+          <p>Melden Sie ein Postfach in MailVault mit Ihrem Google- oder Microsoft-Konto an, findet die Anmeldung in Ihrem Browser direkt beim jeweiligen Anbieter statt. MailVault erhält von dort ein Zugriffsrecht für Ihr Postfach und speichert es verschlüsselt (Windows-DPAPI) nur auf Ihrem PC. MailVault verwendet die Daten aus Ihrem Google- bzw. Microsoft-Konto ausschließlich, um Ihre E-Mails lesend in das Archiv auf Ihrem PC zu übernehmen. Sie werden nicht an den Anbieter dieser Seite übertragen und nicht für Werbung genutzt. An Dritte gelangen Inhalte nur, wenn Sie selbst den KI-Assistenten mit Ihrem eigenen Claude-Schlüssel einschalten und eine Frage stellen; dann gehen die dafür nötigen Auszüge direkt von Ihrem PC an Anthropic. Die Nutzung von Daten, die MailVault über Google-APIs erhält, entspricht der Google API Services User Data Policy einschließlich der Anforderungen zur eingeschränkten Nutzung (Limited Use). Den Zugriff können Sie jederzeit in Ihrem Google- bzw. Microsoft-Konto widerrufen oder in MailVault das Profil löschen.</p>
           <h3>E-Mail</h3>
           <p>Schreiben Sie an mailvault@zerze.de, wird Ihre Nachricht nur zur Beantwortung verwendet und gelöscht, wenn sie erledigt ist und keine Aufbewahrungspflicht besteht. Das Postfach liegt ebenfalls bei der netcup GmbH.</p>
           <h3>PayPal und GitHub</h3>
