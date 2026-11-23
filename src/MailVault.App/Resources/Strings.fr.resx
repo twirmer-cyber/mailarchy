@@ -836,4 +836,118 @@ Seul, il est inutile ; avec le mot de passe ou la clé de récupération, il ouv
   <data name="Help_Backup" xml:space="preserve">
     <value>Sauvegardez toujours tout le dossier de l'archive – archive.db avec archive.keys.json et archive.keys.json.backup. Une sauvegarde sans fichier de clés est inutile, et une sauvegarde chiffrée reste chiffrée : vous pouvez la mettre sans crainte sur un disque externe ou dans le cloud, tant que la fiche d'urgence n'est pas à côté.</value>
   </data>
+  <data name="Profile_AuthLabel" xml:space="preserve">
+    <value>Connexion :</value>
+  </data>
+  <data name="Profile_AuthName" xml:space="preserve">
+    <value>Méthode de connexion</value>
+  </data>
+  <data name="Profile_AuthPassword" xml:space="preserve">
+    <value>Mot de passe ou mot de passe d'application</value>
+  </data>
+  <data name="Profile_AuthMicrosoft" xml:space="preserve">
+    <value>Compte Microsoft (Outlook.com, Hotmail, Microsoft 365)</value>
+  </data>
+  <data name="Profile_AuthGoogle" xml:space="preserve">
+    <value>Compte Google (Gmail, Google Workspace)</value>
+  </data>
+  <data name="Profile_SignInWith" xml:space="preserve">
+    <value>Se connecter avec {0} …</value>
+  </data>
+  <data name="Profile_SignInAgain" xml:space="preserve">
+    <value>Se reconnecter avec {0} …</value>
+  </data>
+  <data name="Profile_SignedInAs" xml:space="preserve">
+    <value>Connecté en tant que {0}</value>
+  </data>
+  <data name="Profile_NotSignedIn" xml:space="preserve">
+    <value>La connexion s'ouvre dans votre navigateur. MailVault obtient uniquement l'accès aux e-mails, jamais votre mot de passe, et se contente de lire la boîte.</value>
+  </data>
+  <data name="Profile_SignInWaiting" xml:space="preserve">
+    <value>Navigateur ouvert – connectez-vous et autorisez l'accès …</value>
+  </data>
+  <data name="Profile_SignInCancelled" xml:space="preserve">
+    <value>Connexion annulée.</value>
+  </data>
+  <data name="Profile_SignInRequired" xml:space="preserve">
+    <value>Veuillez d'abord vous connecter avec {0}.</value>
+  </data>
+  <data name="Profile_OpenBrowserManually" xml:space="preserve">
+    <value>Impossible d'ouvrir le navigateur. Ouvrez cette adresse dans votre navigateur : {0}</value>
+  </data>
+  <data name="Settings_ImportArchive" xml:space="preserve">
+    <value>Intégrer une archive sauvegardée …</value>
+  </data>
+  <data name="Settings_ImportArchiveTip" xml:space="preserve">
+    <value>Reprendre une archive MailVault d'une sauvegarde ou d'un ancien PC, ou basculer dessus</value>
+  </data>
+  <data name="ImportArchive_Title" xml:space="preserve">
+    <value>Intégrer une archive sauvegardée</value>
+  </data>
+  <data name="ImportArchive_Header" xml:space="preserve">
+    <value>Intégrer une archive sauvegardée</value>
+  </data>
+  <data name="ImportArchive_Intro" xml:space="preserve">
+    <value>Par exemple la sauvegarde de votre ancien PC ou d'un disque externe. La sauvegarde elle-même n'est pas modifiée.</value>
+  </data>
+  <data name="ImportArchive_FolderLabel" xml:space="preserve">
+    <value>Dossier de la sauvegarde (contient archive.db)</value>
+  </data>
+  <data name="ImportArchive_PickFolder" xml:space="preserve">
+    <value>Choisir le dossier de l'archive sauvegardée</value>
+  </data>
+  <data name="ImportArchive_IsCurrent" xml:space="preserve">
+    <value>C'est l'archive actuellement ouverte.</value>
+  </data>
+  <data name="ImportArchive_FoundPlain" xml:space="preserve">
+    <value>Archive MailVault trouvée (non chiffrée).</value>
+  </data>
+  <data name="ImportArchive_FoundProtected" xml:space="preserve">
+    <value>Archive MailVault chiffrée trouvée. Son mot de passe ou sa clé de récupération est nécessaire pour la reprendre.</value>
+  </data>
+  <data name="ImportArchive_FoundKeyMissing" xml:space="preserve">
+    <value>Archive chiffrée, mais le fichier de clés est absent. Il vous faut la fiche d'urgence et la clé de récupération.</value>
+  </data>
+  <data name="ImportArchive_NotFound" xml:space="preserve">
+    <value>Ce dossier ne contient pas d'archive MailVault (archive.db est absent).</value>
+  </data>
+  <data name="ImportArchive_WhatHeader" xml:space="preserve">
+    <value>Que faire ?</value>
+  </data>
+  <data name="ImportArchive_Merge" xml:space="preserve">
+    <value>Reprendre dans l'archive actuelle</value>
+  </data>
+  <data name="ImportArchive_MergeHint" xml:space="preserve">
+    <value>Tous les e-mails sont ajoutés à votre archive actuelle avec leurs dossiers. Ce qui existe déjà est ignoré.</value>
+  </data>
+  <data name="ImportArchive_Switch" xml:space="preserve">
+    <value>Basculer sur cette archive</value>
+  </data>
+  <data name="ImportArchive_SwitchHint" xml:space="preserve">
+    <value>Après un redémarrage, MailVault utilise directement l'archive sauvegardée à son emplacement. L'archive précédente reste inchangée dans son ancien dossier.</value>
+  </data>
+  <data name="ImportArchive_AccessHeader" xml:space="preserve">
+    <value>Accès à la sauvegarde</value>
+  </data>
+  <data name="ImportArchive_PasswordLabel" xml:space="preserve">
+    <value>Mot de passe de l'archive sauvegardée</value>
+  </data>
+  <data name="ImportArchive_UseRecovery" xml:space="preserve">
+    <value>Mot de passe oublié ? Utiliser la clé de récupération</value>
+  </data>
+  <data name="ImportArchive_KeyFileMissing" xml:space="preserve">
+    <value>Le fichier de clés figure dans la fiche d'urgence que vous avez enregistrée ou imprimée lors de la mise en place du chiffrement.</value>
+  </data>
+  <data name="ImportArchive_Ok" xml:space="preserve">
+    <value>Reprendre</value>
+  </data>
+  <data name="ImportArchive_SwitchOk" xml:space="preserve">
+    <value>Basculer</value>
+  </data>
+  <data name="ImportArchive_RestartNow" xml:space="preserve">
+    <value>MailVault utilisera l'archive sauvegardée après un redémarrage. Redémarrer maintenant ?</value>
+  </data>
+  <data name="ImportArchive_RunTitle" xml:space="preserve">
+    <value>Reprise de l'archive sauvegardée</value>
+  </data>
 </root>

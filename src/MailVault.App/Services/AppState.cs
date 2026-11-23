@@ -28,6 +28,9 @@ public static class AppState
         Settings = settings;
         Archive = archive;
         Profiles = new ProfileStore(archive.DataDirectory);
+        // OAuth-Anmeldungen (Refresh-Tokens, DPAPI) liegen neben den Profilen im Datenordner.
+        MailVault.Core.OAuth.OAuthService.Current = new MailVault.Core.OAuth.OAuthService(new MailVault.Core.OAuth.OAuthTokenStore(archive.DataDirectory));
+        ArchiveImport.CleanupLeftovers(archive.DataDirectory);
         Profiles.Changed += NotifyProfilesChanged;
         Scheduler = new ArchiveScheduler(Profiles,
             (p, progress, ct) => ImportJob.RunAsync(Archive, p, progress, ct),

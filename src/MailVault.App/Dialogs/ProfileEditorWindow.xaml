@@ -38,7 +38,7 @@
                             <ColumnDefinition />
                         </Grid.ColumnDefinitions>
                         <Grid.RowDefinitions>
-                            <RowDefinition /><RowDefinition /><RowDefinition /><RowDefinition /><RowDefinition /><RowDefinition />
+                            <RowDefinition /><RowDefinition /><RowDefinition /><RowDefinition /><RowDefinition /><RowDefinition /><RowDefinition />
                         </Grid.RowDefinitions>
                         <TextBlock Style="{StaticResource FormLabel}" Text="{loc:T Profile_EmailLabel}" VerticalAlignment="Top" Margin="0,7,8,0" />
                         <StackPanel Grid.Column="1" Margin="0,3">
@@ -49,12 +49,22 @@
                             </DockPanel>
                             <TextBlock x:Name="AutoConfigText" AutomationProperties.LiveSetting="Polite" FontSize="12" TextWrapping="Wrap" Margin="0,4,0,0" Visibility="Collapsed" />
                         </StackPanel>
-                        <TextBlock Grid.Row="1" Style="{StaticResource FormLabel}" Text="{loc:T Common_PasswordLabel}" />
-                        <PasswordBox x:Name="PasswordBox" Grid.Row="1" Grid.Column="1" Margin="0,3" AutomationProperties.Name="{loc:T Common_Password}" />
-                        <TextBlock Grid.Row="2" Style="{StaticResource FormLabel}" Text="{loc:T Profile_ServerLabel}" />
-                        <TextBox x:Name="HostBox" Grid.Row="2" Grid.Column="1" Margin="0,3" AutomationProperties.Name="{loc:T Profile_Server}" />
-                        <TextBlock Grid.Row="3" Style="{StaticResource FormLabel}" Text="{loc:T Profile_SecurityLabel}" />
-                        <StackPanel Grid.Row="3" Grid.Column="1" Orientation="Horizontal" Margin="0,3">
+                        <TextBlock x:Name="AuthLabel" Grid.Row="1" Style="{StaticResource FormLabel}" Text="{loc:T Profile_AuthLabel}" />
+                        <ComboBox x:Name="AuthBox" Grid.Row="1" Grid.Column="1" Margin="0,3" AutomationProperties.Name="{loc:T Profile_AuthName}"
+                                  SelectionChanged="Auth_Changed" />
+                        <TextBlock x:Name="PasswordLabel" Grid.Row="2" Style="{StaticResource FormLabel}" Text="{loc:T Common_PasswordLabel}" />
+                        <PasswordBox x:Name="PasswordBox" Grid.Row="2" Grid.Column="1" Margin="0,3" AutomationProperties.Name="{loc:T Common_Password}" />
+                        <StackPanel x:Name="OAuthPanel" Grid.Row="2" Grid.Column="1" Margin="0,3" Visibility="Collapsed">
+                            <StackPanel Orientation="Horizontal">
+                                <Button x:Name="SignInButton" Style="{StaticResource PrimaryButton}" Click="SignIn_Click" />
+                                <Button x:Name="SignInCancelButton" Content="{loc:T Common_Cancel}" Click="SignInCancel_Click" Visibility="Collapsed" />
+                            </StackPanel>
+                            <TextBlock x:Name="OAuthStatus" AutomationProperties.LiveSetting="Polite" FontSize="12" TextWrapping="Wrap" Margin="0,6,0,0" />
+                        </StackPanel>
+                        <TextBlock Grid.Row="3" Style="{StaticResource FormLabel}" Text="{loc:T Profile_ServerLabel}" />
+                        <TextBox x:Name="HostBox" Grid.Row="3" Grid.Column="1" Margin="0,3" AutomationProperties.Name="{loc:T Profile_Server}" />
+                        <TextBlock Grid.Row="4" Style="{StaticResource FormLabel}" Text="{loc:T Profile_SecurityLabel}" />
+                        <StackPanel x:Name="SecurityPanel" Grid.Row="4" Grid.Column="1" Orientation="Horizontal" Margin="0,3">
                             <ComboBox x:Name="SecurityBox" MinWidth="220" SelectedIndex="0" AutomationProperties.Name="{loc:T Profile_Security}">
                                 <ComboBoxItem Content="{loc:T Profile_SecurityAuto}" />
                                 <ComboBoxItem Content="SSL/TLS" />
@@ -64,12 +74,12 @@
                             <TextBlock Text="{loc:T Profile_PortLabel}" VerticalAlignment="Center" Margin="12,0,6,0" />
                             <TextBox x:Name="PortBox" Width="60" ToolTip="{loc:T Profile_PortTip}" AutomationProperties.Name="{loc:T Profile_Port}" />
                         </StackPanel>
-                        <CheckBox x:Name="IgnoreCertBox" Grid.Row="4" Grid.Column="1" Content="{loc:T Profile_IgnoreCert}" />
-                        <StackPanel Grid.Row="5" Grid.Column="1" Orientation="Horizontal" Margin="0,8,0,0">
+                        <CheckBox x:Name="IgnoreCertBox" Grid.Row="5" Grid.Column="1" Content="{loc:T Profile_IgnoreCert}" />
+                        <StackPanel Grid.Row="6" Grid.Column="1" Orientation="Horizontal" Margin="0,8,0,0">
                             <Button x:Name="TestButton" Content="{loc:T Profile_Test}" Click="Test_Click" />
                         </StackPanel>
                     </Grid>
-                    <TextBlock Style="{StaticResource Muted}" Margin="0,8,0,0" FontSize="12"
+                    <TextBlock x:Name="AppPasswordHint" Style="{StaticResource Muted}" Margin="0,8,0,0" FontSize="12"
                                Text="{loc:T Profile_AppPasswordHint}" />
                 </StackPanel>
 

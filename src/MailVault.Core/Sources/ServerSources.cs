@@ -20,6 +20,20 @@ internal static class ServerHelpers
         _ => (p.Port > 0 ? p.Port : sslPort, p.Port == plainPort ? SecureSocketOptions.StartTlsWhenAvailable : SecureSocketOptions.Auto),
     };
 
+    /// <summary>
+    /// Anmeldung am Server: Kennwort (LOGIN/PLAIN) oder bei OAuth-Profilen XOAUTH2 mit einem frischen Zugriffstoken.
+    /// </summary>
+    public static async Task AuthenticateAsync(MailService client, ArchiveProfile p, CancellationToken ct)
+    {
+        if (p.AuthMethod == MailVault.Core.OAuth.MailAuth.Password)
+        {
+            await client.AuthenticateAsync(p.UserName, p.Password, ct);
+            return;
+        }
+        var token = await MailVault.Core.OAuth.OAuthService.Require().GetAccessTokenAsync(p, ct);
+        await client.AuthenticateAsync(new SaslMechanismOAuth2(p.UserName, token), ct);
+    }
+
     public static async Task<byte[]> ToBytesAsync(Stream s, CancellationToken ct)
     {
         using var ms = new MemoryStream();
@@ -43,7 +57,7 @@ public sealed class ImapSource : IMailSource
         if (_p.AcceptInvalidCertificates) _client.ServerCertificateValidationCallback = (_, _, _, _) => true;
         var (port, opts) = ServerHelpers.Resolve(_p, 993, 143);
         await _client.ConnectAsync(_p.Host, port, opts, ct);
-        await _client.AuthenticateAsync(_p.UserName, _p.Password, ct);
+        await ServerHelpers.AuthenticateAsync(_client, _p, ct);
     }
 
     async Task<List<IMailFolder>> GetAllFoldersAsync(CancellationToken ct)
@@ -135,7 +149,7 @@ public sealed class Pop3Source : IMailSource
         if (_p.AcceptInvalidCertificates) _client.ServerCertificateValidationCallback = (_, _, _, _) => true;
         var (port, opts) = ServerHelpers.Resolve(_p, 995, 110);
         await _client.ConnectAsync(_p.Host, port, opts, ct);
-        await _client.AuthenticateAsync(_p.UserName, _p.Password, ct);
+        await ServerHelpers.AuthenticateAsync(_client, _p, ct);
     }
 
     public Task<IReadOnlyList<IReadOnlyList<string>>> ListFoldersAsync(CancellationToken ct) =>

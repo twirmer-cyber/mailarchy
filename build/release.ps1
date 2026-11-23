@@ -59,6 +59,9 @@ $zipName = "MailVault-$Version-win-x64.zip"
 $zip = Join-Path $outDir $zipName
 
 if (-not $SiteOnly) {
+    if (-not (Test-Path (Join-Path $PSScriptRoot "oauth-clients.local.json"))) {
+        Write-Warning "build\oauth-clients.local.json fehlt - diese Version hat keine Microsoft-/Google-Anmeldung (siehe docs\OAUTH.md)."
+    }
     if (-not $SkipTests) {
         dotnet test (Join-Path $root "tests\MailVault.Tests") --nologo -v q
         if ($LASTEXITCODE -ne 0) { throw "Tests fehlgeschlagen - es wird nichts veroeffentlicht." }

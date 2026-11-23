@@ -53,6 +53,8 @@ public sealed class ArchiveProfile
     public string UserName { get; set; } = "";
     /// <summary>Per Windows-DPAPI (Benutzerkontext) verschlüsseltes Kennwort.</summary>
     public string? ProtectedPassword { get; set; }
+    /// <summary>Anmeldung mit Kennwort oder per OAuth (Microsoft/Google). Fehlt in alten profiles.json = Kennwort.</summary>
+    public MailVault.Core.OAuth.MailAuth AuthMethod { get; set; } = MailVault.Core.OAuth.MailAuth.Password;
     public bool AcceptInvalidCertificates { get; set; }
 
     // Dateien (EML-Ordner, MBOX, Thunderbird-Profilordner)

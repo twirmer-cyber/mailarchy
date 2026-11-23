@@ -836,4 +836,118 @@ Allein ist sie nutzlos; zusammen mit Kennwort oder Wiederherstellungsschlüssel 
   <data name="Help_Backup" xml:space="preserve">
     <value>Sichern Sie immer den ganzen Archivordner – archive.db zusammen mit archive.keys.json und archive.keys.json.backup. Eine Sicherung ohne Schlüsseldatei ist wertlos, und eine verschlüsselte Sicherung bleibt verschlüsselt: Sie können sie bedenkenlos auf eine externe Platte oder in die Cloud legen, solange das Notfallblatt nicht danebenliegt.</value>
   </data>
+  <data name="Profile_AuthLabel" xml:space="preserve">
+    <value>Anmeldung:</value>
+  </data>
+  <data name="Profile_AuthName" xml:space="preserve">
+    <value>Anmeldeverfahren</value>
+  </data>
+  <data name="Profile_AuthPassword" xml:space="preserve">
+    <value>Kennwort bzw. App-Passwort</value>
+  </data>
+  <data name="Profile_AuthMicrosoft" xml:space="preserve">
+    <value>Microsoft-Konto (Outlook.com, Hotmail, Microsoft 365)</value>
+  </data>
+  <data name="Profile_AuthGoogle" xml:space="preserve">
+    <value>Google-Konto (Gmail, Google Workspace)</value>
+  </data>
+  <data name="Profile_SignInWith" xml:space="preserve">
+    <value>Bei {0} anmelden …</value>
+  </data>
+  <data name="Profile_SignInAgain" xml:space="preserve">
+    <value>Erneut bei {0} anmelden …</value>
+  </data>
+  <data name="Profile_SignedInAs" xml:space="preserve">
+    <value>Angemeldet als {0}</value>
+  </data>
+  <data name="Profile_NotSignedIn" xml:space="preserve">
+    <value>Die Anmeldung öffnet sich in Ihrem Browser. MailVault bekommt dabei nur Zugriff auf die E-Mails, nie Ihr Kennwort, und liest das Postfach nur.</value>
+  </data>
+  <data name="Profile_SignInWaiting" xml:space="preserve">
+    <value>Browser geöffnet – bitte dort anmelden und den Zugriff erlauben …</value>
+  </data>
+  <data name="Profile_SignInCancelled" xml:space="preserve">
+    <value>Anmeldung abgebrochen.</value>
+  </data>
+  <data name="Profile_SignInRequired" xml:space="preserve">
+    <value>Bitte zuerst bei {0} anmelden.</value>
+  </data>
+  <data name="Profile_OpenBrowserManually" xml:space="preserve">
+    <value>Der Browser ließ sich nicht öffnen. Bitte diese Adresse im Browser aufrufen: {0}</value>
+  </data>
+  <data name="Settings_ImportArchive" xml:space="preserve">
+    <value>Gesichertes Archiv einbinden …</value>
+  </data>
+  <data name="Settings_ImportArchiveTip" xml:space="preserve">
+    <value>Ein MailVault-Archiv von einer Sicherung oder vom alten PC übernehmen oder darauf umstellen</value>
+  </data>
+  <data name="ImportArchive_Title" xml:space="preserve">
+    <value>Gesichertes Archiv einbinden</value>
+  </data>
+  <data name="ImportArchive_Header" xml:space="preserve">
+    <value>Gesichertes Archiv einbinden</value>
+  </data>
+  <data name="ImportArchive_Intro" xml:space="preserve">
+    <value>Zum Beispiel die Sicherung vom alten PC oder von einer externen Festplatte. Die Sicherung selbst wird dabei nicht verändert.</value>
+  </data>
+  <data name="ImportArchive_FolderLabel" xml:space="preserve">
+    <value>Ordner der Sicherung (enthält archive.db)</value>
+  </data>
+  <data name="ImportArchive_PickFolder" xml:space="preserve">
+    <value>Ordner des gesicherten Archivs wählen</value>
+  </data>
+  <data name="ImportArchive_IsCurrent" xml:space="preserve">
+    <value>Das ist das Archiv, das gerade geöffnet ist.</value>
+  </data>
+  <data name="ImportArchive_FoundPlain" xml:space="preserve">
+    <value>MailVault-Archiv gefunden (nicht verschlüsselt).</value>
+  </data>
+  <data name="ImportArchive_FoundProtected" xml:space="preserve">
+    <value>Verschlüsseltes MailVault-Archiv gefunden. Zum Übernehmen wird sein Kennwort oder Wiederherstellungsschlüssel gebraucht.</value>
+  </data>
+  <data name="ImportArchive_FoundKeyMissing" xml:space="preserve">
+    <value>Verschlüsseltes Archiv, aber die Schlüsseldatei fehlt. Sie brauchen das Notfallblatt und den Wiederherstellungsschlüssel.</value>
+  </data>
+  <data name="ImportArchive_NotFound" xml:space="preserve">
+    <value>In diesem Ordner liegt kein MailVault-Archiv (archive.db fehlt).</value>
+  </data>
+  <data name="ImportArchive_WhatHeader" xml:space="preserve">
+    <value>Was soll passieren?</value>
+  </data>
+  <data name="ImportArchive_Merge" xml:space="preserve">
+    <value>Ins aktuelle Archiv übernehmen</value>
+  </data>
+  <data name="ImportArchive_MergeHint" xml:space="preserve">
+    <value>Alle E-Mails kommen mit ihren Ordnern zu Ihrem jetzigen Archiv dazu. Was schon vorhanden ist, wird übersprungen.</value>
+  </data>
+  <data name="ImportArchive_Switch" xml:space="preserve">
+    <value>Auf dieses Archiv umstellen</value>
+  </data>
+  <data name="ImportArchive_SwitchHint" xml:space="preserve">
+    <value>MailVault verwendet nach einem Neustart das gesicherte Archiv direkt an seinem Ort. Das bisherige Archiv bleibt unverändert im alten Ordner.</value>
+  </data>
+  <data name="ImportArchive_AccessHeader" xml:space="preserve">
+    <value>Zugang zur Sicherung</value>
+  </data>
+  <data name="ImportArchive_PasswordLabel" xml:space="preserve">
+    <value>Kennwort des gesicherten Archivs</value>
+  </data>
+  <data name="ImportArchive_UseRecovery" xml:space="preserve">
+    <value>Kennwort vergessen? Wiederherstellungsschlüssel verwenden</value>
+  </data>
+  <data name="ImportArchive_KeyFileMissing" xml:space="preserve">
+    <value>Die Schlüsseldatei steckt im Notfallblatt, das Sie beim Einrichten der Verschlüsselung gespeichert oder gedruckt haben.</value>
+  </data>
+  <data name="ImportArchive_Ok" xml:space="preserve">
+    <value>Übernehmen</value>
+  </data>
+  <data name="ImportArchive_SwitchOk" xml:space="preserve">
+    <value>Umstellen</value>
+  </data>
+  <data name="ImportArchive_RestartNow" xml:space="preserve">
+    <value>MailVault verwendet das gesicherte Archiv nach einem Neustart. Jetzt neu starten?</value>
+  </data>
+  <data name="ImportArchive_RunTitle" xml:space="preserve">
+    <value>Gesichertes Archiv übernehmen</value>
+  </data>
 </root>

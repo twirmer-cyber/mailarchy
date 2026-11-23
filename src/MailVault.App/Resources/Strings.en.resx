@@ -836,4 +836,118 @@ On its own it is useless; together with the password or recovery key it opens th
   <data name="Help_Backup" xml:space="preserve">
     <value>Always back up the whole archive folder – archive.db together with archive.keys.json and archive.keys.json.backup. A backup without the key file is worthless, and an encrypted backup stays encrypted: you can safely put it on an external drive or in the cloud as long as the emergency sheet is not stored next to it.</value>
   </data>
+  <data name="Profile_AuthLabel" xml:space="preserve">
+    <value>Sign-in:</value>
+  </data>
+  <data name="Profile_AuthName" xml:space="preserve">
+    <value>Sign-in method</value>
+  </data>
+  <data name="Profile_AuthPassword" xml:space="preserve">
+    <value>Password or app password</value>
+  </data>
+  <data name="Profile_AuthMicrosoft" xml:space="preserve">
+    <value>Microsoft account (Outlook.com, Hotmail, Microsoft 365)</value>
+  </data>
+  <data name="Profile_AuthGoogle" xml:space="preserve">
+    <value>Google account (Gmail, Google Workspace)</value>
+  </data>
+  <data name="Profile_SignInWith" xml:space="preserve">
+    <value>Sign in with {0} …</value>
+  </data>
+  <data name="Profile_SignInAgain" xml:space="preserve">
+    <value>Sign in with {0} again …</value>
+  </data>
+  <data name="Profile_SignedInAs" xml:space="preserve">
+    <value>Signed in as {0}</value>
+  </data>
+  <data name="Profile_NotSignedIn" xml:space="preserve">
+    <value>Sign-in opens in your browser. MailVault only gets access to the emails, never your password, and only reads the mailbox.</value>
+  </data>
+  <data name="Profile_SignInWaiting" xml:space="preserve">
+    <value>Browser opened – please sign in there and allow access …</value>
+  </data>
+  <data name="Profile_SignInCancelled" xml:space="preserve">
+    <value>Sign-in cancelled.</value>
+  </data>
+  <data name="Profile_SignInRequired" xml:space="preserve">
+    <value>Please sign in with {0} first.</value>
+  </data>
+  <data name="Profile_OpenBrowserManually" xml:space="preserve">
+    <value>The browser could not be opened. Please open this address in your browser: {0}</value>
+  </data>
+  <data name="Settings_ImportArchive" xml:space="preserve">
+    <value>Add backed-up archive …</value>
+  </data>
+  <data name="Settings_ImportArchiveTip" xml:space="preserve">
+    <value>Take over a MailVault archive from a backup or an old PC, or switch to it</value>
+  </data>
+  <data name="ImportArchive_Title" xml:space="preserve">
+    <value>Add backed-up archive</value>
+  </data>
+  <data name="ImportArchive_Header" xml:space="preserve">
+    <value>Add a backed-up archive</value>
+  </data>
+  <data name="ImportArchive_Intro" xml:space="preserve">
+    <value>For example the backup from your old PC or an external drive. The backup itself is not changed.</value>
+  </data>
+  <data name="ImportArchive_FolderLabel" xml:space="preserve">
+    <value>Backup folder (contains archive.db)</value>
+  </data>
+  <data name="ImportArchive_PickFolder" xml:space="preserve">
+    <value>Choose the folder of the backed-up archive</value>
+  </data>
+  <data name="ImportArchive_IsCurrent" xml:space="preserve">
+    <value>This is the archive that is currently open.</value>
+  </data>
+  <data name="ImportArchive_FoundPlain" xml:space="preserve">
+    <value>MailVault archive found (not encrypted).</value>
+  </data>
+  <data name="ImportArchive_FoundProtected" xml:space="preserve">
+    <value>Encrypted MailVault archive found. Its password or recovery key is needed to take it over.</value>
+  </data>
+  <data name="ImportArchive_FoundKeyMissing" xml:space="preserve">
+    <value>Encrypted archive, but the key file is missing. You need the emergency sheet and the recovery key.</value>
+  </data>
+  <data name="ImportArchive_NotFound" xml:space="preserve">
+    <value>This folder does not contain a MailVault archive (archive.db is missing).</value>
+  </data>
+  <data name="ImportArchive_WhatHeader" xml:space="preserve">
+    <value>What should happen?</value>
+  </data>
+  <data name="ImportArchive_Merge" xml:space="preserve">
+    <value>Take over into the current archive</value>
+  </data>
+  <data name="ImportArchive_MergeHint" xml:space="preserve">
+    <value>All emails are added to your current archive with their folders. Anything already present is skipped.</value>
+  </data>
+  <data name="ImportArchive_Switch" xml:space="preserve">
+    <value>Switch to this archive</value>
+  </data>
+  <data name="ImportArchive_SwitchHint" xml:space="preserve">
+    <value>After a restart, MailVault uses the backed-up archive directly where it is. The previous archive stays unchanged in its old folder.</value>
+  </data>
+  <data name="ImportArchive_AccessHeader" xml:space="preserve">
+    <value>Access to the backup</value>
+  </data>
+  <data name="ImportArchive_PasswordLabel" xml:space="preserve">
+    <value>Password of the backed-up archive</value>
+  </data>
+  <data name="ImportArchive_UseRecovery" xml:space="preserve">
+    <value>Forgot the password? Use the recovery key</value>
+  </data>
+  <data name="ImportArchive_KeyFileMissing" xml:space="preserve">
+    <value>The key file is contained in the emergency sheet you saved or printed when setting up encryption.</value>
+  </data>
+  <data name="ImportArchive_Ok" xml:space="preserve">
+    <value>Take over</value>
+  </data>
+  <data name="ImportArchive_SwitchOk" xml:space="preserve">
+    <value>Switch</value>
+  </data>
+  <data name="ImportArchive_RestartNow" xml:space="preserve">
+    <value>MailVault will use the backed-up archive after a restart. Restart now?</value>
+  </data>
+  <data name="ImportArchive_RunTitle" xml:space="preserve">
+    <value>Taking over backed-up archive</value>
+  </data>
 </root>

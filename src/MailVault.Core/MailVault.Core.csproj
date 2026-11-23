@@ -17,6 +17,10 @@
     <PackageReference Include="XstReader.Api" Version="1.0.6" />
     <PackageReference Include="ZstdSharp.Port" Version="0.8.6" />
   </ItemGroup>
+  <!-- Client-IDs der OAuth-App-Registrierungen: nur lokal (von Git ignoriert), siehe docs/OAUTH.md -->
+  <ItemGroup Condition="Exists('$(MSBuildThisFileDirectory)..\..\build\oauth-clients.local.json')">
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)..\..\build\oauth-clients.local.json" LogicalName="MailVault.Core.oauth-clients.json" />
+  </ItemGroup>
   <ItemGroup>
     <InternalsVisibleTo Include="MailVault.Tests" />
   </ItemGroup>

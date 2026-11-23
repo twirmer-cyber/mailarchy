@@ -64,7 +64,9 @@ Läuft die eigene MailVault-Installation aus `bin\Debug`, sind die DLLs gesperrt
 | Einstellungen | `%APPDATA%\MailVault\settings.json` (portabel: neben der EXE) |
 | Archiv | frei wählbar, Standard `Dokumente\MailVault` (portabel: `Data\` neben der EXE) |
 | Archivdateien | `archive.db` (+ `-wal`/`-shm`), bei Schutz `archive.keys.json` + `archive.keys.json.backup` |
-| Profile, Web-Benutzer | `profiles.json`, `webusers.json` im Einstellungsordner (Kennwörter DPAPI bzw. PBKDF2) |
+| Profile, Web-Benutzer | `profiles.json`, `webusers.json` im Datenordner (Kennwörter DPAPI bzw. PBKDF2) |
+| OAuth-Anmeldungen | `oauth-tokens.json` im Datenordner (nur Refresh-Tokens, DPAPI) |
+| Arbeitskopie beim Archiv-Einbinden | `.einbinden-<id>\` im Datenordner – wird danach bzw. beim nächsten Start gelöscht |
 | Update-Zwischenstand, Sicherungen | `%LOCALAPPDATA%\MailVault\update\`, `…\backup\` |
 | Geöffnete Anhänge | `%TEMP%\MailVault\<guid>\` – wird beim Start und Beenden geleert |
 
@@ -118,6 +120,8 @@ Wiederherstellungsschlüssel ──PBKDF2 (gleich)──► KEK₂ ──AES-256
 | Geheimnis | Schutz |
 |---|---|
 | Postfach-Kennwörter, SMTP-Kennwort, KI-API-Schlüssel | Windows-DPAPI (`Secret`, `CurrentUser`, Zweck-Entropie `MailVault.<zweck>.v1`) |
+| OAuth-Refresh-Tokens (Microsoft/Google) | DPAPI (Zweck `OAuth`) in `oauth-tokens.json`; Zugriffstokens nur im Speicher. Anmeldung im Browser mit PKCE + state über Loopback – Details in [OAUTH.md](OAUTH.md) |
+| OAuth-Client-IDs des Herausgebers | `build/oauth-clients.local.json` (von Git ignoriert), beim Bauen eingebettet – siehe 4.3 |
 | Web-Benutzer | PBKDF2-SHA256-Hash mit Salz, Dummy-Hash gegen Zeitmessung, Anmeldebremse je IP/Benutzer |
 | Update-Signaturschlüssel | **nur beim Entwickler**, siehe 4.1 |
 
@@ -154,7 +158,7 @@ WebView2 ohne JavaScript, CSP blockiert externe Inhalte (Schalter „externe Inh
 - Host-Schlüssel wird beim Hochladen fest geprüft – ändert er sich unerwartet, bricht `pscp` ab (gewollt).
 
 ### 4.3 Was nie ins öffentliche Repository darf
-Signaturschlüssel, Server-IP/Benutzer/Kennwörter, `deploy.local.json`, echte E-Mails, Archive (`*.db`), `settings.json`, `profiles.json`,
+Signaturschlüssel, Server-IP/Benutzer/Kennwörter, `deploy.local.json`, `oauth-clients.local.json` (OAuth-Client-IDs/-Secret), echte E-Mails, Archive (`*.db`), `settings.json`, `profiles.json`,
 `webusers.json`, private E-Mail-Adressen in Commits. `.gitignore` deckt das ab; vor jedem Push trotzdem `git status` und `git diff --cached` ansehen.
 Commit-Autor fürs öffentliche Repository: `MailVault <mailvault@zerze.de>` (`git config user.email mailvault@zerze.de` im Repository).
 
@@ -162,7 +166,8 @@ Commit-Autor fürs öffentliche Repository: `MailVault <mailvault@zerze.de>` (`g
 
 ## 5. Veröffentlichen
 
-Voraussetzungen: .NET 8 SDK, PuTTY (`pscp`) oder OpenSSH, Signaturschlüssel, `build/deploy.local.json`.
+Voraussetzungen: .NET 8 SDK, PuTTY (`pscp`) oder OpenSSH, Signaturschlüssel, `build/deploy.local.json`,
+`build/oauth-clients.local.json` (sonst fehlt die Microsoft-/Google-Anmeldung, siehe [OAUTH.md](OAUTH.md)).
 
 1. Version in `Directory.Build.props` erhöhen.
 2. `build/notes/<version>.json` in vier Sprachen.

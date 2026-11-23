@@ -135,6 +135,7 @@ public partial class ArchiveViewModel : ObservableObject
         if ((p ?? SelectedProfile) is not { } profile) return;
         if (!Ui.Confirm(L.F("Archive_DeleteConfirm", profile.Name))) return;
         AppState.Profiles.Delete(profile.Id);
+        MailVault.Core.OAuth.OAuthService.Current?.Forget(profile.Id);
         AppState.NotifyProfilesChanged();
     }
 }
@@ -484,6 +485,28 @@ public partial class SettingsViewModel : ObservableObject
         AppState.Settings.DataDirectory = dlg.FolderName;
         AppState.Settings.Save();
         Ui.Info(L.T("Settings_LocationChanged"));
+    }
+
+    /// <summary>Gesichertes Archiv einbinden: übernehmen (zusammenführen) oder die Installation darauf umstellen.</summary>
+    [RelayCommand]
+    void ImportArchive()
+    {
+        var dlg = new ImportArchiveWindow(AppState.Archive.DataDirectory) { Owner = System.Windows.Application.Current.MainWindow };
+        if (dlg.ShowDialog() != true) return;
+        if (dlg.SwitchToArchive)
+        {
+            AppState.Settings.DataDirectory = dlg.SourceDirectory;
+            AppState.Settings.Save();
+            if (Ui.Confirm(L.T("ImportArchive_RestartNow"))) App.Current.Restart();
+            else Ui.Info(L.T("Settings_LocationChanged"));
+            return;
+        }
+        var dir = dlg.SourceDirectory;
+        var credentials = dlg.Credentials;
+        Ui.RunWithProgress(L.T("ImportArchive_RunTitle"), async (p, ct) =>
+            (await ArchiveImport.MergeAsync(AppState.Archive, dir, credentials, p, ct)).ToString());
+        AppState.NotifyArchiveChanged();
+        Refresh();
     }
 
     [RelayCommand]

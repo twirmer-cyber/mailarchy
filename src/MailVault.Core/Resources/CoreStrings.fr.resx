@@ -808,4 +808,76 @@ Cet e-mail a été envoyé automatiquement par MailVault Home.</value>
   <data name="Key_OtherArchive" xml:space="preserve">
     <value>La clé est correcte mais appartient à une autre archive. Choisissez la fiche d'urgence correspondante.</value>
   </data>
+  <data name="OAuth_NotConfigured" xml:space="preserve">
+    <value>La connexion avec {0} n'est pas configurée dans cette version de MailVault. Utilisez un mot de passe ou un mot de passe d'application.</value>
+  </data>
+  <data name="OAuth_Denied" xml:space="preserve">
+    <value>La connexion a été annulée dans le navigateur ou l'accès n'a pas été autorisé.</value>
+  </data>
+  <data name="OAuth_ProviderError" xml:space="preserve">
+    <value>Le fournisseur a refusé la connexion : {0}</value>
+  </data>
+  <data name="OAuth_StateMismatch" xml:space="preserve">
+    <value>La réponse du navigateur ne correspond pas à cette connexion et a été rejetée. Veuillez vous reconnecter.</value>
+  </data>
+  <data name="OAuth_NoCode" xml:space="preserve">
+    <value>Le navigateur n'a renvoyé aucun code de connexion. Veuillez vous reconnecter.</value>
+  </data>
+  <data name="OAuth_NoRefreshToken" xml:space="preserve">
+    <value>Le fournisseur n'a pas accordé la connexion durable nécessaire à l'archivage automatique. Reconnectez-vous et autorisez l'accès.</value>
+  </data>
+  <data name="OAuth_BrowserDone" xml:space="preserve">
+    <value>Connexion terminée. Vous pouvez fermer cette fenêtre et revenir à MailVault.</value>
+  </data>
+  <data name="OAuth_BrowserFailed" xml:space="preserve">
+    <value>La connexion a échoué : {0} Vous pouvez fermer cette fenêtre.</value>
+  </data>
+  <data name="OAuth_Network" xml:space="preserve">
+    <value>Le serveur de connexion est injoignable : {0}</value>
+  </data>
+  <data name="OAuth_Timeout" xml:space="preserve">
+    <value>Le serveur de connexion ne répond pas. Réessayez plus tard.</value>
+  </data>
+  <data name="OAuth_Reauth" xml:space="preserve">
+    <value>La connexion {0} a expiré ou a été révoquée (par exemple après un changement de mot de passe). Ouvrez le profil et reconnectez-vous.</value>
+  </data>
+  <data name="OAuth_SignInRequired" xml:space="preserve">
+    <value>Aucune connexion {0} n'est encore enregistrée pour ce profil (ou elle provient d'un autre PC). Ouvrez le profil et connectez-vous.</value>
+  </data>
+  <data name="OAuth_Unavailable" xml:space="preserve">
+    <value>La connexion OAuth n'est pas disponible pour le moment. Redémarrez MailVault.</value>
+  </data>
+  <data name="AutoCfg_Hint_MicrosoftOAuth" xml:space="preserve">
+    <value>Outlook.com, Hotmail et Microsoft 365 exigent une connexion Microsoft : sous « Connexion », choisissez « Compte Microsoft ».</value>
+  </data>
+  <data name="AutoCfg_Hint_GoogleOAuth" xml:space="preserve">
+    <value>Google : le plus simple est de choisir « Compte Google » sous « Connexion » – aucun mot de passe d'application n'est nécessaire.</value>
+  </data>
+  <data name="ArchiveImport_Opening" xml:space="preserve">
+    <value>Ouverture de l'archive sauvegardée …</value>
+  </data>
+  <data name="ArchiveImport_Found" xml:space="preserve">
+    <value>{0} e-mails dans l'archive sauvegardée</value>
+  </data>
+  <data name="ArchiveImport_FoundLog" xml:space="preserve">
+    <value>{0} e-mails trouvés dans {1}</value>
+  </data>
+  <data name="ArchiveImport_MessageError" xml:space="preserve">
+    <value>L'e-mail {0} n'a pas pu être repris : {1}</value>
+  </data>
+  <data name="ArchiveImport_Progress" xml:space="preserve">
+    <value>{0} repris, {1} déjà présents (sur {2})</value>
+  </data>
+  <data name="ArchiveImport_SameArchive" xml:space="preserve">
+    <value>Il s'agit du dossier de l'archive actuellement ouverte. Choisissez le dossier de la sauvegarde.</value>
+  </data>
+  <data name="ArchiveImport_NotAnArchive" xml:space="preserve">
+    <value>Ce dossier ne contient pas d'archive MailVault (archive.db est absent).</value>
+  </data>
+  <data name="ArchiveImport_NoSpace" xml:space="preserve">
+    <value>Espace disque insuffisant pour la copie de travail : environ {0} nécessaires, {1} libres.</value>
+  </data>
+  <data name="ArchiveImport_Copying" xml:space="preserve">
+    <value>Création d'une copie de travail de la sauvegarde ({0}) …</value>
+  </data>
 </root>

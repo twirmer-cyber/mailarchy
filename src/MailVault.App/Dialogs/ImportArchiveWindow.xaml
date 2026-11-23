@@ -1,0 +1,58 @@
+<Window x:Class="MailVault.App.Dialogs.ImportArchiveWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:loc="clr-namespace:MailVault.App.Localization"
+        Title="{loc:T ImportArchive_Title}" Width="560" SizeToContent="Height"
+        WindowStartupLocation="CenterOwner" ResizeMode="NoResize" Style="{StaticResource BaseWindow}">
+    <StackPanel Margin="24">
+        <TextBlock Style="{StaticResource H1}" Text="{loc:T ImportArchive_Header}" />
+        <TextBlock Style="{StaticResource Muted}" TextWrapping="Wrap" Margin="0,0,0,14" Text="{loc:T ImportArchive_Intro}" />
+
+        <TextBlock x:Name="FolderLabel" Text="{loc:T ImportArchive_FolderLabel}" />
+        <DockPanel Margin="0,2,0,0">
+            <Button DockPanel.Dock="Right" Content="{loc:T Common_Browse}" Margin="8,0,0,0" Click="Browse_Click" />
+            <TextBox x:Name="PathBox" IsReadOnly="True" AutomationProperties.LabeledBy="{Binding ElementName=FolderLabel}" />
+        </DockPanel>
+        <TextBlock x:Name="FolderStatus" AutomationProperties.LiveSetting="Polite" FontSize="12" TextWrapping="Wrap" Margin="0,6,0,0" />
+
+        <TextBlock Style="{StaticResource H2}" Text="{loc:T ImportArchive_WhatHeader}" />
+        <RadioButton x:Name="MergeRadio" GroupName="Mode" IsChecked="True" Checked="Mode_Changed" Margin="0,0,0,8">
+            <StackPanel>
+                <TextBlock FontWeight="SemiBold" Text="{loc:T ImportArchive_Merge}" />
+                <TextBlock Style="{StaticResource Muted}" FontSize="12" TextWrapping="Wrap" MaxWidth="470" Text="{loc:T ImportArchive_MergeHint}" />
+            </StackPanel>
+        </RadioButton>
+        <RadioButton x:Name="SwitchRadio" GroupName="Mode" Checked="Mode_Changed">
+            <StackPanel>
+                <TextBlock FontWeight="SemiBold" Text="{loc:T ImportArchive_Switch}" />
+                <TextBlock Style="{StaticResource Muted}" FontSize="12" TextWrapping="Wrap" MaxWidth="470" Text="{loc:T ImportArchive_SwitchHint}" />
+            </StackPanel>
+        </RadioButton>
+
+        <StackPanel x:Name="AccessPanel" Visibility="Collapsed">
+            <TextBlock Style="{StaticResource H2}" Text="{loc:T ImportArchive_AccessHeader}" />
+            <StackPanel x:Name="PasswordPanel">
+                <TextBlock x:Name="PasswordLabel" Text="{loc:T ImportArchive_PasswordLabel}" />
+                <PasswordBox x:Name="PasswordBox" Margin="0,2,0,0" AutomationProperties.LabeledBy="{Binding ElementName=PasswordLabel}" />
+                <TextBlock Margin="0,8,0,0">
+                    <Hyperlink Click="UseRecovery_Click"><Run Text="{loc:T ImportArchive_UseRecovery}" /></Hyperlink>
+                </TextBlock>
+            </StackPanel>
+            <StackPanel x:Name="RecoveryPanel" Visibility="Collapsed">
+                <StackPanel x:Name="SheetPanel" Visibility="Collapsed" Margin="0,0,0,10">
+                    <TextBlock Style="{StaticResource Muted}" FontSize="12" TextWrapping="Wrap" Margin="0,0,0,6" Text="{loc:T ImportArchive_KeyFileMissing}" />
+                    <Button Content="{loc:T Login_PickSheet}" HorizontalAlignment="Left" Click="PickSheet_Click" />
+                    <TextBlock x:Name="SheetStatus" Style="{StaticResource Muted}" FontSize="12" Margin="0,4,0,0" TextWrapping="Wrap" />
+                </StackPanel>
+                <TextBlock x:Name="RecoveryLabel" Text="{loc:T Common_RecoveryKeyLabel}" />
+                <TextBox x:Name="RecoveryBox" FontFamily="Consolas" Margin="0,2,0,0" AutomationProperties.LabeledBy="{Binding ElementName=RecoveryLabel}" />
+            </StackPanel>
+        </StackPanel>
+
+        <TextBlock x:Name="ErrorText" AutomationProperties.LiveSetting="Assertive" Foreground="{DynamicResource DangerBrush}" Margin="0,12,0,0" TextWrapping="Wrap" />
+        <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Margin="0,16,0,0">
+            <Button x:Name="OkButton" Content="{loc:T ImportArchive_Ok}" IsDefault="True" IsEnabled="False" Style="{StaticResource PrimaryButton}" Click="Ok_Click" />
+            <Button Content="{loc:T Common_Cancel}" IsCancel="True" Margin="0" />
+        </StackPanel>
+    </StackPanel>
+</Window>

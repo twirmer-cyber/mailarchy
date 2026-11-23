@@ -22,3 +22,7 @@ webusers.json
 # Zugangsdaten fuer die Veroeffentlichung (nur lokal)
 build/deploy.local.json
 *.local.json
+
+# OAuth-Client-IDs nie einchecken (siehe docs/OAUTH.md)
+oauth-clients.json
+oauth-clients.local.json

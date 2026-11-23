@@ -8,6 +8,8 @@ durchsuchbares Archiv übernehmen. Download und Informationen: <https://mailvaul
 | Funktion | Umsetzung |
 |---|---|
 | E-Mail-Server via IMAP/POP3 | `ImapSource` / `Pop3Source` (MailKit). Duplikatprüfung schon über die Kopfzeilen, ohne Download |
+| Anmeldung per OAuth | Outlook.com, Hotmail, Microsoft 365 und Gmail ohne App-Passwort: Anmeldung im Browser (PKCE, Loopback), danach IMAP/POP3 per XOAUTH2. Refresh-Token DPAPI-verschlüsselt im Datenordner. Einrichtung: [docs/OAUTH.md](docs/OAUTH.md) |
+| Gesichertes Archiv einbinden | Ein MailVault-Archiv von einer Sicherung oder vom alten PC übernehmen (mit Ordnern, Doppelte werden übersprungen, auch verschlüsselt mit Kennwort, Wiederherstellungsschlüssel oder Notfallblatt) oder die Installation darauf umstellen. Die Sicherung bleibt unverändert |
 | Automatische Einrichtung | `AutoConfig`: Anbieter-Konfiguration, Mozilla-Anbieterdatenbank (nur die Domain wird übertragen), MX- und SRV-Einträge, Verbindungstest. Hinweise auf App-Passwörter bzw. OAuth-Pflicht |
 | Mozilla Thunderbird | `ThunderbirdSource`: findet die Profile, liest MBOX-Ordner und `.sbd`-Unterordner, überspringt gelöschte Nachrichten |
 | Microsoft Outlook (PST/OST) | `OutlookPstSource` (XstReader.Api, MS-PL): liest .pst/.ost direkt, ohne Outlook. Übernimmt die originalen Internet-Kopfzeilen (Duplikate mit IMAP-Kopien werden erkannt), sonst Kopfzeilen aus den MAPI-Eigenschaften. HTML/Text/RTF, Anhänge, eingebettete Bilder, angehängte E-Mails, S/MIME. Kontakte, Termine, Aufgaben und Notizen werden übersprungen |
@@ -29,7 +31,7 @@ durchsuchbares Archiv übernehmen. Download und Informationen: <https://mailvaul
 | KI-Assistent (Claude) | `AiAssistant` + `AiArchiveTools`: Claude durchsucht das Archiv über lokale Werkzeuge (suchen, lesen, Kontaktstatistik, Verlauf, Zusammenhänge) und belegt Antworten mit anklickbaren E-Mails. Über 30 Beispiel-Fragen (`AiPromptLibrary`). Eigener API-Schlüssel (DPAPI-verschlüsselt), Modellwahl, Lesekontingent |
 | Wer kennt wen | `ContactNetwork`: Kontaktnetz aus Von/An/Cc, lokal berechnet, interaktive Grafik; optional Deutung der Gruppen durch Claude (nur Namen, Adressen, Zahlen) |
 
-Nicht im MVP enthalten: Microsoft 365/Exchange (online), Gmail-OAuth, Export nach Outlook und IMAP-Export.
+Anmeldung bei Outlook.com/Microsoft 365 und Gmail per OAuth (Browser-Anmeldung, ohne App-Passwort) – Einrichtung der App-Registrierungen in [docs/OAUTH.md](docs/OAUTH.md). Nicht enthalten: Exchange-Webdienste (EWS/Graph-Export), Export nach Outlook und IMAP-Export.
 
 ## Installieren und aktualisieren
 

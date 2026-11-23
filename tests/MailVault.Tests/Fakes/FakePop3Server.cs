@@ -18,6 +18,9 @@ public sealed class FakePop3Server : FakeServerBase
 
     public string UserName { get; set; } = "anna@example.org";
     public string Password { get; set; } = "Geheim#123";
+    /// <summary>Gesetzt: SASL XOAUTH2 anbieten und dieses Zugriffstoken annehmen.</summary>
+    public string? AccessToken { get; set; }
+    public int OAuthLogins { get; private set; }
 
     public FakePop3Server() => Start();
 
@@ -84,7 +87,7 @@ public sealed class FakePop3Server : FakeServerBase
             if (line is null) return;
             var parts = line.Split(' ', StringSplitOptions.RemoveEmptyEntries);
             var verb = parts.Length > 0 ? parts[0].ToUpperInvariant() : "";
-            Record(verb == "PASS" ? "PASS ****" : line, verb == "DELE");
+            Record(verb == "PASS" ? "PASS ****" : verb == "AUTH" && parts.Length > 2 ? $"AUTH {parts[1]} ****" : line, verb == "DELE");
 
             bool TryMsg(int argIndex, out int n, out Message m)
             {
@@ -100,6 +103,7 @@ public sealed class FakePop3Server : FakeServerBase
                 case "CAPA":
                     await Ok("Capability list follows");
                     foreach (var c in new[] { "TOP", "UIDL", "USER", "RESP-CODES" }) await io.WriteLineAsync(c, ct);
+                    if (AccessToken is not null) await io.WriteLineAsync("SASL XOAUTH2", ct);
                     await io.WriteLineAsync(".", ct);
                     continue;
                 case "QUIT":
@@ -120,6 +124,26 @@ public sealed class FakePop3Server : FakeServerBase
                         user = parts.Length > 1 ? line[5..] : "";
                         await Ok("Send password");
                         break;
+                    case "AUTH" when AccessToken is not null && parts.Length > 1 && parts[1].Equals("XOAUTH2", StringComparison.OrdinalIgnoreCase):
+                    {
+                        var b64 = parts.Length > 2 ? parts[2] : null;
+                        if (b64 is null)
+                        {
+                            await io.WriteLineAsync("+ ", ct);
+                            b64 = await io.ReadTextLineAsync(ct) ?? "*";
+                        }
+                        string decoded;
+                        try { decoded = Encoding.UTF8.GetString(Convert.FromBase64String(b64)); }
+                        catch (FormatException) { await Err("Invalid base64"); break; }
+                        if (decoded == $"user={UserName}auth=Bearer {AccessToken}")
+                        {
+                            OAuthLogins++;
+                            lock (_sync) drop = _messages.ToList();
+                            await Ok("Mailbox locked and ready");
+                        }
+                        else await Err("[AUTH] Invalid token");
+                        break;
+                    }
                     case "PASS":
                         var pass = line.Length > 5 ? line[5..] : "";
                         if (user == UserName && pass == Password)

@@ -808,4 +808,76 @@ This email was sent automatically by MailVault Home.</value>
   <data name="Key_OtherArchive" xml:space="preserve">
     <value>The key is correct but belongs to a different archive. Please choose the matching emergency sheet.</value>
   </data>
+  <data name="OAuth_NotConfigured" xml:space="preserve">
+    <value>Signing in with {0} is not set up in this MailVault version. Please use a password or app password.</value>
+  </data>
+  <data name="OAuth_Denied" xml:space="preserve">
+    <value>Sign-in was cancelled in the browser or access was not granted.</value>
+  </data>
+  <data name="OAuth_ProviderError" xml:space="preserve">
+    <value>The provider rejected the sign-in: {0}</value>
+  </data>
+  <data name="OAuth_StateMismatch" xml:space="preserve">
+    <value>The browser response does not match this sign-in and was discarded. Please sign in again.</value>
+  </data>
+  <data name="OAuth_NoCode" xml:space="preserve">
+    <value>The browser did not return a sign-in code. Please sign in again.</value>
+  </data>
+  <data name="OAuth_NoRefreshToken" xml:space="preserve">
+    <value>The provider did not grant the lasting sign-in needed for automatic archiving. Please sign in again and allow access.</value>
+  </data>
+  <data name="OAuth_BrowserDone" xml:space="preserve">
+    <value>Sign-in complete. You can close this window and return to MailVault.</value>
+  </data>
+  <data name="OAuth_BrowserFailed" xml:space="preserve">
+    <value>Sign-in did not succeed: {0} You can close this window.</value>
+  </data>
+  <data name="OAuth_Network" xml:space="preserve">
+    <value>The sign-in server cannot be reached: {0}</value>
+  </data>
+  <data name="OAuth_Timeout" xml:space="preserve">
+    <value>The sign-in server is not responding. Please try again later.</value>
+  </data>
+  <data name="OAuth_Reauth" xml:space="preserve">
+    <value>The {0} sign-in has expired or was revoked (for example after a password change). Please open the profile and sign in again.</value>
+  </data>
+  <data name="OAuth_SignInRequired" xml:space="preserve">
+    <value>No {0} sign-in is stored for this profile yet (or it comes from another PC). Please open the profile and sign in.</value>
+  </data>
+  <data name="OAuth_Unavailable" xml:space="preserve">
+    <value>OAuth sign-in is currently unavailable. Please restart MailVault.</value>
+  </data>
+  <data name="AutoCfg_Hint_MicrosoftOAuth" xml:space="preserve">
+    <value>Outlook.com, Hotmail and Microsoft 365 require signing in with Microsoft: under “Sign-in”, choose “Microsoft account”.</value>
+  </data>
+  <data name="AutoCfg_Hint_GoogleOAuth" xml:space="preserve">
+    <value>Google: the easiest way is to choose “Google account” under “Sign-in” – no app password needed.</value>
+  </data>
+  <data name="ArchiveImport_Opening" xml:space="preserve">
+    <value>Opening the backed-up archive …</value>
+  </data>
+  <data name="ArchiveImport_Found" xml:space="preserve">
+    <value>{0} emails in the backed-up archive</value>
+  </data>
+  <data name="ArchiveImport_FoundLog" xml:space="preserve">
+    <value>Found {0} emails in {1}</value>
+  </data>
+  <data name="ArchiveImport_MessageError" xml:space="preserve">
+    <value>Email {0} could not be transferred: {1}</value>
+  </data>
+  <data name="ArchiveImport_Progress" xml:space="preserve">
+    <value>{0} transferred, {1} already present (of {2})</value>
+  </data>
+  <data name="ArchiveImport_SameArchive" xml:space="preserve">
+    <value>This is the folder of the archive that is currently open. Please choose the folder of the backup.</value>
+  </data>
+  <data name="ArchiveImport_NotAnArchive" xml:space="preserve">
+    <value>This folder does not contain a MailVault archive (archive.db is missing).</value>
+  </data>
+  <data name="ArchiveImport_NoSpace" xml:space="preserve">
+    <value>Not enough free disk space for the working copy: about {0} needed, {1} free.</value>
+  </data>
+  <data name="ArchiveImport_Copying" xml:space="preserve">
+    <value>Creating a working copy of the backup ({0}) …</value>
+  </data>
 </root>

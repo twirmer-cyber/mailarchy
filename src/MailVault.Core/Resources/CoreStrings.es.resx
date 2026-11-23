@@ -808,4 +808,76 @@ Este correo lo ha enviado automáticamente MailVault Home.</value>
   <data name="Key_OtherArchive" xml:space="preserve">
     <value>La clave es correcta pero pertenece a otro archivo. Elija la hoja de emergencia correspondiente.</value>
   </data>
+  <data name="OAuth_NotConfigured" xml:space="preserve">
+    <value>El inicio de sesión con {0} no está configurado en esta versión de MailVault. Use una contraseña o una contraseña de aplicación.</value>
+  </data>
+  <data name="OAuth_Denied" xml:space="preserve">
+    <value>El inicio de sesión se canceló en el navegador o no se concedió el acceso.</value>
+  </data>
+  <data name="OAuth_ProviderError" xml:space="preserve">
+    <value>El proveedor rechazó el inicio de sesión: {0}</value>
+  </data>
+  <data name="OAuth_StateMismatch" xml:space="preserve">
+    <value>La respuesta del navegador no corresponde a este inicio de sesión y se descartó. Vuelva a iniciar sesión.</value>
+  </data>
+  <data name="OAuth_NoCode" xml:space="preserve">
+    <value>El navegador no devolvió ningún código de inicio de sesión. Vuelva a iniciar sesión.</value>
+  </data>
+  <data name="OAuth_NoRefreshToken" xml:space="preserve">
+    <value>El proveedor no concedió el inicio de sesión permanente necesario para el archivado automático. Vuelva a iniciar sesión y permita el acceso.</value>
+  </data>
+  <data name="OAuth_BrowserDone" xml:space="preserve">
+    <value>Inicio de sesión completado. Puede cerrar esta ventana y volver a MailVault.</value>
+  </data>
+  <data name="OAuth_BrowserFailed" xml:space="preserve">
+    <value>El inicio de sesión no se completó: {0} Puede cerrar esta ventana.</value>
+  </data>
+  <data name="OAuth_Network" xml:space="preserve">
+    <value>No se puede acceder al servidor de inicio de sesión: {0}</value>
+  </data>
+  <data name="OAuth_Timeout" xml:space="preserve">
+    <value>El servidor de inicio de sesión no responde. Inténtelo más tarde.</value>
+  </data>
+  <data name="OAuth_Reauth" xml:space="preserve">
+    <value>El inicio de sesión de {0} ha caducado o se revocó (por ejemplo, tras cambiar la contraseña). Abra el perfil y vuelva a iniciar sesión.</value>
+  </data>
+  <data name="OAuth_SignInRequired" xml:space="preserve">
+    <value>Todavía no hay ningún inicio de sesión de {0} guardado para este perfil (o procede de otro PC). Abra el perfil e inicie sesión.</value>
+  </data>
+  <data name="OAuth_Unavailable" xml:space="preserve">
+    <value>El inicio de sesión OAuth no está disponible en este momento. Reinicie MailVault.</value>
+  </data>
+  <data name="AutoCfg_Hint_MicrosoftOAuth" xml:space="preserve">
+    <value>Outlook.com, Hotmail y Microsoft 365 requieren iniciar sesión con Microsoft: en «Inicio de sesión», elija «Cuenta de Microsoft».</value>
+  </data>
+  <data name="AutoCfg_Hint_GoogleOAuth" xml:space="preserve">
+    <value>Google: lo más sencillo es elegir «Cuenta de Google» en «Inicio de sesión»; así no hace falta una contraseña de aplicación.</value>
+  </data>
+  <data name="ArchiveImport_Opening" xml:space="preserve">
+    <value>Abriendo el archivo de la copia de seguridad …</value>
+  </data>
+  <data name="ArchiveImport_Found" xml:space="preserve">
+    <value>{0} correos en el archivo de la copia de seguridad</value>
+  </data>
+  <data name="ArchiveImport_FoundLog" xml:space="preserve">
+    <value>Se encontraron {0} correos en {1}</value>
+  </data>
+  <data name="ArchiveImport_MessageError" xml:space="preserve">
+    <value>No se pudo transferir el correo {0}: {1}</value>
+  </data>
+  <data name="ArchiveImport_Progress" xml:space="preserve">
+    <value>{0} transferidos, {1} ya existentes (de {2})</value>
+  </data>
+  <data name="ArchiveImport_SameArchive" xml:space="preserve">
+    <value>Esta es la carpeta del archivo que está abierto ahora. Elija la carpeta de la copia de seguridad.</value>
+  </data>
+  <data name="ArchiveImport_NotAnArchive" xml:space="preserve">
+    <value>Esta carpeta no contiene un archivo de MailVault (falta archive.db).</value>
+  </data>
+  <data name="ArchiveImport_NoSpace" xml:space="preserve">
+    <value>No hay espacio libre suficiente para la copia de trabajo: se necesitan unos {0}, hay {1} libres.</value>
+  </data>
+  <data name="ArchiveImport_Copying" xml:space="preserve">
+    <value>Creando una copia de trabajo de la copia de seguridad ({0}) …</value>
+  </data>
 </root>

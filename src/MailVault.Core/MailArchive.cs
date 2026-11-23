@@ -168,6 +168,46 @@ public sealed class MailArchive : IDisposable
     }
 
     /// <summary>
+    /// Öffnet eine Arbeitskopie eines anderen Archivs zum Übernehmen (<see cref="ArchiveImport"/>): mit Kennwort,
+    /// Wiederherstellungsschlüssel oder Notfallblatt-Schlüsseldatei. Anders als <see cref="OpenWithRecoveryKey"/> wird dabei
+    /// kein neues Kennwort gesetzt – die Kopie wird nach dem Übernehmen ohnehin gelöscht.
+    /// </summary>
+    /// <exception cref="CryptographicException">Kennwort/Schlüssel falsch oder Schlüsseldatei gehört zu einem anderen Archiv.</exception>
+    internal static MailArchive OpenCopyForImport(string dir, string? password, string? recoveryKey, KeyVault.KeyFile? sheetKeyFile)
+    {
+        string? dbKey = null;
+        if (sheetKeyFile is not null)
+        {
+            if (string.IsNullOrWhiteSpace(recoveryKey)) throw new CryptographicException(CoreText.T("Archive_PasswordRequired"));
+            dbKey = KeyVault.UnlockWithRecoveryKey(sheetKeyFile, recoveryKey);
+        }
+        else if (IsProtectedArchive(dir))
+        {
+            var kf = KeyVault.Load(Path.Combine(dir, KeyFileName));
+            dbKey = !string.IsNullOrWhiteSpace(recoveryKey) ? KeyVault.UnlockWithRecoveryKey(kf, recoveryKey)
+                  : password is { Length: > 0 } ? KeyVault.UnlockWithPassword(kf, password)
+                  : throw new CryptographicException(CoreText.T("Archive_PasswordRequired"));
+        }
+        else if (IsKeyFileMissing(dir)) throw new KeyFileMissingException(CoreText.T("Key_Missing"));
+        try { return new MailArchive(dir, dbKey); }
+        catch (SqliteException ex) when (dbKey is not null) { throw new CryptographicException(CoreText.T("Key_OtherArchive"), ex); }
+    }
+
+    /// <summary>Alle Nachrichten mit Ordner und Kopfzeilen-Prüfsumme (Grundlage der Duplikaterkennung), nach Ordner sortiert.</summary>
+    internal List<(long Id, long FolderId, string Hash)> ListMessageHashes()
+    {
+        lock (_sync)
+        {
+            var list = new List<(long, long, string)>();
+            using var cmd = _cn.CreateCommand();
+            cmd.CommandText = "SELECT id, folder_id, header_hash FROM messages ORDER BY folder_id, date_utc, id";
+            using var r = cmd.ExecuteReader();
+            while (r.Read()) list.Add((r.GetInt64(0), r.GetInt64(1), r.GetString(2)));
+            return list;
+        }
+    }
+
+    /// <summary>
     /// Verschlüsselung über SQLite3 Multiple Ciphers im SQLCipher-4-kompatiblen Modus (AES-256, PBKDF2-HMAC-SHA512,
     /// HMAC je Seite). Damit bleiben Archive lesbar, die mit früheren Versionen (SQLCipher) verschlüsselt wurden.
     /// </summary>

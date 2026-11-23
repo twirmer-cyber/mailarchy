@@ -836,4 +836,118 @@ Por sí solo no sirve; junto con la contraseña o la clave de recuperación abre
   <data name="Help_Backup" xml:space="preserve">
     <value>Copie siempre la carpeta completa del archivo: archive.db junto con archive.keys.json y archive.keys.json.backup. Una copia sin archivo de claves no sirve, y una copia cifrada sigue cifrada: puede llevarla sin problema a un disco externo o a la nube mientras la hoja de emergencia no esté al lado.</value>
   </data>
+  <data name="Profile_AuthLabel" xml:space="preserve">
+    <value>Inicio de sesión:</value>
+  </data>
+  <data name="Profile_AuthName" xml:space="preserve">
+    <value>Método de inicio de sesión</value>
+  </data>
+  <data name="Profile_AuthPassword" xml:space="preserve">
+    <value>Contraseña o contraseña de aplicación</value>
+  </data>
+  <data name="Profile_AuthMicrosoft" xml:space="preserve">
+    <value>Cuenta de Microsoft (Outlook.com, Hotmail, Microsoft 365)</value>
+  </data>
+  <data name="Profile_AuthGoogle" xml:space="preserve">
+    <value>Cuenta de Google (Gmail, Google Workspace)</value>
+  </data>
+  <data name="Profile_SignInWith" xml:space="preserve">
+    <value>Iniciar sesión con {0} …</value>
+  </data>
+  <data name="Profile_SignInAgain" xml:space="preserve">
+    <value>Volver a iniciar sesión con {0} …</value>
+  </data>
+  <data name="Profile_SignedInAs" xml:space="preserve">
+    <value>Sesión iniciada como {0}</value>
+  </data>
+  <data name="Profile_NotSignedIn" xml:space="preserve">
+    <value>El inicio de sesión se abre en su navegador. MailVault solo obtiene acceso a los correos, nunca a su contraseña, y solo lee el buzón.</value>
+  </data>
+  <data name="Profile_SignInWaiting" xml:space="preserve">
+    <value>Navegador abierto: inicie sesión allí y permita el acceso …</value>
+  </data>
+  <data name="Profile_SignInCancelled" xml:space="preserve">
+    <value>Inicio de sesión cancelado.</value>
+  </data>
+  <data name="Profile_SignInRequired" xml:space="preserve">
+    <value>Inicie sesión primero con {0}.</value>
+  </data>
+  <data name="Profile_OpenBrowserManually" xml:space="preserve">
+    <value>No se pudo abrir el navegador. Abra esta dirección en su navegador: {0}</value>
+  </data>
+  <data name="Settings_ImportArchive" xml:space="preserve">
+    <value>Integrar archivo de copia de seguridad …</value>
+  </data>
+  <data name="Settings_ImportArchiveTip" xml:space="preserve">
+    <value>Incorporar un archivo de MailVault de una copia de seguridad o de un PC antiguo, o cambiar a él</value>
+  </data>
+  <data name="ImportArchive_Title" xml:space="preserve">
+    <value>Integrar archivo de copia de seguridad</value>
+  </data>
+  <data name="ImportArchive_Header" xml:space="preserve">
+    <value>Integrar un archivo de copia de seguridad</value>
+  </data>
+  <data name="ImportArchive_Intro" xml:space="preserve">
+    <value>Por ejemplo, la copia de seguridad de su PC antiguo o de un disco externo. La copia en sí no se modifica.</value>
+  </data>
+  <data name="ImportArchive_FolderLabel" xml:space="preserve">
+    <value>Carpeta de la copia de seguridad (contiene archive.db)</value>
+  </data>
+  <data name="ImportArchive_PickFolder" xml:space="preserve">
+    <value>Elegir la carpeta del archivo de copia de seguridad</value>
+  </data>
+  <data name="ImportArchive_IsCurrent" xml:space="preserve">
+    <value>Este es el archivo que está abierto ahora.</value>
+  </data>
+  <data name="ImportArchive_FoundPlain" xml:space="preserve">
+    <value>Archivo de MailVault encontrado (sin cifrar).</value>
+  </data>
+  <data name="ImportArchive_FoundProtected" xml:space="preserve">
+    <value>Archivo de MailVault cifrado encontrado. Para incorporarlo se necesita su contraseña o clave de recuperación.</value>
+  </data>
+  <data name="ImportArchive_FoundKeyMissing" xml:space="preserve">
+    <value>Archivo cifrado, pero falta el archivo de claves. Necesita la hoja de emergencia y la clave de recuperación.</value>
+  </data>
+  <data name="ImportArchive_NotFound" xml:space="preserve">
+    <value>Esta carpeta no contiene un archivo de MailVault (falta archive.db).</value>
+  </data>
+  <data name="ImportArchive_WhatHeader" xml:space="preserve">
+    <value>¿Qué debe ocurrir?</value>
+  </data>
+  <data name="ImportArchive_Merge" xml:space="preserve">
+    <value>Incorporar al archivo actual</value>
+  </data>
+  <data name="ImportArchive_MergeHint" xml:space="preserve">
+    <value>Todos los correos se añaden a su archivo actual con sus carpetas. Lo que ya existe se omite.</value>
+  </data>
+  <data name="ImportArchive_Switch" xml:space="preserve">
+    <value>Cambiar a este archivo</value>
+  </data>
+  <data name="ImportArchive_SwitchHint" xml:space="preserve">
+    <value>Tras reiniciar, MailVault usa directamente el archivo de la copia de seguridad en su ubicación. El archivo anterior permanece sin cambios en su carpeta.</value>
+  </data>
+  <data name="ImportArchive_AccessHeader" xml:space="preserve">
+    <value>Acceso a la copia de seguridad</value>
+  </data>
+  <data name="ImportArchive_PasswordLabel" xml:space="preserve">
+    <value>Contraseña del archivo de copia de seguridad</value>
+  </data>
+  <data name="ImportArchive_UseRecovery" xml:space="preserve">
+    <value>¿Olvidó la contraseña? Usar la clave de recuperación</value>
+  </data>
+  <data name="ImportArchive_KeyFileMissing" xml:space="preserve">
+    <value>El archivo de claves está en la hoja de emergencia que guardó o imprimió al configurar el cifrado.</value>
+  </data>
+  <data name="ImportArchive_Ok" xml:space="preserve">
+    <value>Incorporar</value>
+  </data>
+  <data name="ImportArchive_SwitchOk" xml:space="preserve">
+    <value>Cambiar</value>
+  </data>
+  <data name="ImportArchive_RestartNow" xml:space="preserve">
+    <value>MailVault usará el archivo de copia de seguridad tras reiniciar. ¿Reiniciar ahora?</value>
+  </data>
+  <data name="ImportArchive_RunTitle" xml:space="preserve">
+    <value>Incorporando archivo de copia de seguridad</value>
+  </data>
 </root>

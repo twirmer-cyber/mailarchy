@@ -34,6 +34,8 @@
                                 <StackPanel Orientation="Horizontal" Margin="0,10,0,0">
                                     <Button Content="{loc:T Settings_OpenFolder}" Command="{Binding OpenDataDirectoryCommand}" />
                                     <Button Content="{loc:T Settings_ChangeLocation}" Command="{Binding ChangeDataDirectoryCommand}" />
+                                    <Button Content="{loc:T Settings_ImportArchive}" Command="{Binding ImportArchiveCommand}"
+                                            ToolTip="{loc:T Settings_ImportArchiveTip}" />
                                 </StackPanel>
                             </StackPanel>
                         </Border>

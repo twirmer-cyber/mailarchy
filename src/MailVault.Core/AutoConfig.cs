@@ -185,10 +185,13 @@ public static class AutoConfig
             "gmx.de" or "gmx.net" or "gmx.at" or "gmx.ch" or "web.de" => "AutoCfg_Hint_Gmx",
             _ => null,
         };
+        // Mit eingerichteter OAuth-Anmeldung ist der Weg über Microsoft/Google der einfachste.
+        if (key == "AutoCfg_Hint_Microsoft" && OAuth.OAuthProviders.Microsoft.IsConfigured) key = "AutoCfg_Hint_MicrosoftOAuth";
+        else if (key == "AutoCfg_Hint_Google" && OAuth.OAuthProviders.Google.IsConfigured) key = "AutoCfg_Hint_GoogleOAuth";
         var hint = key is null ? null : CoreText.T(key);
         if (hint is null) return r;
         // Ein spezifischer Anbieterhinweis ersetzt den allgemeinen OAuth-Hinweis aus der Konfigurationsdatei.
-        return r with { Hint = r.Hint is null || key == "AutoCfg_Hint_Microsoft" ? hint : r.Hint + " " + hint };
+        return r with { Hint = r.Hint is null || key is "AutoCfg_Hint_Microsoft" or "AutoCfg_Hint_MicrosoftOAuth" ? hint : r.Hint + " " + hint };
     }
 
     /// <summary>"mx01.ionos.de" -> "ionos.de", "aspmx.l.google.com" -> "google.com" (einfache Heuristik inkl. co.uk usw.).</summary>

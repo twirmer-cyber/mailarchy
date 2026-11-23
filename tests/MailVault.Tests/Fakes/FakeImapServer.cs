@@ -42,6 +42,10 @@ public sealed class FakeImapServer : FakeServerBase
     public bool AdvertiseAuthPlain { get; set; } = true;
     /// <summary>SASL-IR anbieten (AUTHENTICATE PLAIN mit Initial Response in derselben Zeile).</summary>
     public bool AdvertiseSaslIR { get; set; }
+    /// <summary>Gesetzt: AUTH=XOAUTH2 anbieten und nur dieses Zugriffstoken (für <see cref="UserName"/>) annehmen.</summary>
+    public string? AccessToken { get; set; }
+    /// <summary>Anzahl erfolgreicher XOAUTH2-Anmeldungen.</summary>
+    public int OAuthLogins { get; private set; }
 
     public FakeImapServer()
     {
@@ -56,6 +60,7 @@ public sealed class FakeImapServer : FakeServerBase
         {
             if (AdvertiseSaslIR) caps.Add("SASL-IR");
             if (AdvertiseAuthPlain) caps.Add("AUTH=PLAIN");
+            if (AccessToken is not null) caps.Add("AUTH=XOAUTH2");
         }
         return string.Join(' ', caps);
     }
@@ -343,6 +348,27 @@ public sealed class FakeImapServer : FakeServerBase
                     }
                     else await No("[AUTHENTICATIONFAILED] Invalid credentials");
                     return true;
+                case "AUTHENTICATE" when AccessToken is not null && S(args[0]).Equals("XOAUTH2", StringComparison.OrdinalIgnoreCase):
+                {
+                    string oauth;
+                    if (args.Count > 1) oauth = S(args[1]);
+                    else
+                    {
+                        await Line("+ ");
+                        oauth = await io.ReadTextLineAsync(ct) ?? "*";
+                    }
+                    string decoded;
+                    try { decoded = Encoding.UTF8.GetString(Convert.FromBase64String(oauth)); }
+                    catch (FormatException) { await io.WriteLineAsync($"{tag} BAD Invalid base64", ct); return true; }
+                    if (decoded == $"user={UserName}auth=Bearer {AccessToken}")
+                    {
+                        s.Authenticated = true;
+                        OAuthLogins++;
+                        await io.WriteLineAsync($"{tag} OK [CAPABILITY {Capabilities(true)}] AUTHENTICATE completed", ct);
+                    }
+                    else await No("[AUTHENTICATIONFAILED] Invalid token");
+                    return true;
+                }
                 case "AUTHENTICATE":
                     if (!AdvertiseAuthPlain || !S(args[0]).Equals("PLAIN", StringComparison.OrdinalIgnoreCase))
                     {

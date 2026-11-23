@@ -808,4 +808,76 @@ Diese E-Mail wurde automatisch von MailVault Home gesendet.</value>
   <data name="Key_OtherArchive" xml:space="preserve">
     <value>Der Schlüssel ist richtig, gehört aber zu einem anderen Archiv. Bitte das passende Notfallblatt wählen.</value>
   </data>
+  <data name="OAuth_NotConfigured" xml:space="preserve">
+    <value>Die Anmeldung mit {0} ist in dieser MailVault-Version nicht eingerichtet. Bitte Kennwort bzw. App-Passwort verwenden.</value>
+  </data>
+  <data name="OAuth_Denied" xml:space="preserve">
+    <value>Die Anmeldung wurde im Browser abgebrochen oder der Zugriff nicht erlaubt.</value>
+  </data>
+  <data name="OAuth_ProviderError" xml:space="preserve">
+    <value>Der Anbieter hat die Anmeldung abgelehnt: {0}</value>
+  </data>
+  <data name="OAuth_StateMismatch" xml:space="preserve">
+    <value>Die Antwort aus dem Browser passt nicht zu dieser Anmeldung und wurde verworfen. Bitte erneut anmelden.</value>
+  </data>
+  <data name="OAuth_NoCode" xml:space="preserve">
+    <value>Der Browser hat keinen Anmeldecode zurückgegeben. Bitte erneut anmelden.</value>
+  </data>
+  <data name="OAuth_NoRefreshToken" xml:space="preserve">
+    <value>Der Anbieter hat keine dauerhafte Anmeldung erteilt, die für den automatischen Abruf nötig ist. Bitte erneut anmelden und den Zugriff erlauben.</value>
+  </data>
+  <data name="OAuth_BrowserDone" xml:space="preserve">
+    <value>Anmeldung abgeschlossen. Sie können dieses Fenster schließen und zu MailVault zurückkehren.</value>
+  </data>
+  <data name="OAuth_BrowserFailed" xml:space="preserve">
+    <value>Die Anmeldung hat nicht geklappt: {0} Sie können dieses Fenster schließen.</value>
+  </data>
+  <data name="OAuth_Network" xml:space="preserve">
+    <value>Der Anmeldeserver ist nicht erreichbar: {0}</value>
+  </data>
+  <data name="OAuth_Timeout" xml:space="preserve">
+    <value>Der Anmeldeserver antwortet nicht. Bitte später erneut versuchen.</value>
+  </data>
+  <data name="OAuth_Reauth" xml:space="preserve">
+    <value>Die Anmeldung bei {0} ist abgelaufen oder wurde widerrufen (z. B. nach einer Kennwortänderung). Bitte das Profil öffnen und neu anmelden.</value>
+  </data>
+  <data name="OAuth_SignInRequired" xml:space="preserve">
+    <value>Für dieses Profil ist noch keine Anmeldung bei {0} gespeichert (oder sie stammt von einem anderen PC). Bitte das Profil öffnen und anmelden.</value>
+  </data>
+  <data name="OAuth_Unavailable" xml:space="preserve">
+    <value>Die OAuth-Anmeldung ist gerade nicht verfügbar. Bitte MailVault neu starten.</value>
+  </data>
+  <data name="AutoCfg_Hint_MicrosoftOAuth" xml:space="preserve">
+    <value>Outlook.com, Hotmail und Microsoft 365 verlangen die Anmeldung über Microsoft: Bitte unter „Anmeldung“ „Mit Microsoft-Konto“ wählen.</value>
+  </data>
+  <data name="AutoCfg_Hint_GoogleOAuth" xml:space="preserve">
+    <value>Google: Am einfachsten unter „Anmeldung“ „Mit Google-Konto“ wählen – dann ist kein App-Passwort nötig.</value>
+  </data>
+  <data name="ArchiveImport_Opening" xml:space="preserve">
+    <value>Gesichertes Archiv wird geöffnet …</value>
+  </data>
+  <data name="ArchiveImport_Found" xml:space="preserve">
+    <value>{0} E-Mails im gesicherten Archiv</value>
+  </data>
+  <data name="ArchiveImport_FoundLog" xml:space="preserve">
+    <value>{0} E-Mails gefunden in {1}</value>
+  </data>
+  <data name="ArchiveImport_MessageError" xml:space="preserve">
+    <value>E-Mail {0} konnte nicht übernommen werden: {1}</value>
+  </data>
+  <data name="ArchiveImport_Progress" xml:space="preserve">
+    <value>{0} übernommen, {1} schon vorhanden (von {2})</value>
+  </data>
+  <data name="ArchiveImport_SameArchive" xml:space="preserve">
+    <value>Das ist der Ordner des Archivs, das gerade geöffnet ist. Bitte den Ordner der Sicherung wählen.</value>
+  </data>
+  <data name="ArchiveImport_NotAnArchive" xml:space="preserve">
+    <value>In diesem Ordner liegt kein MailVault-Archiv (archive.db fehlt).</value>
+  </data>
+  <data name="ArchiveImport_NoSpace" xml:space="preserve">
+    <value>Zu wenig freier Speicherplatz für die Arbeitskopie: benötigt etwa {0}, frei {1}.</value>
+  </data>
+  <data name="ArchiveImport_Copying" xml:space="preserve">
+    <value>Arbeitskopie der Sicherung wird angelegt ({0}) …</value>
+  </data>
 </root>
