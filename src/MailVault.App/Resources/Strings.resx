@@ -953,4 +953,7 @@ Allein ist sie nutzlos; zusammen mit Kennwort oder Wiederherstellungsschlüssel 
   <data name="Profile_GoogleConsentHint" xml:space="preserve">
     <value>Im Browser bei Google zuerst „Weiter“ (der Hinweis „App nicht überprüft“ ist bekannt), dann auf der Seite mit den Berechtigungen das Häkchen bei Gmail setzen – sonst gibt Google nur die Anmeldung frei.</value>
   </data>
+  <data name="Settings_NotifySignInHint" xml:space="preserve">
+    <value>Abgelaufene Anmeldungen bei Microsoft oder Google werden sofort gemeldet, nicht erst nach der eingestellten Anzahl Fehlschläge – sie beheben sich nicht von selbst.</value>
+  </data>
 </root>

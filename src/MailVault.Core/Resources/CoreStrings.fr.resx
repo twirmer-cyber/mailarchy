@@ -883,4 +883,30 @@ Cet e-mail a été envoyé automatiquement par MailVault Home.</value>
   <data name="OAuth_MailScopeMissing" xml:space="preserve">
     <value>{0} a autorisé la connexion mais pas l'accès aux e-mails. Reconnectez-vous et cochez aussi la case d'accès aux e-mails sur la page d'autorisation (chez Google : la case Gmail).</value>
   </data>
+  <data name="Mail_SignIn_Subject" xml:space="preserve">
+    <value>MailVault : connexion pour « {0} » expirée – veuillez vous reconnecter</value>
+  </data>
+  <data name="Mail_SignIn_Body" xml:space="preserve">
+    <value>Bonjour,
+
+MailVault Home ne peut plus relever la boîte « {0} » ({1}), car la connexion à {2} a expiré ou a été révoquée.
+
+Message : {3}
+
+Cela ne se résoudra pas tout seul. Tant que vous ne vous reconnectez pas, les nouveaux e-mails de cette boîte ne sont pas archivés.
+
+Pour corriger :
+1. Ouvrez MailVault → Archiver des e-mails → profil « {0} » → Modifier.
+2. Cliquez sur « Se reconnecter avec {2} … » et autorisez l'accès dans le navigateur (chez Google, cochez la case Gmail).
+3. Enregistrez.
+
+Causes fréquentes : mot de passe du compte modifié, accès retiré dans les paramètres du compte, aucune relève depuis longtemps.
+
+Dernière relève réussie : {4}
+Dernière tentative : {5}
+Planification : {6}
+
+Rien n'a été supprimé ni modifié sur le serveur - MailVault ne fait que lire.
+MailVault vous le rappellera à l'intervalle choisi et vous préviendra dès que cela fonctionnera de nouveau.</value>
+  </data>
 </root>

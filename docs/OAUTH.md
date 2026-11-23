@@ -99,7 +99,7 @@ oder die Umgebungsvariable `MAILVAULT_OAUTH_CLIENTS` mit dem Pfad zu so einer Da
 - **Anmeldung am Server:** SASL `XOAUTH2` (MailKit `SaslMechanismOAuth2`). Die Nur-Lesen-Zusage gilt unverändert: Ordner werden mit
   `EXAMINE` geöffnet, Nachrichten mit `BODY.PEEK` geladen, bei POP3 nie `DELE` (Tests `OAuthTests.Imap_…`/`Pop3_…`).
 - **Fehler:** Wird der Zugriff widerrufen oder das Kontokennwort geändert, meldet der Anbieter `invalid_grant`; das Profil zeigt dann
-  „Anmeldung abgelaufen – bitte im Profil neu anmelden“, und die Fehler-Benachrichtigung des Zeitplans greift wie bei anderen Fehlern.
+  „Anmeldung abgelaufen – bitte im Profil neu anmelden“, und die E-Mail-Benachrichtigung meldet das **sofort beim ersten Fehlschlag** (nicht erst nach der eingestellten Fehleranzahl) mit eigener Betreffzeile „Anmeldung … abgelaufen“ und Anleitung; Erinnerungen und Entwarnung wie bei anderen Fehlern. Dasselbe gilt, wenn der Server das OAuth-Token ablehnt (`ArchiveScheduler.IsSignInRequired`, Tests in `SchedulerTests`).
 - **Code:** `src/MailVault.Core/OAuth/` (`OAuthProviders`, `OAuthClient`, `OAuthService`/`OAuthTokenStore`), Anmeldung in
   `Sources/ServerSources.cs`, Oberfläche im Profileditor. Tests: `tests/MailVault.Tests/OAuthTests.cs` (Schein-Token-Endpunkt,
   echter Loopback-Rücksprung, Schein-IMAP/POP3-Server mit XOAUTH2).

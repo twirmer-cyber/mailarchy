@@ -883,4 +883,30 @@ Diese E-Mail wurde automatisch von MailVault Home gesendet.</value>
   <data name="OAuth_MailScopeMissing" xml:space="preserve">
     <value>{0} hat den Zugriff auf die E-Mails nicht freigegeben – nur die Anmeldung. Bitte erneut anmelden und auf der Zustimmungsseite auch das Häkchen für den E-Mail-Zugriff setzen (bei Google: das Häkchen bei Gmail).</value>
   </data>
+  <data name="Mail_SignIn_Subject" xml:space="preserve">
+    <value>MailVault: Anmeldung für „{0}“ abgelaufen – bitte neu anmelden</value>
+  </data>
+  <data name="Mail_SignIn_Body" xml:space="preserve">
+    <value>Hallo,
+
+MailVault Home kann das Postfach „{0}“ ({1}) nicht mehr abrufen, weil die Anmeldung bei {2} abgelaufen ist oder widerrufen wurde.
+
+Meldung: {3}
+
+Das behebt sich nicht von selbst. Bis Sie sich neu anmelden, werden neue E-Mails dieses Postfachs nicht archiviert.
+
+So geht es wieder:
+1. MailVault öffnen → E-Mails archivieren → das Profil „{0}“ → Bearbeiten.
+2. „Erneut bei {2} anmelden …“ klicken und im Browser den Zugriff erlauben (bei Google das Häkchen bei Gmail setzen).
+3. Speichern.
+
+Häufige Ursachen: Kontokennwort geändert, Zugriff in den Kontoeinstellungen entzogen, längere Zeit nicht abgerufen.
+
+Letzter erfolgreicher Abruf: {4}
+Letzter Versuch: {5}
+Zeitplan: {6}
+
+Auf dem Server wurde nichts gelöscht oder verändert - MailVault greift nur lesend zu.
+MailVault erinnert in den eingestellten Abständen erneut und meldet sich, sobald es wieder klappt.</value>
+  </data>
 </root>

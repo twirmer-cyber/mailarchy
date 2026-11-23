@@ -179,6 +179,97 @@ public class SchedulerTests
         Assert.Null(ok.LastError);
     }
 
+    ArchiveProfile AddOAuth(Harness h, string name, MailVault.Core.OAuth.MailAuth auth)
+    {
+        var p = h.Add(name, ScheduleKind.Interval, 60);
+        p.AuthMethod = auth;
+        h.Store.Save(p);
+        return h.Get(p);
+    }
+
+    [Fact]
+    public async Task Expired_oauth_sign_in_is_mailed_immediately_with_instructions_then_reminded_and_cleared()
+    {
+        using var h = new Harness();                                    // Schwelle 2 Fehlschläge – gilt hier nicht
+        var p = AddOAuth(h, "Gmail privat", MailVault.Core.OAuth.MailAuth.Google);
+        h.Behaviour = _ => throw new MailVault.Core.OAuth.OAuthException(
+            MailVault.Core.Localization.CoreText.F("OAuth_Reauth", "Google"), reauthRequired: true);
+
+        var o = (await h.Scheduler.RunDueAsync(default)).Single();      // schon der 1. Fehlschlag wird gemeldet
+        Assert.True(o.NotificationSent);
+        var mail = Assert.Single(h.Notifier.Sent);
+        Assert.Contains("Gmail privat", mail.Subject);
+        Assert.Contains("abgelaufen", mail.Subject);
+        Assert.Contains("Erneut bei Google anmelden", mail.Body);
+        Assert.Contains("nichts gelöscht", mail.Body);
+
+        for (var i = 0; i < 5; i++) { h.Now = h.Now.AddHours(1); await h.Scheduler.RunDueAsync(default); }
+        Assert.Single(h.Notifier.Sent);                                 // keine Mailflut
+
+        h.Now = h.Now.AddHours(20);                                     // Erinnerung nach dem eingestellten Abstand
+        await h.Scheduler.RunDueAsync(default);
+        Assert.Equal(2, h.Notifier.Sent.Count);
+        Assert.StartsWith("Erinnerung:", h.Notifier.Sent[1].Subject);
+        Assert.Contains("abgelaufen", h.Notifier.Sent[1].Subject);
+
+        h.Behaviour = _ => Task.FromResult(new ImportResult { Archived = 4 }); // neu angemeldet: Entwarnung
+        h.Now = h.Now.AddHours(1);
+        await h.Scheduler.RunDueAsync(default);
+        Assert.Equal(3, h.Notifier.Sent.Count);
+        Assert.Contains("wieder archiviert", h.Notifier.Sent[2].Subject);
+        Assert.Null(h.Get(p).FailureNotifiedUtc);
+    }
+
+    [Fact]
+    public async Task Server_rejecting_oauth_token_counts_as_sign_in_problem_but_password_errors_keep_threshold()
+    {
+        using var h = new Harness();
+        AddOAuth(h, "Outlook", MailVault.Core.OAuth.MailAuth.Microsoft);
+        h.Behaviour = _ => throw AuthError();
+        await h.Scheduler.RunDueAsync(default);
+        Assert.Contains("abgelaufen", Assert.Single(h.Notifier.Sent).Subject);
+
+        // Kennwort-Profil: wie bisher erst ab der Schwelle (kurze Aussetzer ignorieren)
+        using var h2 = new Harness();
+        h2.Add("GMX", ScheduleKind.Interval, 60);
+        h2.Behaviour = _ => throw AuthError();
+        await h2.Scheduler.RunDueAsync(default);
+        Assert.Empty(h2.Notifier.Sent);
+    }
+
+    [Fact]
+    public async Task Temporary_oauth_network_error_keeps_threshold()
+    {
+        using var h = new Harness();
+        AddOAuth(h, "Gmail", MailVault.Core.OAuth.MailAuth.Google);
+        h.Behaviour = _ => throw new MailVault.Core.OAuth.OAuthException("Keine Verbindung zu Google");
+        await h.Scheduler.RunDueAsync(default);
+        Assert.Empty(h.Notifier.Sent);
+        h.Now = h.Now.AddHours(1);
+        await h.Scheduler.RunDueAsync(default);
+        Assert.DoesNotContain("abgelaufen", Assert.Single(h.Notifier.Sent).Subject);
+    }
+
+    [Fact]
+    public void Sign_in_mail_exists_in_all_languages()
+    {
+        var p = new ArchiveProfile { Name = "Gmail", Type = ProfileType.Imap, Host = "imap.gmail.com", UserName = "anna@gmail.com",
+            AuthMethod = MailVault.Core.OAuth.MailAuth.Google };
+        var old = System.Globalization.CultureInfo.CurrentUICulture;
+        try
+        {
+            foreach (var lang in new[] { "de", "en", "fr", "es" })
+            {
+                System.Globalization.CultureInfo.CurrentUICulture = new System.Globalization.CultureInfo(lang);
+                var (subject, body) = ArchiveScheduler.SignInMail(p, "x", reminder: false);
+                Assert.Contains("Gmail", subject);
+                Assert.Contains("Google", body);
+                Assert.DoesNotContain("{", body);
+            }
+        }
+        finally { System.Globalization.CultureInfo.CurrentUICulture = old; }
+    }
+
     [Fact]
     public async Task Short_outage_below_threshold_sends_nothing_and_resets()
     {

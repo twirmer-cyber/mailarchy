@@ -953,4 +953,7 @@ Seul, il est inutile ; avec le mot de passe ou la clé de récupération, il ouv
   <data name="Profile_GoogleConsentHint" xml:space="preserve">
     <value>Dans le navigateur, cliquez sur « Continuer » chez Google (l’avertissement « application non validée » est normal), puis cochez la case Gmail sur la page des autorisations – sinon Google n’autorise que la connexion.</value>
   </data>
+  <data name="Settings_NotifySignInHint" xml:space="preserve">
+    <value>Les connexions Microsoft ou Google expirées sont signalées immédiatement, sans attendre le nombre d'échecs défini – elles ne se résolvent jamais seules.</value>
+  </data>
 </root>

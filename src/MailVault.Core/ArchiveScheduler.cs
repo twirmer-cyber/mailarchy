@@ -139,6 +139,7 @@ public sealed class ArchiveScheduler
         RunStarted?.Invoke(profile);
         ImportResult? result = null;
         string? error = null;
+        var signInRequired = false;
         try
         {
             result = await _run(profile, progress, ct);
@@ -150,6 +151,7 @@ public sealed class ArchiveScheduler
         catch (Exception ex)
         {
             error = ErrorText.Describe(ex);
+            signInRequired = IsSignInRequired(profile, ex);
         }
 
         var now = _utcNow();
@@ -177,9 +179,14 @@ public sealed class ArchiveScheduler
                 p.LastError = error;
                 if (!automatic) return; // Fehler bei manuellen Läufen sieht der Benutzer direkt
                 p.ConsecutiveFailures++;
-                if (!settings.Enabled || p.ConsecutiveFailures < Math.Max(1, settings.FailureThreshold)) return;
+                if (!settings.Enabled) return;
+                // Abgelaufene Anmeldung bei Microsoft/Google: sofort melden, nicht erst nach der eingestellten Fehleranzahl –
+                // das behebt sich nie von selbst, und bis zur neuen Anmeldung wird nichts mehr archiviert.
+                if (!signInRequired && p.ConsecutiveFailures < Math.Max(1, settings.FailureThreshold)) return;
                 if (p.FailureNotifiedUtc is { } last && now - last < TimeSpan.FromHours(Math.Max(1, settings.RepeatHours))) return;
-                (mailSubject, mailBody) = FailureMail(p, error, reminder: p.FailureNotifiedUtc is not null);
+                (mailSubject, mailBody) = signInRequired
+                    ? SignInMail(p, error, reminder: p.FailureNotifiedUtc is not null)
+                    : FailureMail(p, error, reminder: p.FailureNotifiedUtc is not null);
                 p.FailureNotifiedUtc = now;
             }
         }) ?? profile;
@@ -219,6 +226,29 @@ public sealed class ArchiveScheduler
         if (reminder) subject = CoreText.F("Mail_Reminder_Subject", subject);
         var body = Body("Mail_Failure_Body", p.Name, Source(p), p.ConsecutiveFailures, error,
             Local(p.LastSuccessUtc), Local(p.LastRunUtc), p.ScheduleDisplay);
+        return (subject, body);
+    }
+
+    /// <summary>
+    /// Fehler, die nur eine neue Anmeldung im Profil behebt: Anbieter meldet die Anmeldung als abgelaufen/widerrufen
+    /// (OAuthException.ReauthRequired) oder der Server lehnt das OAuth-Zugriffstoken ab.
+    /// </summary>
+    internal static bool IsSignInRequired(ArchiveProfile profile, Exception ex)
+    {
+        for (var e = ex; e is not null; e = e.InnerException)
+        {
+            if (e is OAuth.OAuthException { ReauthRequired: true }) return true;
+            if (e is MailKit.Security.AuthenticationException && profile.AuthMethod != OAuth.MailAuth.Password) return true;
+        }
+        return false;
+    }
+
+    internal static (string Subject, string Body) SignInMail(ArchiveProfile p, string error, bool reminder)
+    {
+        var provider = OAuth.OAuthProviders.For(p.AuthMethod)?.DisplayName ?? p.AuthMethod.ToString();
+        var subject = CoreText.F("Mail_SignIn_Subject", p.Name);
+        if (reminder) subject = CoreText.F("Mail_Reminder_Subject", subject);
+        var body = Body("Mail_SignIn_Body", p.Name, Source(p), provider, error, Local(p.LastSuccessUtc), Local(p.LastRunUtc), p.ScheduleDisplay);
         return (subject, body);
     }
 

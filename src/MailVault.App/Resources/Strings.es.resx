@@ -953,4 +953,7 @@ Por sí solo no sirve; junto con la contraseña o la clave de recuperación abre
   <data name="Profile_GoogleConsentHint" xml:space="preserve">
     <value>En el navegador, pulse «Continuar» en Google (el aviso «aplicación no verificada» es normal) y marque la casilla de Gmail en la página de permisos; de lo contrario, Google solo autoriza el inicio de sesión.</value>
   </data>
+  <data name="Settings_NotifySignInHint" xml:space="preserve">
+    <value>Los inicios de sesión caducados de Microsoft o Google se notifican de inmediato, sin esperar al número de fallos configurado: nunca se resuelven solos.</value>
+  </data>
 </root>

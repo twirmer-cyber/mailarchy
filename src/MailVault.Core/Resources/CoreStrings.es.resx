@@ -883,4 +883,30 @@ Este correo lo ha enviado automáticamente MailVault Home.</value>
   <data name="OAuth_MailScopeMissing" xml:space="preserve">
     <value>{0} autorizó el inicio de sesión, pero no el acceso al correo. Vuelva a iniciar sesión y marque también la casilla de acceso al correo en la página de consentimiento (en Google: la casilla de Gmail).</value>
   </data>
+  <data name="Mail_SignIn_Subject" xml:space="preserve">
+    <value>MailVault: el inicio de sesión de «{0}» ha caducado; vuelva a iniciar sesión</value>
+  </data>
+  <data name="Mail_SignIn_Body" xml:space="preserve">
+    <value>Hola:
+
+MailVault Home ya no puede consultar el buzón «{0}» ({1}) porque el inicio de sesión con {2} ha caducado o se ha revocado.
+
+Mensaje: {3}
+
+Esto no se resolverá solo. Hasta que vuelva a iniciar sesión, los correos nuevos de este buzón no se archivarán.
+
+Cómo solucionarlo:
+1. Abra MailVault → Archivar correos → perfil «{0}» → Editar.
+2. Pulse «Volver a iniciar sesión con {2} …» y permita el acceso en el navegador (en Google, marque la casilla de Gmail).
+3. Guarde.
+
+Causas habituales: se cambió la contraseña de la cuenta, se retiró el acceso en la configuración de la cuenta o no se consultó durante mucho tiempo.
+
+Última consulta correcta: {4}
+Último intento: {5}
+Programación: {6}
+
+No se ha borrado ni modificado nada en el servidor: MailVault solo lee.
+MailVault se lo recordará en el intervalo configurado y le avisará en cuanto vuelva a funcionar.</value>
+  </data>
 </root>
