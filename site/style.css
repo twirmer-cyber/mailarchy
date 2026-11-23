@@ -317,6 +317,7 @@ svg use { fill: none; stroke: currentColor; stroke-width: 1.5; stroke-linecap: r
 .anleitung-inhalt code { font-family: var(--f-mono); font-size: .85em; background: var(--shelf); border: 1px solid var(--line); border-radius: 3px; padding: .05rem .35rem; overflow-wrap: anywhere; }
 .anleitung-bild { margin: 1.25rem 0 1.5rem; }
 .anleitung-bild img { border-radius: 8px; box-shadow: none; }
+.anleitung-bild.schmal img { max-width: 686px; }
 .bilder-reihe { display: grid; gap: 0; }
 
 /* Unterstützen */
