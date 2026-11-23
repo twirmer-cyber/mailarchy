@@ -260,7 +260,7 @@ Diese E-Mail wurde automatisch von MailVault Home gesendet.</value>
     <value>Google: Mit Zwei-Faktor-Anmeldung wird ein App-Passwort benötigt (Google-Konto → Sicherheit → App-Passwörter).</value>
   </data>
   <data name="AutoCfg_Hint_Microsoft" xml:space="preserve">
-    <value>Microsoft erlaubt bei Outlook.com/Hotmail und Microsoft 365 nur noch die OAuth-Anmeldung. Das unterstützt MailVault noch nicht.</value>
+    <value>Outlook.com, Hotmail und Microsoft 365 erlauben nur noch die Anmeldung über Microsoft (OAuth), kein Kennwort und kein App-Passwort. Dafür unter Einstellungen → Anmeldung (OAuth) eine Microsoft-Client-ID eintragen – Anleitung auf mailvault.zerze.de.</value>
   </data>
   <data name="AutoCfg_Hint_ICloud" xml:space="preserve">
     <value>iCloud: Es wird ein app-spezifisches Passwort benötigt (appleid.apple.com → Anmeldung und Sicherheit).</value>
@@ -809,7 +809,7 @@ Diese E-Mail wurde automatisch von MailVault Home gesendet.</value>
     <value>Der Schlüssel ist richtig, gehört aber zu einem anderen Archiv. Bitte das passende Notfallblatt wählen.</value>
   </data>
   <data name="OAuth_NotConfigured" xml:space="preserve">
-    <value>Die Anmeldung mit {0} ist in dieser MailVault-Version nicht eingerichtet. Bitte Kennwort bzw. App-Passwort verwenden.</value>
+    <value>Die Anmeldung mit {0} ist nicht eingerichtet. Unter Einstellungen → Anmeldung (OAuth) eine Client-ID eintragen (Anleitung auf mailvault.zerze.de) und das Postfach danach neu anmelden.</value>
   </data>
   <data name="OAuth_Denied" xml:space="preserve">
     <value>Die Anmeldung wurde im Browser abgebrochen oder der Zugriff nicht erlaubt.</value>
@@ -908,5 +908,11 @@ Zeitplan: {6}
 
 Auf dem Server wurde nichts gelöscht oder verändert - MailVault greift nur lesend zu.
 MailVault erinnert in den eingestellten Abständen erneut und meldet sich, sobald es wieder klappt.</value>
+  </data>
+  <data name="OAuth_ClientChanged" xml:space="preserve">
+    <value>Die Client-ID für {0} wurde in den Einstellungen geändert. Die bisherige Anmeldung gilt damit nicht mehr – bitte das Profil öffnen und „Erneut bei {0} anmelden …“ wählen.</value>
+  </data>
+  <data name="OAuth_ClientRejected" xml:space="preserve">
+    <value>{0} lehnt die Client-ID ab ({1}). Bitte unter Einstellungen → Anmeldung (OAuth) Client-ID und ggf. Client-Secret prüfen und das Postfach neu anmelden.</value>
   </data>
 </root>

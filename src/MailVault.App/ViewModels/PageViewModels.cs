@@ -418,6 +418,7 @@ public partial class SettingsViewModel : ObservableObject
     public WebSettingsViewModel Web { get; } = new();
     public AiSettingsViewModel Ai { get; } = new();
     public UpdateViewModel Updates { get; } = new();
+    public OAuthSettingsViewModel OAuth { get; } = new();
     [ObservableProperty] int _selectedTab;
 
     /// <summary>0 = wie Windows, 1 = hell, 2 = dunkel; wirkt sofort.</summary>
@@ -460,6 +461,7 @@ public partial class SettingsViewModel : ObservableObject
         Web.Refresh();
         Ai.Refresh();
         Updates.Refresh();
+        OAuth.Refresh();
         DataDirectory = AppState.Archive.DataDirectory;
         IsProtected = AppState.Archive.IsProtected;
         RecoveryKeyMissing = IsProtected && !AppState.Archive.RecoveryKeyExported;

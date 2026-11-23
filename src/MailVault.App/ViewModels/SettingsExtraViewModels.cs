@@ -5,6 +5,7 @@ using CommunityToolkit.Mvvm.Input;
 using MailVault.App.Services;
 using MailVault.Core;
 using MailVault.Core.Ai;
+using MailVault.Core.OAuth;
 using MailVault.Web;
 
 namespace MailVault.App.ViewModels;
@@ -308,6 +309,88 @@ public partial class WebSettingsViewModel : ObservableObject
         WebHost.SignOut(r.UserName);
         ReloadUsers();
     }
+}
+
+// ---------------------------------------------------------------- Anmeldung (OAuth)
+
+/// <summary>Eigene Client-IDs für Google und Microsoft (Vorrang vor den eingebauten, siehe docs/OAUTH.md).</summary>
+public partial class OAuthSettingsViewModel : ObservableObject
+{
+    public const string GuideUrl = "https://mailvault.zerze.de/#anleitungen";
+
+    [ObservableProperty] string _googleClientId = "";
+    [ObservableProperty] string _microsoftClientId = "";
+    [ObservableProperty] string _googleState = "";
+    [ObservableProperty] string _microsoftState = "";
+    [ObservableProperty] bool _googleReady;
+    [ObservableProperty] bool _microsoftReady;
+    [ObservableProperty] string _status = "";
+    [ObservableProperty] bool _statusIsError;
+
+    /// <summary>Vom PasswordBox im Code-Behind gesetzt.</summary>
+    public string GoogleClientSecret { get; set; } = "";
+
+    public void Refresh()
+    {
+        var o = AppState.Settings.OAuth ??= new();
+        GoogleClientId = o.GoogleClientId ?? "";
+        MicrosoftClientId = o.MicrosoftClientId ?? "";
+        GoogleClientSecret = o.GoogleClientSecret;
+        Status = "";
+        UpdateStates();
+    }
+
+    void UpdateStates()
+    {
+        (GoogleState, GoogleReady) = StateOf(MailAuth.Google);
+        (MicrosoftState, MicrosoftReady) = StateOf(MailAuth.Microsoft);
+    }
+
+    static (string, bool) StateOf(MailAuth kind)
+    {
+        var provider = OAuthProviders.For(kind)!;
+        if (OAuthProviders.UsesOwnClient(kind))
+            return (OAuthProviders.HasBuiltIn(kind) ? L.T("OAuthSet_StateOwnOverBuiltIn") : L.T("OAuthSet_StateOwn"), true);
+        if (provider.IsConfigured) return (L.T("OAuthSet_StateBuiltIn"), true);
+        return (L.F("OAuthSet_StateNone", provider.DisplayName), false);
+    }
+
+    [RelayCommand]
+    void Save()
+    {
+        var gid = GoogleClientId.Trim();
+        var mid = MicrosoftClientId.Trim();
+        var secret = GoogleClientSecret.Trim();
+        if (!OAuthProviders.IsPlausibleClientId(MailAuth.Google, gid)) { Report(L.F("OAuthSet_InvalidId", "Google"), true); return; }
+        if (!OAuthProviders.IsPlausibleClientId(MailAuth.Microsoft, mid)) { Report(L.F("OAuthSet_InvalidId", "Microsoft"), true); return; }
+        if (gid.Length > 0 && secret.Length == 0) { Report(L.T("OAuthSet_GoogleSecretMissing"), true); return; }
+
+        var o = new OAuthClientSettings
+        {
+            GoogleClientId = gid.Length > 0 ? gid : null,
+            MicrosoftClientId = mid.Length > 0 ? mid : null,
+        };
+        if (gid.Length > 0) o.GoogleClientSecret = secret;
+        AppState.Settings.OAuth = o;
+        AppState.Settings.Save();
+        OAuthProviders.ApplyUserClients(o);
+        UpdateStates();
+
+        // Anmeldungen, die mit einer anderen Client-ID ausgestellt wurden, gelten nicht mehr.
+        var stale = new List<string>();
+        if (OAuthService.Current is { } service)
+            foreach (var kind in new[] { MailAuth.Google, MailAuth.Microsoft })
+                foreach (var id in service.Store.StaleFor(kind, OAuthProviders.For(kind)!.ClientId))
+                {
+                    service.InvalidateCache(id);
+                    if (AppState.Profiles.All.FirstOrDefault(p => p.Id == id) is { } p) stale.Add(p.Name);
+                }
+        Report(stale.Count == 0 ? L.T("OAuthSet_Saved") : L.F("OAuthSet_SavedReauth", string.Join(", ", stale)), false);
+    }
+
+    [RelayCommand] void OpenGuide() => Ui.OpenWithShell(GuideUrl);
+
+    void Report(string text, bool error) { Status = text; StatusIsError = error; }
 }
 
 // ---------------------------------------------------------------- KI

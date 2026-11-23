@@ -84,7 +84,7 @@
   <data name="Profile_Port" xml:space="preserve"><value>Puerto</value></data>
   <data name="Profile_IgnoreCert" xml:space="preserve"><value>Aceptar certificados de servidor no válidos (no recomendado)</value></data>
   <data name="Profile_Test" xml:space="preserve"><value>Probar la conexión y cargar carpetas</value></data>
-  <data name="Profile_AppPasswordHint" xml:space="preserve"><value>Gmail, Outlook.com y muchos otros proveedores exigen una contraseña de aplicación cuando la verificación en dos pasos está activada. En Gmail, IMAP debe estar activado en la configuración.</value></data>
+  <data name="Profile_AppPasswordHint" xml:space="preserve"><value>Gmail y muchos otros proveedores exigen una contraseña de aplicación cuando la verificación en dos pasos está activada; en Gmail, además, IMAP debe estar activado. Outlook.com, Hotmail y Microsoft 365 solo funcionan con «Cuenta de Microsoft» como método de inicio de sesión, no con contraseña de aplicación.</value></data>
   <data name="Profile_Source" xml:space="preserve"><value>Origen</value></data>
   <data name="Profile_ThunderbirdProfile" xml:space="preserve"><value>Perfil de Thunderbird</value></data>
   <data name="Profile_Recursive" xml:space="preserve"><value>Incluir subcarpetas</value></data>
@@ -955,5 +955,65 @@ Por sí solo no sirve; junto con la contraseña o la clave de recuperación abre
   </data>
   <data name="Settings_NotifySignInHint" xml:space="preserve">
     <value>Los inicios de sesión caducados de Microsoft o Google se notifican de inmediato, sin esperar al número de fallos configurado: nunca se resuelven solos.</value>
+  </data>
+  <data name="Settings_TabOAuth" xml:space="preserve">
+    <value>Inicio de sesión (OAuth)</value>
+  </data>
+  <data name="OAuthSet_Title" xml:space="preserve">
+    <value>Inicio de sesión con una cuenta de Google o Microsoft</value>
+  </data>
+  <data name="OAuthSet_Intro" xml:space="preserve">
+    <value>Para iniciar sesión con Google o Microsoft (OAuth), MailVault necesita una aplicación registrada en el proveedor, identificada por un ID de cliente. La descarga de mailvault.zerze.de ya incluye los ID de cliente necesarios; en ese caso no hay nada que hacer aquí. Solo necesita sus propios ID de cliente si compila MailVault usted mismo a partir del código fuente o debe usar el registro de aplicación de su empresa. Los valores introducidos aquí tienen prioridad sobre los integrados.</value>
+  </data>
+  <data name="OAuthSet_Google" xml:space="preserve">
+    <value>Google (Gmail, Google Workspace)</value>
+  </data>
+  <data name="OAuthSet_Microsoft" xml:space="preserve">
+    <value>Microsoft (Outlook.com, Hotmail, Microsoft 365)</value>
+  </data>
+  <data name="OAuthSet_ClientId" xml:space="preserve">
+    <value>ID de cliente:</value>
+  </data>
+  <data name="OAuthSet_ClientSecret" xml:space="preserve">
+    <value>Secreto de cliente:</value>
+  </data>
+  <data name="OAuthSet_GoogleHint" xml:space="preserve">
+    <value>Google Cloud Console → cliente OAuth del tipo «Aplicación de escritorio» con el permiso https://mail.google.com/. El ID de cliente termina en .apps.googleusercontent.com; el secreto de cliente suele empezar por GOCSPX-.</value>
+  </data>
+  <data name="OAuthSet_MicrosoftHint" xml:space="preserve">
+    <value>Microsoft Entra → registro de aplicación para «Cuentas en cualquier directorio organizativo y cuentas Microsoft personales», plataforma «Aplicaciones móviles y de escritorio» con el URI de redirección http://localhost. El ID de aplicación (cliente) tiene la forma 00000000-0000-0000-0000-000000000000; no se necesita secreto.</value>
+  </data>
+  <data name="OAuthSet_StateBuiltIn" xml:space="preserve">
+    <value>Integrado en esta versión: en uso.</value>
+  </data>
+  <data name="OAuthSet_StateOwn" xml:space="preserve">
+    <value>Se usa su propio ID de cliente.</value>
+  </data>
+  <data name="OAuthSet_StateOwnOverBuiltIn" xml:space="preserve">
+    <value>Se usa su propio ID de cliente (en lugar del integrado).</value>
+  </data>
+  <data name="OAuthSet_StateNone" xml:space="preserve">
+    <value>No configurado: el inicio de sesión con {0} no se ofrece en el perfil.</value>
+  </data>
+  <data name="OAuthSet_ClearHint" xml:space="preserve">
+    <value>Vacíe el campo y guarde para volver a usar el ID de cliente integrado.</value>
+  </data>
+  <data name="OAuthSet_Save" xml:space="preserve">
+    <value>Guardar</value>
+  </data>
+  <data name="OAuthSet_Guide" xml:space="preserve">
+    <value>Abrir la guía ilustrada</value>
+  </data>
+  <data name="OAuthSet_Saved" xml:space="preserve">
+    <value>Guardado.</value>
+  </data>
+  <data name="OAuthSet_SavedReauth" xml:space="preserve">
+    <value>Guardado. Estos buzones deben volver a iniciar sesión (abrir el perfil → «Volver a iniciar sesión …»): {0}</value>
+  </data>
+  <data name="OAuthSet_GoogleSecretMissing" xml:space="preserve">
+    <value>Google también exige el secreto de cliente para su propio ID de cliente.</value>
+  </data>
+  <data name="OAuthSet_InvalidId" xml:space="preserve">
+    <value>El ID de cliente de {0} no tiene el formato esperado.</value>
   </data>
 </root>

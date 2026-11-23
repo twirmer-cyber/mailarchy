@@ -12,6 +12,8 @@ public sealed class OAuthAccount
     /// <summary>Refresh-Token, mit Windows-DPAPI für dieses Benutzerkonto verschlüsselt.</summary>
     public string ProtectedRefreshToken { get; set; } = "";
     public DateTime UpdatedUtc { get; set; }
+    /// <summary>Client-ID, mit der das Refresh-Token ausgestellt wurde (fehlt bei Anmeldungen aus 0.7.0-Vorabständen).</summary>
+    public string? ClientId { get; set; }
 }
 
 /// <summary>
@@ -56,7 +58,7 @@ public sealed class OAuthTokenStore
             return _items.TryGetValue(profileId, out var a) && Secret.Unprotect(a.ProtectedRefreshToken, Purpose) is { Length: > 0 } t ? t : null;
     }
 
-    public void Set(Guid profileId, MailAuth provider, string account, string refreshToken)
+    public void Set(Guid profileId, MailAuth provider, string account, string refreshToken, string? clientId = null)
     {
         lock (_sync)
         {
@@ -66,6 +68,7 @@ public sealed class OAuthTokenStore
                 Account = account,
                 ProtectedRefreshToken = Secret.Protect(refreshToken, Purpose)!,
                 UpdatedUtc = DateTime.UtcNow,
+                ClientId = clientId,
             };
             SaveUnlocked();
         }
@@ -101,7 +104,15 @@ public sealed class OAuthTokenStore
     }
 
     static OAuthAccount Copy(OAuthAccount a) => new()
-    { Provider = a.Provider, Account = a.Account, ProtectedRefreshToken = a.ProtectedRefreshToken, UpdatedUtc = a.UpdatedUtc };
+    { Provider = a.Provider, Account = a.Account, ProtectedRefreshToken = a.ProtectedRefreshToken, UpdatedUtc = a.UpdatedUtc, ClientId = a.ClientId };
+
+    /// <summary>Profile, deren Anmeldung mit einer anderen als der jetzt gültigen Client-ID ausgestellt wurde.</summary>
+    public IReadOnlyList<Guid> StaleFor(MailAuth provider, string currentClientId)
+    {
+        lock (_sync)
+            return _items.Where(kv => kv.Value.Provider == provider && kv.Value.ClientId is { } id && id != currentClientId)
+                         .Select(kv => kv.Key).ToList();
+    }
 }
 
 /// <summary>
@@ -134,7 +145,7 @@ public sealed class OAuthService
     /// <summary>Speichert eine erfolgreiche Anmeldung für ein Profil (das Zugriffstoken kann gleich genutzt werden).</summary>
     public void Remember(Guid profileId, MailAuth kind, OAuthTokens tokens)
     {
-        Store.Set(profileId, kind, tokens.Account ?? "", tokens.RefreshToken!);
+        Store.Set(profileId, kind, tokens.Account ?? "", tokens.RefreshToken!, _providers(kind)?.ClientId);
         lock (_cache) _cache[profileId] = (tokens.AccessToken, tokens.ExpiresUtc);
     }
 
@@ -156,17 +167,23 @@ public sealed class OAuthService
         await _lock.WaitAsync(ct);
         try
         {
+            var account = Store.Get(profile.Id);
+            // Andere Client-ID als bei der Anmeldung (in den Einstellungen geändert): Das Token passt nicht mehr.
+            if (account?.ClientId is { } issuedFor && issuedFor != provider.ClientId)
+            {
+                lock (_cache) _cache.Remove(profile.Id);
+                throw new OAuthException(CoreText.F("OAuth_ClientChanged", provider.DisplayName), reauthRequired: true);
+            }
             lock (_cache)
                 if (_cache.TryGetValue(profile.Id, out var c) && c.ExpiresUtc > DateTime.UtcNow.AddMinutes(2)) return c.Token;
 
-            var account = Store.Get(profile.Id);
             var refresh = Store.GetRefreshToken(profile.Id);
             if (account is null || refresh is null || account.Provider != profile.AuthMethod)
                 throw new OAuthException(CoreText.F("OAuth_SignInRequired", provider.DisplayName), reauthRequired: true);
 
             var t = await _client.RefreshAsync(provider, refresh, ct);
             if (t.RefreshToken is { } newRefresh && newRefresh != refresh)
-                Store.Set(profile.Id, profile.AuthMethod, account.Account, newRefresh);
+                Store.Set(profile.Id, profile.AuthMethod, account.Account, newRefresh, account.ClientId ?? provider.ClientId);
             lock (_cache) _cache[profile.Id] = (t.AccessToken, t.ExpiresUtc);
             return t.AccessToken;
         }

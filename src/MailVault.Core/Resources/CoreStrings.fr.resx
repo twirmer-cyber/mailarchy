@@ -260,7 +260,7 @@ Cet e-mail a été envoyé automatiquement par MailVault Home.</value>
     <value>Google : avec la validation en deux étapes, un mot de passe d'application est nécessaire (Compte Google → Sécurité → Mots de passe des applications).</value>
   </data>
   <data name="AutoCfg_Hint_Microsoft" xml:space="preserve">
-    <value>Pour Outlook.com/Hotmail et Microsoft 365, Microsoft n'autorise plus que la connexion OAuth. MailVault ne le prend pas encore en charge.</value>
+    <value>Outlook.com, Hotmail et Microsoft 365 n'autorisent plus que la connexion Microsoft (OAuth), sans mot de passe ni mot de passe d'application. Saisissez un ID client Microsoft sous Paramètres → Connexion (OAuth) ; instructions sur mailvault.zerze.de.</value>
   </data>
   <data name="AutoCfg_Hint_ICloud" xml:space="preserve">
     <value>iCloud : un mot de passe pour application est nécessaire (appleid.apple.com → Connexion et sécurité).</value>
@@ -809,7 +809,7 @@ Cet e-mail a été envoyé automatiquement par MailVault Home.</value>
     <value>La clé est correcte mais appartient à une autre archive. Choisissez la fiche d'urgence correspondante.</value>
   </data>
   <data name="OAuth_NotConfigured" xml:space="preserve">
-    <value>La connexion avec {0} n'est pas configurée dans cette version de MailVault. Utilisez un mot de passe ou un mot de passe d'application.</value>
+    <value>La connexion avec {0} n'est pas configurée. Saisissez un ID client sous Paramètres → Connexion (OAuth) (instructions sur mailvault.zerze.de), puis reconnectez la boîte aux lettres.</value>
   </data>
   <data name="OAuth_Denied" xml:space="preserve">
     <value>La connexion a été annulée dans le navigateur ou l'accès n'a pas été autorisé.</value>
@@ -908,5 +908,11 @@ Planification : {6}
 
 Rien n'a été supprimé ni modifié sur le serveur - MailVault ne fait que lire.
 MailVault vous le rappellera à l'intervalle choisi et vous préviendra dès que cela fonctionnera de nouveau.</value>
+  </data>
+  <data name="OAuth_ClientChanged" xml:space="preserve">
+    <value>L'ID client pour {0} a été modifié dans les paramètres ; la connexion précédente n'est plus valable. Ouvrez le profil et choisissez « Se reconnecter à {0} … ».</value>
+  </data>
+  <data name="OAuth_ClientRejected" xml:space="preserve">
+    <value>{0} refuse l'ID client ({1}). Vérifiez l'ID client et, le cas échéant, le secret client sous Paramètres → Connexion (OAuth), puis reconnectez la boîte aux lettres.</value>
   </data>
 </root>

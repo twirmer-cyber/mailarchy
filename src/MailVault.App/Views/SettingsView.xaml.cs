@@ -24,6 +24,7 @@ public partial class SettingsView : UserControl
         _filling = true;
         SmtpPasswordBox.Password = vm.Automation.SmtpPassword;
         ApiKeyBox.Password = vm.Ai.ApiKey;
+        GoogleSecretBox.Password = vm.OAuth.GoogleClientSecret;
         _filling = false;
         vm.Automation.PasswordReloadRequested -= FillPasswords;
         vm.Automation.PasswordReloadRequested += FillPasswords;
@@ -37,6 +38,11 @@ public partial class SettingsView : UserControl
     void ApiKey_Changed(object sender, RoutedEventArgs e)
     {
         if (!_filling && Vm is { } vm) vm.Ai.ApiKey = ApiKeyBox.Password;
+    }
+
+    void GoogleSecret_Changed(object sender, RoutedEventArgs e)
+    {
+        if (!_filling && Vm is { } vm) vm.OAuth.GoogleClientSecret = GoogleSecretBox.Password;
     }
 
     void Users_DoubleClick(object sender, System.Windows.Input.MouseButtonEventArgs e)

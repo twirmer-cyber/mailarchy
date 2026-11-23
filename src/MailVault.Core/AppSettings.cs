@@ -27,6 +27,8 @@ public sealed class AppSettings
     public AiSettings Ai { get; set; } = new();
     public WebAccessSettings Web { get; set; } = new();
     public UpdateSettings Updates { get; set; } = new();
+    /// <summary>Eigene OAuth-Client-IDs; leer = die in dieser Version eingebauten (siehe docs/OAUTH.md).</summary>
+    public OAuthClientSettings OAuth { get; set; } = new();
 
     public static bool IsPortable => File.Exists(Path.Combine(AppContext.BaseDirectory, "portable.txt"));
 
@@ -97,6 +99,24 @@ public sealed class NotificationSettings
     [JsonIgnore]
     public bool IsConfigured => !string.IsNullOrWhiteSpace(SmtpHost) && !string.IsNullOrWhiteSpace(To) &&
                                 (!string.IsNullOrWhiteSpace(From) || UserName.Contains('@'));
+}
+
+/// <summary>
+/// Eigene App-Registrierungen bei Google und Microsoft. Haben Vorrang vor den beim Bauen eingebetteten Client-IDs;
+/// so funktioniert die Anmeldung auch in selbst gebauten Versionen oder mit der Registrierung einer Firma.
+/// </summary>
+public sealed class OAuthClientSettings
+{
+    public string? MicrosoftClientId { get; set; }
+    public string? GoogleClientId { get; set; }
+    public string? ProtectedGoogleClientSecret { get; set; }
+
+    [JsonIgnore]
+    public string GoogleClientSecret
+    {
+        get => Secret.Unprotect(ProtectedGoogleClientSecret, "OAuthGoogleSecret");
+        set => ProtectedGoogleClientSecret = Secret.Protect(value?.Trim(), "OAuthGoogleSecret");
+    }
 }
 
 /// <summary>KI-Funktionen (Claude von Anthropic).</summary>

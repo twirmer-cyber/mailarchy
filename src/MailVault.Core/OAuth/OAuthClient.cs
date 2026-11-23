@@ -122,7 +122,8 @@ public sealed class OAuthClient
     /// <summary>Holt mit dem Refresh-Token ein neues Zugriffstoken (für jeden Abruf, auch im Hintergrund).</summary>
     public async Task<OAuthTokens> RefreshAsync(OAuthProvider p, string refreshToken, CancellationToken ct)
     {
-        if (!p.IsConfigured) throw new OAuthException(CoreText.F("OAuth_NotConfigured", p.DisplayName));
+        // Behebt sich nicht von selbst (Client-ID entfernt) -> wie eine abgelaufene Anmeldung sofort melden.
+        if (!p.IsConfigured) throw new OAuthException(CoreText.F("OAuth_NotConfigured", p.DisplayName), reauthRequired: true);
         var form = new Dictionary<string, string>
         {
             ["grant_type"] = "refresh_token",
@@ -155,6 +156,9 @@ public sealed class OAuthClient
                 var desc = Str(root, "error_description");
                 // invalid_grant: Refresh-Token widerrufen/abgelaufen (z. B. Kennwort geändert, Zugriff entzogen)
                 if (err == "invalid_grant") throw new OAuthException(CoreText.F("OAuth_Reauth", p.DisplayName), reauthRequired: true);
+                // Client-ID/-Secret falsch, gelöscht oder nicht passend zum gespeicherten Token: braucht Eingriff des Benutzers.
+                if (err is "invalid_client" or "unauthorized_client")
+                    throw new OAuthException(CoreText.F("OAuth_ClientRejected", p.DisplayName, desc is null ? err : $"{err}: {FirstLine(desc)}"), reauthRequired: true);
                 throw new OAuthException(CoreText.F("OAuth_ProviderError", desc is null ? err : $"{err}: {FirstLine(desc)}"));
             }
             var access = Str(root, "access_token") ?? throw new OAuthException(CoreText.F("OAuth_ProviderError", "access_token"));

@@ -260,7 +260,7 @@ Este correo lo ha enviado automáticamente MailVault Home.</value>
     <value>Google: con la verificación en dos pasos se necesita una contraseña de aplicación (Cuenta de Google → Seguridad → Contraseñas de aplicaciones).</value>
   </data>
   <data name="AutoCfg_Hint_Microsoft" xml:space="preserve">
-    <value>En Outlook.com/Hotmail y Microsoft 365, Microsoft solo permite ya el inicio de sesión con OAuth. MailVault aún no lo admite.</value>
+    <value>Outlook.com, Hotmail y Microsoft 365 solo permiten iniciar sesión con Microsoft (OAuth), sin contraseña ni contraseña de aplicación. Introduzca un ID de cliente de Microsoft en Configuración → Inicio de sesión (OAuth); instrucciones en mailvault.zerze.de.</value>
   </data>
   <data name="AutoCfg_Hint_ICloud" xml:space="preserve">
     <value>iCloud: se necesita una contraseña específica de app (appleid.apple.com → Inicio de sesión y seguridad).</value>
@@ -809,7 +809,7 @@ Este correo lo ha enviado automáticamente MailVault Home.</value>
     <value>La clave es correcta pero pertenece a otro archivo. Elija la hoja de emergencia correspondiente.</value>
   </data>
   <data name="OAuth_NotConfigured" xml:space="preserve">
-    <value>El inicio de sesión con {0} no está configurado en esta versión de MailVault. Use una contraseña o una contraseña de aplicación.</value>
+    <value>El inicio de sesión con {0} no está configurado. Introduzca un ID de cliente en Configuración → Inicio de sesión (OAuth) (instrucciones en mailvault.zerze.de) y vuelva a iniciar sesión en el buzón.</value>
   </data>
   <data name="OAuth_Denied" xml:space="preserve">
     <value>El inicio de sesión se canceló en el navegador o no se concedió el acceso.</value>
@@ -908,5 +908,11 @@ Programación: {6}
 
 No se ha borrado ni modificado nada en el servidor: MailVault solo lee.
 MailVault se lo recordará en el intervalo configurado y le avisará en cuanto vuelva a funcionar.</value>
+  </data>
+  <data name="OAuth_ClientChanged" xml:space="preserve">
+    <value>El ID de cliente de {0} se cambió en la configuración, por lo que el inicio de sesión anterior ya no es válido. Abra el perfil y elija «Volver a iniciar sesión en {0} …».</value>
+  </data>
+  <data name="OAuth_ClientRejected" xml:space="preserve">
+    <value>{0} rechaza el ID de cliente ({1}). Compruebe el ID de cliente y, si procede, el secreto de cliente en Configuración → Inicio de sesión (OAuth) y vuelva a iniciar sesión en el buzón.</value>
   </data>
 </root>

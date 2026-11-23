@@ -28,6 +28,9 @@ public static class AppState
         Settings = settings;
         Archive = archive;
         Profiles = new ProfileStore(archive.DataDirectory);
+        // Eigene Client-IDs aus den Einstellungen haben Vorrang vor den eingebauten.
+        settings.OAuth ??= new();
+        MailVault.Core.OAuth.OAuthProviders.ApplyUserClients(settings.OAuth);
         // OAuth-Anmeldungen (Refresh-Tokens, DPAPI) liegen neben den Profilen im Datenordner.
         MailVault.Core.OAuth.OAuthService.Current = new MailVault.Core.OAuth.OAuthService(new MailVault.Core.OAuth.OAuthTokenStore(archive.DataDirectory));
         ArchiveImport.CleanupLeftovers(archive.DataDirectory);

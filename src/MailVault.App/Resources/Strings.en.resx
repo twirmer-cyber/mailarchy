@@ -84,7 +84,7 @@
   <data name="Profile_Port" xml:space="preserve"><value>Port</value></data>
   <data name="Profile_IgnoreCert" xml:space="preserve"><value>Accept invalid server certificates (not recommended)</value></data>
   <data name="Profile_Test" xml:space="preserve"><value>Test connection and load folders</value></data>
-  <data name="Profile_AppPasswordHint" xml:space="preserve"><value>Gmail, Outlook.com and many other providers require an app password when two-factor sign-in is turned on. For Gmail, IMAP must be enabled in the settings.</value></data>
+  <data name="Profile_AppPasswordHint" xml:space="preserve"><value>Gmail and many other providers require an app password when two-factor sign-in is turned on; for Gmail, IMAP must also be enabled. Outlook.com, Hotmail and Microsoft 365 only work with “Microsoft account” as the sign-in method, not with an app password.</value></data>
   <data name="Profile_Source" xml:space="preserve"><value>Source</value></data>
   <data name="Profile_ThunderbirdProfile" xml:space="preserve"><value>Thunderbird profile</value></data>
   <data name="Profile_Recursive" xml:space="preserve"><value>Include subfolders</value></data>
@@ -955,5 +955,65 @@ On its own it is useless; together with the password or recovery key it opens th
   </data>
   <data name="Settings_NotifySignInHint" xml:space="preserve">
     <value>Expired Microsoft or Google sign-ins are reported immediately, not only after the set number of failures – they never fix themselves.</value>
+  </data>
+  <data name="Settings_TabOAuth" xml:space="preserve">
+    <value>Sign-in (OAuth)</value>
+  </data>
+  <data name="OAuthSet_Title" xml:space="preserve">
+    <value>Signing in with a Google or Microsoft account</value>
+  </data>
+  <data name="OAuthSet_Intro" xml:space="preserve">
+    <value>To sign in with Google or Microsoft (OAuth), MailVault needs an app registered with the provider, identified by a client ID. The download from mailvault.zerze.de already includes the required client IDs – then there is nothing to do here. You only need your own client IDs if you build MailVault from source yourself or must use your company's app registration. Values entered here take precedence over the built-in ones.</value>
+  </data>
+  <data name="OAuthSet_Google" xml:space="preserve">
+    <value>Google (Gmail, Google Workspace)</value>
+  </data>
+  <data name="OAuthSet_Microsoft" xml:space="preserve">
+    <value>Microsoft (Outlook.com, Hotmail, Microsoft 365)</value>
+  </data>
+  <data name="OAuthSet_ClientId" xml:space="preserve">
+    <value>Client ID:</value>
+  </data>
+  <data name="OAuthSet_ClientSecret" xml:space="preserve">
+    <value>Client secret:</value>
+  </data>
+  <data name="OAuthSet_GoogleHint" xml:space="preserve">
+    <value>Google Cloud Console → OAuth client of type “Desktop app” with the scope https://mail.google.com/. The client ID ends in .apps.googleusercontent.com; the client secret usually starts with GOCSPX-.</value>
+  </data>
+  <data name="OAuthSet_MicrosoftHint" xml:space="preserve">
+    <value>Microsoft Entra → app registration for “Accounts in any organizational directory and personal Microsoft accounts”, platform “Mobile and desktop applications” with the redirect URI http://localhost. The application (client) ID looks like 00000000-0000-0000-0000-000000000000; no secret is needed.</value>
+  </data>
+  <data name="OAuthSet_StateBuiltIn" xml:space="preserve">
+    <value>Built into this version – in use.</value>
+  </data>
+  <data name="OAuthSet_StateOwn" xml:space="preserve">
+    <value>Your own client ID is in use.</value>
+  </data>
+  <data name="OAuthSet_StateOwnOverBuiltIn" xml:space="preserve">
+    <value>Your own client ID is in use (instead of the built-in one).</value>
+  </data>
+  <data name="OAuthSet_StateNone" xml:space="preserve">
+    <value>Not set up – signing in with {0} is not offered in the profile.</value>
+  </data>
+  <data name="OAuthSet_ClearHint" xml:space="preserve">
+    <value>Clear the field and save to use the built-in client ID again.</value>
+  </data>
+  <data name="OAuthSet_Save" xml:space="preserve">
+    <value>Save</value>
+  </data>
+  <data name="OAuthSet_Guide" xml:space="preserve">
+    <value>Open illustrated guide</value>
+  </data>
+  <data name="OAuthSet_Saved" xml:space="preserve">
+    <value>Saved.</value>
+  </data>
+  <data name="OAuthSet_SavedReauth" xml:space="preserve">
+    <value>Saved. These mailboxes must be signed in again (open the profile → “Sign in … again”): {0}</value>
+  </data>
+  <data name="OAuthSet_GoogleSecretMissing" xml:space="preserve">
+    <value>Google also requires the client secret for your own client ID.</value>
+  </data>
+  <data name="OAuthSet_InvalidId" xml:space="preserve">
+    <value>The client ID for {0} does not have the expected format.</value>
   </data>
 </root>

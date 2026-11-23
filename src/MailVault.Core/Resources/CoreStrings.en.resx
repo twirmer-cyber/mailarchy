@@ -260,7 +260,7 @@ This email was sent automatically by MailVault Home.</value>
     <value>Google: with two-factor sign-in, an app password is required (Google Account → Security → App passwords).</value>
   </data>
   <data name="AutoCfg_Hint_Microsoft" xml:space="preserve">
-    <value>For Outlook.com/Hotmail and Microsoft 365, Microsoft only allows OAuth sign-in. MailVault does not support this yet.</value>
+    <value>Outlook.com, Hotmail and Microsoft 365 only allow signing in with Microsoft (OAuth) – no password and no app password. Enter a Microsoft client ID under Settings → Sign-in (OAuth); instructions at mailvault.zerze.de.</value>
   </data>
   <data name="AutoCfg_Hint_ICloud" xml:space="preserve">
     <value>iCloud: an app-specific password is required (appleid.apple.com → Sign-In and Security).</value>
@@ -809,7 +809,7 @@ This email was sent automatically by MailVault Home.</value>
     <value>The key is correct but belongs to a different archive. Please choose the matching emergency sheet.</value>
   </data>
   <data name="OAuth_NotConfigured" xml:space="preserve">
-    <value>Signing in with {0} is not set up in this MailVault version. Please use a password or app password.</value>
+    <value>Signing in with {0} is not set up. Enter a client ID under Settings → Sign-in (OAuth) (instructions at mailvault.zerze.de), then sign the mailbox in again.</value>
   </data>
   <data name="OAuth_Denied" xml:space="preserve">
     <value>Sign-in was cancelled in the browser or access was not granted.</value>
@@ -908,5 +908,11 @@ Schedule: {6}
 
 Nothing was deleted or changed on the server - MailVault only reads.
 MailVault will remind you at the configured interval and let you know as soon as it works again.</value>
+  </data>
+  <data name="OAuth_ClientChanged" xml:space="preserve">
+    <value>The client ID for {0} was changed in the settings, so the previous sign-in is no longer valid. Please open the profile and choose “Sign in to {0} again …”.</value>
+  </data>
+  <data name="OAuth_ClientRejected" xml:space="preserve">
+    <value>{0} rejects the client ID ({1}). Please check the client ID and, if used, the client secret under Settings → Sign-in (OAuth), then sign the mailbox in again.</value>
   </data>
 </root>

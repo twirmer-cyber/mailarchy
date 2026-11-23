@@ -252,6 +252,99 @@ public class OAuthTests
         Assert.Contains("Google", ex.Message);
     }
 
+    [Theory]
+    [InlineData("invalid_client")]
+    [InlineData("unauthorized_client")]
+    public async Task Rejected_client_id_requires_action_and_is_reported_as_sign_in_problem(string error)
+    {
+        var endpoint = new TokenEndpoint(_ => (HttpStatusCode.Unauthorized, new { error, error_description = "The OAuth client was not found." }));
+        var ex = await Assert.ThrowsAsync<OAuthException>(() => new OAuthClient(endpoint).RefreshAsync(Google(), "rt", Timeout()));
+        Assert.True(ex.ReauthRequired);
+        Assert.Contains(error, ex.Message);
+        Assert.True(ArchiveScheduler.IsSignInRequired(new ArchiveProfile { AuthMethod = MailAuth.Google }, ex));
+    }
+
+    [Fact]
+    public async Task Removed_client_id_is_reported_as_sign_in_problem()
+    {
+        var ex = await Assert.ThrowsAsync<OAuthException>(() => new OAuthClient().RefreshAsync(Ms(clientId: ""), "rt", Timeout()));
+        Assert.True(ex.ReauthRequired);
+    }
+
+    [Fact]
+    public async Task Changed_client_id_invalidates_the_stored_sign_in()
+    {
+        using var tmp = new TempDir();
+        var calls = 0;
+        var endpoint = new TokenEndpoint(_ => { calls++; return (HttpStatusCode.OK, new { access_token = "at-" + calls, expires_in = 3600 }); });
+        var store = new OAuthTokenStore(tmp.Path);
+        var profile = new ArchiveProfile { Type = ProfileType.Imap, AuthMethod = MailAuth.Microsoft, UserName = "anna@outlook.com" };
+        store.Set(profile.Id, MailAuth.Microsoft, "anna@outlook.com", "rt", clientId: "ms-client");
+
+        var service = new OAuthService(store, endpoint, _ => Ms("ms-client"));
+        Assert.Equal("at-1", await service.GetAccessTokenAsync(profile, Timeout()));
+        Assert.Empty(store.StaleFor(MailAuth.Microsoft, "ms-client"));
+
+        // Andere Client-ID in den Einstellungen: auch das zwischengespeicherte Zugriffstoken gilt nicht mehr.
+        var changed = new OAuthService(store, endpoint, _ => Ms("firma-client"));
+        Assert.Equal(new[] { profile.Id }, store.StaleFor(MailAuth.Microsoft, "firma-client"));
+        var ex = await Assert.ThrowsAsync<OAuthException>(() => changed.GetAccessTokenAsync(profile, Timeout()));
+        Assert.True(ex.ReauthRequired);
+        Assert.Equal(1, calls);
+
+        // Anmeldungen ohne gespeicherte Client-ID (ältere Stände) werden nicht verworfen.
+        store.Set(profile.Id, MailAuth.Microsoft, "anna@outlook.com", "rt");
+        Assert.Empty(store.StaleFor(MailAuth.Microsoft, "firma-client"));
+        Assert.Equal("at-2", await changed.GetAccessTokenAsync(profile, Timeout()));
+    }
+
+    [Fact]
+    public void Own_client_ids_from_settings_take_precedence_and_can_be_cleared()
+    {
+        try
+        {
+            OAuthProviders.Configure("""{ "google": { "clientId": "eingebaut.apps.googleusercontent.com", "clientSecret": "GOCSPX-eingebaut" } }""");
+            OAuthProviders.ApplyUserClients(null);
+            Assert.True(OAuthProviders.HasBuiltIn(MailAuth.Google));
+            Assert.False(OAuthProviders.HasBuiltIn(MailAuth.Microsoft));
+            Assert.False(OAuthProviders.Microsoft.IsConfigured);
+            Assert.Equal("GOCSPX-eingebaut", OAuthProviders.Google.ClientSecret);
+
+            var own = new OAuthClientSettings { GoogleClientId = " firma.apps.googleusercontent.com ", MicrosoftClientId = "11111111-2222-3333-4444-555555555555" };
+            own.GoogleClientSecret = "GOCSPX-firma";
+            OAuthProviders.ApplyUserClients(own);
+            Assert.Equal("firma.apps.googleusercontent.com", OAuthProviders.Google.ClientId);
+            Assert.Equal("GOCSPX-firma", OAuthProviders.Google.ClientSecret);
+            Assert.True(OAuthProviders.UsesOwnClient(MailAuth.Google));
+            Assert.True(OAuthProviders.Microsoft.IsConfigured);
+            Assert.Null(OAuthProviders.Microsoft.ClientSecret);
+            Assert.Equal("https://oauth2.googleapis.com/token", OAuthProviders.Google.TokenEndpoint);
+
+            // Geheimnis steht verschlüsselt in den Einstellungen, nicht im Klartext.
+            var json = System.Text.Json.JsonSerializer.Serialize(own);
+            Assert.DoesNotContain("GOCSPX-firma", json);
+
+            OAuthProviders.ApplyUserClients(new OAuthClientSettings());
+            Assert.Equal("eingebaut.apps.googleusercontent.com", OAuthProviders.Google.ClientId);
+            Assert.Equal("GOCSPX-eingebaut", OAuthProviders.Google.ClientSecret);
+            Assert.False(OAuthProviders.Microsoft.IsConfigured);
+        }
+        finally
+        {
+            OAuthProviders.ApplyUserClients(null);
+            OAuthProviders.Configure(OAuthProviders.LoadConfig());
+        }
+    }
+
+    [Theory]
+    [InlineData(MailAuth.Google, "", true)]
+    [InlineData(MailAuth.Google, "123-abc.apps.googleusercontent.com", true)]
+    [InlineData(MailAuth.Google, "11111111-2222-3333-4444-555555555555", false)]
+    [InlineData(MailAuth.Microsoft, "11111111-2222-3333-4444-555555555555", true)]
+    [InlineData(MailAuth.Microsoft, "123-abc.apps.googleusercontent.com", false)]
+    public void Client_id_format_is_checked(MailAuth kind, string id, bool ok) =>
+        Assert.Equal(ok, OAuthProviders.IsPlausibleClientId(kind, id));
+
     [Fact]
     public void Token_store_encrypts_refresh_token_and_can_restore()
     {

@@ -18,7 +18,7 @@ public enum MailAuth
 /// <summary>
 /// Ein OAuth-Anbieter: Endpunkte, Berechtigungen und Server. Die Client-ID (und bei Google das nicht geheime
 /// "Client-Secret" einer Desktop-App) stammen aus der App-Registrierung des Herausgebers und stehen nicht im Quelltext,
-/// sondern in oauth-clients.json (siehe docs/OAUTH.md).
+/// sondern in oauth-clients.json oder in den Einstellungen des Benutzers (siehe docs/OAUTH.md).
 /// </summary>
 public sealed record OAuthProvider
 {
@@ -53,8 +53,46 @@ public static class OAuthProviders
 
     static OAuthProvider _microsoft = MicrosoftTemplate;
     static OAuthProvider _google = GoogleTemplate;
+    static ClientConfig? _builtIn;
+    static OAuthClientSettings? _user;
 
     static OAuthProviders() => Configure(LoadConfig());
+
+    /// <summary>Bringt diese Version eine Client-ID für den Anbieter mit (eingebettet, Datei oder Umgebungsvariable)?</summary>
+    public static bool HasBuiltIn(MailAuth kind) => !string.IsNullOrWhiteSpace(Entry(_builtIn, kind)?.ClientId);
+
+    /// <summary>Wird gerade eine in den Einstellungen eingetragene eigene Client-ID verwendet?</summary>
+    public static bool UsesOwnClient(MailAuth kind) => kind switch
+    {
+        MailAuth.Microsoft => Blank(_user?.MicrosoftClientId) is not null,
+        MailAuth.Google => Blank(_user?.GoogleClientId) is not null,
+        _ => false,
+    };
+
+    /// <summary>Übernimmt die eigenen Client-IDs aus den Einstellungen (beim Start und nach dem Speichern).</summary>
+    public static void ApplyUserClients(OAuthClientSettings? settings)
+    {
+        _user = settings is null ? null : new OAuthClientSettings
+        {
+            MicrosoftClientId = settings.MicrosoftClientId,
+            GoogleClientId = settings.GoogleClientId,
+            ProtectedGoogleClientSecret = settings.ProtectedGoogleClientSecret,
+        };
+        Rebuild();
+    }
+
+    /// <summary>Prüft grob das Format einer Client-ID (leer zählt als "keine eigene" und ist in Ordnung).</summary>
+    public static bool IsPlausibleClientId(MailAuth kind, string? clientId)
+    {
+        var id = clientId?.Trim() ?? "";
+        if (id.Length == 0) return true;
+        return kind switch
+        {
+            MailAuth.Microsoft => Guid.TryParse(id, out _),
+            MailAuth.Google => id.EndsWith(".apps.googleusercontent.com", StringComparison.OrdinalIgnoreCase) && !id.Contains(' '),
+            _ => false,
+        };
+    }
 
     public static OAuthProvider Microsoft => _microsoft;
     public static OAuthProvider Google => _google;
@@ -125,7 +163,7 @@ public static class OAuthProviders
     /// Reihenfolge: Umgebungsvariable MAILVAULT_OAUTH_CLIENTS (Pfad), oauth-clients.json neben der MailVault.exe,
     /// beim Bauen eingebettete build/oauth-clients.local.json. Fehlt alles, ist OAuth ausgeblendet.
     /// </summary>
-    static string? LoadConfig()
+    internal static string? LoadConfig()
     {
         try
         {
@@ -149,9 +187,26 @@ public static class OAuthProviders
         {
             try { cfg = JsonSerializer.Deserialize<ClientConfig>(json); } catch (JsonException) { }
         }
-        _microsoft = MicrosoftTemplate with { ClientId = cfg?.Microsoft?.ClientId?.Trim() ?? "", ClientSecret = Blank(cfg?.Microsoft?.ClientSecret) };
-        _google = GoogleTemplate with { ClientId = cfg?.Google?.ClientId?.Trim() ?? "", ClientSecret = Blank(cfg?.Google?.ClientSecret) };
+        _builtIn = cfg;
+        Rebuild();
     }
+
+    /// <summary>Eigene Client-ID aus den Einstellungen hat Vorrang; sonst gilt die eingebaute.</summary>
+    static void Rebuild()
+    {
+        var u = _user;
+        var ms = Blank(u?.MicrosoftClientId) is { } mid ? new ClientEntry { ClientId = mid } : _builtIn?.Microsoft;
+        var g = Blank(u?.GoogleClientId) is { } gid ? new ClientEntry { ClientId = gid, ClientSecret = u!.GoogleClientSecret } : _builtIn?.Google;
+        _microsoft = MicrosoftTemplate with { ClientId = ms?.ClientId?.Trim() ?? "", ClientSecret = Blank(ms?.ClientSecret) };
+        _google = GoogleTemplate with { ClientId = g?.ClientId?.Trim() ?? "", ClientSecret = Blank(g?.ClientSecret) };
+    }
+
+    static ClientEntry? Entry(ClientConfig? cfg, MailAuth kind) => kind switch
+    {
+        MailAuth.Microsoft => cfg?.Microsoft,
+        MailAuth.Google => cfg?.Google,
+        _ => null,
+    };
 
     /// <summary>Nur für Tests: Endpunkte auf einen lokalen Schein-Anmeldeserver umlenken.</summary>
     internal static void OverrideForTests(OAuthProvider microsoft, OAuthProvider google)

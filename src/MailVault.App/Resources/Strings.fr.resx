@@ -84,7 +84,7 @@
   <data name="Profile_Port" xml:space="preserve"><value>Port</value></data>
   <data name="Profile_IgnoreCert" xml:space="preserve"><value>Accepter les certificats de serveur non valides (déconseillé)</value></data>
   <data name="Profile_Test" xml:space="preserve"><value>Tester la connexion et charger les dossiers</value></data>
-  <data name="Profile_AppPasswordHint" xml:space="preserve"><value>Gmail, Outlook.com et de nombreux fournisseurs exigent un mot de passe d'application lorsque la validation en deux étapes est active. Pour Gmail, IMAP doit être activé dans les paramètres.</value></data>
+  <data name="Profile_AppPasswordHint" xml:space="preserve"><value>Gmail et de nombreux autres fournisseurs exigent un mot de passe d'application lorsque la validation en deux étapes est active ; pour Gmail, IMAP doit en outre être activé. Outlook.com, Hotmail et Microsoft 365 ne fonctionnent plus qu'avec « Compte Microsoft » comme méthode de connexion, pas avec un mot de passe d'application.</value></data>
   <data name="Profile_Source" xml:space="preserve"><value>Source</value></data>
   <data name="Profile_ThunderbirdProfile" xml:space="preserve"><value>Profil Thunderbird</value></data>
   <data name="Profile_Recursive" xml:space="preserve"><value>Inclure les sous-dossiers</value></data>
@@ -955,5 +955,65 @@ Seul, il est inutile ; avec le mot de passe ou la clé de récupération, il ouv
   </data>
   <data name="Settings_NotifySignInHint" xml:space="preserve">
     <value>Les connexions Microsoft ou Google expirées sont signalées immédiatement, sans attendre le nombre d'échecs défini – elles ne se résolvent jamais seules.</value>
+  </data>
+  <data name="Settings_TabOAuth" xml:space="preserve">
+    <value>Connexion (OAuth)</value>
+  </data>
+  <data name="OAuthSet_Title" xml:space="preserve">
+    <value>Connexion avec un compte Google ou Microsoft</value>
+  </data>
+  <data name="OAuthSet_Intro" xml:space="preserve">
+    <value>Pour se connecter avec Google ou Microsoft (OAuth), MailVault a besoin d'une application enregistrée chez le fournisseur, identifiée par un ID client. La version téléchargée sur mailvault.zerze.de contient déjà les ID clients nécessaires – il n'y a alors rien à faire ici. Vos propres ID clients ne sont nécessaires que si vous compilez MailVault vous-même à partir des sources ou devez utiliser l'enregistrement de votre entreprise. Les valeurs saisies ici priment sur celles intégrées.</value>
+  </data>
+  <data name="OAuthSet_Google" xml:space="preserve">
+    <value>Google (Gmail, Google Workspace)</value>
+  </data>
+  <data name="OAuthSet_Microsoft" xml:space="preserve">
+    <value>Microsoft (Outlook.com, Hotmail, Microsoft 365)</value>
+  </data>
+  <data name="OAuthSet_ClientId" xml:space="preserve">
+    <value>ID client :</value>
+  </data>
+  <data name="OAuthSet_ClientSecret" xml:space="preserve">
+    <value>Secret client :</value>
+  </data>
+  <data name="OAuthSet_GoogleHint" xml:space="preserve">
+    <value>Google Cloud Console → client OAuth de type « Application de bureau » avec le champ d'application https://mail.google.com/. L'ID client se termine par .apps.googleusercontent.com ; le secret client commence généralement par GOCSPX-.</value>
+  </data>
+  <data name="OAuthSet_MicrosoftHint" xml:space="preserve">
+    <value>Microsoft Entra → inscription d'application pour « Comptes dans un annuaire organisationnel et comptes Microsoft personnels », plateforme « Applications mobiles et de bureau » avec l'URI de redirection http://localhost. L'ID d'application (client) ressemble à 00000000-0000-0000-0000-000000000000 ; aucun secret n'est nécessaire.</value>
+  </data>
+  <data name="OAuthSet_StateBuiltIn" xml:space="preserve">
+    <value>Intégré à cette version – utilisé.</value>
+  </data>
+  <data name="OAuthSet_StateOwn" xml:space="preserve">
+    <value>Votre propre ID client est utilisé.</value>
+  </data>
+  <data name="OAuthSet_StateOwnOverBuiltIn" xml:space="preserve">
+    <value>Votre propre ID client est utilisé (à la place de celui intégré).</value>
+  </data>
+  <data name="OAuthSet_StateNone" xml:space="preserve">
+    <value>Non configuré – la connexion avec {0} n'est pas proposée dans le profil.</value>
+  </data>
+  <data name="OAuthSet_ClearHint" xml:space="preserve">
+    <value>Videz le champ et enregistrez pour réutiliser l'ID client intégré.</value>
+  </data>
+  <data name="OAuthSet_Save" xml:space="preserve">
+    <value>Enregistrer</value>
+  </data>
+  <data name="OAuthSet_Guide" xml:space="preserve">
+    <value>Ouvrir le guide illustré</value>
+  </data>
+  <data name="OAuthSet_Saved" xml:space="preserve">
+    <value>Enregistré.</value>
+  </data>
+  <data name="OAuthSet_SavedReauth" xml:space="preserve">
+    <value>Enregistré. Ces boîtes aux lettres doivent être reconnectées (ouvrir le profil → « Se reconnecter … ») : {0}</value>
+  </data>
+  <data name="OAuthSet_GoogleSecretMissing" xml:space="preserve">
+    <value>Google exige aussi le secret client pour votre propre ID client.</value>
+  </data>
+  <data name="OAuthSet_InvalidId" xml:space="preserve">
+    <value>L'ID client pour {0} n'a pas le format attendu.</value>
   </data>
 </root>

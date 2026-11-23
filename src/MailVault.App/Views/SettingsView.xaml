@@ -262,6 +262,99 @@
                 </ScrollViewer>
             </TabItem>
 
+            <!-- ============================================================ Anmeldung (OAuth) -->
+            <TabItem Header="{loc:T Settings_TabOAuth}" DataContext="{Binding OAuth}" AutomationProperties.AutomationId="TabOAuth">
+                <ScrollViewer VerticalScrollBarVisibility="Auto">
+                    <StackPanel MaxWidth="820" HorizontalAlignment="Left" Margin="0,0,0,20">
+                        <Border Style="{StaticResource Card}">
+                            <StackPanel>
+                                <TextBlock Style="{StaticResource H2}" Text="{loc:T OAuthSet_Title}" />
+                                <TextBlock Style="{StaticResource Muted}" TextWrapping="Wrap" Text="{loc:T OAuthSet_Intro}" />
+                                <Button Content="{loc:T OAuthSet_Guide}" HorizontalAlignment="Left" Margin="0,10,0,0" Command="{Binding OpenGuideCommand}" />
+                            </StackPanel>
+                        </Border>
+
+                        <Border Style="{StaticResource Card}">
+                            <StackPanel>
+                                <TextBlock Style="{StaticResource H2}" Text="{loc:T OAuthSet_Google}" />
+                                <TextBlock Text="{Binding GoogleState}" TextWrapping="Wrap" Margin="0,0,0,8" AutomationProperties.AutomationId="GoogleState">
+                                    <TextBlock.Style>
+                                        <Style TargetType="TextBlock">
+                                            <Setter Property="Foreground" Value="{DynamicResource MutedTextBrush}" />
+                                            <Style.Triggers>
+                                                <DataTrigger Binding="{Binding GoogleReady}" Value="True">
+                                                    <Setter Property="Foreground" Value="{DynamicResource OkBrush}" />
+                                                </DataTrigger>
+                                            </Style.Triggers>
+                                        </Style>
+                                    </TextBlock.Style>
+                                </TextBlock>
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="130" />
+                                        <ColumnDefinition />
+                                    </Grid.ColumnDefinitions>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition /><RowDefinition />
+                                    </Grid.RowDefinitions>
+                                    <TextBlock Style="{StaticResource FormLabel}" Text="{loc:T OAuthSet_ClientId}" />
+                                    <TextBox Grid.Column="1" Margin="0,3" Text="{Binding GoogleClientId, UpdateSourceTrigger=PropertyChanged}"
+                                             AutomationProperties.Name="Google Client-ID" AutomationProperties.AutomationId="GoogleClientId" />
+                                    <TextBlock Grid.Row="1" Style="{StaticResource FormLabel}" Text="{loc:T OAuthSet_ClientSecret}" />
+                                    <PasswordBox x:Name="GoogleSecretBox" Grid.Row="1" Grid.Column="1" Margin="0,3" PasswordChanged="GoogleSecret_Changed"
+                                                 AutomationProperties.Name="Google Client-Secret" AutomationProperties.AutomationId="GoogleClientSecret" />
+                                </Grid>
+                                <TextBlock Style="{StaticResource Muted}" FontSize="12" TextWrapping="Wrap" Margin="0,6,0,0" Text="{loc:T OAuthSet_GoogleHint}" />
+                            </StackPanel>
+                        </Border>
+
+                        <Border Style="{StaticResource Card}">
+                            <StackPanel>
+                                <TextBlock Style="{StaticResource H2}" Text="{loc:T OAuthSet_Microsoft}" />
+                                <TextBlock Text="{Binding MicrosoftState}" TextWrapping="Wrap" Margin="0,0,0,8" AutomationProperties.AutomationId="MicrosoftState">
+                                    <TextBlock.Style>
+                                        <Style TargetType="TextBlock">
+                                            <Setter Property="Foreground" Value="{DynamicResource MutedTextBrush}" />
+                                            <Style.Triggers>
+                                                <DataTrigger Binding="{Binding MicrosoftReady}" Value="True">
+                                                    <Setter Property="Foreground" Value="{DynamicResource OkBrush}" />
+                                                </DataTrigger>
+                                            </Style.Triggers>
+                                        </Style>
+                                    </TextBlock.Style>
+                                </TextBlock>
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="130" />
+                                        <ColumnDefinition />
+                                    </Grid.ColumnDefinitions>
+                                    <TextBlock Style="{StaticResource FormLabel}" Text="{loc:T OAuthSet_ClientId}" />
+                                    <TextBox Grid.Column="1" Margin="0,3" Text="{Binding MicrosoftClientId, UpdateSourceTrigger=PropertyChanged}"
+                                             AutomationProperties.Name="Microsoft Client-ID" AutomationProperties.AutomationId="MicrosoftClientId" />
+                                </Grid>
+                                <TextBlock Style="{StaticResource Muted}" FontSize="12" TextWrapping="Wrap" Margin="0,6,0,0" Text="{loc:T OAuthSet_MicrosoftHint}" />
+                            </StackPanel>
+                        </Border>
+
+                        <StackPanel Orientation="Horizontal">
+                            <Button Content="{loc:T OAuthSet_Save}" Style="{StaticResource PrimaryButton}" Command="{Binding SaveCommand}" AutomationProperties.AutomationId="OAuthSave" />
+                            <TextBlock Style="{StaticResource Muted}" FontSize="12" VerticalAlignment="Center" Margin="12,0,0,0" TextWrapping="Wrap" Text="{loc:T OAuthSet_ClearHint}" />
+                        </StackPanel>
+                        <TextBlock Text="{Binding Status}" AutomationProperties.AutomationId="OAuthStatusText">
+                            <TextBlock.Style>
+                                <Style TargetType="TextBlock" BasedOn="{StaticResource Status}">
+                                    <Style.Triggers>
+                                        <DataTrigger Binding="{Binding StatusIsError}" Value="True">
+                                            <Setter Property="Foreground" Value="{DynamicResource DangerBrush}" />
+                                        </DataTrigger>
+                                    </Style.Triggers>
+                                </Style>
+                            </TextBlock.Style>
+                        </TextBlock>
+                    </StackPanel>
+                </ScrollViewer>
+            </TabItem>
+
             <!-- ============================================================ Webzugriff -->
             <TabItem Header="{loc:T Settings_TabWeb}" DataContext="{Binding Web}">
                 <ScrollViewer VerticalScrollBarVisibility="Auto">
