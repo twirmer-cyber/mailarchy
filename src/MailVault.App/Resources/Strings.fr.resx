@@ -950,4 +950,7 @@ Seul, il est inutile ; avec le mot de passe ou la clé de récupération, il ouv
   <data name="ImportArchive_RunTitle" xml:space="preserve">
     <value>Reprise de l'archive sauvegardée</value>
   </data>
+  <data name="Profile_GoogleConsentHint" xml:space="preserve">
+    <value>Dans le navigateur, cliquez sur « Continuer » chez Google (l’avertissement « application non validée » est normal), puis cochez la case Gmail sur la page des autorisations – sinon Google n’autorise que la connexion.</value>
+  </data>
 </root>

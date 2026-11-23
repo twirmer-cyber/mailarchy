@@ -2,21 +2,25 @@
   "de": [
     "Neu: Anmeldung mit Microsoft-Konto (Outlook.com, Hotmail, Microsoft 365) und Google-Konto (Gmail) – im Browser, ohne App-Passwort",
     "Neu: Gesichertes Archiv einbinden – eine Sicherung oder das Archiv vom alten PC übernehmen oder darauf umstellen (Verwaltung → Archiv)",
-    "Beim Übernehmen werden doppelte E-Mails erkannt; die Sicherung selbst bleibt unverändert, auch verschlüsselte Archive mit Kennwort, Wiederherstellungsschlüssel oder Notfallblatt"
+    "Beim Übernehmen werden doppelte E-Mails erkannt; die Sicherung selbst bleibt unverändert, auch verschlüsselte Archive mit Kennwort, Wiederherstellungsschlüssel oder Notfallblatt",
+    "Schneller: „Nur E-Mails neuer als …“ lässt bei IMAP den Server vorsortieren – große Postfächer werden nicht mehr komplett durchsucht"
   ],
   "en": [
     "New: sign in with a Microsoft account (Outlook.com, Hotmail, Microsoft 365) or a Google account (Gmail) – in the browser, no app password",
     "New: add a backed-up archive – take over a backup or the archive from your old PC, or switch to it (Settings → Archive)",
-    "Duplicates are detected when taking over; the backup itself stays unchanged, including encrypted archives with password, recovery key or emergency sheet"
+    "Duplicates are detected when taking over; the backup itself stays unchanged, including encrypted archives with password, recovery key or emergency sheet",
+    "Faster: “Only emails newer than …” lets the IMAP server preselect – large mailboxes are no longer scanned in full"
   ],
   "fr": [
     "Nouveau : connexion avec un compte Microsoft (Outlook.com, Hotmail, Microsoft 365) ou Google (Gmail) – dans le navigateur, sans mot de passe d'application",
     "Nouveau : intégrer une archive sauvegardée – reprendre une sauvegarde ou l'archive de l'ancien PC, ou basculer dessus (Paramètres → Archive)",
-    "Les doublons sont détectés lors de la reprise ; la sauvegarde elle-même reste inchangée, y compris les archives chiffrées (mot de passe, clé de récupération ou fiche d'urgence)"
+    "Les doublons sont détectés lors de la reprise ; la sauvegarde elle-même reste inchangée, y compris les archives chiffrées (mot de passe, clé de récupération ou fiche d'urgence)",
+    "Plus rapide : « Uniquement les e-mails plus récents que … » laisse le serveur IMAP présélectionner – les grandes boîtes ne sont plus parcourues entièrement"
   ],
   "es": [
     "Nuevo: inicio de sesión con una cuenta de Microsoft (Outlook.com, Hotmail, Microsoft 365) o de Google (Gmail), en el navegador y sin contraseña de aplicación",
     "Nuevo: integrar un archivo de copia de seguridad: incorporar una copia o el archivo del PC antiguo, o cambiar a él (Configuración → Archivo)",
-    "Al incorporar se detectan los duplicados; la copia de seguridad no se modifica, incluidos los archivos cifrados con contraseña, clave de recuperación u hoja de emergencia"
+    "Al incorporar se detectan los duplicados; la copia de seguridad no se modifica, incluidos los archivos cifrados con contraseña, clave de recuperación u hoja de emergencia",
+    "Más rápido: «Solo correos más recientes que …» deja que el servidor IMAP preseleccione; los buzones grandes ya no se recorren por completo"
   ]
 }

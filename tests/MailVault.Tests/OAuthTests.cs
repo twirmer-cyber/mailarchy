@@ -29,6 +29,7 @@ public class OAuthTests
         Kind = MailAuth.Microsoft, DisplayName = "Microsoft",
         AuthorizeEndpoint = "https://login.example/authorize", TokenEndpoint = "https://login.example/token",
         Scope = "https://outlook.office.com/IMAP.AccessAsUser.All offline_access openid email",
+        MailScopes = new[] { "IMAP.AccessAsUser.All", "POP.AccessAsUser.All" },
         ImapHost = "127.0.0.1", Pop3Host = "127.0.0.1", RedirectHost = "localhost",
         ExtraAuthorizeParameters = new Dictionary<string, string> { ["prompt"] = "select_account" },
         ClientId = clientId,
@@ -38,7 +39,7 @@ public class OAuthTests
     {
         Kind = MailAuth.Google, DisplayName = "Google",
         AuthorizeEndpoint = "https://accounts.example/auth", TokenEndpoint = "https://accounts.example/token",
-        Scope = "https://mail.google.com/ openid email", ImapHost = "127.0.0.1", Pop3Host = "127.0.0.1", RedirectHost = "127.0.0.1",
+        Scope = "https://mail.google.com/ openid email", MailScopes = new[] { "https://mail.google.com/" }, ImapHost = "127.0.0.1", Pop3Host = "127.0.0.1", RedirectHost = "127.0.0.1",
         ClientId = "g-client", ClientSecret = "g-secret",
     };
 
@@ -150,11 +151,37 @@ public class OAuthTests
         {
             Assert.Equal("g-secret", form["client_secret"]);
             Assert.StartsWith("http://127.0.0.1:", form["redirect_uri"]);
-            return (HttpStatusCode.OK, new { access_token = "g-at", expires_in = 3600, refresh_token = "g-rt", id_token = IdToken("anna@gmail.com") });
+            return (HttpStatusCode.OK, new { access_token = "g-at", expires_in = 3600, refresh_token = "g-rt", id_token = IdToken("anna@gmail.com"),
+                scope = "https://mail.google.com/ openid https://www.googleapis.com/auth/userinfo.email" });
         });
         var tokens = await new OAuthClient(endpoint).SignInAsync(Google(), null,
             Browser(q => "state=" + Uri.EscapeDataString(q["state"]) + "&code=xyz&scope=email"), Timeout());
         Assert.Equal("anna@gmail.com", tokens.Account);
+    }
+
+    [Fact]
+    public async Task Google_consent_without_gmail_checkbox_is_reported_clearly()
+    {
+        // Echt beobachtet: Google lässt das Gmail-Häkchen abwählen und gibt dann nur Anmelde-Berechtigungen frei.
+        var endpoint = new TokenEndpoint(_ => (HttpStatusCode.OK, new { access_token = "g-at", expires_in = 3600, refresh_token = "g-rt",
+            scope = "email https://www.googleapis.com/auth/userinfo.email openid" }));
+        var ex = await Assert.ThrowsAsync<OAuthException>(() => new OAuthClient(endpoint).SignInAsync(Google(), null,
+            Browser(q => "state=" + Uri.EscapeDataString(q["state"]) + "&code=xyz"), Timeout()));
+        Assert.True(ex.ReauthRequired);
+        Assert.Equal(MailVault.Core.Localization.CoreText.F("OAuth_MailScopeMissing", "Google"), ex.Message);
+
+        // Auch beim Erneuern eines so erteilten Tokens: klare Meldung statt "Authentication failed" vom Server
+        var refresh = await Assert.ThrowsAsync<OAuthException>(() => new OAuthClient(endpoint).RefreshAsync(Google(), "g-rt", Timeout()));
+        Assert.True(refresh.ReauthRequired);
+    }
+
+    [Fact]
+    public async Task Microsoft_scopes_with_resource_prefix_are_accepted()
+    {
+        var endpoint = new TokenEndpoint(_ => (HttpStatusCode.OK, new { access_token = "at", expires_in = 3600,
+            scope = "https://outlook.office.com/IMAP.AccessAsUser.All https://outlook.office.com/User.Read" }));
+        var t = await new OAuthClient(endpoint).RefreshAsync(Ms(), "rt", Timeout());
+        Assert.Equal("at", t.AccessToken);
     }
 
     [Fact]

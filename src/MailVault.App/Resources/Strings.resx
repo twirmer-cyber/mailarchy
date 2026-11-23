@@ -950,4 +950,7 @@ Allein ist sie nutzlos; zusammen mit Kennwort oder Wiederherstellungsschlüssel 
   <data name="ImportArchive_RunTitle" xml:space="preserve">
     <value>Gesichertes Archiv übernehmen</value>
   </data>
+  <data name="Profile_GoogleConsentHint" xml:space="preserve">
+    <value>Im Browser bei Google zuerst „Weiter“ (der Hinweis „App nicht überprüft“ ist bekannt), dann auf der Seite mit den Berechtigungen das Häkchen bei Gmail setzen – sonst gibt Google nur die Anmeldung frei.</value>
+  </data>
 </root>

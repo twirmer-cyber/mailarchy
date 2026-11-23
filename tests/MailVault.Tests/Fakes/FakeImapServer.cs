@@ -599,6 +599,12 @@ public sealed class FakeImapServer : FakeServerBase
                         var set = ParseSet(S(args[uidIdx + 1]), folder.Messages.Count == 0 ? 0 : folder.Messages.Max(m => m.Uid));
                         all = all.Where(x => set(x.M.Uid));
                     }
+                    var sinceIdx = crit.IndexOf("SINCE");
+                    if (sinceIdx >= 0 && sinceIdx + 1 < args.Count)
+                    {
+                        var since = DateTime.ParseExact(S(args[sinceIdx + 1]), "d-MMM-yyyy", System.Globalization.CultureInfo.InvariantCulture);
+                        all = all.Where(x => x.M.InternalDate.Date >= since);
+                    }
                     if (crit.Contains("UNSEEN")) all = all.Where(x => !x.M.Flags.Contains("\\Seen"));
                     if (crit.Contains("SEEN") ) all = all.Where(x => x.M.Flags.Contains("\\Seen"));
                     hits = all.Select(x => uid ? x.M.Uid : (uint)x.Seq).ToList();

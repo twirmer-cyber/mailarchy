@@ -950,4 +950,7 @@ On its own it is useless; together with the password or recovery key it opens th
   <data name="ImportArchive_RunTitle" xml:space="preserve">
     <value>Taking over backed-up archive</value>
   </data>
+  <data name="Profile_GoogleConsentHint" xml:space="preserve">
+    <value>In the browser, click “Continue” at Google (the “app not verified” notice is expected), then tick the Gmail box on the permissions page – otherwise Google only allows the sign-in.</value>
+  </data>
 </root>

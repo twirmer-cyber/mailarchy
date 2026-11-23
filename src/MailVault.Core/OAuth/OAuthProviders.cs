@@ -28,6 +28,12 @@ public sealed record OAuthProvider
     public required string TokenEndpoint { get; init; }
     /// <summary>Angeforderte Berechtigungen (durch Leerzeichen getrennt). Nur Lesezugriff auf das Postfach wird genutzt.</summary>
     public required string Scope { get; init; }
+    /// <summary>
+    /// Mindestens eine dieser Berechtigungen muss in der Token-Antwort stehen, sonst ist nur die Anmeldung erlaubt,
+    /// nicht der Postfachzugriff (Google lässt Nutzer einzelne Berechtigungen abwählen; das Gmail-Häkchen ist nicht vorausgewählt).
+    /// Vergleich als Teilzeichenfolge, weil Microsoft die Berechtigungen mit Ressourcen-Präfix zurückgibt.
+    /// </summary>
+    public required IReadOnlyList<string> MailScopes { get; init; }
     public required string ImapHost { get; init; }
     public required string Pop3Host { get; init; }
     /// <summary>Hostname in der Rücksprungadresse: Microsoft verlangt "localhost", Google empfiehlt "127.0.0.1".</summary>
@@ -61,6 +67,7 @@ public static class OAuthProviders
         TokenEndpoint = "https://login.microsoftonline.com/common/oauth2/v2.0/token",
         // IMAP und POP3 für Outlook.com/Hotmail/Microsoft 365; offline_access liefert das Refresh-Token für den Zeitplan.
         Scope = "https://outlook.office.com/IMAP.AccessAsUser.All https://outlook.office.com/POP.AccessAsUser.All offline_access openid email profile",
+        MailScopes = new[] { "IMAP.AccessAsUser.All", "POP.AccessAsUser.All" },
         ImapHost = "outlook.office365.com",
         Pop3Host = "outlook.office365.com",
         RedirectHost = "localhost",
@@ -75,6 +82,7 @@ public static class OAuthProviders
         TokenEndpoint = "https://oauth2.googleapis.com/token",
         // Für IMAP/POP3 gibt es bei Google nur diese eine Berechtigung; MailVault liest trotzdem nur (EXAMINE, BODY.PEEK).
         Scope = "https://mail.google.com/ openid email",
+        MailScopes = new[] { "https://mail.google.com/" },
         ImapHost = "imap.gmail.com",
         Pop3Host = "pop.gmail.com",
         RedirectHost = "127.0.0.1",

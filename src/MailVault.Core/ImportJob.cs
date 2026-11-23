@@ -17,6 +17,7 @@ public static class ImportJob
         void Log(string line) => progress?.Report(new ProgressInfo(null, result.Archived + result.AlreadyArchived, null, line));
 
         await using var source = SourceFactory.Create(profile);
+        if (source is ImapSource imap && profile.OnlyNewerThanDays is { } sinceDays) imap.Since = DateTimeOffset.Now.AddDays(-sinceDays);
         Log(CoreText.F("Import_Connecting", source.DisplayName));
         await source.ConnectAsync(ct);
         Log(CoreText.T("Import_Connected"));

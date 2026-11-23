@@ -880,4 +880,7 @@ This email was sent automatically by MailVault Home.</value>
   <data name="ArchiveImport_Copying" xml:space="preserve">
     <value>Creating a working copy of the backup ({0}) …</value>
   </data>
+  <data name="OAuth_MailScopeMissing" xml:space="preserve">
+    <value>{0} granted the sign-in but not access to your email. Please sign in again and also tick the box for email access on the consent page (at Google: the Gmail checkbox).</value>
+  </data>
 </root>

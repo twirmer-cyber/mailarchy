@@ -50,6 +50,13 @@ public sealed class ImapSource : IMailSource
     readonly ImapClient _client = new();
 
     public ImapSource(ArchiveProfile profile) => _p = profile;
+
+    /// <summary>
+    /// Vorfilter für "nur neuer als …": Der Server liefert per SEARCH SINCE nur E-Mails ab diesem Tag (Eingangsdatum),
+    /// statt dass bei großen Postfächern (z. B. Gmail seit 2010) erst alle Kopfzeilen geladen werden. Zwei Tage Puffer,
+    /// weil SINCE nur Kalendertage ohne Zeitzone kennt; das genaue Datum prüft danach weiterhin der Import.
+    /// </summary>
+    public DateTimeOffset? Since { get; set; }
     public string DisplayName => $"IMAP {_p.UserName}@{_p.Host}";
 
     public async Task ConnectAsync(CancellationToken ct)
@@ -99,7 +106,8 @@ public sealed class ImapSource : IMailSource
             }
             if (folder.Count == 0) { await folder.CloseAsync(false, ct); continue; }
 
-            var uids = await folder.SearchAsync(MailKit.Search.SearchQuery.All, ct);
+            var query = Since is { } since ? MailKit.Search.SearchQuery.DeliveredAfter(since.UtcDateTime.Date.AddDays(-2)) : MailKit.Search.SearchQuery.All;
+            var uids = await folder.SearchAsync(query, ct);
             foreach (var batch in uids.Chunk(BatchSize))
             {
                 var summaries = await folder.FetchAsync(batch,

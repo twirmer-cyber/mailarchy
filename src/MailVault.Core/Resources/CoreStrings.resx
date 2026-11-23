@@ -880,4 +880,7 @@ Diese E-Mail wurde automatisch von MailVault Home gesendet.</value>
   <data name="ArchiveImport_Copying" xml:space="preserve">
     <value>Arbeitskopie der Sicherung wird angelegt ({0}) …</value>
   </data>
+  <data name="OAuth_MailScopeMissing" xml:space="preserve">
+    <value>{0} hat den Zugriff auf die E-Mails nicht freigegeben – nur die Anmeldung. Bitte erneut anmelden und auf der Zustimmungsseite auch das Häkchen für den E-Mail-Zugriff setzen (bei Google: das Häkchen bei Gmail).</value>
+  </data>
 </root>

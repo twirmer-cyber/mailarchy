@@ -60,6 +60,7 @@
                                 <Button x:Name="SignInCancelButton" Content="{loc:T Common_Cancel}" Click="SignInCancel_Click" Visibility="Collapsed" />
                             </StackPanel>
                             <TextBlock x:Name="OAuthStatus" AutomationProperties.LiveSetting="Polite" FontSize="12" TextWrapping="Wrap" Margin="0,6,0,0" />
+                            <TextBlock x:Name="OAuthHint" Style="{StaticResource Muted}" FontSize="12" TextWrapping="Wrap" Margin="0,4,0,0" Visibility="Collapsed" />
                         </StackPanel>
                         <TextBlock Grid.Row="3" Style="{StaticResource FormLabel}" Text="{loc:T Profile_ServerLabel}" />
                         <TextBox x:Name="HostBox" Grid.Row="3" Grid.Column="1" Margin="0,3" AutomationProperties.Name="{loc:T Profile_Server}" />

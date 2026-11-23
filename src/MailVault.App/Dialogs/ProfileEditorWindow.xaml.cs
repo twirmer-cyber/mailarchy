@@ -162,6 +162,9 @@ public partial class ProfileEditorWindow : Window
         SignInButton.Content = L.F(signedIn ? "Profile_SignInAgain" : "Profile_SignInWith", provider.DisplayName);
         OAuthStatus.Text = signedIn ? L.F("Profile_SignedInAs", account!.Account.Length > 0 ? account.Account : provider.DisplayName)
                                     : L.T("Profile_NotSignedIn");
+        // Google: Das Gmail-Häkchen auf der Zustimmungsseite ist nicht vorausgewählt und wird leicht übersehen.
+        OAuthHint.Text = kind == MailAuth.Google ? L.T("Profile_GoogleConsentHint") : "";
+        OAuthHint.Visibility = kind == MailAuth.Google ? Visibility.Visible : Visibility.Collapsed;
     }
 
     async void SignIn_Click(object sender, RoutedEventArgs e)

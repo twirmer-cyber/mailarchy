@@ -149,6 +149,33 @@ public class ImapReadOnlyTests
     }
 
     [Fact]
+    public async Task Newer_than_filter_lets_the_server_preselect_and_skips_old_headers()
+    {
+        // Große Postfächer (Gmail seit 2010): Mit "nur neuer als" sollen alte E-Mails gar nicht erst geladen werden.
+        using var server = new FakeImapServer();
+        for (var i = 0; i < 5; i++)
+        {
+            var old = new DateTimeOffset(2015, 1, 10 + i, 9, 0, 0, TimeSpan.Zero);
+            server.AddMessage("INBOX", ArchiveTests.MakeMessage("Alt " + i, "alt", date: old), internalDate: old);
+        }
+        var recent = DateTimeOffset.Now.AddDays(-1);
+        server.AddMessage("INBOX", ArchiveTests.MakeMessage("Neu", "neu", date: recent), internalDate: recent);
+        // Eingangsdatum neu, Kopfdatum alt (z. B. nachträglich hochgeladen): Der Server liefert sie, der Import filtert sie weiter.
+        server.AddMessage("INBOX", ArchiveTests.MakeMessage("Hochgeladen", "alt", date: new DateTimeOffset(2016, 5, 1, 9, 0, 0, TimeSpan.Zero)), internalDate: recent);
+        using var tmp = new TempDir();
+        using var archive = MailArchive.Open(tmp.Path);
+        var profile = Profile(server);
+        profile.OnlyNewerThanDays = 30;
+
+        var result = await ImportJob.RunAsync(archive, profile, null, Timeout());
+
+        Assert.Equal(1, result.Archived);
+        Assert.Equal(1, result.Filtered); // die 5 alten hat der Server gar nicht erst geliefert
+        Assert.Contains(server.Commands, c => Verb(c) == "UID SEARCH" && c.Contains("SINCE", StringComparison.OrdinalIgnoreCase));
+        AssertReadOnlyProtocol(server);
+    }
+
+    [Fact]
     public async Task Unread_messages_stay_unread()
     {
         using var server = CreateServer();

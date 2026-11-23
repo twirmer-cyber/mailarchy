@@ -880,4 +880,7 @@ Este correo lo ha enviado automáticamente MailVault Home.</value>
   <data name="ArchiveImport_Copying" xml:space="preserve">
     <value>Creando una copia de trabajo de la copia de seguridad ({0}) …</value>
   </data>
+  <data name="OAuth_MailScopeMissing" xml:space="preserve">
+    <value>{0} autorizó el inicio de sesión, pero no el acceso al correo. Vuelva a iniciar sesión y marque también la casilla de acceso al correo en la página de consentimiento (en Google: la casilla de Gmail).</value>
+  </data>
 </root>

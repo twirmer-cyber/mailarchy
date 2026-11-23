@@ -158,6 +158,10 @@ public sealed class OAuthClient
                 throw new OAuthException(CoreText.F("OAuth_ProviderError", desc is null ? err : $"{err}: {FirstLine(desc)}"));
             }
             var access = Str(root, "access_token") ?? throw new OAuthException(CoreText.F("OAuth_ProviderError", "access_token"));
+            // Nur die Anmeldung erlaubt, nicht das Postfach (z. B. Gmail-Häkchen nicht gesetzt): klar melden statt später
+            // "Authentication failed" vom IMAP-Server. Fehlt das Feld "scope", gilt die angeforderte Berechtigung.
+            if (Str(root, "scope") is { } granted && !p.MailScopes.Any(s => granted.Contains(s, StringComparison.OrdinalIgnoreCase)))
+                throw new OAuthException(CoreText.F("OAuth_MailScopeMissing", p.DisplayName), reauthRequired: true);
             var expires = root.TryGetProperty("expires_in", out var e) && (e.ValueKind == JsonValueKind.Number ? e.TryGetInt32(out var n) : int.TryParse(e.GetString(), out n))
                 ? n : 3600;
             return new OAuthTokens(access, DateTime.UtcNow.AddSeconds(Math.Max(60, expires)), Str(root, "refresh_token"), AccountFromIdToken(Str(root, "id_token")));

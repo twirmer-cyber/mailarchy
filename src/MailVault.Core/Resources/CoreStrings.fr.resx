@@ -880,4 +880,7 @@ Cet e-mail a été envoyé automatiquement par MailVault Home.</value>
   <data name="ArchiveImport_Copying" xml:space="preserve">
     <value>Création d'une copie de travail de la sauvegarde ({0}) …</value>
   </data>
+  <data name="OAuth_MailScopeMissing" xml:space="preserve">
+    <value>{0} a autorisé la connexion mais pas l'accès aux e-mails. Reconnectez-vous et cochez aussi la case d'accès aux e-mails sur la page d'autorisation (chez Google : la case Gmail).</value>
+  </data>
 </root>

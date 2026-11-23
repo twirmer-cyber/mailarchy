@@ -41,7 +41,7 @@ Hinweis für Benutzer: Bei Firmenkonten muss IMAP bzw. POP3 für das Postfach er
 1. <https://console.cloud.google.com> → oben **Projekt auswählen → Neues Projekt** → Name `MailVault`.
 2. **APIs & Dienste → Bibliothek → „Gmail API“ → Aktivieren** (damit die Gmail-Berechtigung auswählbar ist; MailVault nutzt weiter IMAP).
 3. **Google Auth Platform** (früher „OAuth-Zustimmungsbildschirm“):
-   - **Branding:** App-Name `MailVault`, Support-E-Mail `mailvault@zerze.de`, Startseite `https://mailvault.zerze.de`,
+   - **Branding:** App-Name `MailVault`, Support-E-Mail: eine Google-Gruppe (hier `mailvault-support@googlegroups.com`; nur eigene Adresse oder eigene Gruppe erlaubt), Startseite `https://mailvault.zerze.de`,
      Datenschutzerklärung `https://mailvault.zerze.de/#datenschutz`, autorisierte Domain `zerze.de`, Kontakt des Entwicklers.
    - **Zielgruppe:** *Extern*. Zum Ausprobieren im Status **Testen** lassen und unter *Testnutzer* die eigenen Gmail-Adressen eintragen.
    - **Datenzugriff → Bereiche hinzufügen:** `https://mail.google.com/`, `openid`, `.../auth/userinfo.email`.
@@ -57,6 +57,11 @@ Hinweis für Benutzer: Bei Firmenkonten muss IMAP bzw. POP3 für das Postfach er
 | **Testen** | Nur eingetragene Testnutzer (max. 100). **Refresh-Tokens laufen nach 7 Tagen ab** – danach muss man sich im Profil neu anmelden. Gut zum Ausprobieren, nicht für den Alltag. |
 | **In Produktion, nicht überprüft** | Jeder kann sich anmelden, sieht aber den Hinweis „Google hat diese App nicht überprüft“ (über „Erweitert → Weiter zu MailVault“ geht es weiter). Höchstens 100 Benutzer insgesamt. Tokens laufen nicht nach 7 Tagen ab. |
 | **In Produktion, überprüft** | Kein Warnhinweis, keine Obergrenze. Verlangt Googles App-Überprüfung **und** eine jährliche Sicherheitsprüfung (CASA) durch ein zugelassenes Labor – kostet Zeit und je nach Labor Geld. |
+
+**Gmail-Häkchen:** Google lässt Nutzer einzelne Berechtigungen abwählen, und das Häkchen für Gmail ist auf der Zustimmungsseite
+nicht vorausgewählt. Wird es übersehen, gibt Google nur die Anmeldung frei; IMAP meldet dann „Authentication failed“. MailVault prüft
+deshalb das Feld `scope` der Token-Antwort und meldet klar „Häkchen bei Gmail setzen“ (`OAuth_MailScopeMissing`, gilt auch für Microsoft);
+im Profileditor steht der Hinweis schon vor der Anmeldung.
 
 Empfehlung: zunächst **In Produktion, nicht überprüft** veröffentlichen. Die Alternative mit App-Passwort bleibt für Gmail bestehen.
 Für die Überprüfung verlangt Google u. a., dass die Datenschutzerklärung beschreibt, wie Google-Nutzerdaten verwendet werden
