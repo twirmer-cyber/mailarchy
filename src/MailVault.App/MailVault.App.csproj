@@ -11,6 +11,8 @@
     <AssemblyName>MailVault</AssemblyName>
     <RootNamespace>MailVault.App</RootNamespace>
     <ApplicationManifest>app.manifest</ApplicationManifest>
+    <!-- Programmsymbol (exe, Startmenü, Taskleiste); neu erzeugen mit build/make-icon.ps1 -->
+    <ApplicationIcon>MailVault.ico</ApplicationIcon>
     <!-- nur die Sprachressourcen der unterstützten Oberflächensprachen ins Paket (kleiner) -->
     <SatelliteResourceLanguages>de;en;fr;es</SatelliteResourceLanguages>
     <!-- Resources/Strings.resx (ohne Sprachkürzel) ist Deutsch -->

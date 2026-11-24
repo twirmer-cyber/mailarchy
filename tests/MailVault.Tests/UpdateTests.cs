@@ -204,7 +204,22 @@ public class UpdateTests
         Assert.False(File.Exists(Path.Combine(staging, "settings.json")));
         Assert.False(File.Exists(Path.Combine(staging, "portable.txt")));
         Assert.Contains(reports, r => r == UpdateText.Verifying);
-        Assert.Empty(Directory.GetFiles(tmp.Path, "*.zip"));
+        Assert.Empty(Directory.GetFiles(tmp.Path));
+    }
+
+    [Fact]
+    public async Task Simultaneous_downloads_share_one_package_and_a_locked_old_file_does_not_block()
+    {
+        // Hintergrund-Update lädt, während der Benutzer auf „Installieren“ klickt (Fehler in 0.6.0: Datei in Benutzung)
+        await using var srv = new FakeServer();
+        srv.Add(PackagedVersion, Package());
+        using var tmp = new TempDir();
+        var m = srv.Manager("0.0.1");
+        var check = await m.CheckAsync(default);
+        using var locked = new FileStream(Path.Combine(tmp.Path, check.Target!.Package.FileName), FileMode.Create, FileAccess.Write, FileShare.None);
+        var both = await Task.WhenAll(m.DownloadAsync(check, null, default, tmp.Path), srv.Manager("0.0.1").DownloadAsync(check, null, default, tmp.Path));
+        Assert.Equal(both[0], both[1]);
+        Assert.True(File.Exists(Path.Combine(both[0], "MailVault.exe")));
     }
 
     [Fact]
@@ -216,8 +231,8 @@ public class UpdateTests
         var m = srv.Manager("0.0.1");
         var ex = await Assert.ThrowsAsync<InvalidOperationException>(async () => await m.DownloadAsync(await m.CheckAsync(default), null, default, tmp.Path));
         Assert.Equal(UpdateText.ChecksumMismatch, ex.Message);
-        Assert.Empty(Directory.GetFiles(tmp.Path, "*.zip"));
-        Assert.False(Directory.Exists(Path.Combine(tmp.Path, "staging")));
+        Assert.Empty(Directory.GetFiles(tmp.Path));
+        Assert.Empty(Directory.GetDirectories(tmp.Path));
     }
 
     [Fact]

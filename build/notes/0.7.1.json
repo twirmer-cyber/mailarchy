@@ -1,0 +1,18 @@
+{
+  "de": [
+    "Behoben: Das Update brach mit „Datei wird von einem anderen Prozess verwendet“ ab, wenn MailVault das Paket gerade schon im Hintergrund lud",
+    "MailVault hat jetzt ein eigenes Programmsymbol – im Startmenü, in der Taskleiste und am Setup"
+  ],
+  "en": [
+    "Fixed: the update stopped with “file is being used by another process” when MailVault was already downloading the package in the background",
+    "MailVault now has its own program icon – in the Start menu, the taskbar and on the setup"
+  ],
+  "fr": [
+    "Corrigé : la mise à jour s'arrêtait avec « fichier utilisé par un autre processus » lorsque MailVault téléchargeait déjà le paquet en arrière-plan",
+    "MailVault a désormais sa propre icône – dans le menu Démarrer, la barre des tâches et sur le programme d'installation"
+  ],
+  "es": [
+    "Corregido: la actualización se detenía con «el archivo está siendo usado por otro proceso» cuando MailVault ya descargaba el paquete en segundo plano",
+    "MailVault tiene ahora su propio icono: en el menú Inicio, la barra de tareas y en el instalador"
+  ]
+}

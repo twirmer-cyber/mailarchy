@@ -267,6 +267,11 @@ public sealed class UpdateManager
         static UpdateCheck Problem(string text) => new(false, null, Array.Empty<string>(), text);
     }
 
+    // Hintergrund-Update und Klick auf „Installieren“ können gleichzeitig laden wollen: nacheinander, und ein schon
+    // bereitgestelltes Paket wird wiederverwendet.
+    static readonly SemaphoreSlim DownloadGate = new(1, 1);
+    static readonly Dictionary<string, string> Prepared = new(StringComparer.OrdinalIgnoreCase);
+
     /// <summary>Lädt das Paket, prüft die Prüfsumme und entpackt es in einen Bereitstellungsordner. Liefert dessen Pfad.</summary>
     public async Task<string> DownloadAsync(UpdateCheck check, IProgress<(string Text, double? Percent)>? progress, CancellationToken ct, string? workRoot = null)
     {
@@ -274,8 +279,27 @@ public sealed class UpdateManager
         var url = new Uri(release.Package.Url);
         if (!IsAllowed(url)) throw new InvalidOperationException(UpdateText.InsecureServer);
         var root = workRoot ?? WorkRoot;
+        var key = Path.GetFullPath(root) + "|" + release.Version + "|" + release.Package.Sha256;
+        await DownloadGate.WaitAsync(ct);
+        try
+        {
+            if (Prepared.TryGetValue(key, out var ready) && File.Exists(Path.Combine(ready, "MailVault.exe")))
+                return ready;
+            var dir = await DownloadCoreAsync(release, root, progress, ct);
+            Prepared[key] = dir;
+            return dir;
+        }
+        finally { DownloadGate.Release(); }
+    }
+
+    async Task<string> DownloadCoreAsync(ReleaseInfo release, string root, IProgress<(string Text, double? Percent)>? progress, CancellationToken ct)
+    {
+        var url = new Uri(release.Package.Url);
         Directory.CreateDirectory(root);
-        var zipPath = Path.Combine(root, release.Package.FileName);
+        CleanupLeftovers(root);
+        // Eigener Dateiname je Download: eine zweite MailVault-Kopie (z. B. portabel) oder ein Virenscanner,
+        // der eine alte Datei noch offen hält, blockiert so nichts.
+        var zipPath = Path.Combine(root, $"{release.Package.FileName}.{Guid.NewGuid():N}.part");
         using var http = Client(Timeout.InfiniteTimeSpan);
 
         progress?.Report((UpdateText.Downloading(release.Version.ToString()), 0));
@@ -311,10 +335,9 @@ public sealed class UpdateManager
         }
 
         progress?.Report((UpdateText.Extracting, null));
-        var staging = Path.Combine(root, "staging");
-        if (Directory.Exists(staging)) Directory.Delete(staging, recursive: true);
+        var staging = Path.Combine(root, $"staging-{release.Version}-{Guid.NewGuid():N}");
         ZipFile.ExtractToDirectory(zipPath, staging); // verweigert Pfade außerhalb des Zielordners
-        File.Delete(zipPath);
+        TryDelete(zipPath);
 
         // Pakete mit einem einzelnen Unterordner akzeptieren
         var appDir = staging;
@@ -332,6 +355,22 @@ public sealed class UpdateManager
             else if (Directory.Exists(p)) Directory.Delete(p, true);
         }
         return appDir;
+    }
+
+    /// <summary>Reste früherer Downloads (älter als eine Stunde) entfernen; was gerade benutzt wird, bleibt liegen.</summary>
+    static void CleanupLeftovers(string root)
+    {
+        var old = DateTime.UtcNow.AddHours(-1);
+        foreach (var file in Directory.EnumerateFiles(root, "*.zip*"))
+            if (File.GetLastWriteTimeUtc(file) < old) TryDelete(file);
+        foreach (var d in Directory.EnumerateDirectories(root, "staging*"))
+            if (Directory.GetLastWriteTimeUtc(d) < old)
+                try { Directory.Delete(d, recursive: true); } catch (IOException) { } catch (UnauthorizedAccessException) { }
+    }
+
+    static void TryDelete(string file)
+    {
+        try { File.Delete(file); } catch (IOException) { } catch (UnauthorizedAccessException) { }
     }
 
     /// <summary>Dateien und Ordner im Programmordner, die ein Update nie überschreibt oder löscht.</summary>
