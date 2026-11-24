@@ -149,7 +149,26 @@ svg use { fill: none; stroke: currentColor; stroke-width: 1.5; stroke-linecap: r
   grid-template-columns: minmax(0, 6fr) minmax(0, 6fr); align-items: end;
 }
 .lead { font-size: clamp(1.125rem, 1.5vw, 1.3rem); line-height: 1.55; color: var(--ink-2); max-width: 36rem; margin-bottom: 2rem; }
-.laden { padding-bottom: clamp(4.5rem, 8vw, 6.5rem); }
+.laden { padding-bottom: clamp(2.5rem, 5vw, 4rem); }
+
+/* Faktenleiste unter der Bühne: vier Zahlen, Haarlinien statt Karten */
+.fakten-block { padding: 0 0 clamp(3rem, 6vw, 5rem); }
+.fakten { margin: 0; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); border-top: 2px solid var(--ink); }
+.fakten div { padding: 1.25rem clamp(1rem, 2vw, 1.75rem) 1.4rem; border-left: 1px solid var(--line); }
+.fakten div:first-child { border-left: 0; padding-left: 0; }
+.fakten dt { font: 600 clamp(2rem, 3.4vw, 2.75rem)/1 var(--f-text); letter-spacing: -.01em; margin-bottom: .6rem; color: var(--ink); }
+.fakten dd { margin: 0; color: var(--ink-2); font-size: .98rem; line-height: 1.5; max-width: 30ch; }
+.fakten-fuss { margin: .9rem 0 0; font-size: .875rem; color: var(--ink-2); }
+@media (max-width: 960px) {
+  .fakten { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .fakten div:nth-child(3) { border-left: 0; padding-left: 0; }
+  .fakten div:nth-child(n+3) { border-top: 1px solid var(--line); }
+}
+@media (max-width: 520px) {
+  .fakten { grid-template-columns: minmax(0, 1fr); }
+  .fakten div { border-left: 0; padding-left: 0; }
+  .fakten div + div { border-top: 1px solid var(--line); }
+}
 
 /* Knöpfe: eine Höhe, eine Schrift, eine Rundung */
 .knopfreihe { display: flex; flex-wrap: wrap; gap: .75rem; }
@@ -178,7 +197,7 @@ svg use { fill: none; stroke: currentColor; stroke-width: 1.5; stroke-linecap: r
 
 /* Suchvorführung: kleines Programmfenster */
 .anzeige {
-  position: relative; z-index: 2; margin: 0 0 -4.5rem;
+  position: relative; z-index: 2; margin: 0 0 clamp(2.5rem, 5vw, 4rem);
   background: var(--surface); border: 1px solid var(--line-strong); border-radius: 12px;
   padding: .9rem .9rem .8rem; color: var(--ink);
   box-shadow: var(--shadow);
@@ -223,7 +242,7 @@ svg use { fill: none; stroke: currentColor; stroke-width: 1.5; stroke-linecap: r
 /* ------------------------------------------------------------ Abschnitte */
 .abschnitt { padding-block: var(--takt); }
 .ablage { background: var(--shelf); border-block: 1px solid var(--line); }
-.warum { padding-top: calc(var(--takt) + 4.5rem); }
+.warum { padding-top: var(--takt); }
 .suche-innen { display: grid; gap: 0 clamp(2rem, 5vw, 4.5rem); grid-template-columns: minmax(0, 6fr) minmax(0, 5fr); grid-template-rows: auto 1fr auto; align-items: start; }
 .suche-text { display: contents; }
 .suche-text h2, .suche-text > p { grid-column: 1; }

@@ -1,0 +1,26 @@
+{
+  "de": [
+    "Neu: E-Mails als PDF speichern – einzeln, als Auswahl („Als PDF“) oder ordnerweise unter „E-Mails exportieren“, mit Absender, Datum und Anhängen im Kopf",
+    "Neu: Archivprüfung – MailVault prüft jede Woche jede E-Mail und jeden Anhang und meldet Probleme sofort; Status und „Jetzt prüfen“ auf der Startseite",
+    "Neue Startseite mit Kennzahlen: Anzahl der E-Mails, Speicherplatz mit Ersparnis gegenüber den Original-E-Mails, letzte Archivierung und Prüfstatus",
+    "Neues Programmsymbol: Briefumschlag mit Schloss – im Startmenü, in der Taskleiste, im Infobereich und in der Seitenleiste"
+  ],
+  "en": [
+    "New: save emails as PDF – single, as a selection (“As PDF”) or folder by folder under “Export emails”, with sender, date and attachments in the header",
+    "New: archive check – every week MailVault verifies every email and attachment and reports problems immediately; status and “Check now” on the start page",
+    "New start page with key figures: number of emails, disk space with savings compared to the original emails, last archiving and check status",
+    "New program icon: envelope with padlock – in the Start menu, taskbar, notification area and sidebar"
+  ],
+  "fr": [
+    "Nouveau : enregistrer des e-mails en PDF – un par un, une sélection (« En PDF ») ou par dossier sous « Exporter des e-mails », avec expéditeur, date et pièces jointes en en-tête",
+    "Nouveau : vérification de l'archive – chaque semaine, MailVault contrôle chaque e-mail et chaque pièce jointe et signale aussitôt les problèmes ; état et « Vérifier maintenant » sur la page d'accueil",
+    "Nouvelle page d'accueil avec chiffres clés : nombre d'e-mails, espace disque avec l'économie par rapport aux e-mails d'origine, dernier archivage et état de la vérification",
+    "Nouvelle icône : enveloppe avec cadenas – dans le menu Démarrer, la barre des tâches, la zone de notification et la barre latérale"
+  ],
+  "es": [
+    "Nuevo: guardar correos como PDF: uno a uno, una selección («Como PDF») o por carpetas en «Exportar correos», con remitente, fecha y adjuntos en el encabezado",
+    "Nuevo: comprobación del archivo: cada semana MailVault verifica cada correo y cada adjunto y avisa de inmediato si hay problemas; estado y «Comprobar ahora» en la página de inicio",
+    "Nueva página de inicio con cifras clave: número de correos, espacio en disco con el ahorro frente a los correos originales, último archivado y estado de la comprobación",
+    "Nuevo icono: sobre con candado, en el menú Inicio, la barra de tareas, el área de notificación y la barra lateral"
+  ]
+}

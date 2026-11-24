@@ -70,7 +70,7 @@
 
         <div class="buehne-unten">
           <div class="laden">
-            <p class="lead" data-i18n="hero_lead">MailVault sichert die E-Mails aus Ihren Postfächern, aus Outlook und Thunderbird in einem durchsuchbaren Archiv auf Ihrem eigenen PC – vollständig, unabhängig vom Anbieter und auf Wunsch verschlüsselt. Die Postfächer werden dabei nur gelesen, nie verändert. Ohne Konto, ohne Cloud, mit offenem Quelltext.</p>
+            <p class="lead" data-i18n="hero_lead">MailVault sichert die E-Mails aus Ihren Postfächern, aus Outlook und Thunderbird in einem durchsuchbaren Archiv auf Ihrem eigenen PC – vollständig, unabhängig vom Anbieter und auf Wunsch verschlüsselt. Die Postfächer werden dabei nur gelesen, nie verändert. Kostenlos, auch für Firmen und Vereine. Ohne Konto, ohne Cloud, mit offenem Quelltext.</p>
             <div class="knopfreihe">
               <a class="knopf knopf-haupt" href="{{SETUP}}" id="download">
                 <svg aria-hidden="true"><use href="#i-down"/></svg>
@@ -117,6 +117,18 @@
             <p class="anzeige-fuss"><span id="anzeige-zahl" class="zahl">3</span> <span data-i18n="board_hits">Treffer</span></p>
           </figure>
         </div>
+
+        <!-- Faktenleiste: vier belegbare Zahlen statt Werbesprüche -->
+        <div class="fakten-block">
+          <h2 class="sr" data-i18n="facts_label">MailVault in Zahlen</h2>
+          <dl class="fakten">
+            <div><dt class="zahl" data-i18n="fact1_v">0 €</dt><dd data-i18n="fact1_t">Kostenlos – privat, für Firmen und Vereine. Keine Testphase, keine Pro-Version.</dd></div>
+            <div><dt class="zahl" data-i18n="fact2_v">46 %</dt><dd data-i18n="fact2_t">weniger Platz als die Original-E-Mails, samt Suchindex. Gleiche Anhänge liegen nur einmal im Archiv.</dd></div>
+            <div><dt class="zahl" data-i18n="fact3_v">AES-256</dt><dd data-i18n="fact3_t">Archiv auf Wunsch verschlüsselt, mit Wiederherstellungsschlüssel und Notfallblatt.</dd></div>
+            <div><dt class="zahl" data-i18n="fact4_v">7 Tage</dt><dd data-i18n="fact4_t">Spätestens dann prüft MailVault jede E-Mail und jeden Anhang im Archiv – und meldet sich, wenn etwas nicht stimmt.</dd></div>
+          </dl>
+          <p class="fakten-fuss" data-i18n="facts_note">Gemessen mit öffentlichen Mailinglisten (506 E-Mails). Wie viel es bei Ihnen ist, zeigt die Startseite des Programms.</p>
+        </div>
       </div>
     </section>
 
@@ -139,7 +151,7 @@
           <div class="risiko" role="row"><span class="risiko-fall" role="cell" data-i18n="r2_t">Postfach voll, Ordner geleert, alte E-Mails aufgeräumt</span><span class="risiko-hilfe" role="cell" data-i18n="r2_d">Sie können im Postfach Platz schaffen. Die alten E-Mails bleiben im Archiv vollständig und durchsuchbar.</span></div>
           <div class="risiko" role="row"><span class="risiko-fall" role="cell" data-i18n="r3_t">Anbieter oder PC gewechselt, Konto gekündigt</span><span class="risiko-hilfe" role="cell" data-i18n="r3_d">Das Archiv hängt an keinem Anbieter. Neue Postfächer kommen einfach dazu; für einen neuen PC kopieren Sie den Archivordner.</span></div>
           <div class="risiko" role="row"><span class="risiko-fall" role="cell" data-i18n="r4_t">Konto gehackt, Server gestört oder ausgefallen</span><span class="risiko-hilfe" role="cell" data-i18n="r4_d">Auf Ihrem PC liegt eine vollständige, vom Anbieter unabhängige Kopie – auf Wunsch mit AES-256 verschlüsselt.</span></div>
-          <div class="risiko" role="row"><span class="risiko-fall" role="cell" data-i18n="r5_t">Der Anbieter schließt das Konto oder stellt den Dienst ein</span><span class="risiko-hilfe" role="cell" data-i18n="r5_d">Ihre E-Mails bleiben im Archiv lesbar und lassen sich jederzeit als EML oder MBOX exportieren.</span></div>
+          <div class="risiko" role="row"><span class="risiko-fall" role="cell" data-i18n="r5_t">Der Anbieter schließt das Konto oder stellt den Dienst ein</span><span class="risiko-hilfe" role="cell" data-i18n="r5_d">Ihre E-Mails bleiben im Archiv lesbar und lassen sich jederzeit als EML, MBOX oder PDF exportieren.</span></div>
         </div>
         <p class="warum-fuss"><svg aria-hidden="true"><use href="#i-shield"/></svg><span data-i18n="why_note">Dabei liest MailVault Ihre Postfächer nur. Es löscht, verschiebt und markiert dort nichts – das Postfach bleibt genau so, wie es ist.</span></p>
         <p class="warum-hinweis" data-i18n="why_backup">Ein Archiv auf dem PC ersetzt keine Datensicherung des PCs. Kopieren Sie den Archivordner deshalb gelegentlich auf ein externes Laufwerk.</p>
@@ -186,7 +198,7 @@
           </div>
           <div>
             <dt data-i18n="p3_t">Jede E-Mail kommt bytegenau zurück</dt>
-            <dd data-i18n="p3_d">Komprimiert gespeichert, Anhänge nur einmal abgelegt – und trotzdem exakt so wiederherstellbar, wie sie ankam. Export als EML oder MBOX jederzeit.</dd>
+            <dd data-i18n="p3_d">Komprimiert gespeichert, Anhänge nur einmal abgelegt – und trotzdem exakt so wiederherstellbar, wie sie ankam. Export als EML, MBOX oder PDF jederzeit.</dd>
           </div>
           <div>
             <dt data-i18n="p4_t">Updates verlieren nie Daten</dt>
@@ -208,7 +220,9 @@
           <div><dt data-i18n="f4_t">Sicher anzeigen</dt><dd data-i18n="f4_d">Externe Bilder und Tracking-Pixel bleiben blockiert, Skripte laufen nie.</dd></div>
           <div><dt data-i18n="f5_t">Im Heimnetz auf dem Handy</dt><dd data-i18n="f5_d">Optionaler Webzugriff zum Lesen für Familienmitglieder – jeder sieht nur die Postfächer, die Sie freigeben.</dd></div>
           <div><dt data-i18n="f6_t">KI-Assistent, wenn Sie wollen</dt><dd data-i18n="f6_d">Fragen Sie Ihr Archiv in eigenen Worten („Welche Verträge laufen noch?“) – mit Ihrem eigenen Claude-Schlüssel und Belegen zu jeder Aussage. Ohne Schlüssel bleibt alles lokal.</dd></div>
-          <div><dt data-i18n="f7_t">Export jederzeit</dt><dd data-i18n="f7_d">Einzelne Ordner oder das ganze Archiv als EML-Dateien oder MBOX – Ihre Daten bleiben Ihre Daten.</dd></div>
+          <div><dt data-i18n="f7_t">Export jederzeit</dt><dd data-i18n="f7_d">Einzelne E-Mails, Ordner oder das ganze Archiv als EML, MBOX oder PDF – zum Ausdrucken, als Nachweis oder für ein anderes Programm.</dd></div>
+          <div><dt data-i18n="f9_t">Archiv wird regelmäßig geprüft</dt><dd data-i18n="f9_d">Jede Woche setzt MailVault jede E-Mail zusammen und kontrolliert jeden Anhang mit seiner Prüfsumme. Das Ergebnis steht auf der Startseite; bei Problemen kommt sofort eine Benachrichtigung.</dd></div>
+          <div><dt data-i18n="f10_t">Spart Platz, verliert nichts</dt><dd data-i18n="f10_d">Anhänge, die mehrfach vorkommen, werden nur einmal gespeichert, Texte mit einem aus Ihrem Archiv gelernten Wörterbuch gepackt. Die Startseite zeigt, wie viel Platz das spart.</dd></div>
           <div><dt data-i18n="f8_t">Hell, dunkel, vier Sprachen</dt><dd data-i18n="f8_d">Folgt der Windows-Einstellung und dem Kontrastdesign; Deutsch, Englisch, Französisch und Spanisch.</dd></div>
         </dl>
       </div>
