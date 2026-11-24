@@ -129,8 +129,15 @@ public sealed class BackgroundHost : IDisposable
     }
 
     /// <summary>Programmsymbol: Tresor-Umschlag in der Akzentfarbe (ohne externe Bilddatei).</summary>
+    /// <summary>Symbol für den Infobereich: das Programmsymbol der exe (Briefumschlag mit Schloss), sonst ein gezeichneter Umschlag.</summary>
     public static Icon CreateIcon()
     {
+        try
+        {
+            if (Environment.ProcessPath is { } exe && Icon.ExtractAssociatedIcon(exe) is { } own)
+                return new Icon(own, Forms.SystemInformation.SmallIconSize);
+        }
+        catch (Exception) { /* Rückfall unten */ }
         using var bmp = new Bitmap(32, 32);
         using (var g = Graphics.FromImage(bmp))
         {

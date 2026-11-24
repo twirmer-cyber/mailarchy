@@ -1,6 +1,6 @@
 <#
   Erzeugt src\MailVault.App\MailVault.ico (Programmsymbol für exe, Startmenü, Taskleiste) aus derselben Form wie
-  site\favicon.svg: dunkelblaue Kachel mit hellem Archivkasten. Mehrere Größen, damit Windows nichts hochskaliert.
+  site\favicon.svg: dunkelblaue Kachel, heller Briefumschlag, goldenes Schloss. Mehrere Größen, damit Windows nichts hochskaliert.
   Aufruf: pwsh -File build\make-icon.ps1
 #>
 $ErrorActionPreference = "Stop"
@@ -25,16 +25,21 @@ $images = foreach ($size in $sizes) {
     $g.ScaleTransform($size / 32.0, $size / 32.0)
     $bg = New-Object System.Drawing.SolidBrush ([System.Drawing.ColorTranslator]::FromHtml("#1D3A5C"))
     $g.FillPath($bg, (RoundRect 0 0 32 32 6))
-    # kleine Größen: etwas kräftigere Linie, damit sie nicht verschwimmt
-    $width = if ($size -le 20) { 2.6 } elseif ($size -le 32) { 2.2 } else { 2.0 }
-    $pen = New-Object System.Drawing.Pen ([System.Drawing.ColorTranslator]::FromHtml("#F4F6F9")), $width
-    $pen.StartCap = "Round"; $pen.EndCap = "Round"; $pen.LineJoin = "Round"
-    $g.DrawPath($pen, (RoundRect 6 7 20 6 1))
-    $box = New-Object System.Drawing.Drawing2D.GraphicsPath
-    $box.AddLine(7.5, 13, 7.5, 23.5); $box.AddBezier(7.5, 23.5, 7.5, 24.33, 8.17, 25, 9, 25)
-    $box.AddLine(9, 25, 23, 25); $box.AddBezier(23, 25, 23.83, 25, 24.5, 24.33, 24.5, 23.5); $box.AddLine(24.5, 23.5, 24.5, 13)
-    $g.DrawPath($pen, $box)
-    $g.DrawLine($pen, 13, 18, 19, 18)
+    $light = [System.Drawing.ColorTranslator]::FromHtml("#F4F6F9")
+    $gold = [System.Drawing.ColorTranslator]::FromHtml("#E0A526")
+    # Umschlag
+    $g.FillPath((New-Object System.Drawing.SolidBrush $light), (RoundRect 4 8 24 16.5 2))
+    $flap = New-Object System.Drawing.Pen $bg.Color, 1.8; $flap.StartCap = "Round"; $flap.EndCap = "Round"; $flap.LineJoin = "Round"
+    $g.DrawLines($flap, [System.Drawing.PointF[]]@((New-Object System.Drawing.PointF 5, 9.5), (New-Object System.Drawing.PointF 16, 17.5), (New-Object System.Drawing.PointF 27, 9.5)))
+    # Schloss unten rechts: Bügel, dunkler Rand, Körper, Schlüsselloch
+    $shackle = New-Object System.Drawing.Pen $gold, 1.9; $shackle.StartCap = "Round"; $shackle.EndCap = "Round"
+    $g.DrawArc($shackle, 20.59, 15.01, 5.32, 5.852, 180, 180)
+    $g.DrawLine($shackle, 20.59, 17.94, 20.59, 19.5); $g.DrawLine($shackle, 25.91, 17.94, 25.91, 19.5)
+    $body = RoundRect 18.5 19 9.5 7.41 1.33
+    $g.DrawPath((New-Object System.Drawing.Pen $bg.Color, 3.04), $body)
+    $g.FillPath((New-Object System.Drawing.SolidBrush $gold), $body)
+    $g.FillEllipse($bg, 22.395, 21.475, 1.71, 1.71)
+    $g.FillRectangle($bg, 22.87, 22.33, 0.76, 2.07)
     $g.Dispose()
     $ms = New-Object System.IO.MemoryStream
     $bmp.Save($ms, [System.Drawing.Imaging.ImageFormat]::Png); $bmp.Dispose()
