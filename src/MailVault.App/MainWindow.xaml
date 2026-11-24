@@ -27,7 +27,7 @@
         <DockPanel Background="{DynamicResource SidebarBrush}">
             <StackPanel DockPanel.Dock="Top" Margin="10,14,10,6">
                 <StackPanel Orientation="Horizontal" Margin="8,0,0,14">
-                    <TextBlock Text="&#xE72E;" Style="{StaticResource Icon}" FontSize="20" Foreground="{DynamicResource AccentBrush}" />
+                    <Image Source="pack://application:,,,/MailVault.ico" Width="24" Height="24" RenderOptions.BitmapScalingMode="HighQuality" AutomationProperties.Name="MailVault" />
                     <TextBlock Text="MailVault Home" FontSize="16" FontWeight="SemiBold" Margin="10,0,0,0" VerticalAlignment="Center" />
                 </StackPanel>
                 <RadioButton Style="{StaticResource NavButton}" Tag="&#xE80F;" Content="{loc:T Nav_Start}" x:Name="NavStart" Checked="Nav_Checked" />

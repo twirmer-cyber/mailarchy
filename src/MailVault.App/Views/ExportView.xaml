@@ -14,6 +14,7 @@
             <TextBlock Style="{StaticResource H2}" Text="{loc:T Export_Format}" />
             <RadioButton Content="{loc:T Export_Eml}" IsChecked="{Binding FormatEml}" GroupName="fmt" Margin="0,2" />
             <RadioButton Content="{loc:T Export_Mbox}" IsChecked="{Binding FormatMbox}" GroupName="fmt" Margin="0,2" />
+            <RadioButton Content="{loc:T Export_Pdf}" IsChecked="{Binding FormatPdf}" GroupName="fmt" Margin="0,2" AutomationProperties.AutomationId="ExportPdf" />
             <CheckBox Content="{loc:T Export_KeepStructure}" IsChecked="{Binding KeepStructure}" Margin="0,8,0,0" />
 
             <TextBlock Style="{StaticResource H2}" Text="{loc:T Export_Target}" />

@@ -915,4 +915,35 @@ MailVault se lo recordará en el intervalo configurado y le avisará en cuanto v
   <data name="OAuth_ClientRejected" xml:space="preserve">
     <value>{0} rechaza el ID de cliente ({1}). Compruebe el ID de cliente y, si procede, el secreto de cliente en Configuración → Inicio de sesión (OAuth) y vuelva a iniciar sesión en el buzón.</value>
   </data>
+  <data name="Check_Structure" xml:space="preserve">
+    <value>Comprobando la estructura de la base de datos…</value>
+  </data>
+  <data name="Check_StructureProblem" xml:space="preserve">
+    <value>Estructura de la base de datos: {0}</value>
+  </data>
+  <data name="Check_SizeMismatch" xml:space="preserve">
+    <value>Correo n.º {0}: {1:N0} bytes reconstruidos en lugar de {2:N0}</value>
+  </data>
+  <data name="Check_MessageUnreadable" xml:space="preserve">
+    <value>El correo n.º {0} no se puede leer: {1}</value>
+  </data>
+  <data name="Check_PartDamaged" xml:space="preserve">
+    <value>El adjunto {0} está dañado (la suma de comprobación no coincide)</value>
+  </data>
+  <data name="Check_Messages" xml:space="preserve">
+    <value>Comprobando el correo {0:N0} de {1:N0}…</value>
+  </data>
+  <data name="Check_Parts" xml:space="preserve">
+    <value>Comprobando los adjuntos…</value>
+  </data>
+  <data name="Check_Mail_Subject" xml:space="preserve">
+    <value>MailVault: la comprobación del archivo encontró problemas</value>
+  </data>
+  <data name="Check_Mail_Body" xml:space="preserve">
+    <value>La comprobación automática del archivo en {0} encontró problemas el {1:g}:
+
+{2}
+
+Qué puede hacer: abra MailVault y vuelva a ejecutar Administración → Archivo → «Comprobar archivo». Si el error persiste, restaure una copia de seguridad del archivo (Administración → Archivo → Integrar un archivo de copia de seguridad). Sus buzones no se ven afectados: simplemente vuelva a archivar los correos que falten.</value>
+  </data>
 </root>

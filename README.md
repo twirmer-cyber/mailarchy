@@ -20,7 +20,8 @@ durchsuchbares Archiv übernehmen. Download und Informationen: <https://mailvaul
 | Volltextsuche inkl. Anhänge, erweiterte Suche | SQLite FTS5 ohne zweite Textkopie (Wortanfänge, Umlaute egal, „Phrase“ exakt, ODER, -Ausschluss): Betreff, Von/An, Text, Anhangnamen, Anhanginhalte (TXT/HTML/PDF/DOCX/XLSX/PPTX/ODF), Datum, Größe, Priorität, Ordner |
 | Kompakte Speicherung | Anhänge und Bilder werden nur einmal gespeichert (SHA-256, byte-genaue Wiederherstellung). Bereits komprimierte Dateien bleiben roh, alles andere zstd. Nachrichtentexte mit einem je Archiv gelernten Wörterbuch |
 | Archivordnerbaum | Quelle → Postfachordner, mit Umbenennen, Löschen, Exportieren |
-| E-Mails exportieren | EML-Dateien oder MBOX (mboxrd), wahlweise mit Ordnerstruktur |
+| E-Mails exportieren | EML-Dateien, MBOX (mboxrd) oder PDF (eine Datei je E-Mail mit Kopfblock, über die Druckfunktion von WebView2, externe Inhalte bleiben blockiert), wahlweise mit Ordnerstruktur |
+| Archivprüfung | Wöchentlich automatisch und auf Knopfdruck: Datenbankstruktur, jede E-Mail wird zusammengesetzt und mit ihrer Originalgröße verglichen, jeder Anhang gegen seine SHA-256-Prüfsumme. Ergebnis und Platzersparnis auf der Startseite, bei Problemen sofort eine E-Mail-Benachrichtigung |
 | Archivschutz mit Wiederherstellungsschlüssel | AES-256 für die gesamte Datenbank (SQLite3 Multiple Ciphers im SQLCipher-4-Modus). DB-Schlüssel mit PBKDF2-SHA256 (600k) und AES-GCM verpackt, einmal per Kennwort, einmal per Wiederherstellungsschlüssel |
 | Sichere Anzeige | WebView2 ohne JavaScript, CSP blockiert externe Inhalte, `cid:`-Bilder werden eingebettet |
 | Portable Version | Liegt `portable.txt` neben der EXE, werden Daten und Einstellungen dort gespeichert |
@@ -31,7 +32,7 @@ durchsuchbares Archiv übernehmen. Download und Informationen: <https://mailvaul
 | KI-Assistent (Claude) | `AiAssistant` + `AiArchiveTools`: Claude durchsucht das Archiv über lokale Werkzeuge (suchen, lesen, Kontaktstatistik, Verlauf, Zusammenhänge) und belegt Antworten mit anklickbaren E-Mails. Über 30 Beispiel-Fragen (`AiPromptLibrary`). Eigener API-Schlüssel (DPAPI-verschlüsselt), Modellwahl, Lesekontingent |
 | Wer kennt wen | `ContactNetwork`: Kontaktnetz aus Von/An/Cc, lokal berechnet, interaktive Grafik; optional Deutung der Gruppen durch Claude (nur Namen, Adressen, Zahlen) |
 
-Anmeldung bei Outlook.com/Microsoft 365 und Gmail per OAuth (Browser-Anmeldung, ohne App-Passwort) – Einrichtung der App-Registrierungen in [docs/OAUTH.md](docs/OAUTH.md). Nicht enthalten: Exchange-Webdienste (EWS/Graph-Export), Export nach Outlook und IMAP-Export.
+Anmeldung bei Outlook.com/Microsoft 365 und Gmail per OAuth (Browser-Anmeldung, ohne App-Passwort) – Einrichtung der App-Registrierungen in [docs/OAUTH.md](docs/OAUTH.md). Nicht enthalten: Exchange-Webdienste (EWS/Graph-Export), Export nach Outlook und IMAP-Export – Ideen dafür stehen in der [Wunschliste](docs/WUNSCHLISTE.md).
 
 ## Installieren und aktualisieren
 

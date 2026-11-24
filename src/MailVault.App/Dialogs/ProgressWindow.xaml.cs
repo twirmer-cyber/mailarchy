@@ -5,7 +5,7 @@ using MailVault.Core;
 
 namespace MailVault.App.Dialogs;
 
-/// <summary>Fortschrittsdialog mit Protokollausgabe (entspricht "ProgressDialogWithLogOutput" des Originals).</summary>
+/// <summary>Fortschrittsdialog mit Protokollausgabe.</summary>
 public partial class ProgressWindow : Window
 {
     readonly Func<IProgress<ProgressInfo>, CancellationToken, Task<string>> _work;

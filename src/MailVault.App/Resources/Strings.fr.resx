@@ -185,7 +185,7 @@
   <data name="Start_RecoveryWarning" xml:space="preserve"><value>La clé de récupération n'a pas encore été enregistrée. Sans mot de passe ni clé, il est impossible d'accéder à l'archive.</value></data>
   <data name="Start_SaveNow" xml:space="preserve"><value>L'enregistrer maintenant</value></data>
   <data name="Start_Archive" xml:space="preserve"><value>Archive</value></data>
-  <data name="Start_Size" xml:space="preserve"><value>Taille</value></data>
+  <data name="Start_Size" xml:space="preserve"><value>Espace disque</value></data>
   <data name="Start_Period" xml:space="preserve"><value>Période</value></data>
   <data name="Start_LastArchived" xml:space="preserve"><value>Dernier archivage</value></data>
   <data name="Start_Protection" xml:space="preserve"><value>Protection</value></data>
@@ -202,7 +202,7 @@
   <data name="Archive_ColLastRun" xml:space="preserve"><value>Dernière exécution</value></data>
   <data name="Archive_ColResult" xml:space="preserve"><value>Résultat</value></data>
   <data name="Archive_NoProfiles" xml:space="preserve"><value>Aucun profil pour l'instant. Choisissez une source ci-dessus.</value></data>
-  <data name="Export_Intro" xml:space="preserve"><value>Copiez des e-mails archivés sous forme de fichiers .eml individuels ou d'un fichier MBOX, par exemple pour une sauvegarde ou une importation dans un logiciel de messagerie. Vous pouvez aussi cliquer avec le bouton droit sur le dossier à exporter dans l'arborescence.</value></data>
+  <data name="Export_Intro" xml:space="preserve"><value>Copiez des e-mails archivés sous forme de fichiers .eml individuels, d'un fichier MBOX ou en PDF, par exemple pour une sauvegarde, une importation dans un logiciel de messagerie ou une impression. Vous pouvez aussi cliquer avec le bouton droit sur le dossier à exporter dans l'arborescence.</value></data>
   <data name="Export_Scope" xml:space="preserve"><value>Contenu de la sauvegarde ou de l'exportation</value></data>
   <data name="Export_Format" xml:space="preserve"><value>Format</value></data>
   <data name="Export_Eml" xml:space="preserve"><value>Fichiers e-mail individuels (.eml)</value></data>
@@ -1015,5 +1015,98 @@ Seul, il est inutile ; avec le mot de passe ou la clé de récupération, il ouv
   </data>
   <data name="OAuthSet_InvalidId" xml:space="preserve">
     <value>L'ID client pour {0} n'a pas le format attendu.</value>
+  </data>
+  <data name="Pdf_Date" xml:space="preserve">
+    <value>Date</value>
+  </data>
+  <data name="Pdf_Folder" xml:space="preserve">
+    <value>Dossier</value>
+  </data>
+  <data name="Pdf_Attachments" xml:space="preserve">
+    <value>Pièces jointes</value>
+  </data>
+  <data name="Pdf_Footer" xml:space="preserve">
+    <value>Enregistré en PDF depuis l'archive MailVault le {0:g}</value>
+  </data>
+  <data name="Pdf_RenderFailed" xml:space="preserve">
+    <value>Impossible d'enregistrer l'e-mail en PDF. Le runtime Microsoft Edge WebView2 est-il installé ?</value>
+  </data>
+  <data name="List_SavePdf" xml:space="preserve">
+    <value>En PDF</value>
+  </data>
+  <data name="List_SavePdfTip" xml:space="preserve">
+    <value>Enregistrer les e-mails sélectionnés en PDF – pour imprimer ou comme justificatif</value>
+  </data>
+  <data name="List_PdfFilter" xml:space="preserve">
+    <value>Document PDF (*.pdf)|*.pdf</value>
+  </data>
+  <data name="List_SavingPdf" xml:space="preserve">
+    <value>Enregistrement en PDF</value>
+  </data>
+  <data name="Export_Pdf" xml:space="preserve">
+    <value>PDF – un fichier par e-mail, pour imprimer ou comme justificatif</value>
+  </data>
+  <data name="Start_SizeEmpty" xml:space="preserve">
+    <value>Aucun e-mail archivé pour l'instant</value>
+  </data>
+  <data name="Start_SizeSaved" xml:space="preserve">
+    <value>Original {0} · {1:P0} économisés</value>
+  </data>
+  <data name="Start_SizeOriginal" xml:space="preserve">
+    <value>Original {0} · l'économie augmente avec l'archive</value>
+  </data>
+  <data name="Start_Check" xml:space="preserve">
+    <value>Vérification de l'archive</value>
+  </data>
+  <data name="Start_CheckOk" xml:space="preserve">
+    <value>En ordre</value>
+  </data>
+  <data name="Start_CheckFailed" xml:space="preserve">
+    <value>Problèmes détectés</value>
+  </data>
+  <data name="Start_CheckNever" xml:space="preserve">
+    <value>Pas encore vérifiée</value>
+  </data>
+  <data name="Start_CheckRunning" xml:space="preserve">
+    <value>Vérification …</value>
+  </data>
+  <data name="Start_CheckWhen" xml:space="preserve">
+    <value>Dernière le {0:g}</value>
+  </data>
+  <data name="Start_CheckSoon" xml:space="preserve">
+    <value>Vérifiée automatiquement chaque semaine</value>
+  </data>
+  <data name="Start_CheckOff" xml:space="preserve">
+    <value>La vérification automatique est désactivée</value>
+  </data>
+  <data name="Start_CheckStarting" xml:space="preserve">
+    <value>Démarrage de la vérification …</value>
+  </data>
+  <data name="Start_CheckProgress" xml:space="preserve">
+    <value>{0:P0} vérifié</value>
+  </data>
+  <data name="Start_CheckNow" xml:space="preserve">
+    <value>Vérifier maintenant</value>
+  </data>
+  <data name="Start_CheckAgain" xml:space="preserve">
+    <value>Vérifier à nouveau</value>
+  </data>
+  <data name="Start_CheckFailedBanner" xml:space="preserve">
+    <value>La vérification de l'archive a détecté des problèmes. Vérifiez à nouveau ; si l'erreur persiste, restaurez une sauvegarde (Gestion → Archive). Vos boîtes aux lettres ne sont pas concernées.</value>
+  </data>
+  <data name="Start_CheckFailedTray" xml:space="preserve">
+    <value>Les détails figurent sur la page d'accueil de MailVault.</value>
+  </data>
+  <data name="Start_HowStored" xml:space="preserve">
+    <value>Stockage</value>
+  </data>
+  <data name="Start_HowStoredText" xml:space="preserve">
+    <value>Pièces jointes stockées une seule fois, texte compressé – chaque e-mail est conservé à l'octet près</value>
+  </data>
+  <data name="Start_Location" xml:space="preserve">
+    <value>Emplacement</value>
+  </data>
+  <data name="Settings_ArchiveOkDetail" xml:space="preserve">
+    <value>L'archive est en ordre : {0:N0} e-mails et {1:N0} pièces jointes entièrement vérifiés.</value>
   </data>
 </root>

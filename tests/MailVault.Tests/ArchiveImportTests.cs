@@ -68,7 +68,7 @@ public class ArchiveImportTests
         Assert.Equal(0, result.Errors);
         Assert.Equal(new[] { "Alt-PC/Outlook/Projekte:2", "anna@example.org/INBOX:4" }, Paths(current));
 
-        // Byte für Byte gleich: übernommene Nachricht wie im Original
+        // Byte für Byte gleich: übernommene Nachricht wie in der Quelle
         var hit = current.Search(new SearchCriteria { Query = "Projektplan" }).Single();
         Assert.Contains("Text zu Projektplan", System.Text.Encoding.UTF8.GetString(current.GetRawMessage(hit.Id)));
 

@@ -915,4 +915,35 @@ MailVault will remind you at the configured interval and let you know as soon as
   <data name="OAuth_ClientRejected" xml:space="preserve">
     <value>{0} rejects the client ID ({1}). Please check the client ID and, if used, the client secret under Settings → Sign-in (OAuth), then sign the mailbox in again.</value>
   </data>
+  <data name="Check_Structure" xml:space="preserve">
+    <value>Checking the database structure …</value>
+  </data>
+  <data name="Check_StructureProblem" xml:space="preserve">
+    <value>Database structure: {0}</value>
+  </data>
+  <data name="Check_SizeMismatch" xml:space="preserve">
+    <value>Email no. {0}: reassembled {1:N0} bytes instead of {2:N0} bytes</value>
+  </data>
+  <data name="Check_MessageUnreadable" xml:space="preserve">
+    <value>Email no. {0} cannot be read: {1}</value>
+  </data>
+  <data name="Check_PartDamaged" xml:space="preserve">
+    <value>Attachment {0} is damaged (checksum does not match)</value>
+  </data>
+  <data name="Check_Messages" xml:space="preserve">
+    <value>Checking email {0:N0} of {1:N0} …</value>
+  </data>
+  <data name="Check_Parts" xml:space="preserve">
+    <value>Checking attachments …</value>
+  </data>
+  <data name="Check_Mail_Subject" xml:space="preserve">
+    <value>MailVault: the archive check found problems</value>
+  </data>
+  <data name="Check_Mail_Body" xml:space="preserve">
+    <value>The automatic check of the archive in {0} found problems on {1:g}:
+
+{2}
+
+What you can do: open MailVault and run Management → Archive → “Check archive” again. If the error persists, restore a backup of the archive (Management → Archive → Add a backed-up archive). Your mailboxes themselves are not affected – simply archive missing emails again.</value>
+  </data>
 </root>

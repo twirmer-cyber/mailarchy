@@ -4,7 +4,7 @@ using System.Text.Json.Serialization;
 namespace MailVault.Core;
 
 /// <summary>
-/// Programmeinstellungen. Wie beim Original gibt es eine installierte Variante (Einstellungen unter %APPDATA%)
+/// Programmeinstellungen. Es gibt eine installierte Variante (Einstellungen unter %APPDATA%)
 /// und eine portable Variante: Liegt "portable.txt" neben der EXE, wird alles neben der EXE gespeichert.
 /// </summary>
 public sealed class AppSettings
@@ -29,6 +29,7 @@ public sealed class AppSettings
     public UpdateSettings Updates { get; set; } = new();
     /// <summary>Eigene OAuth-Client-IDs; leer = die in dieser Version eingebauten (siehe docs/OAUTH.md).</summary>
     public OAuthClientSettings OAuth { get; set; } = new();
+    public ArchiveCheckSettings ArchiveCheck { get; set; } = new();
 
     public static bool IsPortable => File.Exists(Path.Combine(AppContext.BaseDirectory, "portable.txt"));
 
@@ -69,6 +70,32 @@ public sealed class AppSettings
 }
 
 /// <summary>Benachrichtigung per E-Mail, wenn ein Postfach nicht abgerufen werden kann.</summary>
+/// <summary>Regelmäßige Archivprüfung und ihr letztes Ergebnis (für die Startseite).</summary>
+public sealed class ArchiveCheckSettings
+{
+    public bool Automatic { get; set; } = true;
+    public int IntervalDays { get; set; } = 7;
+    public DateTime? LastUtc { get; set; }
+    public bool? LastOk { get; set; }
+    public long LastMessages { get; set; }
+    public List<string> LastProblems { get; set; } = new();
+    /// <summary>Datenordner, für den das Ergebnis gilt (nach Wechsel des Archivs neu prüfen).</summary>
+    public string? DataDirectory { get; set; }
+
+    public bool IsDue(string dataDirectory, DateTime nowUtc) =>
+        Automatic && (LastUtc is not { } last || !string.Equals(DataDirectory, dataDirectory, StringComparison.OrdinalIgnoreCase)
+                      || nowUtc - last >= TimeSpan.FromDays(Math.Max(1, IntervalDays)));
+
+    public void Store(ArchiveCheckResult r, string dataDirectory)
+    {
+        LastUtc = r.CheckedUtc;
+        LastOk = r.Ok;
+        LastMessages = r.MessagesChecked;
+        LastProblems = r.Problems.ToList();
+        DataDirectory = dataDirectory;
+    }
+}
+
 public sealed class NotificationSettings
 {
     public bool Enabled { get; set; }

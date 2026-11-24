@@ -137,7 +137,7 @@ public partial class MessagePreview : UserControl
         ContentPanel.Visibility = Visibility.Visible;
 
         var allowExternal = _externalAllowedFor == id || !AppState.Settings.BlockExternalContent;
-        var (html, hasExternal) = BuildHtml(msg, allowExternal);
+        var (html, hasExternal) = MailHtml.Build(msg, allowExternal);
         BlockedBar.Visibility = hasExternal && !allowExternal ? Visibility.Visible : Visibility.Collapsed;
 
         _webViewReady ??= EnsureWebViewAsync();
@@ -160,49 +160,6 @@ public partial class MessagePreview : UserControl
 
     static long EstimateDecodedSize(long encoded, ContentEncoding enc) =>
         enc == ContentEncoding.Base64 ? encoded * 3 / 4 : encoded;
-
-    static readonly Regex ExternalRef = new(@"(src|background|href)\s*=\s*[""']?\s*https?:|url\(\s*[""']?\s*https?:", RegexOptions.IgnoreCase);
-    static readonly Regex DangerousTags = new(@"<(script|iframe|object|embed|frame|frameset|base)\b[^>]*>(.*?</\1\s*>)?|<meta[^>]+http-equiv[^>]*>",
-        RegexOptions.IgnoreCase | RegexOptions.Singleline);
-    static readonly Regex CidRef = new(@"cid:([^""'\s\)>]+)", RegexOptions.IgnoreCase);
-
-    static (string Html, bool HasExternal) BuildHtml(MimeMessage msg, bool allowExternal)
-    {
-        string body;
-        bool hasExternal = false;
-        if (msg.HtmlBody is { } html)
-        {
-            html = DangerousTags.Replace(html, "");
-            var cids = msg.BodyParts.OfType<MimePart>()
-                .Where(p => !string.IsNullOrEmpty(p.ContentId) && p.ContentType.MediaType == "image")
-                .GroupBy(p => p.ContentId.Trim('<', '>'), StringComparer.OrdinalIgnoreCase)
-                .ToDictionary(g => g.Key, g => g.First(), StringComparer.OrdinalIgnoreCase);
-            html = CidRef.Replace(html, m =>
-            {
-                if (!cids.TryGetValue(WebUtility.UrlDecode(m.Groups[1].Value), out var part) || part.Content is null) return m.Value;
-                using var ms = new MemoryStream();
-                part.Content.DecodeTo(ms);
-                if (ms.Length > 5 * 1024 * 1024) return m.Value;
-                return $"data:{part.ContentType.MimeType};base64,{Convert.ToBase64String(ms.ToArray())}";
-            });
-            hasExternal = ExternalRef.Matches(html).Any(m => !m.Value.StartsWith("href", StringComparison.OrdinalIgnoreCase));
-            body = html;
-        }
-        else
-        {
-            var text = WebUtility.HtmlEncode(msg.TextBody ?? "");
-            text = Regex.Replace(text, @"(https?://[^\s<>&]+)", "<a href=\"$1\">$1</a>");
-            body = $"<pre style=\"white-space:pre-wrap;word-wrap:break-word;font-family:'Segoe UI',sans-serif;font-size:13px;margin:0\">{text}</pre>";
-        }
-
-        var external = allowExternal ? " https: http:" : "";
-        var csp = $"default-src 'none'; img-src data: cid:{external}; style-src 'unsafe-inline'{external}; font-src data:{external}; media-src data:{external}";
-        var head = new StringBuilder()
-            .Append("<meta charset=\"utf-8\">")
-            .Append($"<meta http-equiv=\"Content-Security-Policy\" content=\"{csp}\">")
-            .Append("<meta name=\"color-scheme\" content=\"light\"><style>html{background:#fff;color-scheme:light}body{background:#fff;font-family:'Segoe UI',sans-serif;font-size:13px;margin:14px;color:#1e2329;word-wrap:break-word}img{max-width:100%;height:auto}</style>");
-        return (head + body, hasExternal);
-    }
 
     void LoadExternal_Click(object sender, RoutedEventArgs e)
     {

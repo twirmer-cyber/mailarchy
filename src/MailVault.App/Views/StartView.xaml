@@ -6,7 +6,7 @@
     <!-- Startseite: zuerst die Suche (häufigste Aufgabe), darunter Archivzustand und Profile.
          Die Bereiche selbst erreicht man über die Seitenleiste; hier keine doppelten Kacheln. -->
     <ScrollViewer VerticalScrollBarVisibility="Auto">
-        <StackPanel Margin="40,32,40,32" MaxWidth="960" HorizontalAlignment="Left">
+        <StackPanel Margin="40,32,40,32" MaxWidth="1040" HorizontalAlignment="Left">
             <TextBlock Style="{StaticResource H1}" Text="{loc:T Nav_Start}" />
 
             <DockPanel Margin="0,0,0,8">
@@ -35,6 +35,93 @@
                 </DockPanel>
             </Border>
 
+            <!-- Archivprüfung mit Problemen: Handeln nötig -->
+            <Border Background="{DynamicResource DangerBackBrush}" CornerRadius="6" Padding="14,10" Margin="0,0,0,24"
+                    Visibility="{Binding CheckFailed, Converter={StaticResource BoolToVis}}" AutomationProperties.AutomationId="CheckFailedBanner">
+                <DockPanel>
+                    <TextBlock DockPanel.Dock="Left" Text="&#xE783;" Style="{StaticResource Icon}" Foreground="{DynamicResource DangerBrush}"
+                               VerticalAlignment="Top" Margin="0,1,10,0" />
+                    <StackPanel>
+                        <TextBlock TextWrapping="Wrap" FontWeight="SemiBold" Text="{loc:T Start_CheckFailedBanner}" />
+                        <TextBlock TextWrapping="Wrap" Margin="0,4,0,0" FontSize="12" Text="{Binding CheckProblems}" />
+                        <TextBlock Margin="0,6,0,0">
+                            <Hyperlink Command="{Binding CheckNowCommand}"><Run Text="{loc:T Start_CheckAgain}" /></Hyperlink>
+                        </TextBlock>
+                    </StackPanel>
+                </DockPanel>
+            </Border>
+
+            <!-- Kennzahlen: eine Fläche, vier Spalten mit Trennlinien (keine Kachelkarten) -->
+            <Border Background="{DynamicResource SurfaceBrush}" BorderBrush="{DynamicResource BorderBrush}" BorderThickness="1"
+                    CornerRadius="6" Margin="0,0,0,32" Typography.NumeralAlignment="Tabular">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition /><ColumnDefinition Width="1" /><ColumnDefinition /><ColumnDefinition Width="1" />
+                        <ColumnDefinition /><ColumnDefinition Width="1" /><ColumnDefinition />
+                    </Grid.ColumnDefinitions>
+                    <Grid.Resources>
+                        <Style x:Key="KLabel" TargetType="TextBlock" BasedOn="{StaticResource Muted}">
+                            <Setter Property="FontSize" Value="12" />
+                        </Style>
+                        <Style x:Key="KValue" TargetType="TextBlock">
+                            <Setter Property="FontSize" Value="22" />
+                            <Setter Property="FontWeight" Value="SemiBold" />
+                            <Setter Property="Margin" Value="0,4,0,2" />
+                            <Setter Property="TextTrimming" Value="CharacterEllipsis" />
+                        </Style>
+                        <Style x:Key="KDetail" TargetType="TextBlock" BasedOn="{StaticResource Muted}">
+                            <Setter Property="FontSize" Value="12" />
+                            <Setter Property="TextWrapping" Value="Wrap" />
+                        </Style>
+                        <Style TargetType="Rectangle">
+                            <Setter Property="Fill" Value="{DynamicResource BorderBrush}" />
+                            <Setter Property="Margin" Value="0,14" />
+                        </Style>
+                    </Grid.Resources>
+
+                    <StackPanel Margin="18,14">
+                        <TextBlock Style="{StaticResource KLabel}" Text="{loc:T Common_Emails}" />
+                        <TextBlock Style="{StaticResource KValue}" Text="{Binding MessageCount}" AutomationProperties.AutomationId="KpiCount" />
+                        <TextBlock Style="{StaticResource KDetail}" Text="{Binding DateRange}" />
+                    </StackPanel>
+                    <Rectangle Grid.Column="1" />
+                    <StackPanel Grid.Column="2" Margin="18,14">
+                        <TextBlock Style="{StaticResource KLabel}" Text="{loc:T Start_Size}" />
+                        <TextBlock Style="{StaticResource KValue}" Text="{Binding ArchiveSize}" />
+                        <TextBlock Style="{StaticResource KDetail}" Text="{Binding SizeDetail}" AutomationProperties.AutomationId="KpiSaved" />
+                    </StackPanel>
+                    <Rectangle Grid.Column="3" />
+                    <StackPanel Grid.Column="4" Margin="18,14">
+                        <TextBlock Style="{StaticResource KLabel}" Text="{loc:T Start_LastArchived}" />
+                        <TextBlock Style="{StaticResource KValue}" Text="{Binding LastArchived}" />
+                        <TextBlock Style="{StaticResource KDetail}" Text="{Binding ProtectionText}" />
+                    </StackPanel>
+                    <Rectangle Grid.Column="5" />
+                    <StackPanel Grid.Column="6" Margin="18,14">
+                        <TextBlock Style="{StaticResource KLabel}" Text="{loc:T Start_Check}" />
+                        <TextBlock Text="{Binding CheckTitle}" AutomationProperties.AutomationId="KpiCheck">
+                            <TextBlock.Style>
+                                <Style TargetType="TextBlock" BasedOn="{StaticResource KValue}">
+                                    <Style.Triggers>
+                                        <DataTrigger Binding="{Binding CheckOk}" Value="True">
+                                            <Setter Property="Foreground" Value="{DynamicResource OkBrush}" />
+                                        </DataTrigger>
+                                        <DataTrigger Binding="{Binding CheckFailed}" Value="True">
+                                            <Setter Property="Foreground" Value="{DynamicResource DangerBrush}" />
+                                        </DataTrigger>
+                                    </Style.Triggers>
+                                </Style>
+                            </TextBlock.Style>
+                        </TextBlock>
+                        <TextBlock Style="{StaticResource KDetail}">
+                            <Run Text="{Binding CheckDetail, Mode=OneWay}" />
+                            <LineBreak />
+                            <Hyperlink Command="{Binding CheckNowCommand}" AutomationProperties.AutomationId="CheckNow"><Run Text="{loc:T Start_CheckNow}" /></Hyperlink>
+                        </TextBlock>
+                    </StackPanel>
+                </Grid>
+            </Border>
+
             <Grid>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="*" />
@@ -46,13 +133,13 @@
                 <StackPanel>
                     <TextBlock Style="{StaticResource H2}" Margin="0,0,0,8" Text="{loc:T Start_Archive}" />
                     <Border BorderBrush="{DynamicResource BorderBrush}" BorderThickness="0,1,0,0">
-                        <Grid Typography.NumeralAlignment="Tabular">
+                        <Grid>
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="Auto" />
                                 <ColumnDefinition />
                             </Grid.ColumnDefinitions>
                             <Grid.RowDefinitions>
-                                <RowDefinition /><RowDefinition /><RowDefinition /><RowDefinition /><RowDefinition />
+                                <RowDefinition /><RowDefinition /><RowDefinition />
                             </Grid.RowDefinitions>
                             <Grid.Resources>
                                 <Style x:Key="Key" TargetType="TextBlock" BasedOn="{StaticResource Muted}">
@@ -63,18 +150,16 @@
                                     <Setter Property="TextTrimming" Value="CharacterEllipsis" />
                                 </Style>
                             </Grid.Resources>
-                            <TextBlock Style="{StaticResource Key}" Text="{loc:T Common_Emails}" />
-                            <TextBlock Grid.Column="1" Style="{StaticResource Val}" Text="{Binding MessageCount}" FontWeight="SemiBold" />
-                            <TextBlock Grid.Row="1" Style="{StaticResource Key}" Text="{loc:T Start_Size}" />
-                            <TextBlock Grid.Row="1" Grid.Column="1" Style="{StaticResource Val}" Text="{Binding ArchiveSize}" />
-                            <TextBlock Grid.Row="2" Style="{StaticResource Key}" Text="{loc:T Start_Period}" />
-                            <TextBlock Grid.Row="2" Grid.Column="1" Style="{StaticResource Val}" Text="{Binding DateRange}" />
-                            <TextBlock Grid.Row="3" Style="{StaticResource Key}" Text="{loc:T Start_LastArchived}" />
-                            <TextBlock Grid.Row="3" Grid.Column="1" Style="{StaticResource Val}" Text="{Binding LastArchived}" />
-                            <TextBlock Grid.Row="4" Style="{StaticResource Key}" Text="{loc:T Start_Protection}" />
-                            <TextBlock Grid.Row="4" Grid.Column="1" Style="{StaticResource Val}">
+                            <TextBlock Style="{StaticResource Key}" Text="{loc:T Start_Protection}" />
+                            <TextBlock Grid.Column="1" Style="{StaticResource Val}">
                                 <Run Text="{Binding ProtectionText, Mode=OneWay}" />
                                 <Hyperlink Command="{Binding GoSettingsCommand}"><Run Text="{loc:T Start_Change}" /></Hyperlink>
+                            </TextBlock>
+                            <TextBlock Grid.Row="1" Style="{StaticResource Key}" Text="{loc:T Start_HowStored}" />
+                            <TextBlock Grid.Row="1" Grid.Column="1" Style="{StaticResource Val}" TextWrapping="Wrap" TextTrimming="None" Text="{loc:T Start_HowStoredText}" />
+                            <TextBlock Grid.Row="2" Style="{StaticResource Key}" Text="{loc:T Start_Location}" />
+                            <TextBlock Grid.Row="2" Grid.Column="1" Style="{StaticResource Val}" ToolTip="{Binding DataDirectory}">
+                                <Hyperlink Command="{Binding OpenDataDirectoryCommand}"><Run Text="{Binding DataDirectory, Mode=OneWay}" /></Hyperlink>
                             </TextBlock>
                         </Grid>
                     </Border>

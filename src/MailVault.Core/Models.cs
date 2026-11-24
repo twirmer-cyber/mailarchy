@@ -48,9 +48,20 @@ public sealed record ArchiveStats(
     DateTime? OldestMessageUtc,
     DateTime? NewestMessageUtc,
     DateTime? LastArchivedUtc,
-    bool IsProtected);
+    bool IsProtected)
+{
+    /// <summary>Eingesparter Anteil gegenüber den Originalnachrichten (0–1); null, solange das Archiv (Suchindex, Verwaltung) größer ist.</summary>
+    public double? SavedFraction => TotalMessageBytes > 0 && DatabaseFileBytes < TotalMessageBytes
+        ? 1 - (double)DatabaseFileBytes / TotalMessageBytes : null;
+}
 
-/// <summary>Datumsbereiche analog zu den Suchoptionen des Originals.</summary>
+/// <summary>Ergebnis einer vollständigen Archivprüfung.</summary>
+public sealed record ArchiveCheckResult(DateTime CheckedUtc, long MessagesChecked, long PartsChecked, IReadOnlyList<string> Problems)
+{
+    public bool Ok => Problems.Count == 0;
+}
+
+/// <summary>Datumsbereiche der Suchoptionen.</summary>
 public enum DateRangeType
 {
     NotSpecified,

@@ -98,6 +98,36 @@ public partial class MessageListViewModel : ObservableObject
     }
 
     [RelayCommand]
+    void SavePdf()
+    {
+        var sel = Selection();
+        if (sel.Count == 0) return;
+        var ids = sel.Select(s => s.Id).ToList();
+        if (sel.Count == 1)
+        {
+            var dlg = new SaveFileDialog { FileName = Exporter.SafeName(sel[0].Subject, 80) + ".pdf", Filter = L.T("List_PdfFilter") };
+            if (dlg.ShowDialog() != true) return;
+            var file = dlg.FileName;
+            if (Ui.RunWithProgress(L.T("List_SavingPdf"), async (p, ct) =>
+                {
+                    using var pdf = new PdfExport();
+                    await pdf.WriteAsync(ids[0], file, ct);
+                    return L.F("List_Saved", 1);
+                }, autoClose: true) is not null)
+                Ui.OpenWithShell(file);
+            return;
+        }
+        var fd = new OpenFolderDialog { Title = L.F("List_SaveManyTitle", sel.Count) };
+        if (fd.ShowDialog() != true) return;
+        Ui.RunWithProgress(L.T("List_SavingPdf"), async (p, ct) =>
+        {
+            using var pdf = new PdfExport();
+            var n = await Exporter.ExportAsync(AppState.Archive, ids, fd.FolderName, ExportFormat.Pdf, false, p, ct, pdf);
+            return L.F("List_Saved", n);
+        });
+    }
+
+    [RelayCommand]
     async Task DeleteAsync()
     {
         var sel = Selection();

@@ -12,7 +12,7 @@ namespace MailVault.Core;
 /// Speicherformat der Originalnachrichten: Single-Instance-Speicherung großer MIME-Teile plus Kompression
 /// mit einem je Archiv trainierten Wörterbuch.
 ///
-/// Wie im Original (Methodennamen "...ApplySingleInstance", "ShouldCompressMimeEntity", per REA gefunden)
+/// Bei der Single-Instance-Speicherung
 /// werden große base64-Teile (Anhänge, eingebettete Bilder) dekodiert, per SHA-256 identifiziert und nur einmal
 /// gespeichert. Die Nachricht selbst wird als "Skelett" abgelegt: Kopfzeilen, Texte und MIME-Struktur, in dem
 /// diese Teile durch Verweise ersetzt sind. Skelette werden mit zstd und einem Wörterbuch komprimiert, das aus

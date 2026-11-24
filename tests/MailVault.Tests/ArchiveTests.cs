@@ -234,4 +234,32 @@ public class ArchiveTests
         Assert.Equal("{subject body} : (\"x y\") NOT {subject body} : \"z\"", SearchQueryBuilder.BuildFtsQuery("\"x y\" -z", cols));
         Assert.Null(SearchQueryBuilder.BuildFtsQuery("-nur", cols));
     }
+
+    sealed class FakePdf : IMessagePdfWriter
+    {
+        public readonly List<(long Id, string File)> Calls = new();
+        public Task WriteAsync(long messageId, string file, CancellationToken ct)
+        {
+            Calls.Add((messageId, file));
+            return File.WriteAllTextAsync(file, "%PDF-1.4", ct);
+        }
+    }
+
+    [Fact]
+    public async Task Pdf_export_writes_one_named_file_per_message_in_the_folder_structure()
+    {
+        using var tmp = new TempDir();
+        using var a = MailArchive.Open(Path.Combine(tmp.Path, "a"));
+        var f = a.EnsureFolderPath(new[] { "Posteingang", "Rechnungen" });
+        a.StoreMessage(f, MakeMessage("Rechnung: März/2025", "Text"));
+        a.StoreMessage(f, MakeMessage("Rechnung: März/2025", "Anderer Text"));
+        var target = Path.Combine(tmp.Path, "pdf");
+        var pdf = new FakePdf();
+        var n = await Exporter.ExportAsync(a, a.GetMessageIds(f, true), target, ExportFormat.Pdf, true, null, default, pdf);
+        Assert.Equal(2, n);
+        var files = Directory.GetFiles(Path.Combine(target, "Posteingang", "Rechnungen"), "*.pdf");
+        Assert.Equal(2, files.Length);   // gleicher Betreff → eindeutige Namen, keine Überschreibung
+        Assert.All(files, p => Assert.DoesNotContain(":", Path.GetFileName(p)));
+        await Assert.ThrowsAsync<ArgumentNullException>(() => Exporter.ExportAsync(a, a.GetMessageIds(f, true), target, ExportFormat.Pdf, false, null, default));
+    }
 }

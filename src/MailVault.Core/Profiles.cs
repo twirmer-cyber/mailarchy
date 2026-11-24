@@ -37,7 +37,7 @@ public enum ConnectionSecurity
 }
 
 /// <summary>
-/// Archivierungsprofil – im Original werden "Archivierungsaufgaben in Form von Profilen gespeichert".
+/// Archivierungsprofil: eine gespeicherte Archivierungsaufgabe.
 /// Ein Profil beschreibt Quelle, Filter und Löschverhalten; das Löschen eines Profils ändert nichts am Archiv.
 /// </summary>
 public sealed class ArchiveProfile

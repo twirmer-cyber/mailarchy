@@ -19,26 +19,72 @@ public partial class StartViewModel : ObservableObject
     [ObservableProperty] string _quickSearch = "";
     [ObservableProperty] string _messageCount = "";
     [ObservableProperty] string _archiveSize = "";
+    /// <summary>„Original 12,4 GB · 59 % gespart“ (bzw. Hinweis, solange es nichts zu sparen gibt).</summary>
+    [ObservableProperty] string _sizeDetail = "";
+    [ObservableProperty] string _checkTitle = "";
+    [ObservableProperty] string _checkDetail = "";
+    [ObservableProperty] bool _checkOk;
+    [ObservableProperty] bool _checkFailed;
+    [ObservableProperty] bool _checkRunning;
+    [ObservableProperty] string _checkProblems = "";
+    [ObservableProperty] string _dataDirectory = "";
     [ObservableProperty] string _dateRange = "";
     [ObservableProperty] string _lastArchived = "";
     [ObservableProperty] string _protectionText = "";
     [ObservableProperty] bool _showRecoveryWarning;
     [ObservableProperty] ObservableCollection<ArchiveProfile> _recentProfiles = new();
 
-    public StartViewModel(MainViewModel main) => _main = main;
+    public StartViewModel(MainViewModel main)
+    {
+        _main = main;
+        ArchiveCheckService.Completed += Refresh;
+        ArchiveCheckService.RunningChanged += RefreshCheck;
+    }
 
     public void Refresh()
     {
         var s = AppState.Archive.GetStats();
         MessageCount = s.MessageCount.ToString("N0");
         ArchiveSize = Ui.FormatSize(s.DatabaseFileBytes);
+        SizeDetail = s.MessageCount == 0 ? L.T("Start_SizeEmpty")
+            : s.SavedFraction is { } saved ? L.F("Start_SizeSaved", Ui.FormatSize(s.TotalMessageBytes), saved)
+            : L.F("Start_SizeOriginal", Ui.FormatSize(s.TotalMessageBytes));
+        DataDirectory = AppState.Archive.DataDirectory;
         DateRange = s.OldestMessageUtc is { } o && s.NewestMessageUtc is { } n
             ? $"{o.ToLocalTime():d} – {n.ToLocalTime():d}" : "–";
         LastArchived = s.LastArchivedUtc is { } l ? l.ToLocalTime().ToString("g") : L.T("Start_Never");
         ProtectionText = s.IsProtected ? L.T("Start_Protected") : L.T("Start_NotProtected");
         ShowRecoveryWarning = s.IsProtected && !AppState.Archive.RecoveryKeyExported;
         RecentProfiles = new(AppState.Profiles.All.OrderByDescending(p => p.LastRunUtc ?? DateTime.MinValue).Take(5));
+        RefreshCheck();
     }
+
+    void RefreshCheck()
+    {
+        var c = AppState.Settings.ArchiveCheck;
+        var current = c.LastUtc is not null && string.Equals(c.DataDirectory, AppState.Archive.DataDirectory, StringComparison.OrdinalIgnoreCase);
+        CheckRunning = ArchiveCheckService.IsRunning;
+        CheckOk = current && c.LastOk == true && !CheckRunning;
+        CheckFailed = current && c.LastOk == false && !CheckRunning;
+        CheckTitle = CheckRunning ? L.T("Start_CheckRunning") : CheckOk ? L.T("Start_CheckOk") : CheckFailed ? L.T("Start_CheckFailed") : L.T("Start_CheckNever");
+        if (!CheckRunning)
+            CheckDetail = current ? L.F("Start_CheckWhen", c.LastUtc!.Value.ToLocalTime(), c.LastMessages)
+                : c.Automatic ? L.T("Start_CheckSoon") : L.T("Start_CheckOff");
+        CheckProblems = CheckFailed ? string.Join(Environment.NewLine, c.LastProblems) : "";
+    }
+
+    [RelayCommand]
+    async Task CheckNowAsync()
+    {
+        if (ArchiveCheckService.IsRunning) return;
+        var progress = new Progress<ProgressInfo>(p => { if (p.Total is > 0) CheckDetail = L.F("Start_CheckProgress", (double)p.Processed / p.Total.Value); });
+        CheckDetail = L.T("Start_CheckStarting");
+        try { await ArchiveCheckService.RunAsync(progress, CancellationToken.None); }
+        catch (Exception ex) { Ui.Error(ErrorText.Describe(ex)); }
+        Refresh();
+    }
+
+    [RelayCommand] void OpenDataDirectory() => Ui.OpenWithShell(AppState.Archive.DataDirectory);
 
     [RelayCommand] void Search() => _main.ShowSearch(QuickSearch);
     [RelayCommand] void GoArchive() => _main.Navigate(Page.Archive);
@@ -151,6 +197,7 @@ public partial class ExportViewModel : ObservableObject
     [ObservableProperty] FolderChoice? _selectedFolder;
     [ObservableProperty] bool _formatEml = true;
     [ObservableProperty] bool _formatMbox;
+    [ObservableProperty] bool _formatPdf;
     [ObservableProperty] bool _keepStructure = true;
     [ObservableProperty] string _targetPath = "";
 
@@ -191,7 +238,7 @@ public partial class ExportViewModel : ObservableObject
             : AppState.Archive.GetFolderTree().SelectMany(r => AppState.Archive.GetMessageIds(r.Id, true)).ToList();
         if (ids.Count == 0) { Ui.Info(L.T("Export_FolderEmpty")); return; }
 
-        var format = FormatMbox ? ExportFormat.Mbox : ExportFormat.EmlFiles;
+        var format = FormatMbox ? ExportFormat.Mbox : FormatPdf ? ExportFormat.Pdf : ExportFormat.EmlFiles;
         var target = TargetPath.Trim();
         if (format == ExportFormat.Mbox && !KeepStructure)
             target = Path.Combine(target, Exporter.SafeName(string.IsNullOrEmpty(folder?.Path) ? L.T("Start_Archive") : folder!.Path.Replace('/', '_')) + ".mbox");
@@ -200,7 +247,8 @@ public partial class ExportViewModel : ObservableObject
 
         var result = Ui.RunWithProgress(L.T("Nav_Export"), async (p, ct) =>
         {
-            var n = await Exporter.ExportAsync(AppState.Archive, ids, target, format, KeepStructure, p, ct);
+            using var pdf = format == ExportFormat.Pdf ? new PdfExport() : null;
+            var n = await Exporter.ExportAsync(AppState.Archive, ids, target, format, KeepStructure, p, ct, pdf);
             return L.F("Export_Done", n, target);
         });
         if (result is not null && Ui.Confirm(L.F("Export_OpenTarget", result)))
@@ -627,12 +675,12 @@ public partial class SettingsViewModel : ObservableObject
     [RelayCommand]
     void Verify()
     {
-        Ui.RunWithProgress(L.T("Settings_Verify"), (p, ct) =>
+        Ui.RunWithProgress(L.T("Settings_Verify"), async (p, ct) =>
         {
             p.Report(new ProgressInfo(L.T("Settings_Checking"), 0, null));
-            return Task.FromResult(AppState.Archive.VerifyIntegrity(out var details)
-                ? L.T("Settings_ArchiveOk")
-                : L.F("Settings_ArchiveProblems", details));
+            var r = await ArchiveCheckService.RunAsync(p, ct) ?? throw new InvalidOperationException(L.T("Start_CheckRunning"));
+            return r.Ok ? L.F("Settings_ArchiveOkDetail", r.MessagesChecked, r.PartsChecked)
+                        : L.F("Settings_ArchiveProblems", string.Join(Environment.NewLine, r.Problems));
         });
     }
 }

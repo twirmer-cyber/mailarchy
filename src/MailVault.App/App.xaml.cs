@@ -102,6 +102,7 @@ public partial class App : Application
             MessageBox.Show(L.F("App_UpdateFailed", System.IO.Path.Combine(MailVault.Core.Updates.UpdateManager.BackupRoot, "update.log")),
                             L.T("App_UpdateTitle"), MessageBoxButton.OK, MessageBoxImage.Warning);
         UpdateService.Start();
+        ArchiveCheckService.Start();
     }
 
     /// <summary>

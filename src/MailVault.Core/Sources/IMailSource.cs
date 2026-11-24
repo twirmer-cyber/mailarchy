@@ -47,7 +47,7 @@ public static class SourceFactory
     };
 }
 
-/// <summary>Erkennung der Sonderordner, die das Original standardmäßig ausschließt
+/// <summary>Erkennung der Sonderordner, die beim Archivieren standardmäßig ausgeschlossen werden
 /// ("Gelöschte Objekte, Entwürfe, Junk-E-Mail und Postausgang").</summary>
 public static class SpecialFolders
 {

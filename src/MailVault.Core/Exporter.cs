@@ -10,6 +10,14 @@ public enum ExportFormat
     EmlFiles,
     /// <summary>MBOX-Datei(en) im mboxrd-Format.</summary>
     Mbox,
+    /// <summary>Eine PDF-Datei je E-Mail (zum Drucken oder als Nachweis); braucht einen <see cref="IMessagePdfWriter"/>.</summary>
+    Pdf,
+}
+
+/// <summary>Wandelt eine archivierte Nachricht in eine PDF-Datei um (in der App über die WebView2-Druckfunktion).</summary>
+public interface IMessagePdfWriter
+{
+    Task WriteAsync(long messageId, string file, CancellationToken ct);
 }
 
 /// <summary>Exportiert archivierte Nachrichten ("E-Mails exportieren / Sicherung").</summary>
@@ -17,8 +25,9 @@ public static class Exporter
 {
     /// <param name="keepStructure">"Ordnerstruktur beibehalten": Unterordner bzw. eine MBOX je Archivordner.</param>
     public static async Task<int> ExportAsync(MailArchive archive, IReadOnlyList<long> messageIds, string target,
-        ExportFormat format, bool keepStructure, IProgress<ProgressInfo>? progress, CancellationToken ct)
+        ExportFormat format, bool keepStructure, IProgress<ProgressInfo>? progress, CancellationToken ct, IMessagePdfWriter? pdf = null)
     {
+        if (format == ExportFormat.Pdf && pdf is null) throw new ArgumentNullException(nameof(pdf));
         Directory.CreateDirectory(format == ExportFormat.Mbox && !keepStructure ? Path.GetDirectoryName(Path.GetFullPath(target))! : target);
         var mboxWriters = new Dictionary<string, FileStream>(StringComparer.OrdinalIgnoreCase);
         var exported = 0;
@@ -29,16 +38,16 @@ public static class Exporter
                 ct.ThrowIfCancellationRequested();
                 var summary = archive.GetSummary(messageIds[i]);
                 if (summary is null) continue;
-                var raw = archive.GetRawMessage(summary.Id);
+                var raw = format == ExportFormat.Pdf ? Array.Empty<byte>() : archive.GetRawMessage(summary.Id);
                 var folderParts = summary.FolderPath.Split('/').Select(p => SafeName(p)).ToArray();
 
-                if (format == ExportFormat.EmlFiles)
+                if (format is ExportFormat.EmlFiles or ExportFormat.Pdf)
                 {
                     var dir = keepStructure ? Path.Combine(new[] { target }.Concat(folderParts).ToArray()) : target;
                     Directory.CreateDirectory(dir);
                     var baseName = $"{summary.DateUtc.ToLocalTime():yyyy-MM-dd HHmm} {SafeName(summary.Subject, 80)}";
-                    var file = UniquePath(dir, baseName, ".eml");
-                    await File.WriteAllBytesAsync(file, raw, ct);
+                    if (format == ExportFormat.Pdf) await pdf!.WriteAsync(summary.Id, UniquePath(dir, baseName, ".pdf"), ct);
+                    else await File.WriteAllBytesAsync(UniquePath(dir, baseName, ".eml"), raw, ct);
                 }
                 else
                 {

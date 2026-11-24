@@ -915,4 +915,35 @@ MailVault vous le rappellera à l'intervalle choisi et vous préviendra dès que
   <data name="OAuth_ClientRejected" xml:space="preserve">
     <value>{0} refuse l'ID client ({1}). Vérifiez l'ID client et, le cas échéant, le secret client sous Paramètres → Connexion (OAuth), puis reconnectez la boîte aux lettres.</value>
   </data>
+  <data name="Check_Structure" xml:space="preserve">
+    <value>Vérification de la structure de la base …</value>
+  </data>
+  <data name="Check_StructureProblem" xml:space="preserve">
+    <value>Structure de la base : {0}</value>
+  </data>
+  <data name="Check_SizeMismatch" xml:space="preserve">
+    <value>E-mail n° {0} : {1:N0} octets reconstitués au lieu de {2:N0}</value>
+  </data>
+  <data name="Check_MessageUnreadable" xml:space="preserve">
+    <value>L'e-mail n° {0} est illisible : {1}</value>
+  </data>
+  <data name="Check_PartDamaged" xml:space="preserve">
+    <value>La pièce jointe {0} est endommagée (somme de contrôle incorrecte)</value>
+  </data>
+  <data name="Check_Messages" xml:space="preserve">
+    <value>Vérification de l'e-mail {0:N0} sur {1:N0} …</value>
+  </data>
+  <data name="Check_Parts" xml:space="preserve">
+    <value>Vérification des pièces jointes …</value>
+  </data>
+  <data name="Check_Mail_Subject" xml:space="preserve">
+    <value>MailVault : la vérification de l'archive a détecté des problèmes</value>
+  </data>
+  <data name="Check_Mail_Body" xml:space="preserve">
+    <value>La vérification automatique de l'archive dans {0} a détecté des problèmes le {1:g} :
+
+{2}
+
+Que faire : ouvrez MailVault et relancez Gestion → Archive → « Vérifier l'archive ». Si l'erreur persiste, restaurez une sauvegarde de l'archive (Gestion → Archive → Intégrer une archive sauvegardée). Vos boîtes aux lettres ne sont pas concernées – archivez simplement à nouveau les e-mails manquants.</value>
+  </data>
 </root>

@@ -915,4 +915,35 @@ MailVault erinnert in den eingestellten Abständen erneut und meldet sich, sobal
   <data name="OAuth_ClientRejected" xml:space="preserve">
     <value>{0} lehnt die Client-ID ab ({1}). Bitte unter Einstellungen → Anmeldung (OAuth) Client-ID und ggf. Client-Secret prüfen und das Postfach neu anmelden.</value>
   </data>
+  <data name="Check_Structure" xml:space="preserve">
+    <value>Datenbankstruktur wird geprüft …</value>
+  </data>
+  <data name="Check_StructureProblem" xml:space="preserve">
+    <value>Datenbankstruktur: {0}</value>
+  </data>
+  <data name="Check_SizeMismatch" xml:space="preserve">
+    <value>E-Mail Nr. {0}: zusammengesetzt {1:N0} Byte statt {2:N0} Byte</value>
+  </data>
+  <data name="Check_MessageUnreadable" xml:space="preserve">
+    <value>E-Mail Nr. {0} ist nicht lesbar: {1}</value>
+  </data>
+  <data name="Check_PartDamaged" xml:space="preserve">
+    <value>Anhang {0} ist beschädigt (Prüfsumme stimmt nicht)</value>
+  </data>
+  <data name="Check_Messages" xml:space="preserve">
+    <value>E-Mail {0:N0} von {1:N0} wird geprüft …</value>
+  </data>
+  <data name="Check_Parts" xml:space="preserve">
+    <value>Anhänge werden geprüft …</value>
+  </data>
+  <data name="Check_Mail_Subject" xml:space="preserve">
+    <value>MailVault: Bei der Archivprüfung wurden Probleme gefunden</value>
+  </data>
+  <data name="Check_Mail_Body" xml:space="preserve">
+    <value>Die automatische Prüfung des Archivs in {0} hat am {1:g} Probleme gefunden:
+
+{2}
+
+Was Sie tun können: Öffnen Sie MailVault und starten Sie unter Verwaltung → Archiv „Archiv überprüfen“ erneut. Bleibt der Fehler, spielen Sie eine Sicherung des Archivs zurück (Verwaltung → Archiv → Gesichertes Archiv einbinden). Ihre Postfächer selbst sind davon nicht betroffen – archivieren Sie fehlende E-Mails einfach erneut.</value>
+  </data>
 </root>

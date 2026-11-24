@@ -16,6 +16,7 @@
                 <StackPanel DockPanel.Dock="Right" Orientation="Horizontal">
                     <Button Content="{loc:T Common_Open}" Command="{Binding OpenCommand}" ToolTip="{loc:T List_OpenTip}" />
                     <Button Content="{loc:T Common_SaveAs}" Command="{Binding SaveAsCommand}" />
+                    <Button Content="{loc:T List_SavePdf}" Command="{Binding SavePdfCommand}" ToolTip="{loc:T List_SavePdfTip}" AutomationProperties.AutomationId="SavePdf" />
                     <Button Content="{loc:T Common_Delete}" Style="{StaticResource DangerButton}" Command="{Binding DeleteCommand}" ToolTip="{loc:T List_DeleteTip}" />
                     <Button Content="&#xE72C;" Style="{StaticResource IconButton}" Command="{Binding RefreshCommand}" ToolTip="{loc:T Common_Refresh}" AutomationProperties.Name="{loc:T Common_Refresh}" />
                 </StackPanel>
@@ -33,6 +34,7 @@
                 <ContextMenu>
                     <MenuItem Header="{loc:T Common_Open}" Command="{Binding OpenCommand}" />
                     <MenuItem Header="{loc:T Common_SaveAs}" Command="{Binding SaveAsCommand}" />
+                    <MenuItem Header="{loc:T List_SavePdf}" Command="{Binding SavePdfCommand}" />
                     <MenuItem Header="{loc:T List_CopyList}" Command="{Binding CopyToClipboardCommand}" />
                     <MenuItem Header="{loc:T List_AskAi}" Command="{Binding AskAiCommand}" />
                     <Separator />

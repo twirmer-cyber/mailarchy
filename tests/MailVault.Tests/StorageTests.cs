@@ -201,4 +201,46 @@ public class StorageTests
         }
         finally { MailArchive.DictionaryTrainThreshold = old; }
     }
+
+    [Fact]
+    public void Archive_check_reassembles_every_message_and_detects_a_damaged_attachment()
+    {
+        using var tmp = new TempDir();
+        using (var archive = MailArchive.Open(tmp.Path))
+        {
+            var f = archive.EnsureFolderPath(new[] { "T" });
+            var pdf = Bytes(100_000, 7);
+            archive.StoreMessage(f, WithAttachment("eins", pdf));
+            archive.StoreMessage(f, WithAttachment("zwei", pdf));
+            archive.StoreMessage(f, WithAttachment("drei", Bytes(40_000, 8)));
+            var ok = archive.CheckArchive();
+            Assert.True(ok.Ok, string.Join("; ", ok.Problems));
+            Assert.Equal(3, ok.MessagesChecked);
+            Assert.Equal(2, ok.PartsChecked);
+            Assert.True(archive.GetStats().TotalMessageBytes > 0);
+        }
+
+        // Ein Byte eines gespeicherten Anhangs verfälschen (z. B. Plattenfehler)
+        using (var cn = new SqliteConnection($"Data Source={Path.Combine(tmp.Path, MailArchive.DbFileName)};Pooling=false"))
+        {
+            cn.Open();
+            using var read = cn.CreateCommand();
+            read.CommandText = "SELECT rowid, data FROM parts LIMIT 1";
+            long rowid; byte[] data;
+            using (var r = read.ExecuteReader()) { r.Read(); rowid = r.GetInt64(0); data = (byte[])r.GetValue(1); }
+            data[data.Length / 2] ^= 0xFF;
+            using var write = cn.CreateCommand();
+            write.CommandText = "UPDATE parts SET data = $d WHERE rowid = $r";
+            write.Parameters.AddWithValue("$d", data);
+            write.Parameters.AddWithValue("$r", rowid);
+            Assert.Equal(1, write.ExecuteNonQuery());
+        }
+
+        using (var archive = MailArchive.Open(tmp.Path))
+        {
+            var bad = archive.CheckArchive();
+            Assert.False(bad.Ok);
+            Assert.Contains(bad.Problems, p => p.Contains("beschädigt") || p.Contains("damaged") || p.Length > 0);
+        }
+    }
 }

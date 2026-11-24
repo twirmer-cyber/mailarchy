@@ -185,7 +185,7 @@
   <data name="Start_RecoveryWarning" xml:space="preserve"><value>La clave de recuperación aún no se ha guardado. Sin la contraseña o la clave no es posible acceder al archivo.</value></data>
   <data name="Start_SaveNow" xml:space="preserve"><value>Guardarla ahora</value></data>
   <data name="Start_Archive" xml:space="preserve"><value>Archivo</value></data>
-  <data name="Start_Size" xml:space="preserve"><value>Tamaño</value></data>
+  <data name="Start_Size" xml:space="preserve"><value>Espacio en disco</value></data>
   <data name="Start_Period" xml:space="preserve"><value>Período</value></data>
   <data name="Start_LastArchived" xml:space="preserve"><value>Último archivado</value></data>
   <data name="Start_Protection" xml:space="preserve"><value>Protección</value></data>
@@ -202,7 +202,7 @@
   <data name="Archive_ColLastRun" xml:space="preserve"><value>Última ejecución</value></data>
   <data name="Archive_ColResult" xml:space="preserve"><value>Resultado</value></data>
   <data name="Archive_NoProfiles" xml:space="preserve"><value>Todavía no hay perfiles. Elija un origen arriba.</value></data>
-  <data name="Export_Intro" xml:space="preserve"><value>Copie los correos archivados como archivos .eml individuales o como un archivo MBOX, por ejemplo, como copia de seguridad o para importarlos en un programa de correo. También puede hacer clic con el botón derecho en la carpeta que desee exportar en el árbol de carpetas.</value></data>
+  <data name="Export_Intro" xml:space="preserve"><value>Copie los correos archivados como archivos .eml individuales, como un archivo MBOX o como PDF, por ejemplo, como copia de seguridad, para importarlos en un programa de correo o para imprimirlos. También puede hacer clic con el botón derecho en la carpeta que desee exportar en el árbol de carpetas.</value></data>
   <data name="Export_Scope" xml:space="preserve"><value>Contenido de la copia o exportación</value></data>
   <data name="Export_Format" xml:space="preserve"><value>Formato</value></data>
   <data name="Export_Eml" xml:space="preserve"><value>Archivos de correo individuales (.eml)</value></data>
@@ -1015,5 +1015,98 @@ Por sí solo no sirve; junto con la contraseña o la clave de recuperación abre
   </data>
   <data name="OAuthSet_InvalidId" xml:space="preserve">
     <value>El ID de cliente de {0} no tiene el formato esperado.</value>
+  </data>
+  <data name="Pdf_Date" xml:space="preserve">
+    <value>Fecha</value>
+  </data>
+  <data name="Pdf_Folder" xml:space="preserve">
+    <value>Carpeta</value>
+  </data>
+  <data name="Pdf_Attachments" xml:space="preserve">
+    <value>Adjuntos</value>
+  </data>
+  <data name="Pdf_Footer" xml:space="preserve">
+    <value>Guardado como PDF desde el archivo de MailVault el {0:g}</value>
+  </data>
+  <data name="Pdf_RenderFailed" xml:space="preserve">
+    <value>No se pudo guardar el correo como PDF. ¿Está instalado el runtime Microsoft Edge WebView2?</value>
+  </data>
+  <data name="List_SavePdf" xml:space="preserve">
+    <value>Como PDF</value>
+  </data>
+  <data name="List_SavePdfTip" xml:space="preserve">
+    <value>Guardar los correos seleccionados como PDF, para imprimir o como comprobante</value>
+  </data>
+  <data name="List_PdfFilter" xml:space="preserve">
+    <value>Documento PDF (*.pdf)|*.pdf</value>
+  </data>
+  <data name="List_SavingPdf" xml:space="preserve">
+    <value>Guardando como PDF</value>
+  </data>
+  <data name="Export_Pdf" xml:space="preserve">
+    <value>PDF: un archivo por correo, para imprimir o como comprobante</value>
+  </data>
+  <data name="Start_SizeEmpty" xml:space="preserve">
+    <value>Aún no hay correos archivados</value>
+  </data>
+  <data name="Start_SizeSaved" xml:space="preserve">
+    <value>Original {0} · {1:P0} ahorrado</value>
+  </data>
+  <data name="Start_SizeOriginal" xml:space="preserve">
+    <value>Original {0} · el ahorro crece con el archivo</value>
+  </data>
+  <data name="Start_Check" xml:space="preserve">
+    <value>Comprobación del archivo</value>
+  </data>
+  <data name="Start_CheckOk" xml:space="preserve">
+    <value>Correcto</value>
+  </data>
+  <data name="Start_CheckFailed" xml:space="preserve">
+    <value>Problemas encontrados</value>
+  </data>
+  <data name="Start_CheckNever" xml:space="preserve">
+    <value>Aún no comprobado</value>
+  </data>
+  <data name="Start_CheckRunning" xml:space="preserve">
+    <value>Comprobando…</value>
+  </data>
+  <data name="Start_CheckWhen" xml:space="preserve">
+    <value>Última vez el {0:g}</value>
+  </data>
+  <data name="Start_CheckSoon" xml:space="preserve">
+    <value>Se comprueba automáticamente cada semana</value>
+  </data>
+  <data name="Start_CheckOff" xml:space="preserve">
+    <value>La comprobación automática está desactivada</value>
+  </data>
+  <data name="Start_CheckStarting" xml:space="preserve">
+    <value>Iniciando la comprobación…</value>
+  </data>
+  <data name="Start_CheckProgress" xml:space="preserve">
+    <value>{0:P0} comprobado</value>
+  </data>
+  <data name="Start_CheckNow" xml:space="preserve">
+    <value>Comprobar ahora</value>
+  </data>
+  <data name="Start_CheckAgain" xml:space="preserve">
+    <value>Volver a comprobar</value>
+  </data>
+  <data name="Start_CheckFailedBanner" xml:space="preserve">
+    <value>La comprobación del archivo encontró problemas. Vuelva a comprobarlo; si el error persiste, restaure una copia de seguridad (Administración → Archivo). Sus buzones no se ven afectados.</value>
+  </data>
+  <data name="Start_CheckFailedTray" xml:space="preserve">
+    <value>Los detalles están en la página de inicio de MailVault.</value>
+  </data>
+  <data name="Start_HowStored" xml:space="preserve">
+    <value>Almacenamiento</value>
+  </data>
+  <data name="Start_HowStoredText" xml:space="preserve">
+    <value>Adjuntos guardados una sola vez, texto comprimido: cada correo se conserva byte a byte</value>
+  </data>
+  <data name="Start_Location" xml:space="preserve">
+    <value>Ubicación</value>
+  </data>
+  <data name="Settings_ArchiveOkDetail" xml:space="preserve">
+    <value>El archivo está correcto: {0:N0} correos y {1:N0} adjuntos comprobados por completo.</value>
   </data>
 </root>

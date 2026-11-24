@@ -185,7 +185,7 @@
   <data name="Start_RecoveryWarning" xml:space="preserve"><value>Der Wiederherstellungsschlüssel wurde noch nicht gespeichert. Ohne Kennwort oder Schlüssel ist kein Zugriff auf das Archiv möglich.</value></data>
   <data name="Start_SaveNow" xml:space="preserve"><value>Jetzt sichern</value></data>
   <data name="Start_Archive" xml:space="preserve"><value>Archiv</value></data>
-  <data name="Start_Size" xml:space="preserve"><value>Größe</value></data>
+  <data name="Start_Size" xml:space="preserve"><value>Speicherplatz</value></data>
   <data name="Start_Period" xml:space="preserve"><value>Zeitraum</value></data>
   <data name="Start_LastArchived" xml:space="preserve"><value>Zuletzt archiviert</value></data>
   <data name="Start_Protection" xml:space="preserve"><value>Schutz</value></data>
@@ -202,7 +202,7 @@
   <data name="Archive_ColLastRun" xml:space="preserve"><value>Zuletzt ausgeführt</value></data>
   <data name="Archive_ColResult" xml:space="preserve"><value>Ergebnis</value></data>
   <data name="Archive_NoProfiles" xml:space="preserve"><value>Noch keine Profile. Wählen Sie oben eine Quelle aus.</value></data>
-  <data name="Export_Intro" xml:space="preserve"><value>Kopieren Sie archivierte E-Mails als einzelne .eml-Dateien oder als MBOX-Datei, z. B. zur Sicherung oder zum Import in ein E-Mail-Programm. Alternativ können Sie im Ordnerbaum mit der rechten Maustaste auf den zu exportierenden Ordner klicken.</value></data>
+  <data name="Export_Intro" xml:space="preserve"><value>Kopieren Sie archivierte E-Mails als einzelne .eml-Dateien, als MBOX-Datei oder als PDF, z. B. zur Sicherung, zum Import in ein E-Mail-Programm oder zum Ausdrucken. Alternativ können Sie im Ordnerbaum mit der rechten Maustaste auf den zu exportierenden Ordner klicken.</value></data>
   <data name="Export_Scope" xml:space="preserve"><value>Umfang der Sicherung bzw. des Exports</value></data>
   <data name="Export_Format" xml:space="preserve"><value>Format</value></data>
   <data name="Export_Eml" xml:space="preserve"><value>Einzelne E-Mail-Dateien (.eml)</value></data>
@@ -1015,5 +1015,98 @@ Allein ist sie nutzlos; zusammen mit Kennwort oder Wiederherstellungsschlüssel 
   </data>
   <data name="OAuthSet_InvalidId" xml:space="preserve">
     <value>Die Client-ID für {0} hat nicht das erwartete Format.</value>
+  </data>
+  <data name="Pdf_Date" xml:space="preserve">
+    <value>Datum</value>
+  </data>
+  <data name="Pdf_Folder" xml:space="preserve">
+    <value>Ordner</value>
+  </data>
+  <data name="Pdf_Attachments" xml:space="preserve">
+    <value>Anhänge</value>
+  </data>
+  <data name="Pdf_Footer" xml:space="preserve">
+    <value>Aus dem MailVault-Archiv als PDF gespeichert am {0:g}</value>
+  </data>
+  <data name="Pdf_RenderFailed" xml:space="preserve">
+    <value>Die E-Mail konnte nicht als PDF gespeichert werden. Ist die Microsoft-Edge-WebView2-Laufzeit installiert?</value>
+  </data>
+  <data name="List_SavePdf" xml:space="preserve">
+    <value>Als PDF</value>
+  </data>
+  <data name="List_SavePdfTip" xml:space="preserve">
+    <value>Ausgewählte E-Mails als PDF speichern – zum Drucken oder als Nachweis</value>
+  </data>
+  <data name="List_PdfFilter" xml:space="preserve">
+    <value>PDF-Dokument (*.pdf)|*.pdf</value>
+  </data>
+  <data name="List_SavingPdf" xml:space="preserve">
+    <value>Als PDF speichern</value>
+  </data>
+  <data name="Export_Pdf" xml:space="preserve">
+    <value>PDF – eine Datei je E-Mail, zum Drucken oder als Nachweis</value>
+  </data>
+  <data name="Start_SizeEmpty" xml:space="preserve">
+    <value>Noch keine E-Mails archiviert</value>
+  </data>
+  <data name="Start_SizeSaved" xml:space="preserve">
+    <value>Original {0} · {1:P0} gespart</value>
+  </data>
+  <data name="Start_SizeOriginal" xml:space="preserve">
+    <value>Original {0} · Ersparnis wächst mit dem Archiv</value>
+  </data>
+  <data name="Start_Check" xml:space="preserve">
+    <value>Archivprüfung</value>
+  </data>
+  <data name="Start_CheckOk" xml:space="preserve">
+    <value>In Ordnung</value>
+  </data>
+  <data name="Start_CheckFailed" xml:space="preserve">
+    <value>Probleme gefunden</value>
+  </data>
+  <data name="Start_CheckNever" xml:space="preserve">
+    <value>Noch nicht geprüft</value>
+  </data>
+  <data name="Start_CheckRunning" xml:space="preserve">
+    <value>Wird geprüft …</value>
+  </data>
+  <data name="Start_CheckWhen" xml:space="preserve">
+    <value>Zuletzt am {0:g}</value>
+  </data>
+  <data name="Start_CheckSoon" xml:space="preserve">
+    <value>Wird automatisch wöchentlich geprüft</value>
+  </data>
+  <data name="Start_CheckOff" xml:space="preserve">
+    <value>Automatische Prüfung ist ausgeschaltet</value>
+  </data>
+  <data name="Start_CheckStarting" xml:space="preserve">
+    <value>Prüfung startet …</value>
+  </data>
+  <data name="Start_CheckProgress" xml:space="preserve">
+    <value>{0:P0} geprüft</value>
+  </data>
+  <data name="Start_CheckNow" xml:space="preserve">
+    <value>Jetzt prüfen</value>
+  </data>
+  <data name="Start_CheckAgain" xml:space="preserve">
+    <value>Erneut prüfen</value>
+  </data>
+  <data name="Start_CheckFailedBanner" xml:space="preserve">
+    <value>Bei der Archivprüfung wurden Probleme gefunden. Prüfen Sie erneut; bleibt der Fehler, spielen Sie eine Sicherung zurück (Verwaltung → Archiv). Ihre Postfächer sind nicht betroffen.</value>
+  </data>
+  <data name="Start_CheckFailedTray" xml:space="preserve">
+    <value>Details stehen auf der Startseite von MailVault.</value>
+  </data>
+  <data name="Start_HowStored" xml:space="preserve">
+    <value>Speicherung</value>
+  </data>
+  <data name="Start_HowStoredText" xml:space="preserve">
+    <value>Anhänge nur einmal, Text komprimiert – jede E-Mail bleibt byte-genau erhalten</value>
+  </data>
+  <data name="Start_Location" xml:space="preserve">
+    <value>Speicherort</value>
+  </data>
+  <data name="Settings_ArchiveOkDetail" xml:space="preserve">
+    <value>Das Archiv ist in Ordnung: {0:N0} E-Mails und {1:N0} Anhänge vollständig geprüft.</value>
   </data>
 </root>

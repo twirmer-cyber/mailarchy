@@ -91,7 +91,7 @@ public static partial class MessageIndexer
         string.IsNullOrWhiteSpace(id) ? null : id.Trim().Trim('<', '>').ToLowerInvariant();
 
     /// <summary>
-    /// Duplikatschlüssel. Das Original nutzt Message-ID + HeaderHash (MessageArchiveInfo);
+    /// Duplikatschlüssel aus Message-ID und einem Hash der Kopfzeilen:
     /// wir hashen die identitätsstiftenden Kopfzeilen, damit der Schlüssel bereits aus den
     /// Kopfzeilen allein (IMAP/POP3 ohne Body-Download) berechnet werden kann.
     /// </summary>

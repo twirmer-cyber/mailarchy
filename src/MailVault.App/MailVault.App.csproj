@@ -13,6 +13,12 @@
     <ApplicationManifest>app.manifest</ApplicationManifest>
     <!-- Programmsymbol (exe, Startmenü, Taskleiste); neu erzeugen mit build/make-icon.ps1 -->
     <ApplicationIcon>MailVault.ico</ApplicationIcon>
+  </PropertyGroup>
+  <ItemGroup>
+    <!-- Programmsymbol auch als Bild in der Seitenleiste -->
+    <Resource Include="MailVault.ico" />
+  </ItemGroup>
+  <PropertyGroup>
     <!-- nur die Sprachressourcen der unterstützten Oberflächensprachen ins Paket (kleiner) -->
     <SatelliteResourceLanguages>de;en;fr;es</SatelliteResourceLanguages>
     <!-- Resources/Strings.resx (ohne Sprachkürzel) ist Deutsch -->

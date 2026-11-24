@@ -297,7 +297,7 @@ public partial class ProfileEditorWindow : Window
 
     void UserBox_LostFocus(object sender, RoutedEventArgs e)
     {
-        // Wie beim Original: Sobald eine Adresse eingegeben ist, die Servereinstellungen ermitteln.
+        // Sobald eine Adresse eingegeben ist, die Servereinstellungen ermitteln.
         if (HostBox.Text.Length == 0 && UserBox.Text.Contains('@')) _ = RunAutoConfigAsync();
     }
 

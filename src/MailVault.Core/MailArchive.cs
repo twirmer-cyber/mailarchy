@@ -1174,6 +1174,68 @@ public sealed class MailArchive : IDisposable
         }
     }
 
+    /// <summary>
+    /// Vollständige Prüfung: Datenbankstruktur, jede E-Mail wird zusammengesetzt und mit der beim Archivieren gemessenen
+    /// Größe verglichen, jeder ausgelagerte Anhang gegen seine SHA-256-Prüfsumme. Liest nur; das Archiv bleibt
+    /// währenddessen benutzbar (gesperrt wird je Nachricht bzw. Anhang).
+    /// </summary>
+    public ArchiveCheckResult CheckArchive(IProgress<ProgressInfo>? progress = null, CancellationToken ct = default)
+    {
+        const int MaxListed = 20;
+        var problems = new List<string>();
+        void Problem(string text) { if (problems.Count < MaxListed) problems.Add(text); else if (problems.Count == MaxListed) problems.Add("…"); }
+
+        progress?.Report(new ProgressInfo(CoreText.T("Check_Structure"), 0, null));
+        if (!VerifyIntegrity(out var details)) Problem(CoreText.F("Check_StructureProblem", details));
+
+        List<(long Id, long Size)> messages = new();
+        List<byte[]> hashes = new();
+        lock (_sync)
+        {
+            using (var cmd = _cn.CreateCommand())
+            {
+                cmd.CommandText = "SELECT id, size FROM messages ORDER BY id";
+                using var r = cmd.ExecuteReader();
+                while (r.Read()) messages.Add((r.GetInt64(0), r.GetInt64(1)));
+            }
+            using (var cmd = _cn.CreateCommand())
+            {
+                cmd.CommandText = "SELECT hash FROM parts";
+                using var r = cmd.ExecuteReader();
+                while (r.Read()) hashes.Add((byte[])r.GetValue(0));
+            }
+        }
+
+        var total = messages.Count + hashes.Count;
+        var done = 0;
+        foreach (var (id, size) in messages)
+        {
+            ct.ThrowIfCancellationRequested();
+            try
+            {
+                var raw = GetRawMessage(id);
+                if (raw.LongLength != size) Problem(CoreText.F("Check_SizeMismatch", id, raw.LongLength, size));
+            }
+            catch (Exception ex) when (ex is not OperationCanceledException) { Problem(CoreText.F("Check_MessageUnreadable", id, ex.Message)); }
+            if (++done % 50 == 0) progress?.Report(new ProgressInfo(CoreText.F("Check_Messages", done, messages.Count), done, total));
+        }
+        foreach (var hash in hashes)
+        {
+            ct.ThrowIfCancellationRequested();
+            try
+            {
+                byte[] data;
+                lock (_sync) data = LoadPartUnlocked(hash);
+                if (!System.Security.Cryptography.SHA256.HashData(data).AsSpan().SequenceEqual(hash))
+                    Problem(CoreText.F("Check_PartDamaged", Convert.ToHexString(hash)[..12]));
+            }
+            catch (Exception ex) when (ex is not OperationCanceledException) { Problem(CoreText.F("Check_PartDamaged", Convert.ToHexString(hash)[..12]) + " – " + ex.Message); }
+            if (++done % 50 == 0) progress?.Report(new ProgressInfo(CoreText.T("Check_Parts"), done, total));
+        }
+        progress?.Report(new ProgressInfo(null, total, total));
+        return new ArchiveCheckResult(DateTime.UtcNow, messages.Count, hashes.Count, problems);
+    }
+
     public bool VerifyIntegrity(out string details)
     {
         lock (_sync)
