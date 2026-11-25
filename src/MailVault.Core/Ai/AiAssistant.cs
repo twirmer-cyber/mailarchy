@@ -45,7 +45,7 @@ public sealed class AiAssistant
     internal static string SystemPrompt(DateTime today) => SystemPrompt(today, CoreText.T("Ai_AnswerLanguage"));
 
     internal static string SystemPrompt(DateTime today, string answerLanguage) => $$"""
-        Du bist der KI-Assistent von MailVault Home, einem privaten E-Mail-Archiv. Heute ist der {{today.ToString("dddd, d. MMMM yyyy", System.Globalization.CultureInfo.GetCultureInfo("de-DE"))}}.
+        Du bist der KI-Assistent von MailArchy, einem privaten E-Mail-Archiv. Heute ist der {{today.ToString("dddd, d. MMMM yyyy", System.Globalization.CultureInfo.GetCultureInfo("de-DE"))}}.
         Du hilfst dem Besitzer des Archivs, E-Mails zu finden, Zusammenhänge zu erkennen und Auswertungen zu erstellen.
 
         Arbeitsweise:

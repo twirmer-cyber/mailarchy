@@ -118,12 +118,12 @@
     <value>Rappel : {0}</value>
   </data>
   <data name="Mail_Failure_Subject" xml:space="preserve">
-    <value>MailVault : la boîte aux lettres « {0} » n'a pas pu être archivée</value>
+    <value>MailArchy : la boîte aux lettres « {0} » n'a pas pu être archivée</value>
   </data>
   <data name="Mail_Failure_Body" xml:space="preserve">
     <value>Bonjour,
 
-MailVault Home n'a pas pu relever la boîte aux lettres « {0} » ({1}) {2} fois de suite.
+MailArchy n'a pas pu relever la boîte aux lettres « {0} » ({1}) {2} fois de suite.
 
 Erreur : {3}
 
@@ -132,18 +132,18 @@ Dernière tentative : {5}
 Planification : {6}
 
 Ce que vous pouvez faire :
-- Vous avez changé de mot de passe ? Ouvrez alors le profil dans MailVault et saisissez le nouveau mot de passe.
+- Vous avez changé de mot de passe ? Ouvrez alors le profil dans MailArchy et saisissez le nouveau mot de passe.
 - Gmail, iCloud, Yahoo : un mot de passe d'application est nécessaire.
 - GMX/WEB.DE : l'accès IMAP/POP3 est-il toujours autorisé dans les paramètres du webmail ?
 - Le PC est-il en ligne et le serveur accessible ?
 
 Tant que le problème n'est pas résolu, les nouveaux e-mails de cette boîte aux lettres ne sont pas archivés.
-Rien n'a été supprimé ni modifié sur le serveur - MailVault y accède uniquement en lecture.
+Rien n'a été supprimé ni modifié sur le serveur - MailArchy y accède uniquement en lecture.
 
-MailVault vous le rappellera au plus aux intervalles définis et vous préviendra dès que tout fonctionnera à nouveau.</value>
+MailArchy vous le rappellera au plus aux intervalles définis et vous préviendra dès que tout fonctionnera à nouveau.</value>
   </data>
   <data name="Mail_Recovery_Subject" xml:space="preserve">
-    <value>MailVault : la boîte aux lettres « {0} » est de nouveau archivée</value>
+    <value>MailArchy : la boîte aux lettres « {0} » est de nouveau archivée</value>
   </data>
   <data name="Mail_Recovery_Body" xml:space="preserve">
     <value>Bonjour,
@@ -152,13 +152,13 @@ la boîte aux lettres « {0} » ({1}) a de nouveau pu être relevée après {2} 
 
 Résultat : {3}
 
-Cet e-mail a été envoyé automatiquement par MailVault Home.</value>
+Cet e-mail a été envoyé automatiquement par MailArchy.</value>
   </data>
   <data name="Mail_Test_Subject" xml:space="preserve">
-    <value>MailVault : message de test</value>
+    <value>MailArchy : message de test</value>
   </data>
   <data name="Mail_Test_Body" xml:space="preserve">
-    <value>Ce message de test confirme que MailVault Home peut vous avertir par e-mail lorsqu'une boîte aux lettres ne peut pas être relevée.</value>
+    <value>Ce message de test confirme que MailArchy peut vous avertir par e-mail lorsqu'une boîte aux lettres ne peut pas être relevée.</value>
   </data>
   <data name="Notify_InvalidRecipient" xml:space="preserve">
     <value>Adresse de destinataire non valide : {0}</value>
@@ -254,13 +254,13 @@ Cet e-mail a été envoyé automatiquement par MailVault Home.</value>
     <value>Les paramètres ont été devinés. Veuillez les vérifier avec « Tester la connexion ».</value>
   </data>
   <data name="AutoCfg_OAuthOnly" xml:space="preserve">
-    <value>Ce fournisseur n'autorise que la connexion via OAuth (connexion dans le navigateur). MailVault ne le prend pas encore en charge.</value>
+    <value>Ce fournisseur n'autorise que la connexion via OAuth (connexion dans le navigateur). MailArchy ne le prend pas encore en charge.</value>
   </data>
   <data name="AutoCfg_Hint_Google" xml:space="preserve">
     <value>Google : avec la validation en deux étapes, un mot de passe d'application est nécessaire (Compte Google → Sécurité → Mots de passe des applications).</value>
   </data>
   <data name="AutoCfg_Hint_Microsoft" xml:space="preserve">
-    <value>Outlook.com, Hotmail et Microsoft 365 n'autorisent plus que la connexion Microsoft (OAuth), sans mot de passe ni mot de passe d'application. Saisissez un ID client Microsoft sous Paramètres → Connexion (OAuth) ; instructions sur mailvault.zerze.de.</value>
+    <value>Outlook.com, Hotmail et Microsoft 365 n'autorisent plus que la connexion Microsoft (OAuth), sans mot de passe ni mot de passe d'application. Saisissez un ID client Microsoft sous Paramètres → Connexion (OAuth) ; instructions sur mailarchy.zerze.de.</value>
   </data>
   <data name="AutoCfg_Hint_ICloud" xml:space="preserve">
     <value>iCloud : un mot de passe pour application est nécessaire (appleid.apple.com → Connexion et sécurité).</value>
@@ -281,7 +281,7 @@ Cet e-mail a été envoyé automatiquement par MailVault Home.</value>
     <value>L'archive est protégée par un mot de passe.</value>
   </data>
   <data name="Archive_NewerFormat" xml:space="preserve">
-    <value>Cette archive a été créée avec une version plus récente de MailVault (format d'archive {0}, cette version connaît le format {1}). Veuillez mettre MailVault à jour. L'archive n'a pas été modifiée.</value>
+    <value>Cette archive a été créée avec une version plus récente de MailArchy (format d'archive {0}, cette version connaît le format {1}). Veuillez mettre MailArchy à jour. L'archive n'a pas été modifiée.</value>
   </data>
   <data name="Archive_EmptyPath" xml:space="preserve">
     <value>Chemin de dossier vide.</value>
@@ -758,7 +758,7 @@ Cet e-mail a été envoyé automatiquement par MailVault Home.</value>
     <value>Le serveur de mises à jour n’est pas joignable en connexion chiffrée (https). Par sécurité, rien n’est téléchargé.</value>
   </data>
   <data name="Update_NoReleaseYet" xml:space="preserve">
-    <value>Aucune version n’est encore publiée sur mailvault.zerze.de.</value>
+    <value>Aucune version n’est encore publiée sur mailarchy.zerze.de.</value>
   </data>
   <data name="Update_ServerError" xml:space="preserve">
     <value>Le serveur de mises à jour a répondu avec l’erreur {0}. Veuillez réessayer plus tard.</value>
@@ -791,7 +791,7 @@ Cet e-mail a été envoyé automatiquement par MailVault Home.</value>
     <value>Décompression du paquet ...</value>
   </data>
   <data name="Update_NoProgramInPackage" xml:space="preserve">
-    <value>Le paquet de mise à jour ne contient pas de programme MailVault.</value>
+    <value>Le paquet de mise à jour ne contient pas de programme MailArchy.</value>
   </data>
   <data name="Update_WrongVersion" xml:space="preserve">
     <value>Le paquet contient la version {0} au lieu de la version {1} attendue.</value>
@@ -809,7 +809,7 @@ Cet e-mail a été envoyé automatiquement par MailVault Home.</value>
     <value>La clé est correcte mais appartient à une autre archive. Choisissez la fiche d'urgence correspondante.</value>
   </data>
   <data name="OAuth_NotConfigured" xml:space="preserve">
-    <value>La connexion avec {0} n'est pas configurée. Saisissez un ID client sous Paramètres → Connexion (OAuth) (instructions sur mailvault.zerze.de), puis reconnectez la boîte aux lettres.</value>
+    <value>La connexion avec {0} n'est pas configurée. Saisissez un ID client sous Paramètres → Connexion (OAuth) (instructions sur mailarchy.zerze.de), puis reconnectez la boîte aux lettres.</value>
   </data>
   <data name="OAuth_Denied" xml:space="preserve">
     <value>La connexion a été annulée dans le navigateur ou l'accès n'a pas été autorisé.</value>
@@ -827,7 +827,7 @@ Cet e-mail a été envoyé automatiquement par MailVault Home.</value>
     <value>Le fournisseur n'a pas accordé la connexion durable nécessaire à l'archivage automatique. Reconnectez-vous et autorisez l'accès.</value>
   </data>
   <data name="OAuth_BrowserDone" xml:space="preserve">
-    <value>Connexion terminée. Vous pouvez fermer cette fenêtre et revenir à MailVault.</value>
+    <value>Connexion terminée. Vous pouvez fermer cette fenêtre et revenir à MailArchy.</value>
   </data>
   <data name="OAuth_BrowserFailed" xml:space="preserve">
     <value>La connexion a échoué : {0} Vous pouvez fermer cette fenêtre.</value>
@@ -845,7 +845,7 @@ Cet e-mail a été envoyé automatiquement par MailVault Home.</value>
     <value>Aucune connexion {0} n'est encore enregistrée pour ce profil (ou elle provient d'un autre PC). Ouvrez le profil et connectez-vous.</value>
   </data>
   <data name="OAuth_Unavailable" xml:space="preserve">
-    <value>La connexion OAuth n'est pas disponible pour le moment. Redémarrez MailVault.</value>
+    <value>La connexion OAuth n'est pas disponible pour le moment. Redémarrez MailArchy.</value>
   </data>
   <data name="AutoCfg_Hint_MicrosoftOAuth" xml:space="preserve">
     <value>Outlook.com, Hotmail et Microsoft 365 exigent une connexion Microsoft : sous « Connexion », choisissez « Compte Microsoft ».</value>
@@ -872,7 +872,7 @@ Cet e-mail a été envoyé automatiquement par MailVault Home.</value>
     <value>Il s'agit du dossier de l'archive actuellement ouverte. Choisissez le dossier de la sauvegarde.</value>
   </data>
   <data name="ArchiveImport_NotAnArchive" xml:space="preserve">
-    <value>Ce dossier ne contient pas d'archive MailVault (archive.db est absent).</value>
+    <value>Ce dossier ne contient pas d'archive MailArchy (archive.db est absent).</value>
   </data>
   <data name="ArchiveImport_NoSpace" xml:space="preserve">
     <value>Espace disque insuffisant pour la copie de travail : environ {0} nécessaires, {1} libres.</value>
@@ -884,19 +884,19 @@ Cet e-mail a été envoyé automatiquement par MailVault Home.</value>
     <value>{0} a autorisé la connexion mais pas l'accès aux e-mails. Reconnectez-vous et cochez aussi la case d'accès aux e-mails sur la page d'autorisation (chez Google : la case Gmail).</value>
   </data>
   <data name="Mail_SignIn_Subject" xml:space="preserve">
-    <value>MailVault : connexion pour « {0} » expirée – veuillez vous reconnecter</value>
+    <value>MailArchy : connexion pour « {0} » expirée – veuillez vous reconnecter</value>
   </data>
   <data name="Mail_SignIn_Body" xml:space="preserve">
     <value>Bonjour,
 
-MailVault Home ne peut plus relever la boîte « {0} » ({1}), car la connexion à {2} a expiré ou a été révoquée.
+MailArchy ne peut plus relever la boîte « {0} » ({1}), car la connexion à {2} a expiré ou a été révoquée.
 
 Message : {3}
 
 Cela ne se résoudra pas tout seul. Tant que vous ne vous reconnectez pas, les nouveaux e-mails de cette boîte ne sont pas archivés.
 
 Pour corriger :
-1. Ouvrez MailVault → Archiver des e-mails → profil « {0} » → Modifier.
+1. Ouvrez MailArchy → Archiver des e-mails → profil « {0} » → Modifier.
 2. Cliquez sur « Se reconnecter avec {2} … » et autorisez l'accès dans le navigateur (chez Google, cochez la case Gmail).
 3. Enregistrez.
 
@@ -906,8 +906,8 @@ Dernière relève réussie : {4}
 Dernière tentative : {5}
 Planification : {6}
 
-Rien n'a été supprimé ni modifié sur le serveur - MailVault ne fait que lire.
-MailVault vous le rappellera à l'intervalle choisi et vous préviendra dès que cela fonctionnera de nouveau.</value>
+Rien n'a été supprimé ni modifié sur le serveur - MailArchy ne fait que lire.
+MailArchy vous le rappellera à l'intervalle choisi et vous préviendra dès que cela fonctionnera de nouveau.</value>
   </data>
   <data name="OAuth_ClientChanged" xml:space="preserve">
     <value>L'ID client pour {0} a été modifié dans les paramètres ; la connexion précédente n'est plus valable. Ouvrez le profil et choisissez « Se reconnecter à {0} … ».</value>
@@ -937,13 +937,13 @@ MailVault vous le rappellera à l'intervalle choisi et vous préviendra dès que
     <value>Vérification des pièces jointes …</value>
   </data>
   <data name="Check_Mail_Subject" xml:space="preserve">
-    <value>MailVault : la vérification de l'archive a détecté des problèmes</value>
+    <value>MailArchy : la vérification de l'archive a détecté des problèmes</value>
   </data>
   <data name="Check_Mail_Body" xml:space="preserve">
     <value>La vérification automatique de l'archive dans {0} a détecté des problèmes le {1:g} :
 
 {2}
 
-Que faire : ouvrez MailVault et relancez Gestion → Archive → « Vérifier l'archive ». Si l'erreur persiste, restaurez une sauvegarde de l'archive (Gestion → Archive → Intégrer une archive sauvegardée). Vos boîtes aux lettres ne sont pas concernées – archivez simplement à nouveau les e-mails manquants.</value>
+Que faire : ouvrez MailArchy et relancez Gestion → Archive → « Vérifier l'archive ». Si l'erreur persiste, restaurez une sauvegarde de l'archive (Gestion → Archive → Intégrer une archive sauvegardée). Vos boîtes aux lettres ne sont pas concernées – archivez simplement à nouveau les e-mails manquants.</value>
   </data>
 </root>

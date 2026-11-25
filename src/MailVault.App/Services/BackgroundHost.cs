@@ -64,7 +64,7 @@ public sealed class BackgroundHost : IDisposable
     {
         if (!AppState.HasScheduledProfiles)
         {
-            _tray.ShowBalloonTip(5000, "MailVault", L.T("Tray_NoScheduled"), Forms.ToolTipIcon.Info);
+            _tray.ShowBalloonTip(5000, "MailArchy", L.T("Tray_NoScheduled"), Forms.ToolTipIcon.Info);
             return;
         }
         if (!_current.IsCompleted) return;
@@ -107,7 +107,7 @@ public sealed class BackgroundHost : IDisposable
         var status = StatusText;
         _statusItem.Text = status;
         _runAllItem.Enabled = AppState.RunningProfile is null;
-        var tip = "MailVault Home – " + status;
+        var tip = "MailArchy – " + status;
         _tray.Text = tip.Length > 127 ? tip[..127] : tip; // Windows begrenzt den Tooltip auf 127 Zeichen
     }
 

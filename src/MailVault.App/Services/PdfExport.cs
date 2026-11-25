@@ -61,7 +61,7 @@ public sealed class PdfExport : IMessagePdfWriter, IDisposable
         {
             Width = 900, Height = 1200, Left = -20000, Top = -20000,
             WindowStyle = WindowStyle.None, ShowInTaskbar = false, ShowActivated = false, ResizeMode = ResizeMode.NoResize,
-            Content = _view, Title = "MailVault PDF",
+            Content = _view, Title = "MailArchy PDF",
         };
         _host.Show();
         var dataDir = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "MailVault", "WebView2");

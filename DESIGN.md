@@ -1,4 +1,4 @@
-# MailVault – Gestaltung
+# MailArchy – Gestaltung
 
 Leitbild: **ein gut geführtes Archiv.** Ruhig, ordentlich, papiernah. Die Oberfläche tritt hinter die E-Mails zurück; Farbe bedeutet immer etwas (Aktion, Auswahl, Zustand) und ist nie Dekoration. Kein „KI-Look“: keine Verläufe, kein Glas, keine leuchtenden Akzente, keine Emoji als Symbole, keine farbigen Seitenstreifen, keine Dachzeilen über Überschriften.
 

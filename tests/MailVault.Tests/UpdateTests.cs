@@ -60,7 +60,7 @@ public class UpdateTests
             var list = new JsonArray(Versions.OfType<JsonObject>()
                 .Where(v => channel == "beta" || !SemVersion.Parse((string?)v["version"])!.IsPrerelease)
                 .Select(v => (JsonNode)v.DeepClone()).ToArray());
-            return Encoding.UTF8.GetBytes(new JsonObject { ["product"] = "MailVault Home", ["channel"] = channel, ["versions"] = list }.ToJsonString());
+            return Encoding.UTF8.GetBytes(new JsonObject { ["product"] = "MailArchy", ["channel"] = channel, ["versions"] = list }.ToJsonString());
         }
 
         /// <summary>Trägt eine Version ein. <paramref name="sha"/>: null = korrekte Prüfsumme des Pakets.</summary>
@@ -184,10 +184,50 @@ public class UpdateTests
     {
         var m = new UpdateManager(new InstallInfo(), @"C:\x", new BuildInfo("0.1.0", "unbekannt"), "http://mailvault.example/updates/");
         Assert.Equal(UpdateText.InsecureServer, (await m.CheckAsync(default)).Problem);
-        Assert.Equal("https://mailvault.zerze.de/updates/stable.json",
+        Assert.Equal("https://mailarchy.zerze.de/updates/stable.json",
             new UpdateManager(new InstallInfo(), @"C:\x").FeedUrl.ToString());
-        Assert.Equal("https://mailvault.zerze.de/updates/beta.json",
+        Assert.Equal("https://mailarchy.zerze.de/updates/beta.json",
             new UpdateManager(new InstallInfo { Channel = "beta" }, @"C:\x").FeedUrl.ToString());
+    }
+
+    /// <summary>Antwortet nur für einen Rechnernamen; alle anderen gelten als nicht erreichbar.</summary>
+    sealed class OnlyHostHandler(string host, Func<Uri, HttpResponseMessage> respond) : HttpMessageHandler
+    {
+        public List<string> Requested { get; } = new();
+        protected override Task<HttpResponseMessage> SendAsync(HttpRequestMessage request, CancellationToken ct)
+        {
+            Requested.Add(request.RequestUri!.Host);
+            if (request.RequestUri.Host != host) throw new HttpRequestException("nicht erreichbar");
+            return Task.FromResult(respond(request.RequestUri));
+        }
+    }
+
+    [Fact]
+    public async Task Updates_come_from_the_former_server_while_the_new_name_is_unreachable()
+    {
+        using var key = ECDsa.Create(ECCurve.NamedCurves.nistP256);
+        var feed = Encoding.UTF8.GetBytes(new JsonObject
+        {
+            ["product"] = "MailArchy", ["channel"] = "stable",
+            ["versions"] = new JsonArray(new JsonObject
+            {
+                ["version"] = "9.0.0",
+                ["package"] = new JsonObject { ["url"] = "../download/MailArchy-9.0.0-win-x64.zip", ["size"] = 5, ["sha256"] = new string('a', 64) },
+            }),
+        }.ToJsonString());
+        var handler = new OnlyHostHandler("mailvault.zerze.de", u => new HttpResponseMessage(System.Net.HttpStatusCode.OK)
+        {
+            Content = u.AbsolutePath.EndsWith(".sig") ? new StringContent(UpdateFeed.Sign(feed, key)) : new ByteArrayContent(feed),
+        });
+        var m = new UpdateManager(new InstallInfo(), @"C:\x", new BuildInfo("0.7.2", "abcdef1234567"),
+            publicKey: Convert.ToBase64String(key.ExportSubjectPublicKeyInfo()), handler: handler);
+
+        var check = await m.CheckAsync(default, "de");
+
+        Assert.Null(check.Problem);
+        Assert.True(check.Available);
+        Assert.Equal("mailarchy.zerze.de", handler.Requested[0]);
+        Assert.Equal("https://mailvault.zerze.de/download/MailArchy-9.0.0-win-x64.zip", check.Target!.Package.Url);
     }
 
     [Fact]
@@ -327,7 +367,7 @@ public class UpdateTests
         var info = InstallInfo.Load(tmp.Path)!;
         Assert.True(info.IncludesPrereleases);
         Assert.Equal("", info.FeedUrl);
-        Assert.Equal("https://mailvault.zerze.de/updates/beta.json", new UpdateManager(info, tmp.Path).FeedUrl.ToString());
+        Assert.Equal("https://mailarchy.zerze.de/updates/beta.json", new UpdateManager(info, tmp.Path).FeedUrl.ToString());
     }
 
     [Theory]
@@ -411,7 +451,7 @@ public class UpdateTests
         SetSchema(db, MailArchive.CurrentSchemaVersion + 1);
         var before = File.ReadAllBytes(db);
         var ex = Assert.Throws<InvalidOperationException>(() => MailArchive.Open(tmp.Path));
-        Assert.Contains("neueren MailVault-Version", ex.Message);
+        Assert.Contains("neueren MailArchy-Version", ex.Message);
         Assert.Equal(before, File.ReadAllBytes(db));
     }
 

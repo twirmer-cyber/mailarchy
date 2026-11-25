@@ -1,7 +1,8 @@
-# MailVault Home
+# MailArchy
 
 Ein privates E-Mail-Archiv für Windows (.NET 8, WPF): E-Mails aus Postfächern und Dateien in ein lokales,
-durchsuchbares Archiv übernehmen. Download und Informationen: <https://mailvault.zerze.de>.
+durchsuchbares Archiv übernehmen. Download und Informationen: <https://mailarchy.zerze.de>.
+Bis Version 0.7 hieß das Programm **MailVault**; bestehende Installationen bekommen den neuen Namen per Update.
 
 ## Funktionen
 
@@ -9,7 +10,7 @@ durchsuchbares Archiv übernehmen. Download und Informationen: <https://mailvaul
 |---|---|
 | E-Mail-Server via IMAP/POP3 | `ImapSource` / `Pop3Source` (MailKit). Duplikatprüfung schon über die Kopfzeilen, ohne Download |
 | Anmeldung per OAuth | Outlook.com, Hotmail, Microsoft 365 und Gmail ohne App-Passwort: Anmeldung im Browser (PKCE, Loopback), danach IMAP/POP3 per XOAUTH2. Refresh-Token DPAPI-verschlüsselt im Datenordner. Einrichtung: [docs/OAUTH.md](docs/OAUTH.md) |
-| Gesichertes Archiv einbinden | Ein MailVault-Archiv von einer Sicherung oder vom alten PC übernehmen (mit Ordnern, Doppelte werden übersprungen, auch verschlüsselt mit Kennwort, Wiederherstellungsschlüssel oder Notfallblatt) oder die Installation darauf umstellen. Die Sicherung bleibt unverändert |
+| Gesichertes Archiv einbinden | Ein MailArchy-Archiv von einer Sicherung oder vom alten PC übernehmen (mit Ordnern, Doppelte werden übersprungen, auch verschlüsselt mit Kennwort, Wiederherstellungsschlüssel oder Notfallblatt) oder die Installation darauf umstellen. Die Sicherung bleibt unverändert |
 | Automatische Einrichtung | `AutoConfig`: Anbieter-Konfiguration, Mozilla-Anbieterdatenbank (nur die Domain wird übertragen), MX- und SRV-Einträge, Verbindungstest. Hinweise auf App-Passwörter bzw. OAuth-Pflicht |
 | Mozilla Thunderbird | `ThunderbirdSource`: findet die Profile, liest MBOX-Ordner und `.sbd`-Unterordner, überspringt gelöschte Nachrichten |
 | Microsoft Outlook (PST/OST) | `OutlookPstSource` (XstReader.Api, MS-PL): liest .pst/.ost direkt, ohne Outlook. Übernimmt die originalen Internet-Kopfzeilen (Duplikate mit IMAP-Kopien werden erkannt), sonst Kopfzeilen aus den MAPI-Eigenschaften. HTML/Text/RTF, Anhänge, eingebettete Bilder, angehängte E-Mails, S/MIME. Kontakte, Termine, Aufgaben und Notizen werden übersprungen |
@@ -38,14 +39,14 @@ Anmeldung bei Outlook.com/Microsoft 365 und Gmail per OAuth (Browser-Anmeldung, 
 
 Auf dem PC wird nichts weiter benötigt (kein .NET, kein Git, keine Administratorrechte).
 
-1. Auf <https://mailvault.zerze.de> **`MailVault-Setup-x.y.z.exe`** herunterladen und starten. Windows SmartScreen warnt beim ersten Mal, weil die Datei nicht code-signiert ist: „Weitere Informationen → Trotzdem ausführen“.
-2. MailVault wird nach `%LOCALAPPDATA%ProgramsMailVault` installiert, bekommt einen Startmenü-Eintrag und startet. Alternativ gibt es das ZIP zum Entpacken (mit `Installieren.cmd` oder portabel mit `portable.txt`).
+1. Auf <https://mailarchy.zerze.de> **`MailArchy-Setup-x.y.z.exe`** herunterladen und starten. Windows SmartScreen warnt beim ersten Mal, weil die Datei nicht code-signiert ist: „Weitere Informationen → Trotzdem ausführen“.
+2. MailArchy wird nach `%LOCALAPPDATA%ProgramsMailVault` installiert, bekommt einen Startmenü-Eintrag und startet. Alternativ gibt es das ZIP zum Entpacken (mit `Installieren.cmd` oder portabel mit `portable.txt`).
 
-**Updates kommen automatisch von mailvault.zerze.de:** MailVault lädt regelmäßig die signierte Update-Liste (ECDSA P-256). Gibt es eine neuere Version, wird sie heruntergeladen, Signatur und Prüfsumme werden kontrolliert, und sie wird installiert, sobald MailVault gerade nicht benutzt wird. Archiv und Einstellungen bleiben unverändert; startet die neue Version nicht, wird die alte automatisch wiederhergestellt.
+**Updates kommen automatisch von mailarchy.zerze.de:** MailArchy lädt regelmäßig die signierte Update-Liste (ECDSA P-256). Gibt es eine neuere Version, wird sie heruntergeladen, Signatur und Prüfsumme werden kontrolliert, und sie wird installiert, sobald MailArchy gerade nicht benutzt wird. Archiv und Einstellungen bleiben unverändert; startet die neue Version nicht, wird die alte automatisch wiederhergestellt.
 
 ## Offen gebaut
 
-MailVault ist „vibe-coded“: gemeinsam mit Claude (Anthropic) entwickelt. Der Quellcode ist öffentlich, damit jeder nachprüfen kann, dass Postfächer nur gelesen werden und nichts das Gerät verlässt. Fehler und Ideen gern als Issue, Verbesserungen als Pull Request. Sicherheitslücken bitte vertraulich melden (siehe [SECURITY.md](SECURITY.md)).
+MailArchy ist „vibe-coded“: gemeinsam mit Claude (Anthropic) entwickelt. Der Quellcode ist öffentlich, damit jeder nachprüfen kann, dass Postfächer nur gelesen werden und nichts das Gerät verlässt. Fehler und Ideen gern als Issue, Verbesserungen als Pull Request. Sicherheitslücken bitte vertraulich melden (siehe [SECURITY.md](SECURITY.md)).
 
 Alles für Entwickler – Aufbau, Sicherheitsmodell, Schlüssel, Veröffentlichung, Server: **[docs/ENTWICKLUNG.md](docs/ENTWICKLUNG.md)**. Update-Regeln: [docs/UPDATES.md](docs/UPDATES.md).
 
@@ -74,7 +75,7 @@ und `profiles.json`. Zur Datensicherung kopiert man den gesamten Ordner bei gesc
 
 `dotnet test tests/MailVault.Tests` – über 200 Tests, u. a.:
 
-- **Nur lesen:** Test-IMAP- und Test-POP3-Server im Prozess protokollieren jeden Befehl. Geprüft wird, dass MailVault nur EXAMINE, `UID SEARCH`, `BODY.PEEK`, LIST, TOP und RETR sendet. Nie gesendet werden SELECT, STORE, EXPUNGE, COPY, MOVE oder DELE. Flags und Inhalt des Postfachs müssen nach dem Lauf bytegleich sein. Kontrolltests zeigen, dass die Test-Server eine Veränderung tatsächlich bemerken würden.
+- **Nur lesen:** Test-IMAP- und Test-POP3-Server im Prozess protokollieren jeden Befehl. Geprüft wird, dass MailArchy nur EXAMINE, `UID SEARCH`, `BODY.PEEK`, LIST, TOP und RETR sendet. Nie gesendet werden SELECT, STORE, EXPUNGE, COPY, MOVE oder DELE. Flags und Inhalt des Postfachs müssen nach dem Lauf bytegleich sein. Kontrolltests zeigen, dass die Test-Server eine Veränderung tatsächlich bemerken würden.
 - **Zeitplan und Benachrichtigung:** simulierte Uhr, Sommer-/Winterzeit, Schwelle, Erinnerung, Entwarnung, Versandfehler. Dazu ein Ende-zu-Ende-Test: falsches Kennwort → Benachrichtigung über den Test-SMTP-Server → Kennwort korrigiert → Entwarnung.
 - **Archivschutz:** Schlüsseldatei doppelt und prüfbar, Notfallblatt, neuer Wiederherstellungsschlüssel, Aufräumen nach einem Absturz mitten im Ver- oder Entschlüsseln (`KeySafetyTests`).
 - **Webzugriff:** Rechte pro Postfach, kein Zugriff auf fremde Nachrichten über die ID, Anmeldebremse, CSRF, CSP.

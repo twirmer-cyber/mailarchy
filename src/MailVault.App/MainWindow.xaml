@@ -4,7 +4,7 @@
         xmlns:loc="clr-namespace:MailVault.App.Localization"
         xmlns:vm="clr-namespace:MailVault.App.ViewModels"
         xmlns:views="clr-namespace:MailVault.App.Views"
-        Title="MailVault Home" Width="1280" Height="820" MinWidth="900" MinHeight="560"
+        Title="MailArchy" Width="1280" Height="820" MinWidth="900" MinHeight="560"
         WindowStartupLocation="CenterScreen" Style="{StaticResource BaseWindow}">
     <Window.Resources>
         <DataTemplate DataType="{x:Type vm:StartViewModel}"><views:StartView /></DataTemplate>
@@ -27,8 +27,8 @@
         <DockPanel Background="{DynamicResource SidebarBrush}">
             <StackPanel DockPanel.Dock="Top" Margin="10,14,10,6">
                 <StackPanel Orientation="Horizontal" Margin="8,0,0,14">
-                    <Image Source="pack://application:,,,/MailVault.ico" Width="24" Height="24" RenderOptions.BitmapScalingMode="HighQuality" AutomationProperties.Name="MailVault" />
-                    <TextBlock Text="MailVault Home" FontSize="16" FontWeight="SemiBold" Margin="10,0,0,0" VerticalAlignment="Center" />
+                    <Image Source="pack://application:,,,/MailVault.ico" Width="24" Height="24" RenderOptions.BitmapScalingMode="HighQuality" AutomationProperties.Name="MailArchy" />
+                    <TextBlock Text="MailArchy" FontSize="16" FontWeight="SemiBold" Margin="10,0,0,0" VerticalAlignment="Center" />
                 </StackPanel>
                 <RadioButton Style="{StaticResource NavButton}" Tag="&#xE80F;" Content="{loc:T Nav_Start}" x:Name="NavStart" Checked="Nav_Checked" />
                 <RadioButton Style="{StaticResource NavButton}" Tag="&#xE896;" Content="{loc:T Nav_Archive}" x:Name="NavArchive" Checked="Nav_Checked" />

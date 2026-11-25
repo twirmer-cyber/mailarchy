@@ -1,5 +1,5 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 880 520" role="img" aria-labelledby="t">
-  <title id="t">Schema: Microsoft Entra, Anwendung registrieren. Name MailVault, Kontotyp mit persönlichen Microsoft-Konten, Umleitungs-URI öffentlicher Client http://localhost; danach die Anwendungs-ID kopieren.</title>
+  <title id="t">Schema: Microsoft Entra, Anwendung registrieren. Name MailArchy, Kontotyp mit persönlichen Microsoft-Konten, Umleitungs-URI öffentlicher Client http://localhost; danach die Anwendungs-ID kopieren.</title>
   <style>
     text { font-family: "Segoe UI", Arial, sans-serif; fill: #1a1f26; }
     .m { fill: #535a65; font-size: 14px; }
@@ -19,7 +19,7 @@
   <circle cx="36" cy="146" r="11" fill="#1f4e8c"/><text x="36" y="151" class="n" text-anchor="middle">1</text>
   <text x="56" y="151" class="l">Name</text>
   <rect x="56" y="162" width="460" height="38" rx="4" fill="#ffffff" stroke="#c3c8d0"/>
-  <text x="68" y="187" class="v">MailVault</text>
+  <text x="68" y="187" class="v">MailArchy</text>
 
   <circle cx="36" cy="236" r="11" fill="#1f4e8c"/><text x="36" y="241" class="n" text-anchor="middle">2</text>
   <text x="56" y="241" class="l">Unterstützte Kontotypen</text>
@@ -45,14 +45,14 @@
   <rect x="596" y="24" width="260" height="472" rx="12" fill="#ffffff" stroke="#c3c8d0"/>
   <text x="616" y="58" class="m">Übersicht</text>
   <line x1="596" y1="74" x2="856" y2="74" stroke="#dde0e5"/>
-  <text x="616" y="110" class="h">MailVault</text>
+  <text x="616" y="110" class="h">MailArchy</text>
   <circle cx="616" cy="150" r="11" fill="#1f4e8c"/><text x="616" y="155" class="n" text-anchor="middle">4</text>
   <text x="634" y="155" class="l">Anwendungs-ID (Client)</text>
   <rect x="616" y="168" width="220" height="62" rx="6" fill="#fff6c4" stroke="#e6c94a"/>
   <text x="626" y="193" class="code">00000000-0000-</text>
   <text x="626" y="215" class="code">0000-0000-000000000000</text>
   <text x="616" y="260" class="m">Demo-Wert. Nur diese ID</text>
-  <text x="616" y="279" class="m">braucht MailVault – kein</text>
+  <text x="616" y="279" class="m">braucht MailArchy – kein</text>
   <text x="616" y="298" class="m">Geheimnis anlegen.</text>
   <text x="616" y="340" class="l">API-Berechtigungen</text>
   <text x="616" y="362" class="m">Microsoft Graph, delegiert:</text>

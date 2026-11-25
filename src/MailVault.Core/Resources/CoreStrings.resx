@@ -118,12 +118,12 @@
     <value>Erinnerung: {0}</value>
   </data>
   <data name="Mail_Failure_Subject" xml:space="preserve">
-    <value>MailVault: Postfach „{0}“ konnte nicht archiviert werden</value>
+    <value>MailArchy: Postfach „{0}“ konnte nicht archiviert werden</value>
   </data>
   <data name="Mail_Failure_Body" xml:space="preserve">
     <value>Hallo,
 
-MailVault Home konnte das Postfach „{0}“ ({1}) {2}-mal in Folge nicht abrufen.
+MailArchy konnte das Postfach „{0}“ ({1}) {2}-mal in Folge nicht abrufen.
 
 Fehler: {3}
 
@@ -132,18 +132,18 @@ Letzter Versuch: {5}
 Zeitplan: {6}
 
 Was Sie tun können:
-- Kennwort geändert? Dann das Profil in MailVault öffnen und das neue Kennwort eintragen.
+- Kennwort geändert? Dann das Profil in MailArchy öffnen und das neue Kennwort eintragen.
 - Gmail, iCloud, Yahoo: Es wird ein App-Passwort benötigt.
 - GMX/WEB.DE: Ist der IMAP-/POP3-Zugriff in den Webmail-Einstellungen noch erlaubt?
 - Ist der PC online und der Server erreichbar?
 
 Bis das Problem behoben ist, werden neue E-Mails dieses Postfachs nicht archiviert.
-Auf dem Server wurde nichts gelöscht oder verändert - MailVault greift nur lesend zu.
+Auf dem Server wurde nichts gelöscht oder verändert - MailArchy greift nur lesend zu.
 
-MailVault erinnert höchstens in den eingestellten Abständen erneut und meldet sich, sobald es wieder klappt.</value>
+MailArchy erinnert höchstens in den eingestellten Abständen erneut und meldet sich, sobald es wieder klappt.</value>
   </data>
   <data name="Mail_Recovery_Subject" xml:space="preserve">
-    <value>MailVault: Postfach „{0}“ wird wieder archiviert</value>
+    <value>MailArchy: Postfach „{0}“ wird wieder archiviert</value>
   </data>
   <data name="Mail_Recovery_Body" xml:space="preserve">
     <value>Hallo,
@@ -152,13 +152,13 @@ das Postfach „{0}“ ({1}) konnte nach {2} Fehlversuchen wieder abgerufen werd
 
 Ergebnis: {3}
 
-Diese E-Mail wurde automatisch von MailVault Home gesendet.</value>
+Diese E-Mail wurde automatisch von MailArchy gesendet.</value>
   </data>
   <data name="Mail_Test_Subject" xml:space="preserve">
-    <value>MailVault: Testnachricht</value>
+    <value>MailArchy: Testnachricht</value>
   </data>
   <data name="Mail_Test_Body" xml:space="preserve">
-    <value>Diese Testnachricht bestätigt, dass MailVault Home Sie per E-Mail benachrichtigen kann, wenn ein Postfach nicht abgerufen werden kann.</value>
+    <value>Diese Testnachricht bestätigt, dass MailArchy Sie per E-Mail benachrichtigen kann, wenn ein Postfach nicht abgerufen werden kann.</value>
   </data>
   <data name="Notify_InvalidRecipient" xml:space="preserve">
     <value>Ungültige Empfängeradresse: {0}</value>
@@ -254,13 +254,13 @@ Diese E-Mail wurde automatisch von MailVault Home gesendet.</value>
     <value>Die Einstellungen wurden geraten. Bitte mit „Verbindung testen“ prüfen.</value>
   </data>
   <data name="AutoCfg_OAuthOnly" xml:space="preserve">
-    <value>Dieser Anbieter erlaubt nur die Anmeldung über OAuth (Browser-Anmeldung). Das unterstützt MailVault noch nicht.</value>
+    <value>Dieser Anbieter erlaubt nur die Anmeldung über OAuth (Browser-Anmeldung). Das unterstützt MailArchy noch nicht.</value>
   </data>
   <data name="AutoCfg_Hint_Google" xml:space="preserve">
     <value>Google: Mit Zwei-Faktor-Anmeldung wird ein App-Passwort benötigt (Google-Konto → Sicherheit → App-Passwörter).</value>
   </data>
   <data name="AutoCfg_Hint_Microsoft" xml:space="preserve">
-    <value>Outlook.com, Hotmail und Microsoft 365 erlauben nur noch die Anmeldung über Microsoft (OAuth), kein Kennwort und kein App-Passwort. Dafür unter Einstellungen → Anmeldung (OAuth) eine Microsoft-Client-ID eintragen – Anleitung auf mailvault.zerze.de.</value>
+    <value>Outlook.com, Hotmail und Microsoft 365 erlauben nur noch die Anmeldung über Microsoft (OAuth), kein Kennwort und kein App-Passwort. Dafür unter Einstellungen → Anmeldung (OAuth) eine Microsoft-Client-ID eintragen – Anleitung auf mailarchy.zerze.de.</value>
   </data>
   <data name="AutoCfg_Hint_ICloud" xml:space="preserve">
     <value>iCloud: Es wird ein app-spezifisches Passwort benötigt (appleid.apple.com → Anmeldung und Sicherheit).</value>
@@ -281,7 +281,7 @@ Diese E-Mail wurde automatisch von MailVault Home gesendet.</value>
     <value>Das Archiv ist kennwortgeschützt.</value>
   </data>
   <data name="Archive_NewerFormat" xml:space="preserve">
-    <value>Dieses Archiv wurde mit einer neueren MailVault-Version erstellt (Archivformat {0}, diese Version kennt {1}). Bitte MailVault aktualisieren. Das Archiv wurde nicht verändert.</value>
+    <value>Dieses Archiv wurde mit einer neueren MailArchy-Version erstellt (Archivformat {0}, diese Version kennt {1}). Bitte MailArchy aktualisieren. Das Archiv wurde nicht verändert.</value>
   </data>
   <data name="Archive_EmptyPath" xml:space="preserve">
     <value>Leerer Ordnerpfad.</value>
@@ -758,7 +758,7 @@ Diese E-Mail wurde automatisch von MailVault Home gesendet.</value>
     <value>Der Update-Server ist nicht verschlüsselt erreichbar (https). Aus Sicherheitsgründen wird nichts geladen.</value>
   </data>
   <data name="Update_NoReleaseYet" xml:space="preserve">
-    <value>Auf mailvault.zerze.de gibt es noch keine veröffentlichte Version.</value>
+    <value>Auf mailarchy.zerze.de gibt es noch keine veröffentlichte Version.</value>
   </data>
   <data name="Update_ServerError" xml:space="preserve">
     <value>Der Update-Server antwortet mit Fehler {0}. Bitte später erneut versuchen.</value>
@@ -791,7 +791,7 @@ Diese E-Mail wurde automatisch von MailVault Home gesendet.</value>
     <value>Paket wird entpackt ...</value>
   </data>
   <data name="Update_NoProgramInPackage" xml:space="preserve">
-    <value>Das Update-Paket enthält kein MailVault-Programm.</value>
+    <value>Das Update-Paket enthält kein MailArchy-Programm.</value>
   </data>
   <data name="Update_WrongVersion" xml:space="preserve">
     <value>Das Paket enthält Version {0}, erwartet war {1}.</value>
@@ -809,7 +809,7 @@ Diese E-Mail wurde automatisch von MailVault Home gesendet.</value>
     <value>Der Schlüssel ist richtig, gehört aber zu einem anderen Archiv. Bitte das passende Notfallblatt wählen.</value>
   </data>
   <data name="OAuth_NotConfigured" xml:space="preserve">
-    <value>Die Anmeldung mit {0} ist nicht eingerichtet. Unter Einstellungen → Anmeldung (OAuth) eine Client-ID eintragen (Anleitung auf mailvault.zerze.de) und das Postfach danach neu anmelden.</value>
+    <value>Die Anmeldung mit {0} ist nicht eingerichtet. Unter Einstellungen → Anmeldung (OAuth) eine Client-ID eintragen (Anleitung auf mailarchy.zerze.de) und das Postfach danach neu anmelden.</value>
   </data>
   <data name="OAuth_Denied" xml:space="preserve">
     <value>Die Anmeldung wurde im Browser abgebrochen oder der Zugriff nicht erlaubt.</value>
@@ -827,7 +827,7 @@ Diese E-Mail wurde automatisch von MailVault Home gesendet.</value>
     <value>Der Anbieter hat keine dauerhafte Anmeldung erteilt, die für den automatischen Abruf nötig ist. Bitte erneut anmelden und den Zugriff erlauben.</value>
   </data>
   <data name="OAuth_BrowserDone" xml:space="preserve">
-    <value>Anmeldung abgeschlossen. Sie können dieses Fenster schließen und zu MailVault zurückkehren.</value>
+    <value>Anmeldung abgeschlossen. Sie können dieses Fenster schließen und zu MailArchy zurückkehren.</value>
   </data>
   <data name="OAuth_BrowserFailed" xml:space="preserve">
     <value>Die Anmeldung hat nicht geklappt: {0} Sie können dieses Fenster schließen.</value>
@@ -845,7 +845,7 @@ Diese E-Mail wurde automatisch von MailVault Home gesendet.</value>
     <value>Für dieses Profil ist noch keine Anmeldung bei {0} gespeichert (oder sie stammt von einem anderen PC). Bitte das Profil öffnen und anmelden.</value>
   </data>
   <data name="OAuth_Unavailable" xml:space="preserve">
-    <value>Die OAuth-Anmeldung ist gerade nicht verfügbar. Bitte MailVault neu starten.</value>
+    <value>Die OAuth-Anmeldung ist gerade nicht verfügbar. Bitte MailArchy neu starten.</value>
   </data>
   <data name="AutoCfg_Hint_MicrosoftOAuth" xml:space="preserve">
     <value>Outlook.com, Hotmail und Microsoft 365 verlangen die Anmeldung über Microsoft: Bitte unter „Anmeldung“ „Mit Microsoft-Konto“ wählen.</value>
@@ -872,7 +872,7 @@ Diese E-Mail wurde automatisch von MailVault Home gesendet.</value>
     <value>Das ist der Ordner des Archivs, das gerade geöffnet ist. Bitte den Ordner der Sicherung wählen.</value>
   </data>
   <data name="ArchiveImport_NotAnArchive" xml:space="preserve">
-    <value>In diesem Ordner liegt kein MailVault-Archiv (archive.db fehlt).</value>
+    <value>In diesem Ordner liegt kein MailArchy-Archiv (archive.db fehlt).</value>
   </data>
   <data name="ArchiveImport_NoSpace" xml:space="preserve">
     <value>Zu wenig freier Speicherplatz für die Arbeitskopie: benötigt etwa {0}, frei {1}.</value>
@@ -884,19 +884,19 @@ Diese E-Mail wurde automatisch von MailVault Home gesendet.</value>
     <value>{0} hat den Zugriff auf die E-Mails nicht freigegeben – nur die Anmeldung. Bitte erneut anmelden und auf der Zustimmungsseite auch das Häkchen für den E-Mail-Zugriff setzen (bei Google: das Häkchen bei Gmail).</value>
   </data>
   <data name="Mail_SignIn_Subject" xml:space="preserve">
-    <value>MailVault: Anmeldung für „{0}“ abgelaufen – bitte neu anmelden</value>
+    <value>MailArchy: Anmeldung für „{0}“ abgelaufen – bitte neu anmelden</value>
   </data>
   <data name="Mail_SignIn_Body" xml:space="preserve">
     <value>Hallo,
 
-MailVault Home kann das Postfach „{0}“ ({1}) nicht mehr abrufen, weil die Anmeldung bei {2} abgelaufen ist oder widerrufen wurde.
+MailArchy kann das Postfach „{0}“ ({1}) nicht mehr abrufen, weil die Anmeldung bei {2} abgelaufen ist oder widerrufen wurde.
 
 Meldung: {3}
 
 Das behebt sich nicht von selbst. Bis Sie sich neu anmelden, werden neue E-Mails dieses Postfachs nicht archiviert.
 
 So geht es wieder:
-1. MailVault öffnen → E-Mails archivieren → das Profil „{0}“ → Bearbeiten.
+1. MailArchy öffnen → E-Mails archivieren → das Profil „{0}“ → Bearbeiten.
 2. „Erneut bei {2} anmelden …“ klicken und im Browser den Zugriff erlauben (bei Google das Häkchen bei Gmail setzen).
 3. Speichern.
 
@@ -906,8 +906,8 @@ Letzter erfolgreicher Abruf: {4}
 Letzter Versuch: {5}
 Zeitplan: {6}
 
-Auf dem Server wurde nichts gelöscht oder verändert - MailVault greift nur lesend zu.
-MailVault erinnert in den eingestellten Abständen erneut und meldet sich, sobald es wieder klappt.</value>
+Auf dem Server wurde nichts gelöscht oder verändert - MailArchy greift nur lesend zu.
+MailArchy erinnert in den eingestellten Abständen erneut und meldet sich, sobald es wieder klappt.</value>
   </data>
   <data name="OAuth_ClientChanged" xml:space="preserve">
     <value>Die Client-ID für {0} wurde in den Einstellungen geändert. Die bisherige Anmeldung gilt damit nicht mehr – bitte das Profil öffnen und „Erneut bei {0} anmelden …“ wählen.</value>
@@ -937,13 +937,13 @@ MailVault erinnert in den eingestellten Abständen erneut und meldet sich, sobal
     <value>Anhänge werden geprüft …</value>
   </data>
   <data name="Check_Mail_Subject" xml:space="preserve">
-    <value>MailVault: Bei der Archivprüfung wurden Probleme gefunden</value>
+    <value>MailArchy: Bei der Archivprüfung wurden Probleme gefunden</value>
   </data>
   <data name="Check_Mail_Body" xml:space="preserve">
     <value>Die automatische Prüfung des Archivs in {0} hat am {1:g} Probleme gefunden:
 
 {2}
 
-Was Sie tun können: Öffnen Sie MailVault und starten Sie unter Verwaltung → Archiv „Archiv überprüfen“ erneut. Bleibt der Fehler, spielen Sie eine Sicherung des Archivs zurück (Verwaltung → Archiv → Gesichertes Archiv einbinden). Ihre Postfächer selbst sind davon nicht betroffen – archivieren Sie fehlende E-Mails einfach erneut.</value>
+Was Sie tun können: Öffnen Sie MailArchy und starten Sie unter Verwaltung → Archiv „Archiv überprüfen“ erneut. Bleibt der Fehler, spielen Sie eine Sicherung des Archivs zurück (Verwaltung → Archiv → Gesichertes Archiv einbinden). Ihre Postfächer selbst sind davon nicht betroffen – archivieren Sie fehlende E-Mails einfach erneut.</value>
   </data>
 </root>

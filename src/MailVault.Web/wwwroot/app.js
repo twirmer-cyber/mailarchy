@@ -1,4 +1,4 @@
-// MailVault Web – Oberfläche. Mail-Daten werden ausschließlich über textContent/DOM-APIs eingefügt (nie innerHTML).
+// MailArchy Web – Oberfläche. Mail-Daten werden ausschließlich über textContent/DOM-APIs eingefügt (nie innerHTML).
 "use strict";
 
 (() => {

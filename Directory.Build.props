@@ -5,8 +5,8 @@
     alles auf mailvault.zerze.de. Das .NET-SDK hängt den Git-Commit an die Produktversion an (z. B. 0.5.0+d4430b4…).
   -->
   <PropertyGroup>
-    <Version>0.7.2</Version>
-    <Product>MailVault Home</Product>
+    <Version>0.8.0</Version>
+    <Product>MailArchy</Product>
     <Company>Tonio Wirmer IT-Dienstleistungen</Company>
     <Copyright>© Tonio Wirmer</Copyright>
   </PropertyGroup>

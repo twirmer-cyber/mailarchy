@@ -27,11 +27,11 @@ public sealed class SmtpNotifier : INotifier
     {
         var from = string.IsNullOrWhiteSpace(_s.From) ? _s.UserName : _s.From;
         var msg = new MimeMessage();
-        msg.From.Add(new MailboxAddress("MailVault Home", MailboxAddress.Parse(from).Address));
+        msg.From.Add(new MailboxAddress("MailArchy", MailboxAddress.Parse(from).Address));
         msg.To.AddRange(ParseRecipients(_s.To));
         msg.Subject = subject;
         msg.Headers.Add("Auto-Submitted", "auto-generated"); // RFC 3834: keine Abwesenheitsnotizen zurückschicken
-        msg.Headers.Add("X-Mailer", "MailVault Home");
+        msg.Headers.Add("X-Mailer", "MailArchy");
         msg.Body = new TextPart("plain") { Text = body };
         return msg;
     }

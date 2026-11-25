@@ -66,7 +66,7 @@ public partial class RecoveryKeyWindow : Window
             PageWidth = pd.PrintableAreaWidth, PageHeight = pd.PrintableAreaHeight,
         };
         doc.Blocks.Add(new Paragraph(new Run(SheetText())));
-        pd.PrintDocument(((IDocumentPaginatorSource)doc).DocumentPaginator, "MailVault – " + L.T("Common_RecoveryKey"));
+        pd.PrintDocument(((IDocumentPaginatorSource)doc).DocumentPaginator, "MailArchy – " + L.T("Common_RecoveryKey"));
         StatusText.Text = L.T("Recovery_Printed");
         Exported = true;
     }
@@ -77,7 +77,7 @@ public partial class RecoveryKeyWindow : Window
     {
         if (ConfirmBox.IsChecked != true)
         {
-            MessageBox.Show(this, L.T("Recovery_PleaseConfirm"), "MailVault", MessageBoxButton.OK, MessageBoxImage.Warning);
+            MessageBox.Show(this, L.T("Recovery_PleaseConfirm"), "MailArchy", MessageBoxButton.OK, MessageBoxImage.Warning);
             e.Cancel = true;
         }
         base.OnClosing(e);

@@ -23,7 +23,7 @@ static class Program
         if (args.Length == 2 && args[0] == "/verify-extract") { Extract(args[1]); return File.Exists(Path.Combine(args[1], "MailVault.exe")) ? 0 : 3; }
         Application.EnableVisualStyles();
         Application.SetCompatibleTextRenderingDefault(false);
-        var temp = Path.Combine(Path.GetTempPath(), "MailVault-Setup-" + Guid.NewGuid().ToString("N"));
+        var temp = Path.Combine(Path.GetTempPath(), "MailArchy-Setup-" + Guid.NewGuid().ToString("N"));
         try
         {
             using var form = new PrepareForm();
@@ -45,7 +45,7 @@ static class Program
         }
         catch (Exception ex)
         {
-            MessageBox.Show(string.Format(Msg.Failed, ex.Message), "MailVault Setup", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            MessageBox.Show(string.Format(Msg.Failed, ex.Message), "MailArchy Setup", MessageBoxButtons.OK, MessageBoxIcon.Error);
             return 1;
         }
         finally
@@ -74,7 +74,7 @@ static class Program
     {
         public PrepareForm()
         {
-            Text = "MailVault Setup";
+            Text = "MailArchy Setup";
             FormBorderStyle = FormBorderStyle.FixedDialog;
             MaximizeBox = MinimizeBox = false;
             StartPosition = FormStartPosition.CenterScreen;
@@ -91,7 +91,7 @@ static class Program
     {
         static readonly string Lang = CultureInfo.CurrentUICulture.TwoLetterISOLanguageName;
         static string Pick(string de, string en, string fr, string es) => Lang switch { "de" => de, "fr" => fr, "es" => es, _ => en };
-        public static string Preparing => Pick("MailVault wird vorbereitet …", "Preparing MailVault …", "Préparation de MailVault …", "Preparando MailVault …");
+        public static string Preparing => Pick("MailArchy wird vorbereitet …", "Preparing MailArchy …", "Préparation de MailArchy …", "Preparando MailArchy …");
         public static string Broken => Pick("Die Setup-Datei ist unvollständig. Bitte erneut herunterladen.", "The setup file is incomplete. Please download it again.",
             "Le fichier d'installation est incomplet. Veuillez le télécharger à nouveau.", "El archivo de instalación está incompleto. Descárguelo de nuevo.");
         public static string Failed => Pick("Die Installation konnte nicht gestartet werden:\n{0}", "Setup could not be started:\n{0}",

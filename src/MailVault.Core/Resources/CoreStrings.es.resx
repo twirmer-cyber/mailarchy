@@ -118,12 +118,12 @@
     <value>Recordatorio: {0}</value>
   </data>
   <data name="Mail_Failure_Subject" xml:space="preserve">
-    <value>MailVault: no se pudo archivar el buzón «{0}»</value>
+    <value>MailArchy: no se pudo archivar el buzón «{0}»</value>
   </data>
   <data name="Mail_Failure_Body" xml:space="preserve">
     <value>Hola:
 
-MailVault Home no pudo recuperar el buzón «{0}» ({1}) {2} veces seguidas.
+MailArchy no pudo recuperar el buzón «{0}» ({1}) {2} veces seguidas.
 
 Error: {3}
 
@@ -132,18 +132,18 @@ Error: {3}
 Planificación: {6}
 
 Qué puede hacer:
-- ¿Ha cambiado la contraseña? Abra el perfil en MailVault e introduzca la nueva contraseña.
+- ¿Ha cambiado la contraseña? Abra el perfil en MailArchy e introduzca la nueva contraseña.
 - Gmail, iCloud, Yahoo: se necesita una contraseña de aplicación.
 - GMX/WEB.DE: ¿sigue permitido el acceso IMAP/POP3 en la configuración del correo web?
 - ¿Está el PC conectado y el servidor accesible?
 
 Hasta que se resuelva el problema, los correos nuevos de este buzón no se archivarán.
-No se ha eliminado ni modificado nada en el servidor - MailVault solo accede en modo de lectura.
+No se ha eliminado ni modificado nada en el servidor - MailArchy solo accede en modo de lectura.
 
-MailVault se lo recordará como máximo en los intervalos configurados y le avisará en cuanto vuelva a funcionar.</value>
+MailArchy se lo recordará como máximo en los intervalos configurados y le avisará en cuanto vuelva a funcionar.</value>
   </data>
   <data name="Mail_Recovery_Subject" xml:space="preserve">
-    <value>MailVault: el buzón «{0}» vuelve a archivarse</value>
+    <value>MailArchy: el buzón «{0}» vuelve a archivarse</value>
   </data>
   <data name="Mail_Recovery_Body" xml:space="preserve">
     <value>Hola:
@@ -152,13 +152,13 @@ el buzón «{0}» ({1}) se ha podido recuperar de nuevo tras {2} intentos fallid
 
 Resultado: {3}
 
-Este correo lo ha enviado automáticamente MailVault Home.</value>
+Este correo lo ha enviado automáticamente MailArchy.</value>
   </data>
   <data name="Mail_Test_Subject" xml:space="preserve">
-    <value>MailVault: mensaje de prueba</value>
+    <value>MailArchy: mensaje de prueba</value>
   </data>
   <data name="Mail_Test_Body" xml:space="preserve">
-    <value>Este mensaje de prueba confirma que MailVault Home puede avisarle por correo electrónico cuando no se pueda recuperar un buzón.</value>
+    <value>Este mensaje de prueba confirma que MailArchy puede avisarle por correo electrónico cuando no se pueda recuperar un buzón.</value>
   </data>
   <data name="Notify_InvalidRecipient" xml:space="preserve">
     <value>Dirección de destinatario no válida: {0}</value>
@@ -254,13 +254,13 @@ Este correo lo ha enviado automáticamente MailVault Home.</value>
     <value>La configuración se ha deducido. Compruébela con «Probar conexión».</value>
   </data>
   <data name="AutoCfg_OAuthOnly" xml:space="preserve">
-    <value>Este proveedor solo permite iniciar sesión mediante OAuth (inicio de sesión en el navegador). MailVault aún no lo admite.</value>
+    <value>Este proveedor solo permite iniciar sesión mediante OAuth (inicio de sesión en el navegador). MailArchy aún no lo admite.</value>
   </data>
   <data name="AutoCfg_Hint_Google" xml:space="preserve">
     <value>Google: con la verificación en dos pasos se necesita una contraseña de aplicación (Cuenta de Google → Seguridad → Contraseñas de aplicaciones).</value>
   </data>
   <data name="AutoCfg_Hint_Microsoft" xml:space="preserve">
-    <value>Outlook.com, Hotmail y Microsoft 365 solo permiten iniciar sesión con Microsoft (OAuth), sin contraseña ni contraseña de aplicación. Introduzca un ID de cliente de Microsoft en Configuración → Inicio de sesión (OAuth); instrucciones en mailvault.zerze.de.</value>
+    <value>Outlook.com, Hotmail y Microsoft 365 solo permiten iniciar sesión con Microsoft (OAuth), sin contraseña ni contraseña de aplicación. Introduzca un ID de cliente de Microsoft en Configuración → Inicio de sesión (OAuth); instrucciones en mailarchy.zerze.de.</value>
   </data>
   <data name="AutoCfg_Hint_ICloud" xml:space="preserve">
     <value>iCloud: se necesita una contraseña específica de app (appleid.apple.com → Inicio de sesión y seguridad).</value>
@@ -281,7 +281,7 @@ Este correo lo ha enviado automáticamente MailVault Home.</value>
     <value>El archivo está protegido con contraseña.</value>
   </data>
   <data name="Archive_NewerFormat" xml:space="preserve">
-    <value>Este archivo se creó con una versión más reciente de MailVault (formato de archivo {0}, esta versión conoce el {1}). Actualice MailVault. El archivo no se ha modificado.</value>
+    <value>Este archivo se creó con una versión más reciente de MailArchy (formato de archivo {0}, esta versión conoce el {1}). Actualice MailArchy. El archivo no se ha modificado.</value>
   </data>
   <data name="Archive_EmptyPath" xml:space="preserve">
     <value>Ruta de carpeta vacía.</value>
@@ -758,7 +758,7 @@ Este correo lo ha enviado automáticamente MailVault Home.</value>
     <value>No se puede acceder al servidor de actualizaciones con conexión cifrada (https). Por seguridad no se descarga nada.</value>
   </data>
   <data name="Update_NoReleaseYet" xml:space="preserve">
-    <value>Todavía no hay ninguna versión publicada en mailvault.zerze.de.</value>
+    <value>Todavía no hay ninguna versión publicada en mailarchy.zerze.de.</value>
   </data>
   <data name="Update_ServerError" xml:space="preserve">
     <value>El servidor de actualizaciones respondió con el error {0}. Inténtelo de nuevo más tarde.</value>
@@ -791,7 +791,7 @@ Este correo lo ha enviado automáticamente MailVault Home.</value>
     <value>Descomprimiendo el paquete ...</value>
   </data>
   <data name="Update_NoProgramInPackage" xml:space="preserve">
-    <value>El paquete de actualización no contiene ningún programa MailVault.</value>
+    <value>El paquete de actualización no contiene ningún programa MailArchy.</value>
   </data>
   <data name="Update_WrongVersion" xml:space="preserve">
     <value>El paquete contiene la versión {0}; se esperaba la {1}.</value>
@@ -809,7 +809,7 @@ Este correo lo ha enviado automáticamente MailVault Home.</value>
     <value>La clave es correcta pero pertenece a otro archivo. Elija la hoja de emergencia correspondiente.</value>
   </data>
   <data name="OAuth_NotConfigured" xml:space="preserve">
-    <value>El inicio de sesión con {0} no está configurado. Introduzca un ID de cliente en Configuración → Inicio de sesión (OAuth) (instrucciones en mailvault.zerze.de) y vuelva a iniciar sesión en el buzón.</value>
+    <value>El inicio de sesión con {0} no está configurado. Introduzca un ID de cliente en Configuración → Inicio de sesión (OAuth) (instrucciones en mailarchy.zerze.de) y vuelva a iniciar sesión en el buzón.</value>
   </data>
   <data name="OAuth_Denied" xml:space="preserve">
     <value>El inicio de sesión se canceló en el navegador o no se concedió el acceso.</value>
@@ -827,7 +827,7 @@ Este correo lo ha enviado automáticamente MailVault Home.</value>
     <value>El proveedor no concedió el inicio de sesión permanente necesario para el archivado automático. Vuelva a iniciar sesión y permita el acceso.</value>
   </data>
   <data name="OAuth_BrowserDone" xml:space="preserve">
-    <value>Inicio de sesión completado. Puede cerrar esta ventana y volver a MailVault.</value>
+    <value>Inicio de sesión completado. Puede cerrar esta ventana y volver a MailArchy.</value>
   </data>
   <data name="OAuth_BrowserFailed" xml:space="preserve">
     <value>El inicio de sesión no se completó: {0} Puede cerrar esta ventana.</value>
@@ -845,7 +845,7 @@ Este correo lo ha enviado automáticamente MailVault Home.</value>
     <value>Todavía no hay ningún inicio de sesión de {0} guardado para este perfil (o procede de otro PC). Abra el perfil e inicie sesión.</value>
   </data>
   <data name="OAuth_Unavailable" xml:space="preserve">
-    <value>El inicio de sesión OAuth no está disponible en este momento. Reinicie MailVault.</value>
+    <value>El inicio de sesión OAuth no está disponible en este momento. Reinicie MailArchy.</value>
   </data>
   <data name="AutoCfg_Hint_MicrosoftOAuth" xml:space="preserve">
     <value>Outlook.com, Hotmail y Microsoft 365 requieren iniciar sesión con Microsoft: en «Inicio de sesión», elija «Cuenta de Microsoft».</value>
@@ -872,7 +872,7 @@ Este correo lo ha enviado automáticamente MailVault Home.</value>
     <value>Esta es la carpeta del archivo que está abierto ahora. Elija la carpeta de la copia de seguridad.</value>
   </data>
   <data name="ArchiveImport_NotAnArchive" xml:space="preserve">
-    <value>Esta carpeta no contiene un archivo de MailVault (falta archive.db).</value>
+    <value>Esta carpeta no contiene un archivo de MailArchy (falta archive.db).</value>
   </data>
   <data name="ArchiveImport_NoSpace" xml:space="preserve">
     <value>No hay espacio libre suficiente para la copia de trabajo: se necesitan unos {0}, hay {1} libres.</value>
@@ -884,19 +884,19 @@ Este correo lo ha enviado automáticamente MailVault Home.</value>
     <value>{0} autorizó el inicio de sesión, pero no el acceso al correo. Vuelva a iniciar sesión y marque también la casilla de acceso al correo en la página de consentimiento (en Google: la casilla de Gmail).</value>
   </data>
   <data name="Mail_SignIn_Subject" xml:space="preserve">
-    <value>MailVault: el inicio de sesión de «{0}» ha caducado; vuelva a iniciar sesión</value>
+    <value>MailArchy: el inicio de sesión de «{0}» ha caducado; vuelva a iniciar sesión</value>
   </data>
   <data name="Mail_SignIn_Body" xml:space="preserve">
     <value>Hola:
 
-MailVault Home ya no puede consultar el buzón «{0}» ({1}) porque el inicio de sesión con {2} ha caducado o se ha revocado.
+MailArchy ya no puede consultar el buzón «{0}» ({1}) porque el inicio de sesión con {2} ha caducado o se ha revocado.
 
 Mensaje: {3}
 
 Esto no se resolverá solo. Hasta que vuelva a iniciar sesión, los correos nuevos de este buzón no se archivarán.
 
 Cómo solucionarlo:
-1. Abra MailVault → Archivar correos → perfil «{0}» → Editar.
+1. Abra MailArchy → Archivar correos → perfil «{0}» → Editar.
 2. Pulse «Volver a iniciar sesión con {2} …» y permita el acceso en el navegador (en Google, marque la casilla de Gmail).
 3. Guarde.
 
@@ -906,8 +906,8 @@ Causas habituales: se cambió la contraseña de la cuenta, se retiró el acceso 
 Último intento: {5}
 Programación: {6}
 
-No se ha borrado ni modificado nada en el servidor: MailVault solo lee.
-MailVault se lo recordará en el intervalo configurado y le avisará en cuanto vuelva a funcionar.</value>
+No se ha borrado ni modificado nada en el servidor: MailArchy solo lee.
+MailArchy se lo recordará en el intervalo configurado y le avisará en cuanto vuelva a funcionar.</value>
   </data>
   <data name="OAuth_ClientChanged" xml:space="preserve">
     <value>El ID de cliente de {0} se cambió en la configuración, por lo que el inicio de sesión anterior ya no es válido. Abra el perfil y elija «Volver a iniciar sesión en {0} …».</value>
@@ -937,13 +937,13 @@ MailVault se lo recordará en el intervalo configurado y le avisará en cuanto v
     <value>Comprobando los adjuntos…</value>
   </data>
   <data name="Check_Mail_Subject" xml:space="preserve">
-    <value>MailVault: la comprobación del archivo encontró problemas</value>
+    <value>MailArchy: la comprobación del archivo encontró problemas</value>
   </data>
   <data name="Check_Mail_Body" xml:space="preserve">
     <value>La comprobación automática del archivo en {0} encontró problemas el {1:g}:
 
 {2}
 
-Qué puede hacer: abra MailVault y vuelva a ejecutar Administración → Archivo → «Comprobar archivo». Si el error persiste, restaure una copia de seguridad del archivo (Administración → Archivo → Integrar un archivo de copia de seguridad). Sus buzones no se ven afectados: simplemente vuelva a archivar los correos que falten.</value>
+Qué puede hacer: abra MailArchy y vuelva a ejecutar Administración → Archivo → «Comprobar archivo». Si el error persiste, restaure una copia de seguridad del archivo (Administración → Archivo → Integrar un archivo de copia de seguridad). Sus buzones no se ven afectados: simplemente vuelva a archivar los correos que falten.</value>
   </data>
 </root>

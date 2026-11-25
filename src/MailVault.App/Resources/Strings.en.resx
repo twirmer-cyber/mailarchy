@@ -27,9 +27,9 @@
   <data name="Dialog_Progress_CanceledLog" xml:space="preserve"><value>The operation was canceled.</value></data>
   <data name="Dialog_Progress_ErrorLog" xml:space="preserve"><value>ERROR: {0}</value></data>
   <data name="Dialog_Progress_Canceling" xml:space="preserve"><value>Canceling...</value></data>
-  <data name="FirstRun_Title" xml:space="preserve"><value>MailVault Home – Getting started</value></data>
-  <data name="FirstRun_Welcome" xml:space="preserve"><value>Welcome to MailVault Home</value></data>
-  <data name="FirstRun_Intro" xml:space="preserve"><value>MailVault keeps your emails permanently in a local archive. Choose where the archive should be stored. The folder can also be on a USB drive.</value></data>
+  <data name="FirstRun_Title" xml:space="preserve"><value>MailArchy – Getting started</value></data>
+  <data name="FirstRun_Welcome" xml:space="preserve"><value>Welcome to MailArchy</value></data>
+  <data name="FirstRun_Intro" xml:space="preserve"><value>MailArchy keeps your emails permanently in a local archive. Choose where the archive should be stored. The folder can also be on a USB drive.</value></data>
   <data name="FirstRun_PathLabel" xml:space="preserve"><value>Archive location:</value></data>
   <data name="FirstRun_PathName" xml:space="preserve"><value>Archive location</value></data>
   <data name="FirstRun_Create" xml:space="preserve"><value>Create archive</value></data>
@@ -48,10 +48,10 @@
   <data name="Recovery_Intro" xml:space="preserve"><value>This recovery key gets you into your archive if you forget the password. Nobody else can help – not even the developer: without password and key, your e-mail is lost for good.</value></data>
   <data name="Recovery_SaveFile" xml:space="preserve"><value>Save emergency sheet…</value></data>
   <data name="Recovery_ConfirmBox" xml:space="preserve"><value>I have stored the recovery key in a safe place.</value></data>
-  <data name="Recovery_FileName" xml:space="preserve"><value>MailVault-emergency-sheet.txt</value></data>
-  <data name="Recovery_FileContent" xml:space="preserve"><value>MailVault Home – Recovery key&#10;Created: {0:G}&#10;&#10;{1}&#10;</value></data>
+  <data name="Recovery_FileName" xml:space="preserve"><value>MailArchy-emergency-sheet.txt</value></data>
+  <data name="Recovery_FileContent" xml:space="preserve"><value>MailArchy – Recovery key&#10;Created: {0:G}&#10;&#10;{1}&#10;</value></data>
   <data name="Recovery_PleaseConfirm" xml:space="preserve"><value>Please confirm that you have stored the recovery key.</value></data>
-  <data name="Login_Title" xml:space="preserve"><value>MailVault Home – Sign in</value></data>
+  <data name="Login_Title" xml:space="preserve"><value>MailArchy – Sign in</value></data>
   <data name="Login_Header" xml:space="preserve"><value>Archive protected</value></data>
   <data name="Login_EnterPassword" xml:space="preserve"><value>Please enter your archive password.</value></data>
   <data name="Login_Forgot" xml:space="preserve"><value>Forgot password?</value></data>
@@ -110,8 +110,8 @@
   <data name="Profile_Time" xml:space="preserve"><value>Time</value></data>
   <data name="Profile_TimeTip" xml:space="preserve"><value>Time, e.g. 08:00</value></data>
   <data name="Profile_OClock" xml:space="preserve"><value></value></data>
-  <data name="Profile_ScheduleHint" xml:space="preserve"><value>Automatic retrievals run in the background while MailVault is open or running in the notification area (Management → "Start with Windows"). Missed runs are caught up at the next start.</value></data>
-  <data name="Profile_ReadOnlyNote" xml:space="preserve"><value>MailVault only reads the mailbox. Nothing on the server is ever deleted, moved or marked as read.</value></data>
+  <data name="Profile_ScheduleHint" xml:space="preserve"><value>Automatic retrievals run in the background while MailArchy is open or running in the notification area (Management → "Start with Windows"). Missed runs are caught up at the next start.</value></data>
+  <data name="Profile_ReadOnlyNote" xml:space="preserve"><value>MailArchy only reads the mailbox. Nothing on the server is ever deleted, moved or marked as read.</value></data>
   <data name="Profile_MainFolder" xml:space="preserve"><value>(Main folder)</value></data>
   <data name="Profile_MboxFile" xml:space="preserve"><value>MBOX file</value></data>
   <data name="Profile_EmlFolder" xml:space="preserve"><value>Folder with .eml files</value></data>
@@ -309,18 +309,18 @@
   <data name="Settings_RebuildIndex" xml:space="preserve"><value>Rebuild search index</value></data>
   <data name="Settings_Compact" xml:space="preserve"><value>Compact archive</value></data>
   <data name="Settings_Verify" xml:space="preserve"><value>Check archive</value></data>
-  <data name="Settings_BackupHint" xml:space="preserve"><value>To back up your data, exit MailVault and copy the entire archive folder (including archive.keys.json if password protection is on).</value></data>
+  <data name="Settings_BackupHint" xml:space="preserve"><value>To back up your data, exit MailArchy and copy the entire archive folder (including archive.keys.json if password protection is on).</value></data>
   <data name="Settings_Appearance" xml:space="preserve"><value>Appearance</value></data>
   <data name="Settings_LikeWindows" xml:space="preserve"><value>Same as Windows</value></data>
   <data name="Settings_Light" xml:space="preserve"><value>Light</value></data>
   <data name="Settings_Dark" xml:space="preserve"><value>Dark</value></data>
-  <data name="Settings_AppearanceHint" xml:space="preserve"><value>If a Windows contrast theme is active, MailVault uses its colors. Emails themselves are always shown on a light background, the way the sender designed them.</value></data>
+  <data name="Settings_AppearanceHint" xml:space="preserve"><value>If a Windows contrast theme is active, MailArchy uses its colors. Emails themselves are always shown on a light background, the way the sender designed them.</value></data>
   <data name="Settings_Language" xml:space="preserve"><value>Language</value></data>
-  <data name="Settings_LanguageHint" xml:space="preserve"><value>Takes effect after MailVault restarts.</value></data>
-  <data name="Settings_RestartNow" xml:space="preserve"><value>Restart MailVault now</value></data>
+  <data name="Settings_LanguageHint" xml:space="preserve"><value>Takes effect after MailArchy restarts.</value></data>
+  <data name="Settings_RestartNow" xml:space="preserve"><value>Restart MailArchy now</value></data>
   <data name="Settings_TabAutomation" xml:space="preserve"><value>Automation &amp; notifications</value></data>
   <data name="Settings_Background" xml:space="preserve"><value>Background operation</value></data>
-  <data name="Settings_StartWithWindows" xml:space="preserve"><value>Start MailVault with Windows (hidden in the notification area)</value></data>
+  <data name="Settings_StartWithWindows" xml:space="preserve"><value>Start MailArchy with Windows (hidden in the notification area)</value></data>
   <data name="Settings_CloseToTray" xml:space="preserve"><value>Keep running in the notification area when the window is closed (if automatic retrieval or web access is on)</value></data>
   <data name="Settings_ScheduleHint" xml:space="preserve"><value>You set the schedule per profile (Archive emails → Edit profile → "Archive automatically"). Only one retrieval runs at a time; missed runs are caught up.</value></data>
   <data name="Settings_Schedules" xml:space="preserve"><value>Schedules and last status</value></data>
@@ -353,7 +353,7 @@
   <data name="Settings_NotifyTip" xml:space="preserve"><value>Tip: Your own mailbox (your provider's outgoing mail server) works well as the sender. Gmail/iCloud/Yahoo require an app password. Thanks to the threshold, brief interruptions (e.g. Wi-Fi drops) don't trigger a message. Manual runs report errors directly in the window.</value></data>
   <data name="Settings_TabWeb" xml:space="preserve"><value>Web access on your home network</value></data>
   <data name="Settings_WebTitle" xml:space="preserve"><value>Search the archive in a browser</value></data>
-  <data name="Settings_WebIntro" xml:space="preserve"><value>Family members can search the archive from a browser, tablet or phone on your home network – each person only sees the mailboxes shared with them. The PC running MailVault must be switched on.</value></data>
+  <data name="Settings_WebIntro" xml:space="preserve"><value>Family members can search the archive from a browser, tablet or phone on your home network – each person only sees the mailboxes shared with them. The PC running MailArchy must be switched on.</value></data>
   <data name="Settings_WebEnable" xml:space="preserve"><value>Turn on web access</value></data>
   <data name="Settings_WebPort" xml:space="preserve"><value>Port for web access</value></data>
   <data name="Settings_LanAccess" xml:space="preserve"><value>Reachable from the whole home network (otherwise only on this PC)</value></data>
@@ -366,7 +366,7 @@
   <data name="Settings_ColStatus" xml:space="preserve"><value>Status</value></data>
   <data name="Settings_AddUser" xml:space="preserve"><value>Add user...</value></data>
   <data name="Settings_Claude" xml:space="preserve"><value>Claude by Anthropic</value></data>
-  <data name="Settings_AiIntro" xml:space="preserve"><value>The AI assistant uses your own API key. Anthropic bills you for actual usage (typically a few cents per question); MailVault shows the usage after every answer.</value></data>
+  <data name="Settings_AiIntro" xml:space="preserve"><value>The AI assistant uses your own API key. Anthropic bills you for actual usage (typically a few cents per question); MailArchy shows the usage after every answer.</value></data>
   <data name="Settings_ApiKeyLabel" xml:space="preserve"><value>API key:</value></data>
   <data name="Settings_CreateKey" xml:space="preserve"><value>Create key ↗</value></data>
   <data name="Settings_ApiKey" xml:space="preserve"><value>API key</value></data>
@@ -380,7 +380,7 @@
   <data name="Settings_AiConsent" xml:space="preserve"><value>Understood – I want to use the AI assistant</value></data>
   <data name="Settings_TestConnection" xml:space="preserve"><value>Test connection</value></data>
   <data name="Settings_TabUpdates" xml:space="preserve"><value>Updates</value></data>
-  <data name="Settings_About" xml:space="preserve"><value>MailVault Home · Tonio Wirmer IT-Dienstleistungen · mailvault.zerze.de. Uses MailKit/MimeKit, SQLite3 Multiple Ciphers, PdfPig, XstReader, Zstandard, WebView2, ASP.NET Core and the Anthropic SDK.</value></data>
+  <data name="Settings_About" xml:space="preserve"><value>MailArchy · Tonio Wirmer IT-Dienstleistungen · mailarchy.zerze.de. Uses MailKit/MimeKit, SQLite3 Multiple Ciphers, PdfPig, XstReader, Zstandard, WebView2, ASP.NET Core and the Anthropic SDK.</value></data>
   <data name="Settings_ColUser" xml:space="preserve"><value>User</value></data>
   <data name="Start_Never" xml:space="preserve"><value>never</value></data>
   <data name="Start_Protected" xml:space="preserve"><value>Password-protected (encrypted)</value></data>
@@ -398,7 +398,7 @@
   <data name="Archive_WaitForScheduled" xml:space="preserve"><value>Waiting for the running automatic retrieval ...</value></data>
   <data name="Archive_WaitForScheduledLog" xml:space="preserve"><value>An automatic retrieval is running; this run will start afterwards.</value></data>
   <data name="Archive_DeleteConfirm" xml:space="preserve"><value>Delete profile '{0}'?&#10;&#10;Deleting a profile has no effect on emails that are already archived.</value></data>
-  <data name="Export_DefaultFolder" xml:space="preserve"><value>MailVault-Export</value></data>
+  <data name="Export_DefaultFolder" xml:space="preserve"><value>MailArchy-Export</value></data>
   <data name="Export_PickTarget" xml:space="preserve"><value>Destination folder for the export</value></data>
   <data name="Export_NoTarget" xml:space="preserve"><value>Please choose a destination folder.</value></data>
   <data name="Export_FolderEmpty" xml:space="preserve"><value>The selected folder doesn't contain any emails.</value></data>
@@ -426,7 +426,7 @@
   <data name="Search_ResultFor" xml:space="preserve"><value>Search results for "{0}"</value></data>
   <data name="Settings_Stats" xml:space="preserve"><value>{0:N0} emails, original size {1}, archive file {2}</value></data>
   <data name="Settings_PickArchive" xml:space="preserve"><value>Open another archive or create a new one</value></data>
-  <data name="Settings_LocationChanged" xml:space="preserve"><value>The new location will be used the next time the program starts.&#10;&#10;To move an existing archive, exit MailVault and copy the entire archive folder to the new location.</value></data>
+  <data name="Settings_LocationChanged" xml:space="preserve"><value>The new location will be used the next time the program starts.&#10;&#10;To move an existing archive, exit MailArchy and copy the entire archive folder to the new location.</value></data>
   <data name="Settings_ProtectTitle" xml:space="preserve"><value>Protect archive with a password</value></data>
   <data name="Settings_Encrypting" xml:space="preserve"><value>Encrypting archive</value></data>
   <data name="Settings_EncryptingStatus" xml:space="preserve"><value>Moving all data into an encrypted archive...</value></data>
@@ -444,14 +444,14 @@
   <data name="Settings_ArchiveOk" xml:space="preserve"><value>The archive is OK.</value></data>
   <data name="Settings_ArchiveProblems" xml:space="preserve"><value>Problems found: {0}</value></data>
   <data name="App_OpenFailed" xml:space="preserve"><value>The archive in '{0}' couldn't be opened:&#10;&#10;{1}</value></data>
-  <data name="App_Updated" xml:space="preserve"><value>MailVault has been updated</value></data>
+  <data name="App_Updated" xml:space="preserve"><value>MailArchy has been updated</value></data>
   <data name="App_UpdatedVersion" xml:space="preserve"><value>Now running version {0}.</value></data>
   <data name="App_UpdateFailed" xml:space="preserve"><value>The new version couldn't be started. The previous version was restored automatically; your archive is unchanged.&#10;&#10;Log: {0}</value></data>
-  <data name="App_UpdateTitle" xml:space="preserve"><value>MailVault update</value></data>
-  <data name="App_InstallQuestion" xml:space="preserve"><value>MailVault {0} will be installed to:&#10;{1}&#10;&#10;No administrator rights are needed. Afterwards MailVault is in the Start menu, and updates arrive automatically.</value></data>
-  <data name="App_ReplaceQuestion" xml:space="preserve"><value>MailVault {1} is already installed in {0}. Replace it with version {2}?&#10;&#10;Your archive and settings are kept.</value></data>
-  <data name="App_InstallTitle" xml:space="preserve"><value>Install MailVault</value></data>
-  <data name="App_AlreadyRunning" xml:space="preserve"><value>MailVault is already running. Please exit it first (right-click the icon in the notification area → Exit) and then install again.</value></data>
+  <data name="App_UpdateTitle" xml:space="preserve"><value>MailArchy update</value></data>
+  <data name="App_InstallQuestion" xml:space="preserve"><value>MailArchy {0} will be installed to:&#10;{1}&#10;&#10;No administrator rights are needed. Afterwards MailArchy is in the Start menu, and updates arrive automatically.</value></data>
+  <data name="App_ReplaceQuestion" xml:space="preserve"><value>MailArchy {1} is already installed in {0}. Replace it with version {2}?&#10;&#10;Your archive and settings are kept.</value></data>
+  <data name="App_InstallTitle" xml:space="preserve"><value>Install MailArchy</value></data>
+  <data name="App_AlreadyRunning" xml:space="preserve"><value>MailArchy is already running. Please exit it first (right-click the icon in the notification area → Exit) and then install again.</value></data>
   <data name="App_InstallFailed" xml:space="preserve"><value>Installation failed:&#10;&#10;{0}</value></data>
   <data name="App_ExitWhileArchiving" xml:space="preserve"><value>The mailbox "{0}" is being archived right now. Exit anyway?&#10;&#10;Emails that are already archived are kept; the rest follows at the next retrieval.</value></data>
   <data name="App_UnexpectedError" xml:space="preserve"><value>An unexpected error occurred:&#10;&#10;{0}</value></data>
@@ -479,7 +479,7 @@
   <data name="Auto_Error" xml:space="preserve"><value>Error ({0}× in a row): {1}</value></data>
   <data name="Auto_LastRun" xml:space="preserve"><value>{0:MMM d, h:mm tt}: {1}</value></data>
   <data name="Auto_NotRunYet" xml:space="preserve"><value>not run yet</value></data>
-  <data name="Auto_AutostartOn" xml:space="preserve"><value>MailVault starts hidden in the notification area when you sign in to Windows and retrieves the mailboxes on schedule.</value></data>
+  <data name="Auto_AutostartOn" xml:space="preserve"><value>MailArchy starts hidden in the notification area when you sign in to Windows and retrieves the mailboxes on schedule.</value></data>
   <data name="Auto_AutostartFailed" xml:space="preserve"><value>Autostart couldn't be changed: {0}</value></data>
   <data name="Auto_IncompleteFull" xml:space="preserve"><value>Please enter the recipient, SMTP server and sender (or a user name that is an email address).</value></data>
   <data name="Auto_SavedOn" xml:space="preserve"><value>Saved. You'll be notified when an automatic retrieval fails.</value></data>
@@ -538,11 +538,11 @@
   <data name="Ai_InterpretMeta" xml:space="preserve"><value>{0:N0} + {1:N0} tokens · sent: only names, addresses, counts</value></data>
   <data name="Ai_AnswerLanguage" xml:space="preserve"><value>Englisch</value></data>
   <data name="Tray_RunAll" xml:space="preserve"><value>Retrieve all mailboxes now</value></data>
-  <data name="Tray_Open" xml:space="preserve"><value>Open MailVault</value></data>
+  <data name="Tray_Open" xml:space="preserve"><value>Open MailArchy</value></data>
   <data name="Tray_Exit" xml:space="preserve"><value>Exit</value></data>
   <data name="Tray_NoScheduled" xml:space="preserve"><value>There are no profiles with automatic retrieval. Set the schedule in the profile.</value></data>
   <data name="Tray_RunFailed" xml:space="preserve"><value>Mailbox "{0}" not retrieved</value></data>
-  <data name="Tray_StillRunning" xml:space="preserve"><value>MailVault keeps running in the background</value></data>
+  <data name="Tray_StillRunning" xml:space="preserve"><value>MailArchy keeps running in the background</value></data>
   <data name="Tray_StillRunningText" xml:space="preserve"><value>Scheduled retrievals keep running. To exit: right-click the icon → Exit.</value></data>
   <data name="Tray_Archiving" xml:space="preserve"><value>Archiving now: {0}</value></data>
   <data name="Tray_NoAutomatic" xml:space="preserve"><value>No automatic retrieval set up</value></data>
@@ -557,7 +557,7 @@
   <data name="Ui_Bytes" xml:space="preserve"><value>{0} B</value></data>
   <data name="Web_PortInUse" xml:space="preserve"><value>Port {0} is already in use. Please choose a different port.</value></data>
   <data name="Shortcut_NoScriptHost" xml:space="preserve"><value>Windows Script Host is missing.</value></data>
-  <data name="Shortcut_Description" xml:space="preserve"><value>MailVault Home – email archive</value></data>
+  <data name="Shortcut_Description" xml:space="preserve"><value>MailArchy – email archive</value></data>
   <data name="Md_MissingCitation" xml:space="preserve"><value>This email is not in the archive</value></data>
   <data name="AiHtml_EmptyTitle" xml:space="preserve"><value>Ask your archive in your own words</value></data>
   <data name="AiHtml_EmptyExample" xml:space="preserve"><value>For example: "Which contracts are still running, and when can I cancel them?"</value></data>
@@ -575,10 +575,10 @@
     <value>Installed: </value>
   </data>
   <data name="Upd_NotInstalledHint" xml:space="preserve">
-    <value>This copy is not installed. Once installed, MailVault appears in the Start menu and updates itself. Target folder: </value>
+    <value>This copy is not installed. Once installed, MailArchy appears in the Start menu and updates itself. Target folder: </value>
   </data>
   <data name="Upd_InstallButton" xml:space="preserve">
-    <value>Install MailVault</value>
+    <value>Install MailArchy</value>
   </data>
   <data name="Upd_Title" xml:space="preserve">
     <value>Updates</value>
@@ -587,7 +587,7 @@
     <value>Update server:</value>
   </data>
   <data name="Upd_ServerTip" xml:space="preserve">
-    <value>Every update list is signed; MailVault only installs packages with a valid signature and matching checksum.</value>
+    <value>Every update list is signed; MailArchy only installs packages with a valid signature and matching checksum.</value>
   </data>
   <data name="Upd_ChannelLabel" xml:space="preserve">
     <value>Versions:</value>
@@ -605,7 +605,7 @@
     <value>Check for updates automatically</value>
   </data>
   <data name="Upd_AutoInstall" xml:space="preserve">
-    <value>Install updates automatically while MailVault is not in use</value>
+    <value>Install updates automatically while MailArchy is not in use</value>
   </data>
   <data name="Upd_CheckButton" xml:space="preserve">
     <value>Check for updates</value>
@@ -617,7 +617,7 @@
     <value>Update now</value>
   </data>
   <data name="Upd_InstallHint" xml:space="preserve">
-    <value>The new version is downloaded and verified, then MailVault restarts. Your archive and settings stay unchanged; if the new version does not start, the old one is restored automatically.</value>
+    <value>The new version is downloaded and verified, then MailArchy restarts. Your archive and settings stay unchanged; if the new version does not start, the old one is restored automatically.</value>
   </data>
   <data name="Upd_NotInstalledStatus" xml:space="preserve">
     <value>This copy is not installed (for example run straight from the download folder, or a developer build). Updates are only available for installed versions.</value>
@@ -641,12 +641,12 @@
     <value>Version {0} is available</value>
   </data>
   <data name="Upd_UpToDate" xml:space="preserve">
-    <value>MailVault is up to date (latest version: {0}).</value>
+    <value>MailArchy is up to date (latest version: {0}).</value>
   </data>
   <data name="Upd_ConfirmInstall" xml:space="preserve">
-    <value>MailVault will be updated to version {0}.
+    <value>MailArchy will be updated to version {0}.
 
-The new version is downloaded, then MailVault closes briefly and restarts. Your archive and settings stay unchanged; the current version is backed up and restored automatically if anything goes wrong.
+The new version is downloaded, then MailArchy closes briefly and restarts. Your archive and settings stay unchanged; the current version is backed up and restored automatically if anything goes wrong.
 
 Update now?</value>
   </data>
@@ -654,7 +654,7 @@ Update now?</value>
     <value>Update to version {0}</value>
   </data>
   <data name="Upd_Ready" xml:space="preserve">
-    <value>The new version is ready. MailVault is restarting now.</value>
+    <value>The new version is ready. MailArchy is restarting now.</value>
   </data>
   <data name="Upd_TrayAvailableTitle" xml:space="preserve">
     <value>Update available</value>
@@ -666,7 +666,7 @@ Update now?</value>
     <value>Preparing update</value>
   </data>
   <data name="Upd_TrayPreparingText" xml:space="preserve">
-    <value>Version {0} has been downloaded and will be installed as soon as MailVault is not in use (takes a few seconds).</value>
+    <value>Version {0} has been downloaded and will be installed as soon as MailArchy is not in use (takes a few seconds).</value>
   </data>
   <data name="Recovery_Print" xml:space="preserve">
     <value>Print emergency sheet…</value>
@@ -702,10 +702,10 @@ Recovery key:
     {1}
 
 If you forgot your password:
-  Start MailVault → “Forgot password?” → enter the key → set a new password.
+  Start MailArchy → “Forgot password?” → enter the key → set a new password.
 
 If the key file (archive.keys.json) is missing:
-  Start MailVault → “Choose emergency sheet…” → select this file → set a new password.
+  Start MailArchy → “Choose emergency sheet…” → select this file → set a new password.
   Printed copy: type the block below into a text file character by character.
 
 This sheet is as secret as your archive. Keep it safe and away from the computer.</value>
@@ -729,7 +729,7 @@ This sheet is as secret as your archive. Keep it safe and away from the computer
     <value>Loaded: {0}</value>
   </data>
   <data name="Login_SheetInvalid" xml:space="preserve">
-    <value>This file does not contain a valid MailVault key file.</value>
+    <value>This file does not contain a valid MailArchy key file.</value>
   </data>
   <data name="Login_SheetRequired" xml:space="preserve">
     <value>Please choose the emergency sheet first.</value>
@@ -794,7 +794,7 @@ On its own it is useless; together with the password or recovery key it opens th
     <value>No emergency sheet has been saved or printed for this archive yet. Create a new recovery key – otherwise there is no way back if you forget the password.</value>
   </data>
   <data name="Settings_SecurityHelpTitle" xml:space="preserve">
-    <value>How MailVault protects your archive</value>
+    <value>How MailArchy protects your archive</value>
   </data>
   <data name="Help_WhatTitle" xml:space="preserve">
     <value>What is encrypted</value>
@@ -825,9 +825,9 @@ On its own it is useless; together with the password or recovery key it opens th
   </data>
   <data name="Help_Limits" xml:space="preserve">
     <value>• Exports (EML, MBOX, PDF …) are unencrypted – put them only in safe places.
-• Opened attachments sit decrypted in the temp folder for a while; MailVault removes them on exit and on the next start.
+• Opened attachments sit decrypted in the temp folder for a while; MailArchy removes them on exit and on the next start.
 • Web access in the home network uses HTTP without connection encryption – only enable it on trusted networks.
-• While MailVault is running the archive is unlocked. Lock Windows (Win+L) when you leave your desk.
+• While MailArchy is running the archive is unlocked. Lock Windows (Win+L) when you leave your desk.
 • On SSDs a previously unencrypted archive file cannot be guaranteed to be erased without trace. For full protection also turn on BitLocker (device encryption).</value>
   </data>
   <data name="Help_BackupTitle" xml:space="preserve">
@@ -861,7 +861,7 @@ On its own it is useless; together with the password or recovery key it opens th
     <value>Signed in as {0}</value>
   </data>
   <data name="Profile_NotSignedIn" xml:space="preserve">
-    <value>Sign-in opens in your browser. MailVault only gets access to the emails, never your password, and only reads the mailbox.</value>
+    <value>Sign-in opens in your browser. MailArchy only gets access to the emails, never your password, and only reads the mailbox.</value>
   </data>
   <data name="Profile_SignInWaiting" xml:space="preserve">
     <value>Browser opened – please sign in there and allow access …</value>
@@ -879,7 +879,7 @@ On its own it is useless; together with the password or recovery key it opens th
     <value>Add backed-up archive …</value>
   </data>
   <data name="Settings_ImportArchiveTip" xml:space="preserve">
-    <value>Take over a MailVault archive from a backup or an old PC, or switch to it</value>
+    <value>Take over a MailArchy archive from a backup or an old PC, or switch to it</value>
   </data>
   <data name="ImportArchive_Title" xml:space="preserve">
     <value>Add backed-up archive</value>
@@ -900,16 +900,16 @@ On its own it is useless; together with the password or recovery key it opens th
     <value>This is the archive that is currently open.</value>
   </data>
   <data name="ImportArchive_FoundPlain" xml:space="preserve">
-    <value>MailVault archive found (not encrypted).</value>
+    <value>MailArchy archive found (not encrypted).</value>
   </data>
   <data name="ImportArchive_FoundProtected" xml:space="preserve">
-    <value>Encrypted MailVault archive found. Its password or recovery key is needed to take it over.</value>
+    <value>Encrypted MailArchy archive found. Its password or recovery key is needed to take it over.</value>
   </data>
   <data name="ImportArchive_FoundKeyMissing" xml:space="preserve">
     <value>Encrypted archive, but the key file is missing. You need the emergency sheet and the recovery key.</value>
   </data>
   <data name="ImportArchive_NotFound" xml:space="preserve">
-    <value>This folder does not contain a MailVault archive (archive.db is missing).</value>
+    <value>This folder does not contain a MailArchy archive (archive.db is missing).</value>
   </data>
   <data name="ImportArchive_WhatHeader" xml:space="preserve">
     <value>What should happen?</value>
@@ -924,7 +924,7 @@ On its own it is useless; together with the password or recovery key it opens th
     <value>Switch to this archive</value>
   </data>
   <data name="ImportArchive_SwitchHint" xml:space="preserve">
-    <value>After a restart, MailVault uses the backed-up archive directly where it is. The previous archive stays unchanged in its old folder.</value>
+    <value>After a restart, MailArchy uses the backed-up archive directly where it is. The previous archive stays unchanged in its old folder.</value>
   </data>
   <data name="ImportArchive_AccessHeader" xml:space="preserve">
     <value>Access to the backup</value>
@@ -945,7 +945,7 @@ On its own it is useless; together with the password or recovery key it opens th
     <value>Switch</value>
   </data>
   <data name="ImportArchive_RestartNow" xml:space="preserve">
-    <value>MailVault will use the backed-up archive after a restart. Restart now?</value>
+    <value>MailArchy will use the backed-up archive after a restart. Restart now?</value>
   </data>
   <data name="ImportArchive_RunTitle" xml:space="preserve">
     <value>Taking over backed-up archive</value>
@@ -963,7 +963,7 @@ On its own it is useless; together with the password or recovery key it opens th
     <value>Signing in with a Google or Microsoft account</value>
   </data>
   <data name="OAuthSet_Intro" xml:space="preserve">
-    <value>To sign in with Google or Microsoft (OAuth), MailVault needs an app registered with the provider, identified by a client ID. The download from mailvault.zerze.de already includes the required client IDs – then there is nothing to do here. You only need your own client IDs if you build MailVault from source yourself or must use your company's app registration. Values entered here take precedence over the built-in ones.</value>
+    <value>To sign in with Google or Microsoft (OAuth), MailArchy needs an app registered with the provider, identified by a client ID. The download from mailarchy.zerze.de already includes the required client IDs – then there is nothing to do here. You only need your own client IDs if you build MailArchy from source yourself or must use your company's app registration. Values entered here take precedence over the built-in ones.</value>
   </data>
   <data name="OAuthSet_Google" xml:space="preserve">
     <value>Google (Gmail, Google Workspace)</value>
@@ -1026,7 +1026,7 @@ On its own it is useless; together with the password or recovery key it opens th
     <value>Attachments</value>
   </data>
   <data name="Pdf_Footer" xml:space="preserve">
-    <value>Saved as PDF from the MailVault archive on {0:g}</value>
+    <value>Saved as PDF from the MailArchy archive on {0:g}</value>
   </data>
   <data name="Pdf_RenderFailed" xml:space="preserve">
     <value>The email could not be saved as PDF. Is the Microsoft Edge WebView2 runtime installed?</value>
@@ -1095,7 +1095,7 @@ On its own it is useless; together with the password or recovery key it opens th
     <value>The archive check found problems. Check again; if the error persists, restore a backup (Management → Archive). Your mailboxes are not affected.</value>
   </data>
   <data name="Start_CheckFailedTray" xml:space="preserve">
-    <value>Details are on the MailVault start page.</value>
+    <value>Details are on the MailArchy start page.</value>
   </data>
   <data name="Start_HowStored" xml:space="preserve">
     <value>Storage</value>

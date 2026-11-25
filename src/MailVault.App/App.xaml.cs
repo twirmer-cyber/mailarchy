@@ -75,7 +75,7 @@ public partial class App : Application
         catch (Exception ex)
         {
             MessageBox.Show(L.F("App_OpenFailed", settings.DataDirectory, ex.Message),
-                "MailVault", MessageBoxButton.OK, MessageBoxImage.Error);
+                "MailArchy", MessageBoxButton.OK, MessageBoxImage.Error);
             Shutdown(1);
             return;
         }
@@ -103,6 +103,8 @@ public partial class App : Application
                             L.T("App_UpdateTitle"), MessageBoxButton.OK, MessageBoxImage.Warning);
         UpdateService.Start();
         ArchiveCheckService.Start();
+        if (string.Equals(AppContext.BaseDirectory.TrimEnd('\\', '/'), MailVault.Core.Updates.UpdateManager.DefaultInstallDir, StringComparison.OrdinalIgnoreCase))
+            Shortcuts.MigrateLegacy(AppState.ExePath);
     }
 
     /// <summary>
@@ -216,7 +218,7 @@ public partial class App : Application
         if (_exiting) return;
         if (!force && AppState.RunningProfile is { } running &&
             MessageBox.Show(L.F("App_ExitWhileArchiving", running.Name),
-                "MailVault", MessageBoxButton.YesNo, MessageBoxImage.Question) != MessageBoxResult.Yes)
+                "MailArchy", MessageBoxButton.YesNo, MessageBoxImage.Question) != MessageBoxResult.Yes)
             return;
         _exiting = true;
         foreach (Window w in Windows) w.Hide();
@@ -249,7 +251,7 @@ public partial class App : Application
 
     void OnUnhandledException(object sender, DispatcherUnhandledExceptionEventArgs e)
     {
-        MessageBox.Show(L.F("App_UnexpectedError", e.Exception.Message), "MailVault",
+        MessageBox.Show(L.F("App_UnexpectedError", e.Exception.Message), "MailArchy",
             MessageBoxButton.OK, MessageBoxImage.Error);
         e.Handled = true;
     }

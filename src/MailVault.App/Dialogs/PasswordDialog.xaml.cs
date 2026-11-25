@@ -52,7 +52,7 @@ public partial class PasswordDialog : Window
         if (_askNew && Validate(New1.Password, New2.Password) is { } err) { ErrorText.Text = err; return; }
         // Schwache Kennwörter nicht verbieten, aber deutlich nachfragen: Gegen ein gestohlenes Archiv hilft nur Länge.
         if (_askNew && PasswordStrength.Rate(New1.Password) <= PasswordStrength.Level.Weak &&
-            MessageBox.Show(this, L.T("Password_WeakConfirm"), "MailVault", MessageBoxButton.YesNo, MessageBoxImage.Warning) != MessageBoxResult.Yes)
+            MessageBox.Show(this, L.T("Password_WeakConfirm"), "MailArchy", MessageBoxButton.YesNo, MessageBoxImage.Warning) != MessageBoxResult.Yes)
             return;
         DialogResult = true;
     }

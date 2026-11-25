@@ -249,8 +249,8 @@ internal sealed class LoopbackListener : IDisposable
     public Task RespondAsync(string message, CancellationToken ct)
     {
         if (_client is null) return Task.CompletedTask;
-        var html = "<!doctype html><html><head><meta charset=\"utf-8\"><title>MailVault</title></head>" +
-                   "<body style=\"font-family:Segoe UI,system-ui,sans-serif;margin:48px;color:#1a1f26\"><h1 style=\"font-size:22px\">MailVault</h1><p style=\"font-size:16px;max-width:36em\">" +
+        var html = "<!doctype html><html><head><meta charset=\"utf-8\"><title>MailArchy</title></head>" +
+                   "<body style=\"font-family:Segoe UI,system-ui,sans-serif;margin:48px;color:#1a1f26\"><h1 style=\"font-size:22px\">MailArchy</h1><p style=\"font-size:16px;max-width:36em\">" +
                    WebUtility.HtmlEncode(message) + "</p></body></html>";
         return WriteAsync(_client, "200 OK", html, ct);
     }

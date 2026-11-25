@@ -1,4 +1,4 @@
-# MailVault Home – Produkt
+# MailArchy – Produkt
 
 ## Was es ist
 Ein privates E-Mail-Archiv für Windows. Es sammelt E-Mails aus Postfächern (IMAP/POP3), Outlook, Thunderbird und Dateien in einem komprimierten, durchsuchbaren Archiv auf dem eigenen PC.

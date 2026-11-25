@@ -35,7 +35,7 @@ public static class AutoConfig
     static readonly HttpClient Http = new(new SocketsHttpHandler { ConnectTimeout = TimeSpan.FromSeconds(5) })
     {
         Timeout = TimeSpan.FromSeconds(8),
-        DefaultRequestHeaders = { { "User-Agent", "MailVault-Autoconfig/1.0" } },
+        DefaultRequestHeaders = { { "User-Agent", "MailArchy-Autoconfig/1.0" } },
     };
 
     public static async Task<AutoConfigResult?> DiscoverAsync(string email, CancellationToken ct = default)

@@ -3,7 +3,10 @@ namespace MailVault.App.Services;
 /// <summary>Startmenü-Verknüpfung über das Windows-Skriptobjekt (keine zusätzliche Bibliothek nötig).</summary>
 public static class Shortcuts
 {
-    public static string StartMenuPath => System.IO.Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Programs), "MailVault Home.lnk");
+    static string Programs => Environment.GetFolderPath(Environment.SpecialFolder.Programs);
+    public static string StartMenuPath => System.IO.Path.Combine(Programs, "MailArchy.lnk");
+    /// <summary>Verknüpfung bis Version 0.7 (damals „MailVault Home“).</summary>
+    public static string LegacyStartMenuPath => System.IO.Path.Combine(Programs, "MailVault Home.lnk");
 
     public static void CreateStartMenu(string exePath)
     {
@@ -19,5 +22,26 @@ public static class Shortcuts
             link.Save();
         }
         finally { System.Runtime.InteropServices.Marshal.FinalReleaseComObject(shell); }
+        DeleteLegacy();
+    }
+
+    /// <summary>
+    /// Nach dem Update von einer Version mit altem Namen: Verknüpfung „MailVault Home“ durch „MailArchy“ ersetzen.
+    /// Nur für die installierte Version (nicht portabel), und nur wenn die alte Verknüpfung existiert.
+    /// </summary>
+    public static void MigrateLegacy(string exePath)
+    {
+        try
+        {
+            if (!System.IO.File.Exists(LegacyStartMenuPath)) return;
+            CreateStartMenu(exePath);
+        }
+        catch (Exception) { /* Verknüpfung ist Komfort; Fehler hier dürfen den Start nicht stören */ }
+    }
+
+    static void DeleteLegacy()
+    {
+        try { if (System.IO.File.Exists(LegacyStartMenuPath)) System.IO.File.Delete(LegacyStartMenuPath); }
+        catch (Exception) { /* bleibt dann eben liegen */ }
     }
 }

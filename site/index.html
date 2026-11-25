@@ -4,8 +4,8 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="color-scheme" content="light dark">
-  <title>MailVault – Ihr E-Mail-Archiv für Windows</title>
-  <meta name="description" content="MailVault archiviert Postfächer, Outlook und Thunderbird in ein durchsuchbares Archiv auf Ihrem eigenen PC. Kostenlos, ohne Konto, ohne Cloud, mit offenem Quelltext.">
+  <title>MailArchy – Ihr E-Mail-Archiv für Windows</title>
+  <meta name="description" content="MailArchy archiviert Postfächer, Outlook und Thunderbird in ein durchsuchbares Archiv auf Ihrem eigenen PC. Kostenlos, ohne Konto, ohne Cloud, mit offenem Quelltext.">
   <meta name="referrer" content="strict-origin-when-cross-origin">
   <meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)">
   <meta name="theme-color" content="#121417" media="(prefers-color-scheme: dark)">
@@ -43,8 +43,8 @@
   <!-- ============================================================ Kopf und Einstieg -->
   <header class="kopf">
     <div class="rahmen kopf-innen">
-      <a class="marke" href="#inhalt" aria-label="MailVault" data-i18n-attr="aria-label:home_label">
-        <img class="mark" src="favicon.svg" width="24" height="24" alt=""><span>MailVault</span>
+      <a class="marke" href="#inhalt" aria-label="MailArchy" data-i18n-attr="aria-label:home_label">
+        <img class="mark" src="favicon.svg" width="24" height="24" alt=""><span>MailArchy</span>
       </a>
       <nav class="kopf-nav" aria-label="Seite" data-i18n-attr="aria-label:nav_label">
         <a href="#warum" data-i18n="nav_why">Warum ein Archiv?</a>
@@ -70,7 +70,7 @@
 
         <div class="buehne-unten">
           <div class="laden">
-            <p class="lead" data-i18n="hero_lead">MailVault sichert die E-Mails aus Ihren Postfächern, aus Outlook und Thunderbird in einem durchsuchbaren Archiv auf Ihrem eigenen PC – vollständig, unabhängig vom Anbieter und auf Wunsch verschlüsselt. Die Postfächer werden dabei nur gelesen, nie verändert. Kostenlos, auch für Firmen und Vereine. Ohne Konto, ohne Cloud, mit offenem Quelltext.</p>
+            <p class="lead" data-i18n="hero_lead">MailArchy sichert die E-Mails aus Ihren Postfächern, aus Outlook und Thunderbird in einem durchsuchbaren Archiv auf Ihrem eigenen PC – vollständig, unabhängig vom Anbieter und auf Wunsch verschlüsselt. Die Postfächer werden dabei nur gelesen, nie verändert. Kostenlos, auch für Firmen und Vereine. Ohne Konto, ohne Cloud, mit offenem Quelltext.</p>
             <div class="knopfreihe">
               <a class="knopf knopf-haupt" href="{{SETUP}}" id="download">
                 <svg aria-hidden="true"><use href="#i-down"/></svg>
@@ -82,7 +82,7 @@
               </a>
             </div>
             <p class="laden-info">
-              <span class="zahl">MailVault-Setup-{{VERSION}}.exe · {{SETUP_MB}} MB</span>
+              <span class="zahl">MailArchy-Setup-{{VERSION}}.exe · {{SETUP_MB}} MB</span>
               <span class="trenn" aria-hidden="true">·</span>
               <span data-i18n="dl_system">Windows 10 und 11, 64 Bit</span>
               <span class="trenn" aria-hidden="true">·</span>
@@ -120,12 +120,12 @@
 
         <!-- Faktenleiste: vier belegbare Zahlen statt Werbesprüche -->
         <div class="fakten-block">
-          <h2 class="sr" data-i18n="facts_label">MailVault in Zahlen</h2>
+          <h2 class="sr" data-i18n="facts_label">MailArchy in Zahlen</h2>
           <dl class="fakten">
             <div><dt class="zahl" data-i18n="fact1_v">0 €</dt><dd data-i18n="fact1_t">Kostenlos – privat, für Firmen und Vereine. Keine Testphase, keine Pro-Version.</dd></div>
             <div><dt class="zahl" data-i18n="fact2_v">46 %</dt><dd data-i18n="fact2_t">weniger Platz als die Original-E-Mails, samt Suchindex. Gleiche Anhänge liegen nur einmal im Archiv.</dd></div>
             <div><dt class="zahl" data-i18n="fact3_v">AES-256</dt><dd data-i18n="fact3_t">Archiv auf Wunsch verschlüsselt, mit Wiederherstellungsschlüssel und Notfallblatt.</dd></div>
-            <div><dt class="zahl" data-i18n="fact4_v">7 Tage</dt><dd data-i18n="fact4_t">Spätestens dann prüft MailVault jede E-Mail und jeden Anhang im Archiv – und meldet sich, wenn etwas nicht stimmt.</dd></div>
+            <div><dt class="zahl" data-i18n="fact4_v">7 Tage</dt><dd data-i18n="fact4_t">Spätestens dann prüft MailArchy jede E-Mail und jeden Anhang im Archiv – und meldet sich, wenn etwas nicht stimmt.</dd></div>
           </dl>
           <p class="fakten-fuss" data-i18n="facts_note">Gemessen mit öffentlichen Mailinglisten (506 E-Mails). Wie viel es bei Ihnen ist, zeigt die Startseite des Programms.</p>
         </div>
@@ -145,7 +145,7 @@
         <div class="risiken" role="table" aria-labelledby="warum-titel">
           <div class="risiko risiko-kopf" role="row">
             <span role="columnheader" data-i18n="why_col_risk">Was passieren kann</span>
-            <span role="columnheader" data-i18n="why_col_answer">Was MailVault dafür tut</span>
+            <span role="columnheader" data-i18n="why_col_answer">Was MailArchy dafür tut</span>
           </div>
           <div class="risiko" role="row"><span class="risiko-fall" role="cell" data-i18n="r1_t">Versehentlich gelöscht – auf einem Gerät und durch die Synchronisierung auf allen anderen</span><span class="risiko-hilfe" role="cell" data-i18n="r1_d">Was einmal archiviert ist, bleibt im Archiv, auch wenn es im Postfach später fehlt.</span></div>
           <div class="risiko" role="row"><span class="risiko-fall" role="cell" data-i18n="r2_t">Postfach voll, Ordner geleert, alte E-Mails aufgeräumt</span><span class="risiko-hilfe" role="cell" data-i18n="r2_d">Sie können im Postfach Platz schaffen. Die alten E-Mails bleiben im Archiv vollständig und durchsuchbar.</span></div>
@@ -153,7 +153,7 @@
           <div class="risiko" role="row"><span class="risiko-fall" role="cell" data-i18n="r4_t">Konto gehackt, Server gestört oder ausgefallen</span><span class="risiko-hilfe" role="cell" data-i18n="r4_d">Auf Ihrem PC liegt eine vollständige, vom Anbieter unabhängige Kopie – auf Wunsch mit AES-256 verschlüsselt.</span></div>
           <div class="risiko" role="row"><span class="risiko-fall" role="cell" data-i18n="r5_t">Der Anbieter schließt das Konto oder stellt den Dienst ein</span><span class="risiko-hilfe" role="cell" data-i18n="r5_d">Ihre E-Mails bleiben im Archiv lesbar und lassen sich jederzeit als EML, MBOX oder PDF exportieren.</span></div>
         </div>
-        <p class="warum-fuss"><svg aria-hidden="true"><use href="#i-shield"/></svg><span data-i18n="why_note">Dabei liest MailVault Ihre Postfächer nur. Es löscht, verschiebt und markiert dort nichts – das Postfach bleibt genau so, wie es ist.</span></p>
+        <p class="warum-fuss"><svg aria-hidden="true"><use href="#i-shield"/></svg><span data-i18n="why_note">Dabei liest MailArchy Ihre Postfächer nur. Es löscht, verschiebt und markiert dort nichts – das Postfach bleibt genau so, wie es ist.</span></p>
         <p class="warum-hinweis" data-i18n="why_backup">Ein Archiv auf dem PC ersetzt keine Datensicherung des PCs. Kopieren Sie den Archivordner deshalb gelegentlich auf ein externes Laufwerk.</p>
       </div>
     </section>
@@ -175,7 +175,7 @@
           <picture>
             <source srcset="bilder/app-dark-de.png" media="(prefers-color-scheme: dark)" data-shot-dark>
             <img src="bilder/app-light-de.png" width="1264" height="811" loading="lazy" decoding="async" data-shot
-                 alt="MailVault mit einer Suche nach Rechnungen aus 2024: links der Ordnerbaum, in der Mitte die Trefferliste, darunter die geöffnete E-Mail."
+                 alt="MailArchy mit einer Suche nach Rechnungen aus 2024: links der Ordnerbaum, in der Mitte die Trefferliste, darunter die geöffnete E-Mail."
                  data-i18n-attr="alt:shot_alt">
           </picture>
           <figcaption data-i18n="shot_caption">Echte Oberfläche, erfundene Demo-Daten.</figcaption>
@@ -190,7 +190,7 @@
         <dl class="register">
           <div>
             <dt data-i18n="p1_t">Am Postfach wird nichts gelöscht</dt>
-            <dd data-i18n="p1_d">MailVault liest nur. Es gibt keine Funktion, die auf dem Server löscht, verschiebt oder als gelesen markiert – automatische Tests sichern das bei jeder Version ab.</dd>
+            <dd data-i18n="p1_d">MailArchy liest nur. Es gibt keine Funktion, die auf dem Server löscht, verschiebt oder als gelesen markiert – automatische Tests sichern das bei jeder Version ab.</dd>
           </div>
           <div>
             <dt data-i18n="p2_t">Das Archiv bleibt auf Ihrem PC</dt>
@@ -202,7 +202,7 @@
           </div>
           <div>
             <dt data-i18n="p4_t">Updates verlieren nie Daten</dt>
-            <dd data-i18n="p4_d">Neue Versionen kommen signiert von dieser Seite. Vor jeder Umstellung wird gesichert; startet etwas nicht, kehrt MailVault von selbst zur alten Version zurück.</dd>
+            <dd data-i18n="p4_d">Neue Versionen kommen signiert von dieser Seite. Vor jeder Umstellung wird gesichert; startet etwas nicht, kehrt MailArchy von selbst zur alten Version zurück.</dd>
           </div>
         </dl>
         <p class="zusagen-fuss"><svg aria-hidden="true"><use href="#i-shield"/></svg><span data-i18n="privacy_page">Auch diese Webseite setzt keine Cookies, verwendet keine Zählpixel und lädt nichts von fremden Servern.</span></p>
@@ -221,7 +221,7 @@
           <div><dt data-i18n="f5_t">Im Heimnetz auf dem Handy</dt><dd data-i18n="f5_d">Optionaler Webzugriff zum Lesen für Familienmitglieder – jeder sieht nur die Postfächer, die Sie freigeben.</dd></div>
           <div><dt data-i18n="f6_t">KI-Assistent, wenn Sie wollen</dt><dd data-i18n="f6_d">Fragen Sie Ihr Archiv in eigenen Worten („Welche Verträge laufen noch?“) – mit Ihrem eigenen Claude-Schlüssel und Belegen zu jeder Aussage. Ohne Schlüssel bleibt alles lokal.</dd></div>
           <div><dt data-i18n="f7_t">Export jederzeit</dt><dd data-i18n="f7_d">Einzelne E-Mails, Ordner oder das ganze Archiv als EML, MBOX oder PDF – zum Ausdrucken, als Nachweis oder für ein anderes Programm.</dd></div>
-          <div><dt data-i18n="f9_t">Archiv wird regelmäßig geprüft</dt><dd data-i18n="f9_d">Jede Woche setzt MailVault jede E-Mail zusammen und kontrolliert jeden Anhang mit seiner Prüfsumme. Das Ergebnis steht auf der Startseite; bei Problemen kommt sofort eine Benachrichtigung.</dd></div>
+          <div><dt data-i18n="f9_t">Archiv wird regelmäßig geprüft</dt><dd data-i18n="f9_d">Jede Woche setzt MailArchy jede E-Mail zusammen und kontrolliert jeden Anhang mit seiner Prüfsumme. Das Ergebnis steht auf der Startseite; bei Problemen kommt sofort eine Benachrichtigung.</dd></div>
           <div><dt data-i18n="f10_t">Spart Platz, verliert nichts</dt><dd data-i18n="f10_d">Anhänge, die mehrfach vorkommen, werden nur einmal gespeichert, Texte mit einem aus Ihrem Archiv gelernten Wörterbuch gepackt. Die Startseite zeigt, wie viel Platz das spart.</dd></div>
           <div><dt data-i18n="f8_t">Hell, dunkel, vier Sprachen</dt><dd data-i18n="f8_d">Folgt der Windows-Einstellung und dem Kontrastdesign; Deutsch, Englisch, Französisch und Spanisch.</dd></div>
         </dl>
@@ -233,8 +233,8 @@
       <div class="rahmen offen-innen">
         <div class="offen-text">
           <h2 id="offen-titel" data-i18n="open_title">Offener Quelltext, mit KI-Unterstützung entwickelt</h2>
-          <p data-i18n="open_p1">MailVault ist „vibe-coded“: Das Programm wurde im Dialog mit einer KI entwickelt, mit Claude von Anthropic. Ein Mensch hat festgelegt, was MailVault tun soll und was nicht; einen großen Teil des Codes hat die KI geschrieben.</p>
-          <p data-i18n="open_p2">Deshalb liegt der gesamte Quelltext offen auf GitHub. So lässt sich nachprüfen, dass MailVault am Postfach nichts löscht: Die Tests, die genau das sicherstellen, kann jeder lesen und selbst ausführen.</p>
+          <p data-i18n="open_p1">MailArchy ist „vibe-coded“: Das Programm wurde im Dialog mit einer KI entwickelt, mit Claude von Anthropic. Ein Mensch hat festgelegt, was MailArchy tun soll und was nicht; einen großen Teil des Codes hat die KI geschrieben.</p>
+          <p data-i18n="open_p2">Deshalb liegt der gesamte Quelltext offen auf GitHub. So lässt sich nachprüfen, dass MailArchy am Postfach nichts löscht: Die Tests, die genau das sicherstellen, kann jeder lesen und selbst ausführen.</p>
           <a class="knopf knopf-neben" href="{{REPO_URL}}" rel="noopener">
             <svg aria-hidden="true"><use href="#i-code"/></svg><span data-i18n="open_repo">Quelltext auf GitHub ansehen</span>
           </a>
@@ -266,7 +266,7 @@
         <dl class="steckbrief" id="pruefsumme">
           <div><dt data-i18n="sb_version">Aktuelle Version</dt><dd class="zahl">{{VERSION}}</dd></div>
           <div><dt data-i18n="sb_date">Veröffentlicht</dt><dd class="zahl">{{DATE}}</dd></div>
-          <div><dt data-i18n="sb_setup">Setup</dt><dd><a href="{{SETUP}}" class="zahl">MailVault-Setup-{{VERSION}}.exe</a> · <span class="zahl">{{SETUP_MB}}</span> MB</dd></div>
+          <div><dt data-i18n="sb_setup">Setup</dt><dd><a href="{{SETUP}}" class="zahl">MailArchy-Setup-{{VERSION}}.exe</a> · <span class="zahl">{{SETUP_MB}}</span> MB</dd></div>
           <div><dt data-i18n="sb_zip">Portable ZIP</dt><dd><a href="{{ZIP}}" data-i18n="sb_zip_link">herunterladen</a> · <span class="zahl">{{SIZE_MB}}</span> MB<span class="klein" data-i18n="sb_zip_note">Ohne Setup: entpacken und starten. Mit einer leeren Datei portable.txt neben MailVault.exe bleibt alles im Programmordner, etwa auf einem USB-Stick.</span></dd></div>
           <div><dt data-i18n="sb_system">System</dt><dd data-i18n="sb_system_v">Windows 10 oder 11, 64 Bit</dd></div>
           <div><dt data-i18n="sb_price">Preis</dt><dd data-i18n="sb_price_v">Kostenlos</dd></div>
@@ -280,13 +280,13 @@
       <div class="rahmen anmeldung-innen">
         <div>
           <h2 id="anmeldung-titel" data-i18n="signin_title">Gmail und Outlook: mit dem Konto anmelden statt mit Passwort</h2>
-          <p data-i18n-html="signin_p1">Gmail ist in der Download-Version schnell eingerichtet: Adresse eingeben, <b>Automatisch einrichten</b>, dann <b>Bei Google anmelden …</b>. Die Anmeldung läuft in Ihrem Browser direkt bei Google. MailVault bekommt nur die Erlaubnis, Ihre E-Mails zu lesen, und nie Ihr Kennwort.</p>
-          <p data-i18n="signin_p2">Diese Anmeldung heißt OAuth. Damit ein Programm sie nutzen darf, muss es beim E-Mail-Anbieter als App registriert sein und dessen Client-ID kennen. Die Download-Version von dieser Seite bringt die Registrierung für Google mit. Wer MailVault selbst aus dem Quelltext baut oder die Registrierung seiner Firma verwenden muss, trägt eigene Client-IDs unter Verwaltung → Anmeldung (OAuth) ein – die Anleitungen unten zeigen, wie das geht.</p>
+          <p data-i18n-html="signin_p1">Gmail ist in der Download-Version schnell eingerichtet: Adresse eingeben, <b>Automatisch einrichten</b>, dann <b>Bei Google anmelden …</b>. Die Anmeldung läuft in Ihrem Browser direkt bei Google. MailArchy bekommt nur die Erlaubnis, Ihre E-Mails zu lesen, und nie Ihr Kennwort.</p>
+          <p data-i18n="signin_p2">Diese Anmeldung heißt OAuth. Damit ein Programm sie nutzen darf, muss es beim E-Mail-Anbieter als App registriert sein und dessen Client-ID kennen. Die Download-Version von dieser Seite bringt die Registrierung für Google mit. Wer MailArchy selbst aus dem Quelltext baut oder die Registrierung seiner Firma verwenden muss, trägt eigene Client-IDs unter Verwaltung → Anmeldung (OAuth) ein – die Anleitungen unten zeigen, wie das geht.</p>
         </div>
         <dl class="steckbrief anbieter">
           <div><dt data-i18n="prov_gmail">Gmail, Google Workspace</dt><dd data-i18n="prov_gmail_v">Mit Google-Konto anmelden (in der Download-Version eingebaut) oder mit App-Passwort.</dd></div>
           <div><dt data-i18n="prov_ms">Outlook.com, Hotmail, Microsoft 365</dt><dd data-i18n="prov_ms_v">Nur mit Microsoft-Konto: App-Passwörter nimmt Microsoft für fremde Mailprogramme seit September 2024 nicht mehr an. Die eingebaute Microsoft-Anmeldung folgt mit einem Update. Bis dahin eine eigene Client-ID eintragen oder die Outlook-Datendatei (.pst/.ost) einlesen.</dd></div>
-          <div><dt data-i18n="prov_other">GMX, WEB.DE, T-Online, iCloud, Yahoo …</dt><dd data-i18n="prov_other_v">Mit Kennwort bzw. App-Passwort; die Servereinstellungen ermittelt MailVault selbst. Bei GMX und WEB.DE muss der Zugriff per IMAP/POP3 im Postfach eingeschaltet sein.</dd></div>
+          <div><dt data-i18n="prov_other">GMX, WEB.DE, T-Online, iCloud, Yahoo …</dt><dd data-i18n="prov_other_v">Mit Kennwort bzw. App-Passwort; die Servereinstellungen ermittelt MailArchy selbst. Bei GMX und WEB.DE muss der Zugriff per IMAP/POP3 im Postfach eingeschaltet sein.</dd></div>
         </dl>
       </div>
     </section>
@@ -302,13 +302,13 @@
             <summary data-i18n="g1_t">Gmail mit Google-Konto verbinden</summary>
             <div class="anleitung-inhalt">
               <ol class="schritte">
-                <li data-i18n-html="g1_s1">In MailVault <b>E-Mails archivieren</b> → <b>E-Mail-Server (IMAP)</b> wählen, die Gmail-Adresse eintragen und <b>Automatisch einrichten</b> klicken.</li>
+                <li data-i18n-html="g1_s1">In MailArchy <b>E-Mails archivieren</b> → <b>E-Mail-Server (IMAP)</b> wählen, die Gmail-Adresse eintragen und <b>Automatisch einrichten</b> klicken.</li>
                 <li data-i18n-html="g1_s2">Unter <b>Anmeldung</b> steht dann <b>Google-Konto (Gmail, Google Workspace)</b>. Auf <b>Bei Google anmelden …</b> klicken – der Browser öffnet sich.</li>
-                <li data-i18n-html="g1_s3">Konto wählen. Den Hinweis „Google hat diese App nicht überprüft“ mit <b>Erweitert → Weiter zu MailVault</b> bestätigen: Die Prüfung durch Google steht für MailVault noch aus.</li>
+                <li data-i18n-html="g1_s3">Konto wählen. Den Hinweis „Google hat diese App nicht überprüft“ mit <b>Erweitert → Weiter zu MailArchy</b> bestätigen: Die Prüfung durch Google steht für MailArchy noch aus.</li>
                 <li data-i18n-html="g1_s4"><b>Wichtig:</b> Auf der Seite mit den Berechtigungen das Häkchen bei <b>Gmail</b> setzen. Google wählt es nicht vor; ohne Häkchen gibt Google nur die Anmeldung frei, nicht die E-Mails.</li>
-                <li data-i18n-html="g1_s5">Zurück in MailVault: <b>Verbindung testen und Ordner laden</b>, Ordner wählen, speichern. Fertig.</li>
+                <li data-i18n-html="g1_s5">Zurück in MailArchy: <b>Verbindung testen und Ordner laden</b>, Ordner wählen, speichern. Fertig.</li>
               </ol>
-              <p class="hinweis" data-i18n="g1_note">Google beschreibt die Berechtigung als „lesen, schreiben, senden und endgültig löschen“, weil es für IMAP keine engere gibt. MailVault liest trotzdem nur – das sichern die öffentlichen Tests im Quelltext ab.</p>
+              <p class="hinweis" data-i18n="g1_note">Google beschreibt die Berechtigung als „lesen, schreiben, senden und endgültig löschen“, weil es für IMAP keine engere gibt. MailArchy liest trotzdem nur – das sichern die öffentlichen Tests im Quelltext ab.</p>
             </div>
           </details>
 
@@ -317,9 +317,9 @@
             <div class="anleitung-inhalt">
               <ol class="schritte">
                 <li data-i18n-html="g2_s1">Im Google-Konto die <b>Bestätigung in zwei Schritten</b> einschalten (Google-Konto → Sicherheit). Ohne sie gibt es keine App-Passwörter.</li>
-                <li data-i18n-html="g2_s2"><b>myaccount.google.com/apppasswords</b> öffnen, als App-Name <b>MailVault</b> eingeben und <b>Erstellen</b> klicken.</li>
+                <li data-i18n-html="g2_s2"><b>myaccount.google.com/apppasswords</b> öffnen, als App-Name <b>MailArchy</b> eingeben und <b>Erstellen</b> klicken.</li>
                 <li data-i18n-html="g2_s3">Das angezeigte 16-stellige Passwort kopieren. Google zeigt es nur einmal an.</li>
-                <li data-i18n-html="g2_s4">In MailVault unter <b>Anmeldung</b> „Kennwort bzw. App-Passwort“ wählen und das App-Passwort als Kennwort einfügen.</li>
+                <li data-i18n-html="g2_s4">In MailArchy unter <b>Anmeldung</b> „Kennwort bzw. App-Passwort“ wählen und das App-Passwort als Kennwort einfügen.</li>
               </ol>
               <figure class="bild anleitung-bild schmal">
                 <img src="bilder/g-app-passwort.png" width="686" height="653" loading="lazy"
@@ -329,7 +329,7 @@
               </figure>
               <figure class="bild anleitung-bild">
                 <img src="bilder/schema-app-passwort.svg" width="880" height="420" loading="lazy"
-                     alt="Schema der Google-Seite App-Passwörter: App-Name MailVault, Erstellen, dann das angezeigte 16-stellige Passwort kopieren."
+                     alt="Schema der Google-Seite App-Passwörter: App-Name MailArchy, Erstellen, dann das angezeigte 16-stellige Passwort kopieren."
                      data-i18n-attr="alt:g2_alt">
                 <figcaption data-i18n="g2_cap">Schema mit Demo-Werten; die Seite bei Google sieht ähnlich aus.</figcaption>
               </figure>
@@ -340,11 +340,11 @@
             <summary data-i18n="g3_t">Eigene Google-Client-ID anlegen (selbst gebaute Version)</summary>
             <div class="anleitung-inhalt">
               <ol class="schritte">
-                <li data-i18n-html="g3_s1"><b>console.cloud.google.com</b> öffnen, ein neues Projekt „MailVault“ anlegen und unter <b>APIs &amp; Dienste → Bibliothek</b> die <b>Gmail API</b> aktivieren.</li>
+                <li data-i18n-html="g3_s1"><b>console.cloud.google.com</b> öffnen, ein neues Projekt „MailArchy“ anlegen und unter <b>APIs &amp; Dienste → Bibliothek</b> die <b>Gmail API</b> aktivieren.</li>
                 <li data-i18n-html="g3_s2"><b>Google Auth Platform → Branding</b>: App-Name, Support-E-Mail und Links zu Startseite und Datenschutzerklärung eintragen.</li>
                 <li data-i18n-html="g3_s3"><b>Zielgruppe</b>: <i>Extern</i>. Für den Alltag <b>App veröffentlichen</b> („In Produktion“). Im Status „Test“ läuft die Anmeldung nach 7 Tagen ab.</li>
                 <li data-i18n-html="g3_s4"><b>Datenzugriff → Bereiche hinzufügen</b>: <code>https://mail.google.com/</code>, <code>openid</code> und <code>…/auth/userinfo.email</code>.</li>
-                <li data-i18n-html="g3_s5"><b>Clients → Client erstellen</b>, Anwendungstyp <b>Desktopanwendung</b>, <b>Erstellen</b>. Client-ID und Clientschlüssel kopieren und in MailVault eintragen (letzte Anleitung).</li>
+                <li data-i18n-html="g3_s5"><b>Clients → Client erstellen</b>, Anwendungstyp <b>Desktopanwendung</b>, <b>Erstellen</b>. Client-ID und Clientschlüssel kopieren und in MailArchy eintragen (letzte Anleitung).</li>
               </ol>
               <div class="bilder-reihe">
                 <figure class="bild anleitung-bild">
@@ -375,14 +375,14 @@
             <div class="anleitung-inhalt">
               <ol class="schritte">
                 <li data-i18n-html="g4_s1">Sie brauchen ein Microsoft-Entra-Verzeichnis: ein Microsoft-365-Firmenkonto oder ein kostenloses Azure-Konto. Azure verlangt dabei eine Kreditkarte zur Identitätsprüfung; die Registrierung selbst kostet nichts. Ein reines Outlook.com-Konto genügt nicht.</li>
-                <li data-i18n-html="g4_s2"><b>entra.microsoft.com</b> → <b>Anwendungen → App-Registrierungen → Neue Registrierung</b>. Name <b>MailVault</b>, Kontotyp <b>Konten in einem beliebigen Organisationsverzeichnis und persönliche Microsoft-Konten</b>.</li>
+                <li data-i18n-html="g4_s2"><b>entra.microsoft.com</b> → <b>Anwendungen → App-Registrierungen → Neue Registrierung</b>. Name <b>MailArchy</b>, Kontotyp <b>Konten in einem beliebigen Organisationsverzeichnis und persönliche Microsoft-Konten</b>.</li>
                 <li data-i18n-html="g4_s3">Umleitungs-URI: Plattform <b>Öffentlicher Client/nativ (mobil und Desktop)</b>, Wert <code>http://localhost</code> – ohne Port. Dann <b>Registrieren</b>.</li>
                 <li data-i18n-html="g4_s4">Unter <b>API-Berechtigungen → Microsoft Graph → Delegiert</b> hinzufügen: <code>IMAP.AccessAsUser.All</code>, <code>POP.AccessAsUser.All</code>, <code>offline_access</code>, <code>openid</code>, <code>email</code>, <code>profile</code>.</li>
                 <li data-i18n-html="g4_s5">Auf der Übersicht die <b>Anwendungs-ID (Client)</b> kopieren. Ein Geheimnis (Secret) wird nicht gebraucht.</li>
               </ol>
               <figure class="bild anleitung-bild">
                 <img src="bilder/schema-entra.svg" width="880" height="520" loading="lazy"
-                     alt="Schema der Microsoft-Entra-Registrierung: Name MailVault, Kontotyp mit persönlichen Microsoft-Konten, Umleitungs-URI http://localhost, danach die Anwendungs-ID kopieren."
+                     alt="Schema der Microsoft-Entra-Registrierung: Name MailArchy, Kontotyp mit persönlichen Microsoft-Konten, Umleitungs-URI http://localhost, danach die Anwendungs-ID kopieren."
                      data-i18n-attr="alt:g4_alt">
                 <figcaption data-i18n="g4_cap">Schema mit Demo-Werten; die Felder heißen in Entra genauso.</figcaption>
               </figure>
@@ -391,19 +391,19 @@
           </details>
 
           <details class="anleitung" id="anleitung-eintragen">
-            <summary data-i18n="g5_t">Client-IDs in MailVault eintragen</summary>
+            <summary data-i18n="g5_t">Client-IDs in MailArchy eintragen</summary>
             <div class="anleitung-inhalt">
               <ol class="schritte">
-                <li data-i18n-html="g5_s1">In MailVault <b>Verwaltung → Anmeldung (OAuth)</b> öffnen.</li>
+                <li data-i18n-html="g5_s1">In MailArchy <b>Verwaltung → Anmeldung (OAuth)</b> öffnen.</li>
                 <li data-i18n-html="g5_s2">Bei Google Client-ID und Client-Secret eintragen, bei Microsoft nur die Client-ID. <b>Speichern</b>.</li>
-                <li data-i18n-html="g5_s3">Darüber zeigt MailVault, welche Client-ID gilt. Ein leeres Feld bedeutet: die eingebaute verwenden.</li>
-                <li data-i18n-html="g5_s4">Postfächer, die schon mit einer anderen Client-ID angemeldet waren, einmal neu anmelden (Profil öffnen → <b>Erneut … anmelden</b>). MailVault nennt sie nach dem Speichern.</li>
+                <li data-i18n-html="g5_s3">Darüber zeigt MailArchy, welche Client-ID gilt. Ein leeres Feld bedeutet: die eingebaute verwenden.</li>
+                <li data-i18n-html="g5_s4">Postfächer, die schon mit einer anderen Client-ID angemeldet waren, einmal neu anmelden (Profil öffnen → <b>Erneut … anmelden</b>). MailArchy nennt sie nach dem Speichern.</li>
               </ol>
               <figure class="bild anleitung-bild">
                 <img src="bilder/mv-oauth-einstellungen.png" width="1280" height="820" loading="lazy"
-                     alt="MailVault, Verwaltung, Registerkarte Anmeldung (OAuth): Felder für Google-Client-ID und Client-Secret sowie Microsoft-Client-ID mit Statusanzeige."
+                     alt="MailArchy, Verwaltung, Registerkarte Anmeldung (OAuth): Felder für Google-Client-ID und Client-Secret sowie Microsoft-Client-ID mit Statusanzeige."
                      data-i18n-attr="alt:g5_alt">
-                <figcaption data-i18n="g5_cap">Verwaltung → Anmeldung (OAuth) in MailVault.</figcaption>
+                <figcaption data-i18n="g5_cap">Verwaltung → Anmeldung (OAuth) in MailArchy.</figcaption>
               </figure>
             </div>
           </details>
@@ -415,18 +415,18 @@
     <section class="abschnitt ablage unterstuetzen" id="unterstuetzen" aria-labelledby="unterstuetzen-titel">
       <div class="rahmen unterstuetzen-innen">
         <div>
-          <h2 id="unterstuetzen-titel" data-i18n="support_title">MailVault unterstützen</h2>
-          <p data-i18n="support_p1">MailVault ist kostenlos und bleibt es. Wer mag, hilft dem Entwickler mit einem Beitrag, Server und Weiterentwicklung zu bezahlen.</p>
+          <h2 id="unterstuetzen-titel" data-i18n="support_title">MailArchy unterstützen</h2>
+          <p data-i18n="support_p1">MailArchy ist kostenlos und bleibt es. Wer mag, hilft dem Entwickler mit einem Beitrag, Server und Weiterentwicklung zu bezahlen.</p>
           <p data-i18n="support_p2">Der Beitrag ändert nichts: Sie bekommen dieselbe App wie alle anderen, ohne Konto, ohne Freischaltung, ohne Werbung. Er ist deshalb kein Preis für eine Leistung, sondern ein freiwilliger Zuschuss.</p>
           <a class="knopf knopf-neben" rel="noopener" target="_blank"
-             href="https://www.paypal.com/cgi-bin/webscr?cmd=_xclick&amp;business=flusu%40zerze.de&amp;currency_code=EUR&amp;item_name=Kostenbeitrag+zu+Betrieb+und+Pflege+von+MailVault">
+             href="https://www.paypal.com/cgi-bin/webscr?cmd=_xclick&amp;business=flusu%40zerze.de&amp;currency_code=EUR&amp;item_name=Kostenbeitrag+zu+Betrieb+und+Pflege+von+MailArchy">
             <span data-i18n="support_btn">Mit PayPal unterstützen</span><svg aria-hidden="true"><use href="#i-out"/></svg>
           </a>
         </div>
         <div class="beleg">
           <h3 data-i18n="receipt_title">Bestätigung gewünscht?</h3>
-          <p data-i18n-html="receipt_p1">Auf Wunsch gibt es eine Zahlungsbestätigung mit Datum, Betrag und den Anbieterangaben aus dem Impressum. Schicken Sie dazu nach der Zahlung die PayPal-Transaktionsnummer an <a href="mailto:mailvault@zerze.de">mailvault@zerze.de</a>.</p>
-          <p data-i18n="receipt_p2">Keine Umsatzsteuer ausgewiesen: Der Beitrag ist freiwillig und hängt mit keiner Gegenleistung zusammen (echter Zuschuss). MailVault ist nicht gemeinnützig; eine Spendenquittung ist daher nicht möglich.</p>
+          <p data-i18n-html="receipt_p1">Auf Wunsch gibt es eine Zahlungsbestätigung mit Datum, Betrag und den Anbieterangaben aus dem Impressum. Schicken Sie dazu nach der Zahlung die PayPal-Transaktionsnummer an <a href="mailto:mailarchy@zerze.de">mailarchy@zerze.de</a>.</p>
+          <p data-i18n="receipt_p2">Keine Umsatzsteuer ausgewiesen: Der Beitrag ist freiwillig und hängt mit keiner Gegenleistung zusammen (echter Zuschuss). MailArchy ist nicht gemeinnützig; eine Spendenquittung ist daher nicht möglich.</p>
         </div>
       </div>
     </section>
@@ -436,14 +436,15 @@
       <div class="rahmen fragen-innen">
         <h2 id="fragen-titel" data-i18n="faq_title">Häufige Fragen</h2>
         <div class="fragen-liste">
-          <details><summary data-i18n="q1">Braucht MailVault eine Internetverbindung?</summary><p data-i18n="a1">Nur zum Abholen von E-Mails aus Postfächern und für die Update-Suche (abschaltbar). Suchen, Lesen und Exportieren funktionieren komplett offline.</p></details>
+          <details><summary data-i18n="q1">Braucht MailArchy eine Internetverbindung?</summary><p data-i18n="a1">Nur zum Abholen von E-Mails aus Postfächern und für die Update-Suche (abschaltbar). Suchen, Lesen und Exportieren funktionieren komplett offline.</p></details>
           <details><summary data-i18n="q2">Wo liegen meine Daten?</summary><p data-i18n="a2">In einem Ordner Ihrer Wahl auf Ihrem PC – zum Sichern einfach den Ordner kopieren. Wer das ZIP mit einer Datei portable.txt neben MailVault.exe nutzt, hat alles im Programmordner, etwa auf einem USB-Stick.</p></details>
-          <details><summary data-i18n="q7">Warum warnt Windows beim ersten Start?</summary><p data-i18n="a7">SmartScreen kennt Programme ohne gekauftes Signaturzertifikat noch nicht und warnt deshalb. Was im Setup steckt, können Sie im offenen Quelltext auf GitHub nachlesen. Updates prüft MailVault danach selbst anhand einer Signatur.</p></details>
-          <details><summary data-i18n="q3">Funktioniert Gmail mit Zwei-Faktor-Anmeldung?</summary><p data-i18n="a3">Ja. Am einfachsten melden Sie sich in MailVault mit Ihrem Google-Konto an – dann braucht es kein Passwort in MailVault. Alternativ geht ein App-Passwort aus Ihrem Google-Konto. Beides steht oben in den Anleitungen.</p></details>
+          <details><summary data-i18n="q7">Warum warnt Windows beim ersten Start?</summary><p data-i18n="a7">SmartScreen kennt Programme ohne gekauftes Signaturzertifikat noch nicht und warnt deshalb. Was im Setup steckt, können Sie im offenen Quelltext auf GitHub nachlesen. Updates prüft MailArchy danach selbst anhand einer Signatur.</p></details>
+          <details><summary data-i18n="q3">Funktioniert Gmail mit Zwei-Faktor-Anmeldung?</summary><p data-i18n="a3">Ja. Am einfachsten melden Sie sich in MailArchy mit Ihrem Google-Konto an – dann braucht es kein Passwort in MailArchy. Alternativ geht ein App-Passwort aus Ihrem Google-Konto. Beides steht oben in den Anleitungen.</p></details>
           <details><summary data-i18n="q8">Und Outlook.com, Hotmail oder Microsoft 365?</summary><p data-i18n="a8">Microsoft lässt fremde Mailprogramme nur noch mit der Microsoft-Anmeldung (OAuth) zu, App-Passwörter funktionieren dort nicht mehr. Die eingebaute Microsoft-Anmeldung kommt mit einem Update. Bis dahin können Sie eine eigene Client-ID eintragen oder, wenn Outlook auf dem PC eingerichtet ist, dessen Datendatei (.pst/.ost) archivieren.</p></details>
-          <details><summary data-i18n="q4">Gibt es MailVault für Mac oder Linux?</summary><p data-i18n="a4">Nein, MailVault läuft unter Windows 10 und 11. Der Webzugriff im Heimnetz funktioniert aber mit jedem Browser, auch auf Mac, iPhone und Android.</p></details>
+          <details><summary data-i18n="q4">Gibt es MailArchy für Mac oder Linux?</summary><p data-i18n="a4">Nein, MailArchy läuft unter Windows 10 und 11. Der Webzugriff im Heimnetz funktioniert aber mit jedem Browser, auch auf Mac, iPhone und Android.</p></details>
           <details><summary data-i18n="q5">Was passiert mit meinen E-Mails beim KI-Assistenten?</summary><p data-i18n="a5">Nichts, solange Sie ihn nicht einschalten. Mit Ihrem eigenen Claude-Schlüssel gehen nur die Auszüge an Anthropic, die zur Beantwortung Ihrer Frage nötig sind – Sie sehen jede Quelle.</p></details>
-          <details><summary data-i18n="q6">Wie entferne ich MailVault wieder?</summary><p data-i18n="a6">MailVault beenden, den Ordner %LOCALAPPDATA%\Programs\MailVault und die Verknüpfung im Startmenü löschen – fertig, Administratorrechte braucht es nicht. Ihr Archiv liegt getrennt davon und bleibt, bis Sie es selbst löschen.</p></details>
+          <details><summary data-i18n="q6">Wie entferne ich MailArchy wieder?</summary><p data-i18n="a6">MailArchy beenden, den Ordner %LOCALAPPDATA%\Programs\MailVault und die Verknüpfung im Startmenü löschen – fertig, Administratorrechte braucht es nicht. Ihr Archiv liegt getrennt davon und bleibt, bis Sie es selbst löschen.</p></details>
+          <details><summary data-i18n="q9">Hieß MailArchy früher MailVault?</summary><p data-i18n="a9">Ja. Bis Version 0.7 hieß das Programm MailVault. Es ist dasselbe Programm mit demselben Archiv: Bestehende Installationen bekommen den neuen Namen automatisch mit dem nächsten Update, Ihre E-Mails und Einstellungen bleiben, wo sie sind.</p></details>
         </div>
       </div>
     </section>
@@ -451,7 +452,7 @@
     <!-- ============================================================ Schluss -->
     <section class="schluss" aria-labelledby="schluss-titel">
       <div class="rahmen schluss-innen">
-        <h2 id="schluss-titel" class="klapptitel" data-i18n="cta_title">MailVault kostenlos herunterladen</h2>
+        <h2 id="schluss-titel" class="klapptitel" data-i18n="cta_title">MailArchy kostenlos herunterladen</h2>
         <div class="schluss-laden">
           <div class="knopfreihe">
             <a class="knopf knopf-haupt" href="{{SETUP}}">
@@ -464,7 +465,7 @@
             </a>
           </div>
           <p class="laden-info">
-            <span class="zahl">MailVault-Setup-{{VERSION}}.exe · {{SETUP_MB}} MB</span>
+            <span class="zahl">MailArchy-Setup-{{VERSION}}.exe · {{SETUP_MB}} MB</span>
             <span class="trenn" aria-hidden="true">·</span>
             <a href="{{ZIP}}"><span data-i18n="dl_zip">Portable ZIP</span> (<span class="zahl">{{SIZE_MB}}</span> MB)</a>
           </p>
@@ -482,7 +483,7 @@
           <h2>Impressum</h2>
           <p>Angaben nach § 5 DDG:<br>
             Tonio Wirmer<br>Tonio Wirmer IT-Dienstleistungen<br>Atzelbergstr. 127<br>60389 Frankfurt am Main<br>
-            E-Mail: <a href="mailto:mailvault@zerze.de">mailvault@zerze.de</a><br>
+            E-Mail: <a href="mailto:mailarchy@zerze.de">mailarchy@zerze.de</a><br>
             <span class="zahl">USt-IdNr. DE262950960</span></p>
           <p>Inhaltlich verantwortlich: Tonio Wirmer, Anschrift wie oben.</p>
         </div>
@@ -495,11 +496,11 @@
           <p>Der Server wird bei der netcup GmbH betrieben und steht in einem Rechenzentrum in Nürnberg (Deutschland). Sie verarbeitet die Daten als Auftragsverarbeiter nach Art. 28 DSGVO weisungsgebunden; ein entsprechender Vertrag besteht. Die Daten verlassen die Europäische Union nicht.</p>
           <p>Diese Seite setzt keine Cookies und lädt nichts von fremden Servern; auch die Schriften liegen hier. Nur wenn Sie eine Sprache wählen, merkt sich Ihr Browser diese Wahl lokal (§ 25 Abs. 2 Nr. 2 TDDDG). Es gibt keine Zählpixel, keine Werbung und keine Reichweitenmessung.</p>
           <h3>Update-Suche des Programms</h3>
-          <p>Ist die automatische Update-Suche eingeschaltet (Voreinstellung), ruft MailVault etwa alle vier Stunden die Update-Liste von dieser Seite ab. Dabei fallen dieselben Protokolldaten an wie oben, die Browserkennung enthält die Programmversion. Inhalte Ihres Archivs, Kennungen oder Konten werden nicht übertragen. Sie können die Suche unter Verwaltung → Updates abschalten.</p>
+          <p>Ist die automatische Update-Suche eingeschaltet (Voreinstellung), ruft MailArchy etwa alle vier Stunden die Update-Liste von dieser Seite ab. Dabei fallen dieselben Protokolldaten an wie oben, die Browserkennung enthält die Programmversion. Inhalte Ihres Archivs, Kennungen oder Konten werden nicht übertragen. Sie können die Suche unter Verwaltung → Updates abschalten.</p>
           <h3>Anmeldung bei Google und Microsoft</h3>
-          <p>Melden Sie ein Postfach in MailVault mit Ihrem Google- oder Microsoft-Konto an, findet die Anmeldung in Ihrem Browser direkt beim jeweiligen Anbieter statt. MailVault erhält von dort ein Zugriffsrecht für Ihr Postfach und speichert es verschlüsselt (Windows-DPAPI) nur auf Ihrem PC. MailVault verwendet die Daten aus Ihrem Google- bzw. Microsoft-Konto ausschließlich, um Ihre E-Mails lesend in das Archiv auf Ihrem PC zu übernehmen. Sie werden nicht an den Anbieter dieser Seite übertragen und nicht für Werbung genutzt. An Dritte gelangen Inhalte nur, wenn Sie selbst den KI-Assistenten mit Ihrem eigenen Claude-Schlüssel einschalten und eine Frage stellen; dann gehen die dafür nötigen Auszüge direkt von Ihrem PC an Anthropic. Die Nutzung von Daten, die MailVault über Google-APIs erhält, entspricht der Google API Services User Data Policy einschließlich der Anforderungen zur eingeschränkten Nutzung (Limited Use). Den Zugriff können Sie jederzeit in Ihrem Google- bzw. Microsoft-Konto widerrufen oder in MailVault das Profil löschen.</p>
+          <p>Melden Sie ein Postfach in MailArchy mit Ihrem Google- oder Microsoft-Konto an, findet die Anmeldung in Ihrem Browser direkt beim jeweiligen Anbieter statt. MailArchy erhält von dort ein Zugriffsrecht für Ihr Postfach und speichert es verschlüsselt (Windows-DPAPI) nur auf Ihrem PC. MailArchy verwendet die Daten aus Ihrem Google- bzw. Microsoft-Konto ausschließlich, um Ihre E-Mails lesend in das Archiv auf Ihrem PC zu übernehmen. Sie werden nicht an den Anbieter dieser Seite übertragen und nicht für Werbung genutzt. An Dritte gelangen Inhalte nur, wenn Sie selbst den KI-Assistenten mit Ihrem eigenen Claude-Schlüssel einschalten und eine Frage stellen; dann gehen die dafür nötigen Auszüge direkt von Ihrem PC an Anthropic. Die Nutzung von Daten, die MailArchy über Google-APIs erhält, entspricht der Google API Services User Data Policy einschließlich der Anforderungen zur eingeschränkten Nutzung (Limited Use). Den Zugriff können Sie jederzeit in Ihrem Google- bzw. Microsoft-Konto widerrufen oder in MailArchy das Profil löschen.</p>
           <h3>E-Mail</h3>
-          <p>Schreiben Sie an mailvault@zerze.de, wird Ihre Nachricht nur zur Beantwortung verwendet und gelöscht, wenn sie erledigt ist und keine Aufbewahrungspflicht besteht. Das Postfach liegt ebenfalls bei der netcup GmbH.</p>
+          <p>Schreiben Sie an mailarchy@zerze.de, wird Ihre Nachricht nur zur Beantwortung verwendet und gelöscht, wenn sie erledigt ist und keine Aufbewahrungspflicht besteht. Das Postfach liegt ebenfalls bei der netcup GmbH.</p>
           <h3>PayPal und GitHub</h3>
           <p>Der Knopf „Mit PayPal unterstützen“ ist ein gewöhnlicher Verweis. Solange Sie ihn nicht anklicken, erfährt PayPal nichts von Ihrem Besuch. Danach gilt die Datenschutzerklärung der PayPal (Europe) S.à r.l. et Cie, S.C.A., Luxemburg, die über die Zahlungsdaten selbst entscheidet.</p>
           <p>Auch die Verweise auf GitHub sind gewöhnliche Links. Erst wenn Sie einen anklicken, verarbeitet die GitHub, Inc. (USA) Daten nach ihrer eigenen Datenschutzerklärung.</p>
@@ -508,8 +509,8 @@
         </div>
       </div>
       <p class="fuss-zeile">
-        <span>MailVault Home</span>
-        <a href="mailto:mailvault@zerze.de">mailvault@zerze.de</a>
+        <span>MailArchy</span>
+        <a href="mailto:mailarchy@zerze.de">mailarchy@zerze.de</a>
         <a href="{{REPO_URL}}" rel="noopener" data-i18n="foot_source">Quelltext auf GitHub</a>
       </p>
     </div>

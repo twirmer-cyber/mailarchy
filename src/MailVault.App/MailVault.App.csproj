@@ -9,6 +9,8 @@
     <ImplicitUsings>enable</ImplicitUsings>
     <LangVersion>latest</LangVersion>
     <AssemblyName>MailVault</AssemblyName>
+    <!-- Dateiname bleibt MailVault.exe (Update-Kompatibilität mit Versionen bis 0.7); angezeigter Name ist MailArchy -->
+    <AssemblyTitle>MailArchy</AssemblyTitle>
     <RootNamespace>MailVault.App</RootNamespace>
     <ApplicationManifest>app.manifest</ApplicationManifest>
     <!-- Programmsymbol (exe, Startmenü, Taskleiste); neu erzeugen mit build/make-icon.ps1 -->

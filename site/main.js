@@ -1,11 +1,11 @@
-// MailVault-Seite: Sprachwahl, Fallblatt-Überschriften, Anzeigetafel mit Suchvorführung (erfundene Demo-Daten).
+// MailArchy-Seite: Sprachwahl, Fallblatt-Überschriften, Anzeigetafel mit Suchvorführung (erfundene Demo-Daten).
 // Ohne JavaScript bleibt alles lesbar und der Download-Knopf funktioniert; Bewegung entfällt bei „Bewegung reduzieren“.
 (function () {
   'use strict';
   var root = document.documentElement;
   var I18N = window.MV_I18N || {};
   var reduce = !!(window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches);
-  var TITLE_DE = 'MailVault – Ihr E-Mail-Archiv für Windows';
+  var TITLE_DE = 'MailArchy – Ihr E-Mail-Archiv für Windows';
   var DE = { board_pause: 'Vorführung anhalten', board_play: 'Vorführung fortsetzen' };
 
   // ------------------------------------------------------------ Demo-Daten (frei erfunden)

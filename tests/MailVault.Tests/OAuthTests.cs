@@ -141,7 +141,7 @@ public class OAuthTests
         Assert.Equal("ms-client", form["client_id"]);
         Assert.False(form.ContainsKey("client_secret"));
         await WaitFor(() => pages.Count == 1);
-        Assert.Contains("MailVault", pages[0]);
+        Assert.Contains("MailArchy", pages[0]);
     }
 
     [Fact]

@@ -1,7 +1,7 @@
 <Project Sdk="Microsoft.NET.Sdk">
   <!--
-    MailVault-Setup-<version>.exe: kleiner Entpacker für .NET Framework 4.8 (in Windows 10/11 enthalten, also ohne
-    Laufzeit-Download). Enthält das eigenständige Paket MailVault-<version>-win-x64.zip als Ressource, entpackt es in
+    MailArchy-Setup-<version>.exe: kleiner Entpacker für .NET Framework 4.8 (in Windows 10/11 enthalten, also ohne
+    Laufzeit-Download). Enthält das eigenständige Paket MailArchy-<version>-win-x64.zip als Ressource, entpackt es in
     einen Temp-Ordner und startet MailVault.exe mit dem Schalter install – die eigentliche Installation erledigt MailVault selbst.
     Gebaut von build\release.ps1:  dotnet build -c Release -p:Payload=<zip>
   -->
@@ -11,12 +11,12 @@
     <LangVersion>latest</LangVersion>
     <Nullable>enable</Nullable>
     <UseWindowsForms>true</UseWindowsForms>
-    <AssemblyName>MailVault-Setup</AssemblyName>
+    <AssemblyName>MailArchy-Setup</AssemblyName>
     <RootNamespace>MailVault.Setup</RootNamespace>
     <ApplicationIcon>../../src/MailVault.App/MailVault.ico</ApplicationIcon>
     <ApplicationManifest>app.manifest</ApplicationManifest>
     <GenerateDocumentationFile>false</GenerateDocumentationFile>
-    <Description>MailVault Home – Setup</Description>
+    <Description>MailArchy – Setup</Description>
   </PropertyGroup>
   <ItemGroup>
     <PackageReference Include="Microsoft.NETFramework.ReferenceAssemblies" Version="1.0.3" PrivateAssets="all" />

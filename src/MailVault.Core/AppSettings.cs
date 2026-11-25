@@ -41,7 +41,7 @@ public sealed class AppSettings
 
     public static string DefaultDataDirectory => IsPortable
         ? Path.Combine(AppContext.BaseDirectory, "Data")
-        : Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), "MailVault");
+        : Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), "MailArchy");
 
     static readonly JsonSerializerOptions Json = new() { WriteIndented = true, Converters = { new JsonStringEnumConverter() } };
 

@@ -68,7 +68,7 @@ public static class MailHtml
         var csp = $"default-src 'none'; img-src data: cid:{external}; style-src 'unsafe-inline'{external}; font-src data:{external}; media-src data:{external}";
         return new StringBuilder()
             .Append("<meta charset=\"utf-8\">")
-            .Append($"<title>{WebUtility.HtmlEncode(string.IsNullOrWhiteSpace(title) ? "MailVault" : title)}</title>")
+            .Append($"<title>{WebUtility.HtmlEncode(string.IsNullOrWhiteSpace(title) ? "MailArchy" : title)}</title>")
             .Append($"<meta http-equiv=\"Content-Security-Policy\" content=\"{csp}\">")
             .Append("<meta name=\"color-scheme\" content=\"light\"><style>html{background:#fff;color-scheme:light}body{background:#fff;font-family:'Segoe UI',sans-serif;font-size:13px;margin:14px;color:#1e2329;word-wrap:break-word}img{max-width:100%;height:auto}")
             .Append(extraCss)

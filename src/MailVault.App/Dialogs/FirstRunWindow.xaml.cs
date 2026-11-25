@@ -31,7 +31,7 @@ public partial class FirstRunWindow : Window
         }
         catch (Exception ex)
         {
-            MessageBox.Show(this, L.F("FirstRun_FolderUnusable", MailVault.Core.ErrorText.Describe(ex)), "MailVault", MessageBoxButton.OK, MessageBoxImage.Warning);
+            MessageBox.Show(this, L.F("FirstRun_FolderUnusable", MailVault.Core.ErrorText.Describe(ex)), "MailArchy", MessageBoxButton.OK, MessageBoxImage.Warning);
             return;
         }
         SelectedDirectory = path;

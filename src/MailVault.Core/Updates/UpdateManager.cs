@@ -18,7 +18,7 @@ public sealed class InstallInfo
 
     /// <summary>"stable" = nur fertige Versionen, "beta" = auch Vorabversionen (alt: "main").</summary>
     public string Channel { get; set; } = "stable";
-    /// <summary>Anderer Update-Server (leer = mailvault.zerze.de). Nur für Tests oder einen eigenen Spiegel.</summary>
+    /// <summary>Anderer Update-Server (leer = mailarchy.zerze.de, ersatzweise mailvault.zerze.de). Nur für Tests oder einen eigenen Spiegel.</summary>
     public string FeedUrl { get; set; } = "";
     /// <summary>Nicht mehr verwendet (frühere Updates über GitHub); bleibt für ältere install.json lesbar.</summary>
     public string RepoUrl { get; set; } = "";
@@ -173,7 +173,7 @@ public static class UpdateFeed
 }
 
 /// <summary>
-/// Updates von mailvault.zerze.de: Dort liegen die Update-Listen (updates/stable.json, updates/beta.json), jeweils mit
+/// Updates von mailarchy.zerze.de (früher mailvault.zerze.de, dort weiterhin dieselben Dateien): Dort liegen die Update-Listen (updates/stable.json, updates/beta.json), jeweils mit
 /// Signatur (.sig), und die fertigen Pakete (MailVault-x.y.z-win-x64.zip). MailVault prüft die Signatur, vergleicht die
 /// Versionen, lädt das Paket, kontrolliert die Prüfsumme aus der signierten Liste und lässt es von einem kleinen Skript
 /// nach dem Beenden über die Programmdateien kopieren. Archiv, Einstellungen und portable Daten werden nie angefasst;
@@ -181,13 +181,16 @@ public static class UpdateFeed
 /// </summary>
 public sealed class UpdateManager
 {
-    public const string DefaultFeedBase = "https://mailvault.zerze.de/updates/";
+    public const string DefaultFeedBase = "https://mailarchy.zerze.de/updates/";
+    /// <summary>Server unter dem früheren Namen; liefert dieselben signierten Listen und springt ein, wenn der neue nicht erreichbar ist.</summary>
+    public const string LegacyFeedBase = "https://mailvault.zerze.de/updates/";
     public const string PackageSuffix = "-win-x64.zip";
 
     readonly InstallInfo _install;
     readonly string _installDir;
     readonly BuildInfo _current;
     readonly Uri _feedBase;
+    readonly Uri? _fallbackBase;
     readonly string _publicKey;
     readonly HttpMessageHandler _handler;
 
@@ -199,6 +202,7 @@ public sealed class UpdateManager
         _current = current ?? BuildInfo.Current;
         var baseUrl = feedBase ?? FeedBaseFromEnvironment ?? (install.FeedUrl is { Length: > 0 } f ? f : DefaultFeedBase);
         _feedBase = new Uri(baseUrl.EndsWith('/') ? baseUrl : baseUrl + "/");
+        if (feedBase is null && baseUrl == DefaultFeedBase) _fallbackBase = new Uri(LegacyFeedBase);
         _publicKey = publicKey ?? UpdateFeed.PublicKey;
         _handler = handler ?? new SocketsHttpHandler { PooledConnectionLifetime = TimeSpan.FromMinutes(5) };
     }
@@ -212,7 +216,8 @@ public sealed class UpdateManager
     public static string DefaultInstallDir => Environment.GetEnvironmentVariable("MAILVAULT_INSTALL_DIR") is { Length: > 0 } d ? d
         : Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "Programs", "MailVault");
 
-    public Uri FeedUrl => new(_feedBase, _install.IncludesPrereleases ? "beta.json" : "stable.json");
+    public Uri FeedUrl => FeedUrlOn(_feedBase);
+    Uri FeedUrlOn(Uri root) => new(root, _install.IncludesPrereleases ? "beta.json" : "stable.json");
 
     /// <summary>Nur verschlüsselte Verbindungen; unverschlüsselt nur zu diesem PC (Tests).</summary>
     static bool IsAllowed(Uri u) => u.Scheme == Uri.UriSchemeHttps || (u.Scheme == Uri.UriSchemeHttp && u.IsLoopback);
@@ -220,7 +225,7 @@ public sealed class UpdateManager
     HttpClient Client(TimeSpan timeout)
     {
         var http = new HttpClient(_handler, disposeHandler: false) { Timeout = timeout };
-        http.DefaultRequestHeaders.UserAgent.ParseAdd($"MailVault-Updater/{_current.Version}");
+        http.DefaultRequestHeaders.UserAgent.ParseAdd($"MailArchy-Updater/{_current.Version}");
         return http;
     }
 
@@ -232,19 +237,15 @@ public sealed class UpdateManager
         var feedUrl = FeedUrl;
         if (!IsAllowed(feedUrl)) return Problem(UpdateText.InsecureServer);
         using var http = Client(TimeSpan.FromSeconds(60));
-        byte[] json;
-        string signature;
-        try
+        var (json, signature, problem) = await FetchAsync(http, feedUrl, ct);
+        if (problem is not null && _fallbackBase is not null)
         {
-            using var resp = await http.GetAsync(feedUrl, ct);
-            if (resp.StatusCode is HttpStatusCode.NotFound) return Problem(UpdateText.NoReleaseYet);
-            if (!resp.IsSuccessStatusCode) return Problem(UpdateText.ServerError((int)resp.StatusCode));
-            json = await resp.Content.ReadAsByteArrayAsync(ct);
-            using var sigResp = await http.GetAsync(feedUrl + ".sig", ct);
-            signature = sigResp.IsSuccessStatusCode ? await sigResp.Content.ReadAsStringAsync(ct) : "";
+            // Neuer Server (noch) nicht erreichbar: dieselbe signierte Liste vom Server unter dem früheren Namen
+            var fallbackUrl = FeedUrlOn(_fallbackBase);
+            var second = await FetchAsync(http, fallbackUrl, ct);
+            if (second.Problem is null) (json, signature, problem, feedUrl) = (second.Json, second.Signature, null, fallbackUrl);
         }
-        catch (HttpRequestException) { return Problem(UpdateText.Unreachable); }
-        catch (TaskCanceledException) when (!ct.IsCancellationRequested) { return Problem(UpdateText.Unreachable); }
+        if (problem is not null) return Problem(problem);
 
         if (!UpdateFeed.VerifySignature(json, signature, _publicKey))
             return Problem(UpdateText.BadSignature);
@@ -265,6 +266,22 @@ public sealed class UpdateManager
         return new UpdateCheck(true, target, changes);
 
         static UpdateCheck Problem(string text) => new(false, null, Array.Empty<string>(), text);
+    }
+
+    static async Task<(byte[] Json, string Signature, string? Problem)> FetchAsync(HttpClient http, Uri feedUrl, CancellationToken ct)
+    {
+        try
+        {
+            using var resp = await http.GetAsync(feedUrl, ct);
+            if (resp.StatusCode is HttpStatusCode.NotFound) return ([], "", UpdateText.NoReleaseYet);
+            if (!resp.IsSuccessStatusCode) return ([], "", UpdateText.ServerError((int)resp.StatusCode));
+            var json = await resp.Content.ReadAsByteArrayAsync(ct);
+            using var sigResp = await http.GetAsync(feedUrl + ".sig", ct);
+            var signature = sigResp.IsSuccessStatusCode ? await sigResp.Content.ReadAsStringAsync(ct) : "";
+            return (json, signature, null);
+        }
+        catch (HttpRequestException) { return ([], "", UpdateText.Unreachable); }
+        catch (TaskCanceledException) when (!ct.IsCancellationRequested) { return ([], "", UpdateText.Unreachable); }
     }
 
     // Hintergrund-Update und Klick auf „Installieren“ können gleichzeitig laden wollen: nacheinander, und ein schon

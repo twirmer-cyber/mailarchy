@@ -13,13 +13,13 @@ public static class Ui
     static Window? Owner => Application.Current?.Windows.OfType<Window>().FirstOrDefault(w => w.IsActive) ?? Application.Current?.MainWindow;
 
     public static void Info(string text) =>
-        MessageBox.Show(Owner!, text, "MailVault", MessageBoxButton.OK, MessageBoxImage.Information);
+        MessageBox.Show(Owner!, text, "MailArchy", MessageBoxButton.OK, MessageBoxImage.Information);
 
     public static void Error(string text) =>
-        MessageBox.Show(Owner!, text, "MailVault", MessageBoxButton.OK, MessageBoxImage.Error);
+        MessageBox.Show(Owner!, text, "MailArchy", MessageBoxButton.OK, MessageBoxImage.Error);
 
     public static bool Confirm(string text) =>
-        MessageBox.Show(Owner!, text, "MailVault", MessageBoxButton.YesNo, MessageBoxImage.Question) == MessageBoxResult.Yes;
+        MessageBox.Show(Owner!, text, "MailArchy", MessageBoxButton.YesNo, MessageBoxImage.Question) == MessageBoxResult.Yes;
 
     /// <summary>Führt eine lange Aufgabe mit Fortschrittsdialog und Protokoll aus.</summary>
     public static string? RunWithProgress(string title, Func<IProgress<ProgressInfo>, CancellationToken, Task<string>> work, bool autoClose = false)

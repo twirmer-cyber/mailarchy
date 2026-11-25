@@ -118,12 +118,12 @@
     <value>Reminder: {0}</value>
   </data>
   <data name="Mail_Failure_Subject" xml:space="preserve">
-    <value>MailVault: mailbox “{0}” could not be archived</value>
+    <value>MailArchy: mailbox “{0}” could not be archived</value>
   </data>
   <data name="Mail_Failure_Body" xml:space="preserve">
     <value>Hello,
 
-MailVault Home failed to retrieve the mailbox “{0}” ({1}) {2} times in a row.
+MailArchy failed to retrieve the mailbox “{0}” ({1}) {2} times in a row.
 
 Error: {3}
 
@@ -132,18 +132,18 @@ Last attempt: {5}
 Schedule: {6}
 
 What you can do:
-- Changed your password? Open the profile in MailVault and enter the new password.
+- Changed your password? Open the profile in MailArchy and enter the new password.
 - Gmail, iCloud, Yahoo: an app password is required.
 - GMX/WEB.DE: is IMAP/POP3 access still allowed in the webmail settings?
 - Is the PC online and the server reachable?
 
 Until the problem is fixed, new emails from this mailbox will not be archived.
-Nothing was deleted or changed on the server - MailVault only reads.
+Nothing was deleted or changed on the server - MailArchy only reads.
 
-MailVault reminds you again at most at the configured intervals and lets you know as soon as it works again.</value>
+MailArchy reminds you again at most at the configured intervals and lets you know as soon as it works again.</value>
   </data>
   <data name="Mail_Recovery_Subject" xml:space="preserve">
-    <value>MailVault: mailbox “{0}” is being archived again</value>
+    <value>MailArchy: mailbox “{0}” is being archived again</value>
   </data>
   <data name="Mail_Recovery_Body" xml:space="preserve">
     <value>Hello,
@@ -152,13 +152,13 @@ the mailbox “{0}” ({1}) could be retrieved again after {2} failed attempts.
 
 Result: {3}
 
-This email was sent automatically by MailVault Home.</value>
+This email was sent automatically by MailArchy.</value>
   </data>
   <data name="Mail_Test_Subject" xml:space="preserve">
-    <value>MailVault: test message</value>
+    <value>MailArchy: test message</value>
   </data>
   <data name="Mail_Test_Body" xml:space="preserve">
-    <value>This test message confirms that MailVault Home can notify you by email when a mailbox cannot be retrieved.</value>
+    <value>This test message confirms that MailArchy can notify you by email when a mailbox cannot be retrieved.</value>
   </data>
   <data name="Notify_InvalidRecipient" xml:space="preserve">
     <value>Invalid recipient address: {0}</value>
@@ -254,13 +254,13 @@ This email was sent automatically by MailVault Home.</value>
     <value>The settings were guessed. Please check them with “Test connection”.</value>
   </data>
   <data name="AutoCfg_OAuthOnly" xml:space="preserve">
-    <value>This provider only allows sign-in via OAuth (browser sign-in). MailVault does not support this yet.</value>
+    <value>This provider only allows sign-in via OAuth (browser sign-in). MailArchy does not support this yet.</value>
   </data>
   <data name="AutoCfg_Hint_Google" xml:space="preserve">
     <value>Google: with two-factor sign-in, an app password is required (Google Account → Security → App passwords).</value>
   </data>
   <data name="AutoCfg_Hint_Microsoft" xml:space="preserve">
-    <value>Outlook.com, Hotmail and Microsoft 365 only allow signing in with Microsoft (OAuth) – no password and no app password. Enter a Microsoft client ID under Settings → Sign-in (OAuth); instructions at mailvault.zerze.de.</value>
+    <value>Outlook.com, Hotmail and Microsoft 365 only allow signing in with Microsoft (OAuth) – no password and no app password. Enter a Microsoft client ID under Settings → Sign-in (OAuth); instructions at mailarchy.zerze.de.</value>
   </data>
   <data name="AutoCfg_Hint_ICloud" xml:space="preserve">
     <value>iCloud: an app-specific password is required (appleid.apple.com → Sign-In and Security).</value>
@@ -281,7 +281,7 @@ This email was sent automatically by MailVault Home.</value>
     <value>The archive is password-protected.</value>
   </data>
   <data name="Archive_NewerFormat" xml:space="preserve">
-    <value>This archive was created with a newer version of MailVault (archive format {0}, this version knows {1}). Please update MailVault. The archive was not changed.</value>
+    <value>This archive was created with a newer version of MailArchy (archive format {0}, this version knows {1}). Please update MailArchy. The archive was not changed.</value>
   </data>
   <data name="Archive_EmptyPath" xml:space="preserve">
     <value>Empty folder path.</value>
@@ -758,7 +758,7 @@ This email was sent automatically by MailVault Home.</value>
     <value>The update server cannot be reached over an encrypted connection (https). For security reasons nothing is downloaded.</value>
   </data>
   <data name="Update_NoReleaseYet" xml:space="preserve">
-    <value>There is no published version on mailvault.zerze.de yet.</value>
+    <value>There is no published version on mailarchy.zerze.de yet.</value>
   </data>
   <data name="Update_ServerError" xml:space="preserve">
     <value>The update server responded with error {0}. Please try again later.</value>
@@ -791,7 +791,7 @@ This email was sent automatically by MailVault Home.</value>
     <value>Extracting package ...</value>
   </data>
   <data name="Update_NoProgramInPackage" xml:space="preserve">
-    <value>The update package does not contain a MailVault program.</value>
+    <value>The update package does not contain a MailArchy program.</value>
   </data>
   <data name="Update_WrongVersion" xml:space="preserve">
     <value>The package contains version {0}, but {1} was expected.</value>
@@ -809,7 +809,7 @@ This email was sent automatically by MailVault Home.</value>
     <value>The key is correct but belongs to a different archive. Please choose the matching emergency sheet.</value>
   </data>
   <data name="OAuth_NotConfigured" xml:space="preserve">
-    <value>Signing in with {0} is not set up. Enter a client ID under Settings → Sign-in (OAuth) (instructions at mailvault.zerze.de), then sign the mailbox in again.</value>
+    <value>Signing in with {0} is not set up. Enter a client ID under Settings → Sign-in (OAuth) (instructions at mailarchy.zerze.de), then sign the mailbox in again.</value>
   </data>
   <data name="OAuth_Denied" xml:space="preserve">
     <value>Sign-in was cancelled in the browser or access was not granted.</value>
@@ -827,7 +827,7 @@ This email was sent automatically by MailVault Home.</value>
     <value>The provider did not grant the lasting sign-in needed for automatic archiving. Please sign in again and allow access.</value>
   </data>
   <data name="OAuth_BrowserDone" xml:space="preserve">
-    <value>Sign-in complete. You can close this window and return to MailVault.</value>
+    <value>Sign-in complete. You can close this window and return to MailArchy.</value>
   </data>
   <data name="OAuth_BrowserFailed" xml:space="preserve">
     <value>Sign-in did not succeed: {0} You can close this window.</value>
@@ -845,7 +845,7 @@ This email was sent automatically by MailVault Home.</value>
     <value>No {0} sign-in is stored for this profile yet (or it comes from another PC). Please open the profile and sign in.</value>
   </data>
   <data name="OAuth_Unavailable" xml:space="preserve">
-    <value>OAuth sign-in is currently unavailable. Please restart MailVault.</value>
+    <value>OAuth sign-in is currently unavailable. Please restart MailArchy.</value>
   </data>
   <data name="AutoCfg_Hint_MicrosoftOAuth" xml:space="preserve">
     <value>Outlook.com, Hotmail and Microsoft 365 require signing in with Microsoft: under “Sign-in”, choose “Microsoft account”.</value>
@@ -872,7 +872,7 @@ This email was sent automatically by MailVault Home.</value>
     <value>This is the folder of the archive that is currently open. Please choose the folder of the backup.</value>
   </data>
   <data name="ArchiveImport_NotAnArchive" xml:space="preserve">
-    <value>This folder does not contain a MailVault archive (archive.db is missing).</value>
+    <value>This folder does not contain a MailArchy archive (archive.db is missing).</value>
   </data>
   <data name="ArchiveImport_NoSpace" xml:space="preserve">
     <value>Not enough free disk space for the working copy: about {0} needed, {1} free.</value>
@@ -884,19 +884,19 @@ This email was sent automatically by MailVault Home.</value>
     <value>{0} granted the sign-in but not access to your email. Please sign in again and also tick the box for email access on the consent page (at Google: the Gmail checkbox).</value>
   </data>
   <data name="Mail_SignIn_Subject" xml:space="preserve">
-    <value>MailVault: sign-in for “{0}” expired – please sign in again</value>
+    <value>MailArchy: sign-in for “{0}” expired – please sign in again</value>
   </data>
   <data name="Mail_SignIn_Body" xml:space="preserve">
     <value>Hello,
 
-MailVault Home can no longer fetch the mailbox “{0}” ({1}) because the sign-in with {2} has expired or was revoked.
+MailArchy can no longer fetch the mailbox “{0}” ({1}) because the sign-in with {2} has expired or was revoked.
 
 Message: {3}
 
 This will not fix itself. Until you sign in again, new emails from this mailbox will not be archived.
 
 How to fix it:
-1. Open MailVault → Archive emails → profile “{0}” → Edit.
+1. Open MailArchy → Archive emails → profile “{0}” → Edit.
 2. Click “Sign in with {2} again …” and allow access in the browser (at Google, tick the Gmail box).
 3. Save.
 
@@ -906,8 +906,8 @@ Last successful fetch: {4}
 Last attempt: {5}
 Schedule: {6}
 
-Nothing was deleted or changed on the server - MailVault only reads.
-MailVault will remind you at the configured interval and let you know as soon as it works again.</value>
+Nothing was deleted or changed on the server - MailArchy only reads.
+MailArchy will remind you at the configured interval and let you know as soon as it works again.</value>
   </data>
   <data name="OAuth_ClientChanged" xml:space="preserve">
     <value>The client ID for {0} was changed in the settings, so the previous sign-in is no longer valid. Please open the profile and choose “Sign in to {0} again …”.</value>
@@ -937,13 +937,13 @@ MailVault will remind you at the configured interval and let you know as soon as
     <value>Checking attachments …</value>
   </data>
   <data name="Check_Mail_Subject" xml:space="preserve">
-    <value>MailVault: the archive check found problems</value>
+    <value>MailArchy: the archive check found problems</value>
   </data>
   <data name="Check_Mail_Body" xml:space="preserve">
     <value>The automatic check of the archive in {0} found problems on {1:g}:
 
 {2}
 
-What you can do: open MailVault and run Management → Archive → “Check archive” again. If the error persists, restore a backup of the archive (Management → Archive → Add a backed-up archive). Your mailboxes themselves are not affected – simply archive missing emails again.</value>
+What you can do: open MailArchy and run Management → Archive → “Check archive” again. If the error persists, restore a backup of the archive (Management → Archive → Add a backed-up archive). Your mailboxes themselves are not affected – simply archive missing emails again.</value>
   </data>
 </root>

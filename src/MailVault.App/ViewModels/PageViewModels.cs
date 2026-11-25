@@ -642,7 +642,7 @@ public partial class SettingsViewModel : ObservableObject
     void BackupKeyFile()
     {
         if (AppState.Archive.CurrentKeyFile is not { } kf) return;
-        var dlg = new SaveFileDialog { FileName = "MailVault-" + MailArchive.KeyFileName, Filter = L.T("Settings_KeyFileFilter") };
+        var dlg = new SaveFileDialog { FileName = "MailArchy-" + MailArchive.KeyFileName, Filter = L.T("Settings_KeyFileFilter") };
         if (dlg.ShowDialog() != true) return;
         File.WriteAllText(dlg.FileName, KeyVault.Serialize(kf));
         Ui.Info(L.F("Settings_KeyFileSaved", dlg.FileName));

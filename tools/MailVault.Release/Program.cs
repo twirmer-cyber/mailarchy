@@ -92,7 +92,7 @@ static int Feed(Dictionary<string, string> o, string keyPath)
         kept = kept.OrderByDescending(v => SemVersion.Parse((string?)v["version"])).Take(20).ToList();
         var feed = new JsonObject
         {
-            ["product"] = "MailVault Home",
+            ["product"] = "MailArchy",
             ["channel"] = channel,
             ["generated"] = DateTime.UtcNow.ToString("yyyy-MM-ddTHH:mm:ssZ"),
             ["versions"] = new JsonArray(kept.ToArray<JsonNode?>()),

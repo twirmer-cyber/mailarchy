@@ -316,7 +316,7 @@ public partial class WebSettingsViewModel : ObservableObject
 /// <summary>Eigene Client-IDs für Google und Microsoft (Vorrang vor den eingebauten, siehe docs/OAUTH.md).</summary>
 public partial class OAuthSettingsViewModel : ObservableObject
 {
-    public const string GuideUrl = "https://mailvault.zerze.de/#anleitungen";
+    public const string GuideUrl = "https://mailarchy.zerze.de/#anleitungen";
 
     [ObservableProperty] string _googleClientId = "";
     [ObservableProperty] string _microsoftClientId = "";

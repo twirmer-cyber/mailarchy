@@ -1,8 +1,8 @@
 <#
 .SYNOPSIS
-  Veroeffentlicht eine neue MailVault-Version auf mailvault.zerze.de.
+  Veroeffentlicht eine neue MailArchy-Version auf mailarchy.zerze.de (frueher MailVault, mailvault.zerze.de).
 
-  1. Tests, dann eigenstaendig lauffaehiges Paket MailVault-<version>-win-x64.zip (kein .NET beim Benutzer noetig).
+  1. Tests, dann eigenstaendig lauffaehiges Paket MailArchy-<version>-win-x64.zip (kein .NET beim Benutzer noetig).
   2. Webseite aus site\ nach dist\site kopieren, Versionsangaben einsetzen.
   3. Bisherige Update-Listen vom Server holen, neue Version eintragen und signieren (tools\MailVault.Release).
   4. Mit -Deploy alles per scp auf den Server laden.
@@ -21,14 +21,16 @@
 param(
     [string]$Version = "",
     [string]$Out = "dist",
-    [string]$Site = "https://mailvault.zerze.de",
+    [string]$Site = "https://mailarchy.zerze.de",
+    # Server unter dem frueheren Namen (gleicher Webroot): Update-Listen von dort, solange der neue Name noch nicht erreichbar ist
+    [string]$LegacySite = "https://mailvault.zerze.de",
     [string]$Target = "",
     [switch]$Deploy,
     [switch]$SkipTests,
     [switch]$SiteOnly,
     [string]$PasswordFile = "",
     # Oeffentliches Git-Repository (Link auf der Webseite)
-    [string]$RepoUrl = "https://github.com/twirmer-cyber/mailvault",
+    [string]$RepoUrl = "https://github.com/twirmer-cyber/mailarchy",
     # Fingerabdruck des Host-Schluessels; pscp prueft ihn fest (Schutz vor einem falschen Server)
     [string]$HostKey = ""
 )
@@ -55,7 +57,7 @@ function Invoke-GitQuiet {
     finally { $ErrorActionPreference = $old }
 }
 
-$zipName = "MailVault-$Version-win-x64.zip"
+$zipName = "MailArchy-$Version-win-x64.zip"
 $zip = Join-Path $outDir $zipName
 
 if (-not $SiteOnly) {
@@ -93,7 +95,10 @@ if (-not $SiteOnly) {
     New-Item -ItemType Directory -Force $updDir | Out-Null
     foreach ($ch in "stable", "beta") {
         try { Invoke-WebRequest -UseBasicParsing "$Site/updates/$ch.json" -OutFile (Join-Path $updDir "$ch.json") }
-        catch { Write-Host "Noch keine $ch.json auf dem Server - wird neu angelegt." }
+        catch {
+            try { Invoke-WebRequest -UseBasicParsing "$LegacySite/updates/$ch.json" -OutFile (Join-Path $updDir "$ch.json"); Write-Host "$ch.json von $LegacySite geholt." }
+            catch { Write-Host "Noch keine $ch.json auf dem Server - wird neu angelegt." }
+        }
         $f = Join-Path $updDir "$ch.json"
         if ((Test-Path $f) -and ((Get-Content $f -Raw) -notmatch '^\s*\{')) { Remove-Item $f; Write-Host "$ch.json vom Server ist kein JSON - wird neu angelegt." }
     }
@@ -107,8 +112,8 @@ if (-not $SiteOnly) {
     if (Test-Path $setupOut) { Remove-Item $setupOut -Recurse -Force }
     dotnet build (Join-Path $root "tools\MailVault.Setup") -c Release --nologo -v q "-p:Payload=$zip" "-p:Version=$propsVersion" -o $setupOut
     if ($LASTEXITCODE -ne 0) { throw "Setup-Datei konnte nicht gebaut werden" }
-    $setupName = "MailVault-Setup-$Version.exe"
-    Copy-Item (Join-Path $setupOut "MailVault-Setup.exe") (Join-Path $siteOut "download\$setupName")
+    $setupName = "MailArchy-Setup-$Version.exe"
+    Copy-Item (Join-Path $setupOut "MailArchy-Setup.exe") (Join-Path $siteOut "download\$setupName")
     # Probe: nur entpacken (installiert nichts) und pruefen, dass MailVault.exe enthalten ist
     $probe = Join-Path $outDir "setup-probe"
     if (Test-Path $probe) { Remove-Item $probe -Recurse -Force }
@@ -121,7 +126,7 @@ if (-not $SiteOnly) {
 # Versionsangaben in die Webseite (Download-Knopf funktioniert auch ohne JavaScript)
 $stable = Join-Path $siteOut "updates\stable.json"
 if (-not (Test-Path $stable)) {
-    try { New-Item -ItemType Directory -Force (Split-Path $stable) | Out-Null; Invoke-WebRequest -UseBasicParsing "$Site/updates/stable.json" -OutFile $stable } catch {}
+    try { New-Item -ItemType Directory -Force (Split-Path $stable) | Out-Null; Invoke-WebRequest -UseBasicParsing "$Site/updates/stable.json" -OutFile $stable } catch { try { Invoke-WebRequest -UseBasicParsing "$LegacySite/updates/stable.json" -OutFile $stable } catch {} }
 }
 if (Test-Path $stable) {
     $feed = Get-Content $stable -Raw -Encoding UTF8 | ConvertFrom-Json
@@ -133,11 +138,11 @@ if (Test-Path $stable) {
         "{{SIZE_MB}}" = ("{0:N0}" -f ($latest.package.size / 1MB))
         "{{SHA256}}" = $latest.package.sha256
         "{{DATE}}" = ([DateTime]$latest.published).ToString("yyyy-MM-dd")
-        "{{SETUP}}" = "download/MailVault-Setup-$($latest.version).exe"
+        "{{SETUP}}" = "download/MailArchy-Setup-$($latest.version).exe"
         "{{SETUP_MB}}" = "{0:N0}" -f ($latest.package.size / 1MB)
         "{{REPO_URL}}" = $RepoUrl
     }
-    $setupFile = Join-Path $siteOut "download\MailVault-Setup-$($latest.version).exe"
+    $setupFile = Join-Path $siteOut "download\MailArchy-Setup-$($latest.version).exe"
     if (Test-Path $setupFile) { $vars["{{SETUP_MB}}"] = "{0:N0}" -f ((Get-Item $setupFile).Length / 1MB) }
     foreach ($page in Get-ChildItem $siteOut -Include *.html, *.js -Recurse) {
         $t = [IO.File]::ReadAllText($page.FullName)
