@@ -14,6 +14,13 @@ namespace MailVault.App.ViewModels;
 public partial class MessageListViewModel : ObservableObject
 {
     readonly Func<List<MessageSummary>> _loader;
+    CancellationTokenSource? _filterCts;
+
+    /// <summary>Gesetzt für die Ordneransicht: das Suchfeld sucht dann nur in diesem Ordner und seinen Unterordnern.</summary>
+    public long? ScopeFolderId { get; init; }
+    public bool CanFilter => ScopeFolderId is not null;
+    /// <summary>Suchtext der Ordneransicht (gleiche Syntax wie die Suche, z. B. von:bank gesendet:ja).</summary>
+    [ObservableProperty] string _filterText = "";
 
     [ObservableProperty] string _title;
     [ObservableProperty] ObservableCollection<MessageSummary> _messages = new();
@@ -31,6 +38,29 @@ public partial class MessageListViewModel : ObservableObject
         _loader = loader;
     }
 
+    partial void OnFilterTextChanged(string value)
+    {
+        _filterCts?.Cancel();
+        var cts = _filterCts = new CancellationTokenSource();
+        var t = value.Trim();
+        if (t.Length == 1) return;
+        _ = Task.Delay(t.Length == 0 ? 0 : 400, cts.Token).ContinueWith(task =>
+        {
+            if (!task.IsCanceled && cts == _filterCts) _ = RefreshAsync();
+        }, TaskScheduler.FromCurrentSynchronizationContext());
+    }
+
+    [RelayCommand] void ClearFilter() => FilterText = "";
+
+    /// <summary>Ordnerinhalt oder – mit Suchtext – Suche im Ordner samt Unterordnern.</summary>
+    Func<List<MessageSummary>> CurrentLoader()
+    {
+        var text = FilterText.Trim();
+        if (ScopeFolderId is not { } fid || text.Length < 2) return _loader;
+        var c = SearchSyntax.Apply(new SearchCriteria { Query = text, FolderId = fid, FolderRecurse = true });
+        return () => AppState.Archive.Search(c);
+    }
+
     [RelayCommand]
     public async Task RefreshAsync()
     {
@@ -38,7 +68,7 @@ public partial class MessageListViewModel : ObservableObject
         StatusText = L.T("List_Loading");
         try
         {
-            var list = await Task.Run(_loader);
+            var list = await Task.Run(CurrentLoader());
             Messages = new ObservableCollection<MessageSummary>(list);
             StatusText = list.Count switch
             {

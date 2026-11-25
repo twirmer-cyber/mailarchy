@@ -921,6 +921,26 @@ public sealed class MailArchive : IDisposable
         }
     }
 
+    /// <summary>Eigene Adressen (aus den Archivierungsprofilen); damit erkennt gesendet:ja auch gesendete E-Mails außerhalb eines Gesendet-Ordners.</summary>
+    public IReadOnlyCollection<string> OwnerAddresses
+    {
+        get { lock (_sync) return _ownerAddresses; }
+        set
+        {
+            var clean = value.Select(a => a.Trim().ToLowerInvariant()).Where(a => a.Contains('@') && a.Length > 2).Distinct().ToList();
+            lock (_sync) _ownerAddresses = clean;
+        }
+    }
+    IReadOnlyCollection<string> _ownerAddresses = Array.Empty<string>();
+
+    /// <summary>Ordner (samt Unterordnern), deren Name oder Pfad den Text enthält.</summary>
+    List<long> FoldersMatchingUnlocked(string text)
+    {
+        var t = text.Trim().Trim('/');
+        return _folders.Keys.Where(id => FolderPathUnlocked(id).Contains(t, StringComparison.OrdinalIgnoreCase))
+            .SelectMany(DescendantsUnlocked).Distinct().ToList();
+    }
+
     public List<MessageSummary> Search(SearchCriteria c, int limit = 10_000)
     {
         var where = new List<string>();
@@ -971,6 +991,29 @@ public sealed class MailArchive : IDisposable
                 var ids = allowed.Where(_folders.ContainsKey).SelectMany(DescendantsUnlocked).Distinct().ToList();
                 if (ids.Count == 0) return new List<MessageSummary>();
                 where.Add($"m.folder_id IN ({string.Join(",", ids)})");
+            }
+            if (!string.IsNullOrWhiteSpace(c.FolderName))
+            {
+                var ids = FoldersMatchingUnlocked(c.FolderName);
+                if (ids.Count == 0) return new List<MessageSummary>();
+                where.Add($"m.folder_id IN ({string.Join(",", ids)})");
+            }
+            if (c.Sent is { } sent)
+            {
+                var parts = new List<string>();
+                var sentFolders = _folders.Keys.Where(id => MailVault.Core.Sources.SpecialFolders.IsSent(FolderPathUnlocked(id).Split('/'))).ToList();
+                if (sentFolders.Count > 0) parts.Add($"m.folder_id IN ({string.Join(",", sentFolders)})");
+                var i = 0;
+                foreach (var a in _ownerAddresses)
+                {
+                    // from_addr ist "Name <adresse>" oder nur die Adresse
+                    parts.Add($"(instr(lower(m.from_addr), $own{i}) > 0 OR lower(trim(m.from_addr)) = $owx{i})");
+                    cmdParams.Add(($"$own{i}", "<" + a + ">"));
+                    cmdParams.Add(($"$owx{i}", a));
+                    i++;
+                }
+                var any = parts.Count == 0 ? "0" : "(" + string.Join(" OR ", parts) + ")";
+                where.Add(sent ? any : "NOT " + any);
             }
             using var cmd = _cn.CreateCommand();
             cmd.CommandText = $"SELECT {SummaryColumns} FROM {from}" +

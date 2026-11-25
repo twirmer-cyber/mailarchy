@@ -946,4 +946,19 @@ MailArchy se lo recordará en el intervalo configurado y le avisará en cuanto v
 
 Qué puede hacer: abra MailArchy y vuelva a ejecutar Administración → Archivo → «Comprobar archivo». Si el error persiste, restaure una copia de seguridad del archivo (Administración → Archivo → Integrar un archivo de copia de seguridad). Sus buzones no se ven afectados: simplemente vuelva a archivar los correos que falten.</value>
   </data>
+  <data name="SearchHelp_11_Example" xml:space="preserve">
+    <value>sent:yes oferta</value>
+  </data>
+  <data name="SearchHelp_11_Meaning" xml:space="preserve">
+    <value>solo correos enviados por usted (sent:no = solo recibidos)</value>
+  </data>
+  <data name="SearchHelp_12_Example" xml:space="preserve">
+    <value>folder:proyectos</value>
+  </data>
+  <data name="SearchHelp_12_Meaning" xml:space="preserve">
+    <value>solo en carpetas cuyo nombre contiene «proyectos» (con subcarpetas)</value>
+  </data>
+  <data name="Search_BadSent" xml:space="preserve">
+    <value>No se entiende «{0}»: utilice sent:yes o sent:no.</value>
+  </data>
 </root>

@@ -2,21 +2,29 @@
   "de": [
     "MailVault heißt jetzt MailArchy. Programm, Archiv und Einstellungen bleiben unverändert – nur der Name ist neu.",
     "Neue Webseite: mailarchy.zerze.de. Updates kommen weiterhin automatisch und signiert.",
-    "Die Startmenü-Verknüpfung heißt jetzt „MailArchy“."
+    "Die Startmenü-Verknüpfung heißt jetzt „MailArchy“.",
+    "Suche: Wer im Ordnerbaum einen Ordner auswählt, sucht nur noch dort (samt Unterordnern) – mit eigenem Suchfeld in der Ordneransicht. Der Chip „Nur in …“ hebt die Beschränkung auf.",
+    "Neue Suchfilter: gesendet:ja (bzw. der Chip „Nur gesendete“) findet selbst verschickte E-Mails, ordner:name sucht in Ordnern mit diesem Namen."
   ],
   "en": [
     "MailVault is now called MailArchy. The program, your archive and your settings stay the same – only the name is new.",
     "New website: mailarchy.zerze.de. Updates keep arriving automatically and signed.",
-    "The Start menu shortcut is now called “MailArchy”."
+    "The Start menu shortcut is now called “MailArchy”.",
+    "Search: when you select a folder in the folder tree, searches only cover that folder and its subfolders – with its own search box in the folder view. The “Only in …” chip lifts the restriction.",
+    "New search filters: sent:yes (or the “Sent only” chip) finds emails you sent, folder:name searches folders with that name."
   ],
   "fr": [
     "MailVault s’appelle désormais MailArchy. Le programme, votre archive et vos réglages restent inchangés – seul le nom est nouveau.",
     "Nouveau site web : mailarchy.zerze.de. Les mises à jour continuent d’arriver automatiquement et signées.",
-    "Le raccourci du menu Démarrer s’appelle désormais « MailArchy »."
+    "Le raccourci du menu Démarrer s’appelle désormais « MailArchy ».",
+    "Recherche : lorsqu’un dossier est sélectionné dans l’arborescence, la recherche ne porte que sur ce dossier et ses sous-dossiers – avec son propre champ de recherche. La puce « Uniquement dans … » lève la restriction.",
+    "Nouveaux filtres : sent:yes (ou la puce « Envoyés uniquement ») trouve les e-mails envoyés, folder:nom cherche dans les dossiers de ce nom."
   ],
   "es": [
     "MailVault ahora se llama MailArchy. El programa, su archivo y sus ajustes no cambian: solo el nombre es nuevo.",
     "Nuevo sitio web: mailarchy.zerze.de. Las actualizaciones siguen llegando automáticamente y firmadas.",
-    "El acceso directo del menú Inicio ahora se llama «MailArchy»."
+    "El acceso directo del menú Inicio ahora se llama «MailArchy».",
+    "Búsqueda: al seleccionar una carpeta en el árbol, solo se busca en ella y sus subcarpetas, con su propio cuadro de búsqueda. La etiqueta «Solo en …» quita la restricción.",
+    "Nuevos filtros: sent:yes (o la etiqueta «Solo enviados») encuentra los correos enviados por usted, folder:nombre busca en carpetas con ese nombre."
   ]
 }

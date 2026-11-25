@@ -301,6 +301,9 @@
     state.folderName = f.name;
     state.folderHasChildren = !!(f.children && f.children.length);
     updateScopeChip();
+    // Gewählter Ordner = Suchbereich (Ordner samt Unterordnern); der Chip „Nur in …“ hebt das auf.
+    state.filters.scope = true;
+    setPressed($("scope-chip"), true);
     setView("list");
     // Suche auf diesen Ordner beschränkt? Dann dort weitersuchen, sonst Ordnerinhalt zeigen.
     if (state.mode === "search" && state.filters.scope) { runSearch(); return; }

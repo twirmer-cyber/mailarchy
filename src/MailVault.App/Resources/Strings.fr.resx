@@ -1109,4 +1109,28 @@ Seul, il est inutile ; avec le mot de passe ou la clé de récupération, il ouv
   <data name="Settings_ArchiveOkDetail" xml:space="preserve">
     <value>L'archive est en ordre : {0:N0} e-mails et {1:N0} pièces jointes entièrement vérifiés.</value>
   </data>
+  <data name="Search_OnlyIn" xml:space="preserve">
+    <value>Uniquement dans : {0}</value>
+  </data>
+  <data name="Search_OnlyInTip" xml:space="preserve">
+    <value>La recherche ne porte que sur le dossier sélectionné dans l'arborescence et ses sous-dossiers. Désélectionnez pour chercher partout.</value>
+  </data>
+  <data name="Search_OnlySent" xml:space="preserve">
+    <value>Envoyés uniquement</value>
+  </data>
+  <data name="Search_OnlySentTip" xml:space="preserve">
+    <value>E-mails des dossiers Envoyés ou de vos propres adresses. Dans le champ de recherche : sent:yes</value>
+  </data>
+  <data name="List_FilterPlaceholder" xml:space="preserve">
+    <value>Rechercher dans ce dossier …</value>
+  </data>
+  <data name="List_FilterName" xml:space="preserve">
+    <value>Rechercher dans ce dossier</value>
+  </data>
+  <data name="List_FilterTip" xml:space="preserve">
+    <value>Recherche uniquement dans ce dossier et ses sous-dossiers. Les filtres comme from:, subject:, sent:yes fonctionnent aussi.</value>
+  </data>
+  <data name="List_FilterClear" xml:space="preserve">
+    <value>Effacer la recherche</value>
+  </data>
 </root>

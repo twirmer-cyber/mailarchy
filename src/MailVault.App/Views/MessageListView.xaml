@@ -20,6 +20,20 @@
                     <Button Content="{loc:T Common_Delete}" Style="{StaticResource DangerButton}" Command="{Binding DeleteCommand}" ToolTip="{loc:T List_DeleteTip}" />
                     <Button Content="&#xE72C;" Style="{StaticResource IconButton}" Command="{Binding RefreshCommand}" ToolTip="{loc:T Common_Refresh}" AutomationProperties.Name="{loc:T Common_Refresh}" />
                 </StackPanel>
+                <!-- Suchfeld der Ordneransicht: sucht nur in diesem Ordner und seinen Unterordnern -->
+                <DockPanel DockPanel.Dock="Right" Margin="0,0,12,0" VerticalAlignment="Center"
+                           Visibility="{Binding CanFilter, Converter={StaticResource BoolToVis}}">
+                    <Button DockPanel.Dock="Right" Content="&#xE711;" Style="{StaticResource IconButton}" Command="{Binding ClearFilterCommand}"
+                            ToolTip="{loc:T List_FilterClear}" AutomationProperties.Name="{loc:T List_FilterClear}"
+                            Visibility="{Binding FilterText, Converter={x:Static views:NullToCollapsedConverter.Instance}}" />
+                    <TextBox Width="240" Padding="6,4" Text="{Binding FilterText, UpdateSourceTrigger=PropertyChanged, Delay=0}"
+                             AutomationProperties.Name="{loc:T List_FilterName}" AutomationProperties.AutomationId="FolderFilter"
+                             views:Field.Placeholder="{loc:T List_FilterPlaceholder}" ToolTip="{loc:T List_FilterTip}">
+                        <TextBox.InputBindings>
+                            <KeyBinding Key="Escape" Command="{Binding ClearFilterCommand}" />
+                        </TextBox.InputBindings>
+                    </TextBox>
+                </DockPanel>
                 <StackPanel VerticalAlignment="Center">
                     <TextBlock Text="{Binding Title}" FontSize="16" FontWeight="SemiBold" TextTrimming="CharacterEllipsis" />
                     <TextBlock Text="{Binding StatusText}" Style="{StaticResource Muted}" FontSize="12" AutomationProperties.LiveSetting="Polite" />

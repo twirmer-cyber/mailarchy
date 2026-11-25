@@ -25,12 +25,20 @@
 
                 <!-- Filter-Chips -->
                 <WrapPanel Margin="0,10,0,0">
+                    <!-- Beschränkung auf den im Ordnerbaum gewählten Ordner; Abwählen = in allen Ordnern suchen -->
+                    <ToggleButton Style="{StaticResource Chip}" Content="{Binding FolderScopeText}" IsChecked="{Binding IsFolderScoped}"
+                                  ToolTip="{loc:T Search_OnlyInTip}" AutomationProperties.AutomationId="FolderScope"
+                                  Visibility="{Binding IsFolderScoped, Converter={StaticResource BoolToVis}}" />
+                    <Rectangle Width="1" Height="18" Fill="{DynamicResource BorderBrush}" Margin="6,0,12,0"
+                               Visibility="{Binding IsFolderScoped, Converter={StaticResource BoolToVis}}" />
                     <RadioButton Style="{StaticResource ChipRadio}" GroupName="range" Content="{loc:T Search_AllPeriods}" IsChecked="{Binding QuickRange, Converter={x:Static views:IntEqualsConverter.Instance}, ConverterParameter=0}" />
                     <RadioButton Style="{StaticResource ChipRadio}" GroupName="range" Content="{loc:T Search_Last30}" IsChecked="{Binding QuickRange, Converter={x:Static views:IntEqualsConverter.Instance}, ConverterParameter=1}" />
                     <RadioButton Style="{StaticResource ChipRadio}" GroupName="range" Content="{loc:T Search_ThisYear}" IsChecked="{Binding QuickRange, Converter={x:Static views:IntEqualsConverter.Instance}, ConverterParameter=2}" />
                     <RadioButton Style="{StaticResource ChipRadio}" GroupName="range" Content="{loc:T Search_LastYear}" IsChecked="{Binding QuickRange, Converter={x:Static views:IntEqualsConverter.Instance}, ConverterParameter=3}" />
                     <Rectangle Width="1" Height="18" Fill="{DynamicResource BorderBrush}" Margin="6,0,12,0" />
                     <ToggleButton Style="{StaticResource Chip}" Content="{loc:T Search_WithAttachment}" IsChecked="{Binding WithAttachment}" />
+                    <ToggleButton Style="{StaticResource Chip}" Content="{loc:T Search_OnlySent}" IsChecked="{Binding OnlySent}"
+                                  ToolTip="{loc:T Search_OnlySentTip}" AutomationProperties.AutomationId="OnlySent" />
                     <ToggleButton Style="{StaticResource Chip}" Content="{loc:T Search_BestFirst}" IsChecked="{Binding SortByRelevance}"
                                   ToolTip="{loc:T Search_BestFirstTip}" />
                     <Rectangle Width="1" Height="18" Fill="{DynamicResource BorderBrush}" Margin="6,0,12,0" />

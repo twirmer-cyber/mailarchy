@@ -21,6 +21,10 @@ public static class AppState
     /// <summary>Profil, das gerade archiviert wird (null = keins).</summary>
     public static ArchiveProfile? RunningProfile { get; private set; }
 
+    /// <summary>Anmeldenamen der Postfach-Profile = eigene Adressen (für die Suche nach gesendeten E-Mails).</summary>
+    static void UpdateOwnerAddresses() =>
+        Archive.OwnerAddresses = Profiles.All.Select(p => p.UserName).Where(u => u.Contains('@')).ToList();
+
     public static string ExePath => Environment.ProcessPath ?? System.IO.Path.Combine(AppContext.BaseDirectory, "MailVault.exe");
 
     public static void Initialize(AppSettings settings, MailArchive archive)
@@ -35,6 +39,8 @@ public static class AppState
         MailVault.Core.OAuth.OAuthService.Current = new MailVault.Core.OAuth.OAuthService(new MailVault.Core.OAuth.OAuthTokenStore(archive.DataDirectory));
         ArchiveImport.CleanupLeftovers(archive.DataDirectory);
         Profiles.Changed += NotifyProfilesChanged;
+        Profiles.Changed += UpdateOwnerAddresses;
+        UpdateOwnerAddresses();
         Scheduler = new ArchiveScheduler(Profiles,
             (p, progress, ct) => ImportJob.RunAsync(Archive, p, progress, ct),
             () => Settings.Notification);

@@ -1109,4 +1109,28 @@ Por sí solo no sirve; junto con la contraseña o la clave de recuperación abre
   <data name="Settings_ArchiveOkDetail" xml:space="preserve">
     <value>El archivo está correcto: {0:N0} correos y {1:N0} adjuntos comprobados por completo.</value>
   </data>
+  <data name="Search_OnlyIn" xml:space="preserve">
+    <value>Solo en: {0}</value>
+  </data>
+  <data name="Search_OnlyInTip" xml:space="preserve">
+    <value>La búsqueda solo abarca la carpeta seleccionada en el árbol y sus subcarpetas. Desmarque para buscar en todas partes.</value>
+  </data>
+  <data name="Search_OnlySent" xml:space="preserve">
+    <value>Solo enviados</value>
+  </data>
+  <data name="Search_OnlySentTip" xml:space="preserve">
+    <value>Correos de las carpetas Enviados o de sus propias direcciones. En el cuadro de búsqueda: sent:yes</value>
+  </data>
+  <data name="List_FilterPlaceholder" xml:space="preserve">
+    <value>Buscar en esta carpeta …</value>
+  </data>
+  <data name="List_FilterName" xml:space="preserve">
+    <value>Buscar en esta carpeta</value>
+  </data>
+  <data name="List_FilterTip" xml:space="preserve">
+    <value>Busca solo en esta carpeta y sus subcarpetas. Los filtros como from:, subject:, sent:yes también funcionan aquí.</value>
+  </data>
+  <data name="List_FilterClear" xml:space="preserve">
+    <value>Borrar búsqueda</value>
+  </data>
 </root>

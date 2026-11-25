@@ -1109,4 +1109,28 @@ Allein ist sie nutzlos; zusammen mit Kennwort oder Wiederherstellungsschlüssel 
   <data name="Settings_ArchiveOkDetail" xml:space="preserve">
     <value>Das Archiv ist in Ordnung: {0:N0} E-Mails und {1:N0} Anhänge vollständig geprüft.</value>
   </data>
+  <data name="Search_OnlyIn" xml:space="preserve">
+    <value>Nur in: {0}</value>
+  </data>
+  <data name="Search_OnlyInTip" xml:space="preserve">
+    <value>Die Suche gilt nur für den im Ordnerbaum gewählten Ordner und seine Unterordner. Abwählen, um überall zu suchen.</value>
+  </data>
+  <data name="Search_OnlySent" xml:space="preserve">
+    <value>Nur gesendete</value>
+  </data>
+  <data name="Search_OnlySentTip" xml:space="preserve">
+    <value>E-Mails aus Gesendet-Ordnern oder von Ihren eigenen Adressen. Im Suchfeld: gesendet:ja</value>
+  </data>
+  <data name="List_FilterPlaceholder" xml:space="preserve">
+    <value>In diesem Ordner suchen …</value>
+  </data>
+  <data name="List_FilterName" xml:space="preserve">
+    <value>In diesem Ordner suchen</value>
+  </data>
+  <data name="List_FilterTip" xml:space="preserve">
+    <value>Sucht nur in diesem Ordner und seinen Unterordnern. Filter wie von:, betreff:, gesendet:ja funktionieren auch hier.</value>
+  </data>
+  <data name="List_FilterClear" xml:space="preserve">
+    <value>Suche leeren</value>
+  </data>
 </root>

@@ -104,11 +104,16 @@ public sealed class SearchCriteria
     public int? Priority { get; set; }
     /// <summary>Nur in diesen Ordnern suchen (inkl. Unterordner) – für eingeschränkte Benutzer und die KI-Suche. null = alle.</summary>
     public IReadOnlyCollection<long>? AllowedFolderIds { get; set; }
+    /// <summary>Nur gesendete (true) bzw. nur empfangene (false) E-Mails: Gesendet-Ordner oder eigene Absenderadresse.</summary>
+    public bool? Sent { get; set; }
+    /// <summary>Nur in Ordnern, deren Name oder Pfad diesen Text enthält (samt Unterordnern), z. B. aus ordner:rechnungen.</summary>
+    public string? FolderName { get; set; }
 
     public bool IsEmpty =>
         string.IsNullOrWhiteSpace(Query) && string.IsNullOrWhiteSpace(From) && string.IsNullOrWhiteSpace(To) && string.IsNullOrWhiteSpace(Subject) &&
         DateRange == DateRangeType.NotSpecified && HasAttachments is null && SizeMinBytes is null &&
-        SizeMaxBytes is null && FolderId is null && Priority is null;
+        SizeMaxBytes is null && FolderId is null && Priority is null &&
+        Sent is null && string.IsNullOrWhiteSpace(FolderName);
 }
 
 public sealed class ImportResult

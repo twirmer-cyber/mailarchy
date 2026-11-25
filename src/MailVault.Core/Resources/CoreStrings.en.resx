@@ -946,4 +946,19 @@ MailArchy will remind you at the configured interval and let you know as soon as
 
 What you can do: open MailArchy and run Management → Archive → “Check archive” again. If the error persists, restore a backup of the archive (Management → Archive → Add a backed-up archive). Your mailboxes themselves are not affected – simply archive missing emails again.</value>
   </data>
+  <data name="SearchHelp_11_Example" xml:space="preserve">
+    <value>sent:yes offer</value>
+  </data>
+  <data name="SearchHelp_11_Meaning" xml:space="preserve">
+    <value>only emails you sent (sent:no = only received)</value>
+  </data>
+  <data name="SearchHelp_12_Example" xml:space="preserve">
+    <value>folder:projects</value>
+  </data>
+  <data name="SearchHelp_12_Meaning" xml:space="preserve">
+    <value>only in folders whose name contains “projects” (including subfolders)</value>
+  </data>
+  <data name="Search_BadSent" xml:space="preserve">
+    <value>“{0}” is not understood – please use sent:yes or sent:no.</value>
+  </data>
 </root>

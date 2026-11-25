@@ -85,7 +85,8 @@ public partial class MainViewModel : ObservableObject
     {
         if (node is null) return;
         var path = AppState.Archive.GetFolderPath(node.Id);
-        var vm = new MessageListViewModel(path, () => AppState.Archive.GetMessages(node.Id, recursive: true));
+        var vm = new MessageListViewModel(path, () => AppState.Archive.GetMessages(node.Id, recursive: true)) { ScopeFolderId = node.Id };
+        SearchPage.ScopeToFolder(node.Id); // Suche gilt ab jetzt nur in diesem Teilbaum (Chip „Nur in …“ hebt das auf)
         CurrentPageKind = Page.Folder;
         CurrentPage = vm;
         _ = vm.RefreshAsync();

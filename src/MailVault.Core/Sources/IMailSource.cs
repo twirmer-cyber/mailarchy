@@ -59,6 +59,21 @@ public static class SpecialFolders
         "templates", "vorlagen",
     };
 
+    static readonly string[] SentNames =
+    {
+        "sent", "sent items", "sent messages", "sent mail", "gesendet", "gesendete objekte", "gesendete elemente",
+        "gesendete nachrichten", "gesendete", "[gmail]/sent mail", "[gmail]/gesendet",
+        "envoyés", "éléments envoyés", "messages envoyés", "enviados", "elementos enviados", "mensajes enviados",
+    };
+
+    /// <summary>Gesendet-Ordner (IMAP, Outlook, Thunderbird; deutsch, englisch, französisch, spanisch).</summary>
+    public static bool IsSent(IReadOnlyList<string> path)
+    {
+        var full = string.Join("/", path).ToLowerInvariant();
+        var last = path.Count > 0 ? path[^1].ToLowerInvariant() : "";
+        return SentNames.Contains(full) || SentNames.Contains(last);
+    }
+
     public static bool IsSpecial(IReadOnlyList<string> path)
     {
         var full = string.Join("/", path).ToLowerInvariant();

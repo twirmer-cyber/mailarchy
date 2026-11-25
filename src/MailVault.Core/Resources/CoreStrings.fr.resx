@@ -946,4 +946,19 @@ MailArchy vous le rappellera à l'intervalle choisi et vous préviendra dès que
 
 Que faire : ouvrez MailArchy et relancez Gestion → Archive → « Vérifier l'archive ». Si l'erreur persiste, restaurez une sauvegarde de l'archive (Gestion → Archive → Intégrer une archive sauvegardée). Vos boîtes aux lettres ne sont pas concernées – archivez simplement à nouveau les e-mails manquants.</value>
   </data>
+  <data name="SearchHelp_11_Example" xml:space="preserve">
+    <value>sent:yes offre</value>
+  </data>
+  <data name="SearchHelp_11_Meaning" xml:space="preserve">
+    <value>uniquement les e-mails envoyés (sent:no = uniquement reçus)</value>
+  </data>
+  <data name="SearchHelp_12_Example" xml:space="preserve">
+    <value>folder:projets</value>
+  </data>
+  <data name="SearchHelp_12_Meaning" xml:space="preserve">
+    <value>uniquement dans les dossiers dont le nom contient « projets » (sous-dossiers compris)</value>
+  </data>
+  <data name="Search_BadSent" xml:space="preserve">
+    <value>« {0} » n'est pas compris – veuillez utiliser sent:yes ou sent:no.</value>
+  </data>
 </root>

@@ -946,4 +946,19 @@ MailArchy erinnert in den eingestellten Abständen erneut und meldet sich, sobal
 
 Was Sie tun können: Öffnen Sie MailArchy und starten Sie unter Verwaltung → Archiv „Archiv überprüfen“ erneut. Bleibt der Fehler, spielen Sie eine Sicherung des Archivs zurück (Verwaltung → Archiv → Gesichertes Archiv einbinden). Ihre Postfächer selbst sind davon nicht betroffen – archivieren Sie fehlende E-Mails einfach erneut.</value>
   </data>
+  <data name="SearchHelp_11_Example" xml:space="preserve">
+    <value>gesendet:ja angebot</value>
+  </data>
+  <data name="SearchHelp_11_Meaning" xml:space="preserve">
+    <value>nur selbst gesendete E-Mails (gesendet:nein = nur empfangene)</value>
+  </data>
+  <data name="SearchHelp_12_Example" xml:space="preserve">
+    <value>ordner:projekte</value>
+  </data>
+  <data name="SearchHelp_12_Meaning" xml:space="preserve">
+    <value>nur in Ordnern, deren Name „projekte“ enthält (mit Unterordnern)</value>
+  </data>
+  <data name="Search_BadSent" xml:space="preserve">
+    <value>„{0}“ verstehe ich nicht – bitte gesendet:ja oder gesendet:nein.</value>
+  </data>
 </root>

@@ -1109,4 +1109,28 @@ On its own it is useless; together with the password or recovery key it opens th
   <data name="Settings_ArchiveOkDetail" xml:space="preserve">
     <value>The archive is OK: {0:N0} emails and {1:N0} attachments fully checked.</value>
   </data>
+  <data name="Search_OnlyIn" xml:space="preserve">
+    <value>Only in: {0}</value>
+  </data>
+  <data name="Search_OnlyInTip" xml:space="preserve">
+    <value>The search only covers the folder selected in the folder tree and its subfolders. Deselect to search everywhere.</value>
+  </data>
+  <data name="Search_OnlySent" xml:space="preserve">
+    <value>Sent only</value>
+  </data>
+  <data name="Search_OnlySentTip" xml:space="preserve">
+    <value>Emails from Sent folders or from your own addresses. In the search box: sent:yes</value>
+  </data>
+  <data name="List_FilterPlaceholder" xml:space="preserve">
+    <value>Search this folder …</value>
+  </data>
+  <data name="List_FilterName" xml:space="preserve">
+    <value>Search this folder</value>
+  </data>
+  <data name="List_FilterTip" xml:space="preserve">
+    <value>Searches only this folder and its subfolders. Filters such as from:, subject:, sent:yes work here too.</value>
+  </data>
+  <data name="List_FilterClear" xml:space="preserve">
+    <value>Clear search</value>
+  </data>
 </root>

@@ -288,6 +288,7 @@ public partial class SearchViewModel : ObservableObject
     [ObservableProperty] int _quickRange;
     [ObservableProperty] bool _withAttachment;
     [ObservableProperty] bool _sortByRelevance;
+    [ObservableProperty] bool _onlySent;
     [ObservableProperty] bool _showHelp;
     [ObservableProperty] string _errorText = "";
     public IReadOnlyList<SearchSyntax.Help> SyntaxExamples => SearchSyntax.Examples;
@@ -316,6 +317,24 @@ public partial class SearchViewModel : ObservableObject
     {
         new Option<int?>(null, L.T("Search_DontCare")), new(1, L.T("Search_PrioHigh")), new(3, L.T("Search_PrioNormal")), new(5, L.T("Search_PrioLow")),
     };
+
+    /// <summary>Suche ist auf einen Ordner (samt Unterordnern) beschränkt – folgt der Auswahl im Ordnerbaum.</summary>
+    public bool IsFolderScoped
+    {
+        get => Folder?.Id is not null;
+        set { if (!value && Folder?.Id is not null) Folder = Folders.FirstOrDefault(); }
+    }
+    public string FolderScopeText => Folder?.Id is not null ? L.F("Search_OnlyIn", AppState.Archive.GetFolderPath(Folder.Id.Value)) : "";
+    partial void OnFolderChanged(FolderChoice? value)
+    {
+        OnPropertyChanged(nameof(IsFolderScoped));
+        OnPropertyChanged(nameof(FolderScopeText));
+        ScheduleLiveSearch(0);
+    }
+
+    /// <summary>Beschränkt die Suche auf den im Ordnerbaum gewählten Ordner.</summary>
+    public void ScopeToFolder(long? folderId) =>
+        Folder = Folders.FirstOrDefault(f => f.Id == folderId) ?? Folders.FirstOrDefault();
 
     public bool IsCustomRange => DateRange.Value == DateRangeType.Custom;
     public bool IsDaysRange => DateRange.Value is DateRangeType.OlderThanDays or DateRangeType.NotOlderThanDays;
@@ -384,6 +403,7 @@ public partial class SearchViewModel : ObservableObject
             };
         if (QuickRange == 1 && DateRange.Value == DateRangeType.NotSpecified) criteria.Days = 30;
         if (WithAttachment && criteria.HasAttachments is null) criteria.HasAttachments = true;
+        if (OnlySent) criteria.Sent = true;
         return SearchSyntax.Apply(criteria); // von:, an:, betreff:, anhang:, jahr:, nach:, vor: im Suchfeld
     }
 
@@ -392,6 +412,7 @@ public partial class SearchViewModel : ObservableObject
     partial void OnQuickRangeChanged(int value) => ScheduleLiveSearch(0);
     partial void OnWithAttachmentChanged(bool value) => ScheduleLiveSearch(0);
     partial void OnSortByRelevanceChanged(bool value) => ScheduleLiveSearch(0);
+    partial void OnOnlySentChanged(bool value) => ScheduleLiveSearch(0);
 
     async void ScheduleLiveSearch(int delayMs)
     {
@@ -444,7 +465,7 @@ public partial class SearchViewModel : ObservableObject
         Priority = PriorityOptions[0];
         Folder = Folders.FirstOrDefault();
         QuickRange = 0;
-        WithAttachment = SortByRelevance = false;
+        WithAttachment = SortByRelevance = OnlySent = false;
         ErrorText = "";
         _live?.Cancel();
         Results = null;

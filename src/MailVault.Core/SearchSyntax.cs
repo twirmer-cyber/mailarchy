@@ -7,14 +7,15 @@ namespace MailVault.Core;
 
 /// <summary>
 /// Suchfeld-Syntax für Desktop und Web: Freitext plus Filter direkt im Suchfeld, z. B.
-/// <c>von:telekom rechnung jahr:2024 anhang:ja</c> oder <c>an:"Anna Berg" betreff:urlaub nach:2023-05</c>.
+/// <c>von:telekom rechnung jahr:2024 anhang:ja</c> oder <c>an:"Anna Berg" betreff:urlaub nach:2023-05</c>
+/// oder <c>gesendet:ja ordner:projekte angebot</c>.
 /// Unbekannte Schlüssel bleiben Teil des Freitexts (z. B. Uhrzeiten wie 10:30).
 /// </summary>
 public static class SearchSyntax
 {
     public sealed record Help(string Example, string Meaning);
 
-    const int ExampleCount = 10;
+    const int ExampleCount = 12;
 
     /// <summary>Beispiele für die Suchhilfe in der aktuellen Oberflächensprache (deutsche und englische Schlüssel funktionieren immer).</summary>
     public static IReadOnlyList<Help> Examples =>
@@ -31,6 +32,8 @@ public static class SearchSyntax
         ["jahr"] = "year", ["year"] = "year",
         ["nach"] = "after", ["after"] = "after", ["seit"] = "after", ["ab"] = "after",
         ["vor"] = "before", ["before"] = "before", ["bis"] = "before",
+        ["gesendet"] = "sent", ["sent"] = "sent", ["envoyé"] = "sent", ["envoye"] = "sent", ["enviado"] = "sent",
+        ["ordner"] = "folder", ["folder"] = "folder", ["dossier"] = "folder", ["carpeta"] = "folder",
     };
 
     /// <summary>Überträgt Filter aus dem Suchtext in die Suchkriterien; <see cref="SearchCriteria.Query"/> enthält danach nur noch den Freitext.</summary>
@@ -59,6 +62,15 @@ public static class SearchSyntax
                             _ => throw new ArgumentException(CoreText.F("Search_BadAttachment", token[..colon] + ":" + value)),
                         };
                         break;
+                    case "sent":
+                        c.Sent = value.ToLowerInvariant() switch
+                        {
+                            "ja" or "yes" or "true" or "1" or "oui" or "sí" or "si" => true,
+                            "nein" or "no" or "false" or "0" or "non" => false,
+                            _ => throw new ArgumentException(CoreText.F("Search_BadSent", token[..colon] + ":" + value)),
+                        };
+                        break;
+                    case "folder": c.FolderName = value; break;
                     case "year":
                         if (!int.TryParse(value, out var y) || y is < 1970 or > 2100) throw new ArgumentException(CoreText.F("Search_BadYear", token[..colon] + ":" + value));
                         after = new DateTime(y, 1, 1);
