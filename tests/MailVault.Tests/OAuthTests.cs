@@ -145,6 +145,29 @@ public class OAuthTests
     }
 
     [Fact]
+    public async Task Form_post_callback_from_microsoft_is_accepted()
+    {
+        // response_mode=form_post: Microsoft schickt code/state per POST an die Rücksprungadresse
+        var endpoint = new TokenEndpoint(_ => (HttpStatusCode.OK, new { access_token = "at-p", expires_in = 3599, refresh_token = "rt-p" }));
+        var pages = new List<string>();
+        var tokens = await new OAuthClient(endpoint).SignInAsync(Ms(), null, url =>
+        {
+            var q = QueryOf(url);
+            _ = Task.Run(async () =>
+            {
+                using var http = new HttpClient();
+                var body = new FormUrlEncodedContent(new Dictionary<string, string> { ["code"] = "post-code", ["state"] = q["state"], ["session_state"] = "x" });
+                var page = await (await http.PostAsync(q["redirect_uri"], body)).Content.ReadAsStringAsync();
+                lock (pages) pages.Add(page);
+            });
+        }, Timeout());
+        Assert.Equal("at-p", tokens.AccessToken);
+        Assert.Equal("post-code", Assert.Single(endpoint.Requests)["code"]);
+        await WaitFor(() => pages.Count == 1);
+        Assert.Contains("MailArchy", pages[0]);
+    }
+
+    [Fact]
     public async Task Google_sends_client_secret_and_uses_ipv4_loopback()
     {
         var endpoint = new TokenEndpoint(form =>

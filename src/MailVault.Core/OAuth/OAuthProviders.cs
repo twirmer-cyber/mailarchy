@@ -109,7 +109,9 @@ public static class OAuthProviders
         ImapHost = "outlook.office365.com",
         Pop3Host = "outlook.office365.com",
         RedirectHost = "localhost",
-        ExtraAuthorizeParameters = new Dictionary<string, string> { ["prompt"] = "select_account" },
+        // form_post: Microsoft schickt Code und state per POST statt in der Adresszeile (Empfehlung für Desktop-Apps;
+        // vermeidet AADSTS900561 bei persönlichen Konten, deren Anmeldung über login.live.com zurückgeleitet wird).
+        ExtraAuthorizeParameters = new Dictionary<string, string> { ["prompt"] = "select_account", ["response_mode"] = "form_post" },
     };
 
     static OAuthProvider GoogleTemplate => new()

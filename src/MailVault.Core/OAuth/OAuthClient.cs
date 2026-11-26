@@ -221,7 +221,10 @@ internal sealed class LoopbackListener : IDisposable
         return new LoopbackListener(v4, v6, port);
     }
 
-    /// <summary>Wartet auf "GET /?code=…&amp;state=…"; andere Anfragen (z. B. favicon.ico) werden mit 404 beantwortet.</summary>
+    /// <summary>
+    /// Wartet auf "GET /?code=…&amp;state=…" oder (response_mode=form_post) "POST /" mit Formular-Daten;
+    /// andere Anfragen (z. B. favicon.ico) werden mit 404 beantwortet.
+    /// </summary>
     public async Task<Dictionary<string, string>> WaitForCallbackAsync(CancellationToken ct)
     {
         while (true)
@@ -233,16 +236,20 @@ internal sealed class LoopbackListener : IDisposable
             catch (OperationCanceledException) { throw; }
             ct.ThrowIfCancellationRequested();
             var client = await done;
-            var target = await ReadRequestTargetAsync(client, ct);
-            var q = target?.IndexOf('?') ?? -1;
-            if (target is null || q < 0 || target[..q] != "/")
+            var req = await ReadRequestAsync(client, ct);
+            Dictionary<string, string>? values = null;
+            if (req is { Method: "GET" } g && g.Target.IndexOf('?') is var q and >= 0 && g.Target[..q] == "/")
+                values = ParseQuery(g.Target[(q + 1)..]);
+            else if (req is { Method: "POST", Target: "/" } p)
+                values = ParseQuery(p.Body);
+            if (values is null || (!values.ContainsKey("code") && !values.ContainsKey("error")))
             {
                 try { await WriteAsync(client, "404 Not Found", "", ct); } catch (IOException) { }
                 client.Dispose();
                 continue;
             }
             _client = client;
-            return ParseQuery(target[(q + 1)..]);
+            return values;
         }
     }
 
@@ -255,11 +262,16 @@ internal sealed class LoopbackListener : IDisposable
         return WriteAsync(_client, "200 OK", html, ct);
     }
 
-    static async Task<string?> ReadRequestTargetAsync(TcpClient client, CancellationToken ct)
+    internal sealed record Request(string Method, string Target, string Body);
+
+    /// <summary>Liest Anfragezeile, Kopfzeilen und (bei POST) den Inhalt laut Content-Length – höchstens 64 KB.</summary>
+    internal static async Task<Request?> ReadRequestAsync(TcpClient client, CancellationToken ct)
     {
+        const int Max = 64 * 1024;
         var stream = client.GetStream();
-        var buf = new byte[8192];
+        var buf = new byte[Max];
         var len = 0;
+        int headerEnd = -1, contentLength = 0;
         using var timeout = CancellationTokenSource.CreateLinkedTokenSource(ct);
         timeout.CancelAfter(TimeSpan.FromSeconds(10));
         try
@@ -269,13 +281,27 @@ internal sealed class LoopbackListener : IDisposable
                 var n = await stream.ReadAsync(buf.AsMemory(len), timeout.Token);
                 if (n == 0) break;
                 len += n;
-                if (Encoding.ASCII.GetString(buf, 0, len).Contains("\r\n\r\n", StringComparison.Ordinal)) break;
+                if (headerEnd < 0)
+                {
+                    var text = Encoding.ASCII.GetString(buf, 0, len);
+                    var i = text.IndexOf("\r\n\r\n", StringComparison.Ordinal);
+                    if (i < 0) continue;
+                    headerEnd = i + 4;
+                    foreach (var line in text[..i].Split("\r\n").Skip(1))
+                        if (line.StartsWith("Content-Length:", StringComparison.OrdinalIgnoreCase) &&
+                            int.TryParse(line[15..].Trim(), out var cl) && cl is >= 0 and <= Max)
+                            contentLength = cl;
+                }
+                if (headerEnd >= 0 && len >= headerEnd + contentLength) break;
             }
         }
         catch (OperationCanceledException) when (!ct.IsCancellationRequested) { return null; }
         catch (IOException) { return null; }
-        var first = Encoding.ASCII.GetString(buf, 0, len).Split("\r\n")[0].Split(' ');
-        return first.Length >= 2 && first[0] == "GET" ? first[1] : null;
+        if (headerEnd < 0) return null;
+        var first = Encoding.ASCII.GetString(buf, 0, headerEnd).Split("\r\n")[0].Split(' ');
+        if (first.Length < 2) return null;
+        var body = Encoding.ASCII.GetString(buf, headerEnd, Math.Min(contentLength, len - headerEnd));
+        return new Request(first[0], first[1], body);
     }
 
     static async Task WriteAsync(TcpClient client, string status, string html, CancellationToken ct)
