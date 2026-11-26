@@ -9,6 +9,7 @@
         <TextBlock x:Name="StatusText" AutomationProperties.LiveSetting="Polite" DockPanel.Dock="Top" TextTrimming="CharacterEllipsis" Margin="0,0,0,6" />
         <ProgressBar x:Name="Bar" AutomationProperties.Name="{loc:T Common_Progress}" DockPanel.Dock="Top" Height="6" IsIndeterminate="True" Margin="0,0,0,12" />
         <StackPanel DockPanel.Dock="Bottom" Orientation="Horizontal" HorizontalAlignment="Right" Margin="0,12,0,0">
+            <Button x:Name="BackgroundButton" Content="{loc:T Dialog_Progress_Background}" ToolTip="{loc:T Dialog_Progress_BackgroundTip}" Click="Background_Click" Visibility="Collapsed" />
             <Button x:Name="CopyButton" Content="{loc:T Dialog_Progress_CopyLog}" Click="Copy_Click" />
             <Button x:Name="ActionButton" Content="{loc:T Common_Cancel}" Margin="0" Click="Action_Click" Style="{StaticResource PrimaryButton}" />
         </StackPanel>

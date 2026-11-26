@@ -162,17 +162,38 @@ public partial class ArchiveViewModel : ObservableObject
         if ((p ?? SelectedProfile) is { } profile) Run(profile);
     }
 
+    /// <summary>Laufende Archivierungen je Profil (Fenster kann im Hintergrund ausgeblendet sein).</summary>
+    static readonly Dictionary<Guid, ProgressWindow> RunWindows = new();
+
+    /// <summary>
+    /// Archiviert ein Profil mit Fortschrittsfenster. Das Fenster blockiert nicht und lässt sich mit
+    /// „Im Hintergrund“ ausblenden; am Ende erscheint dann eine Meldung im Infobereich, bei Fehlern wieder das Fenster.
+    /// </summary>
     public static void Run(ArchiveProfile profile)
     {
-        Ui.RunWithProgress(L.F("Archive_RunTitle", profile.Name), async (progress, ct) =>
+        if (RunWindows.TryGetValue(profile.Id, out var open)) { open.Reveal(); return; }
+        var dlg = new ProgressWindow(L.F("Archive_RunTitle", profile.Name), async (progress, ct) =>
         {
             if (AppState.Scheduler.IsRunning)
                 progress.Report(new ProgressInfo(L.T("Archive_WaitForScheduled"), 0, null, L.T("Archive_WaitForScheduledLog")));
             var outcome = await AppState.Scheduler.RunNowAsync(profile, progress, ct);
             if (outcome.Error is not null) throw new InvalidOperationException(outcome.Error);
             return outcome.Result!.ToString();
-        });
-        AppState.NotifyArchiveChanged();
+        }) { Owner = System.Windows.Application.Current.MainWindow, AllowBackground = true };
+        dlg.Finished += w =>
+        {
+            AppState.NotifyArchiveChanged();
+            if (!w.InBackground) return;
+            if (w.Succeeded)
+            {
+                App.Current.Background?.ShowInfo(L.F("Archive_DoneTitle", profile.Name), w.ResultText ?? "");
+                w.Close();
+            }
+            else w.Reveal(); // Fehler oder Abbruch: Protokoll zeigen
+        };
+        dlg.Closed += (_, _) => RunWindows.Remove(profile.Id);
+        RunWindows[profile.Id] = dlg;
+        dlg.Show();
     }
 
     [RelayCommand]

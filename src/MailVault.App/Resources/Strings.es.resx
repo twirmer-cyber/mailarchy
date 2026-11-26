@@ -1133,4 +1133,13 @@ Por sí solo no sirve; junto con la contraseña o la clave de recuperación abre
   <data name="List_FilterClear" xml:space="preserve">
     <value>Borrar búsqueda</value>
   </data>
+  <data name="Dialog_Progress_Background" xml:space="preserve">
+    <value>En segundo plano</value>
+  </data>
+  <data name="Dialog_Progress_BackgroundTip" xml:space="preserve">
+    <value>Ocultar esta ventana y seguir trabajando. El archivado continúa; al terminar aparece una notificación.</value>
+  </data>
+  <data name="Archive_DoneTitle" xml:space="preserve">
+    <value>«{0}» archivado</value>
+  </data>
 </root>

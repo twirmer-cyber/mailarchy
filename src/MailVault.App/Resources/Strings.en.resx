@@ -1133,4 +1133,13 @@ On its own it is useless; together with the password or recovery key it opens th
   <data name="List_FilterClear" xml:space="preserve">
     <value>Clear search</value>
   </data>
+  <data name="Dialog_Progress_Background" xml:space="preserve">
+    <value>Run in background</value>
+  </data>
+  <data name="Dialog_Progress_BackgroundTip" xml:space="preserve">
+    <value>Hide this window and keep working. Archiving continues; a notification appears when it is done.</value>
+  </data>
+  <data name="Archive_DoneTitle" xml:space="preserve">
+    <value>“{0}” archived</value>
+  </data>
 </root>

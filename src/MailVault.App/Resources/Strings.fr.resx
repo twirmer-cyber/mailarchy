@@ -1133,4 +1133,13 @@ Seul, il est inutile ; avec le mot de passe ou la clé de récupération, il ouv
   <data name="List_FilterClear" xml:space="preserve">
     <value>Effacer la recherche</value>
   </data>
+  <data name="Dialog_Progress_Background" xml:space="preserve">
+    <value>En arrière-plan</value>
+  </data>
+  <data name="Dialog_Progress_BackgroundTip" xml:space="preserve">
+    <value>Masquer cette fenêtre et continuer à travailler. L'archivage se poursuit ; une notification s'affiche à la fin.</value>
+  </data>
+  <data name="Archive_DoneTitle" xml:space="preserve">
+    <value>« {0} » archivé</value>
+  </data>
 </root>

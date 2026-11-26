@@ -1,0 +1,14 @@
+{
+  "de": [
+    "Archivierung im Hintergrund: Im Fortschrittsfenster „Im Hintergrund“ wählen und weiterarbeiten. Am Ende erscheint eine Meldung im Infobereich, bei Fehlern wieder das Protokoll."
+  ],
+  "en": [
+    "Archiving in the background: choose “Run in background” in the progress window and keep working. A notification appears when it is done; on errors the log is shown again."
+  ],
+  "fr": [
+    "Archivage en arrière-plan : choisissez « En arrière-plan » dans la fenêtre de progression et continuez à travailler. Une notification s'affiche à la fin ; en cas d'erreur, le journal réapparaît."
+  ],
+  "es": [
+    "Archivado en segundo plano: elija «En segundo plano» en la ventana de progreso y siga trabajando. Al terminar aparece una notificación; si hay errores, se vuelve a mostrar el registro."
+  ]
+}
