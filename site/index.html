@@ -70,7 +70,7 @@
 
         <div class="buehne-unten">
           <div class="laden">
-            <p class="lead" data-i18n="hero_lead">MailArchy sichert die E-Mails aus Ihren Postfächern, aus Outlook und Thunderbird in einem durchsuchbaren Archiv auf Ihrem eigenen PC – vollständig, unabhängig vom Anbieter und auf Wunsch verschlüsselt. Die Postfächer werden dabei nur gelesen, nie verändert. Kostenlos, auch für Firmen und Vereine. Ohne Konto, ohne Cloud, mit offenem Quelltext.</p>
+            <p class="lead" data-i18n="hero_lead">MailArchy archiviert Postfächer, Outlook und Thunderbird in einem durchsuchbaren Archiv auf Ihrem PC. Nur lesender Zugriff, optional verschlüsselt, ohne Konto und ohne Cloud. Kostenlos und quelloffen.</p>
             <div class="knopfreihe">
               <a class="knopf knopf-haupt" href="{{SETUP}}" id="download">
                 <svg aria-hidden="true"><use href="#i-down"/></svg>
@@ -122,12 +122,12 @@
         <div class="fakten-block">
           <h2 class="sr" data-i18n="facts_label">MailArchy in Zahlen</h2>
           <dl class="fakten">
-            <div><dt class="zahl" data-i18n="fact1_v">0 €</dt><dd data-i18n="fact1_t">Kostenlos – privat, für Firmen und Vereine. Keine Testphase, keine Pro-Version.</dd></div>
-            <div><dt class="zahl" data-i18n="fact2_v">46 %</dt><dd data-i18n="fact2_t">weniger Platz als die Original-E-Mails, samt Suchindex. Gleiche Anhänge liegen nur einmal im Archiv.</dd></div>
-            <div><dt class="zahl" data-i18n="fact3_v">AES-256</dt><dd data-i18n="fact3_t">Archiv auf Wunsch verschlüsselt, mit Wiederherstellungsschlüssel und Notfallblatt.</dd></div>
-            <div><dt class="zahl" data-i18n="fact4_v">7 Tage</dt><dd data-i18n="fact4_t">Spätestens dann prüft MailArchy jede E-Mail und jeden Anhang im Archiv – und meldet sich, wenn etwas nicht stimmt.</dd></div>
+            <div><dt class="zahl" data-i18n="fact1_v">0 €</dt><dd data-i18n="fact1_t">Kostenlos für private, gewerbliche und Vereinsnutzung.</dd></div>
+            <div><dt class="zahl" data-i18n="fact2_v">46 %</dt><dd data-i18n="fact2_t">weniger Speicherplatz als die Original-E-Mails, inklusive Suchindex.</dd></div>
+            <div><dt class="zahl" data-i18n="fact3_v">AES-256</dt><dd data-i18n="fact3_t">Verschlüsselung des gesamten Archivs, mit Wiederherstellungsschlüssel.</dd></div>
+            <div><dt class="zahl" data-i18n="fact4_v">7 Tage</dt><dd data-i18n="fact4_t">Prüfintervall: Jede E-Mail und jeder Anhang wird auf Unversehrtheit kontrolliert.</dd></div>
           </dl>
-          <p class="fakten-fuss" data-i18n="facts_note">Gemessen mit öffentlichen Mailinglisten (506 E-Mails). Wie viel es bei Ihnen ist, zeigt die Startseite des Programms.</p>
+          <p class="fakten-fuss" data-i18n="facts_note">Speicherwert gemessen an 506 E-Mails aus öffentlichen Mailinglisten.</p>
         </div>
       </div>
     </section>
@@ -136,10 +136,9 @@
     <section class="abschnitt ablage warum" id="warum" aria-labelledby="warum-titel">
       <div class="rahmen">
         <div class="warum-kopf">
-          <h2 id="warum-titel" data-i18n="why_title">Warum ein Archiv? Ein Postfach ist keine Sicherung.</h2>
+          <h2 id="warum-titel" data-i18n="why_title">Ein Postfach ist keine Sicherung</h2>
           <div class="warum-text">
-            <p data-i18n="why_p1">E-Mail-Programme und Postfächer – Outlook, Thunderbird, Gmail oder das Webmail Ihres Anbieters – sind zum Lesen und Schreiben gemacht, nicht zum dauerhaften Aufbewahren. Was dort gelöscht wird, ist meist endgültig weg. Und das geschieht öfter durch einen Fehlgriff als durch einen technischen Defekt.</p>
-            <p data-i18n="why_p2">Viele wissen außerdem nicht, dass ihre E-Mails – gerade wenn sie auf dem Handy gelesen werden – nur auf den Servern des Anbieters liegen. Eine eigene Kopie gibt es dann nirgends.</p>
+            <p data-i18n="why_p1">Postfächer und Mailprogramme sind zum Lesen und Schreiben gebaut, nicht zum Aufbewahren. Was dort gelöscht wird, ist in der Regel endgültig verloren – und oft liegt die einzige Kopie beim Anbieter.</p>
           </div>
         </div>
         <div class="risiken" role="table" aria-labelledby="warum-titel">
@@ -147,14 +146,13 @@
             <span role="columnheader" data-i18n="why_col_risk">Was passieren kann</span>
             <span role="columnheader" data-i18n="why_col_answer">Was MailArchy dafür tut</span>
           </div>
-          <div class="risiko" role="row"><span class="risiko-fall" role="cell" data-i18n="r1_t">Versehentlich gelöscht – auf einem Gerät und durch die Synchronisierung auf allen anderen</span><span class="risiko-hilfe" role="cell" data-i18n="r1_d">Was einmal archiviert ist, bleibt im Archiv, auch wenn es im Postfach später fehlt.</span></div>
-          <div class="risiko" role="row"><span class="risiko-fall" role="cell" data-i18n="r2_t">Postfach voll, Ordner geleert, alte E-Mails aufgeräumt</span><span class="risiko-hilfe" role="cell" data-i18n="r2_d">Sie können im Postfach Platz schaffen. Die alten E-Mails bleiben im Archiv vollständig und durchsuchbar.</span></div>
-          <div class="risiko" role="row"><span class="risiko-fall" role="cell" data-i18n="r3_t">Anbieter oder PC gewechselt, Konto gekündigt</span><span class="risiko-hilfe" role="cell" data-i18n="r3_d">Das Archiv hängt an keinem Anbieter. Neue Postfächer kommen einfach dazu; für einen neuen PC kopieren Sie den Archivordner.</span></div>
-          <div class="risiko" role="row"><span class="risiko-fall" role="cell" data-i18n="r4_t">Konto gehackt, Server gestört oder ausgefallen</span><span class="risiko-hilfe" role="cell" data-i18n="r4_d">Auf Ihrem PC liegt eine vollständige, vom Anbieter unabhängige Kopie – auf Wunsch mit AES-256 verschlüsselt.</span></div>
-          <div class="risiko" role="row"><span class="risiko-fall" role="cell" data-i18n="r5_t">Der Anbieter schließt das Konto oder stellt den Dienst ein</span><span class="risiko-hilfe" role="cell" data-i18n="r5_d">Ihre E-Mails bleiben im Archiv lesbar und lassen sich jederzeit als EML, MBOX oder PDF exportieren.</span></div>
+          <div class="risiko" role="row"><span class="risiko-fall" role="cell" data-i18n="r1_t">Versehentlich gelöscht – auf einem Gerät und durch die Synchronisierung auf allen anderen</span><span class="risiko-hilfe" role="cell" data-i18n="r1_d">Archivierte E-Mails bleiben erhalten, auch wenn sie im Postfach fehlen.</span></div>
+          <div class="risiko" role="row"><span class="risiko-fall" role="cell" data-i18n="r2_t">Postfach voll, Ordner geleert, alte E-Mails aufgeräumt</span><span class="risiko-hilfe" role="cell" data-i18n="r2_d">Im Postfach Platz schaffen; das Archiv bleibt vollständig durchsuchbar.</span></div>
+          <div class="risiko" role="row"><span class="risiko-fall" role="cell" data-i18n="r3_t">Anbieter oder PC gewechselt, Konto gekündigt</span><span class="risiko-hilfe" role="cell" data-i18n="r3_d">Das Archiv ist anbieterunabhängig. Für einen neuen PC genügt das Kopieren des Archivordners.</span></div>
+          <div class="risiko" role="row"><span class="risiko-fall" role="cell" data-i18n="r4_t">Konto gehackt, Server gestört oder ausgefallen</span><span class="risiko-hilfe" role="cell" data-i18n="r4_d">Eine vollständige Kopie liegt auf Ihrem PC, optional mit AES-256 verschlüsselt.</span></div>
+          <div class="risiko" role="row"><span class="risiko-fall" role="cell" data-i18n="r5_t">Der Anbieter schließt das Konto oder stellt den Dienst ein</span><span class="risiko-hilfe" role="cell" data-i18n="r5_d">Alle E-Mails bleiben lesbar und als EML, MBOX oder PDF exportierbar.</span></div>
         </div>
-        <p class="warum-fuss"><svg aria-hidden="true"><use href="#i-shield"/></svg><span data-i18n="why_note">Dabei liest MailArchy Ihre Postfächer nur. Es löscht, verschiebt und markiert dort nichts – das Postfach bleibt genau so, wie es ist.</span></p>
-        <p class="warum-hinweis" data-i18n="why_backup">Ein Archiv auf dem PC ersetzt keine Datensicherung des PCs. Kopieren Sie den Archivordner deshalb gelegentlich auf ein externes Laufwerk.</p>
+        <p class="warum-hinweis" data-i18n="why_backup">Hinweis: Das Archiv ersetzt keine Datensicherung des PCs. Sichern Sie den Archivordner regelmäßig extern.</p>
       </div>
     </section>
 
@@ -163,7 +161,7 @@
       <div class="rahmen suche-innen">
         <div class="suche-text">
           <h2 id="suche-titel" data-i18n="search_title">Volltextsuche über alle Postfächer und Jahre</h2>
-          <p data-i18n="search_text">Die Suche durchsucht Betreff, Absender, Text und sogar den Inhalt von PDF-, Word- und Excel-Anhängen. Filter schreiben Sie einfach mit hinein:</p>
+          <p data-i18n="search_text">Durchsucht Betreff, Absender, Text sowie PDF-, Word- und Excel-Anhänge. Filter direkt im Suchfeld:</p>
           <dl class="syntax">
             <div><dt><code data-i18n="code_from">von:schule</code></dt><dd data-i18n="syn_from">Absender</dd></div>
             <div><dt><code data-i18n="code_year">jahr:2024</code></dt><dd data-i18n="syn_year">Jahr</dd></div>
@@ -187,26 +185,26 @@
     <!-- ============================================================ Zusagen -->
     <section class="abschnitt ablage zusagen" aria-labelledby="zusagen-titel">
       <div class="rahmen">
-        <h2 id="zusagen-titel" data-i18n="promises_title">Vier Grundsätze, die in jeder Version gelten</h2>
+        <h2 id="zusagen-titel" data-i18n="promises_title">Grundsätze</h2>
         <dl class="register">
           <div>
             <dt data-i18n="p1_t">Am Postfach wird nichts gelöscht</dt>
-            <dd data-i18n="p1_d">MailArchy liest nur. Es gibt keine Funktion, die auf dem Server löscht, verschiebt oder als gelesen markiert – automatische Tests sichern das bei jeder Version ab.</dd>
+            <dd data-i18n="p1_d">Ausschließlich lesender Zugriff. Löschen, Verschieben oder Markieren auf dem Server ist nicht implementiert; automatische Tests stellen das sicher.</dd>
           </div>
           <div>
             <dt data-i18n="p2_t">Das Archiv bleibt auf Ihrem PC</dt>
-            <dd data-i18n="p2_d">Keine Cloud, kein Konto, keine Telemetrie. Nichts verlässt Ihren Rechner, solange Sie es nicht ausdrücklich wollen.</dd>
+            <dd data-i18n="p2_d">Keine Cloud, kein Konto, keine Telemetrie.</dd>
           </div>
           <div>
             <dt data-i18n="p3_t">Jede E-Mail kommt bytegenau zurück</dt>
-            <dd data-i18n="p3_d">Komprimiert gespeichert, Anhänge nur einmal abgelegt – und trotzdem exakt so wiederherstellbar, wie sie ankam. Export als EML, MBOX oder PDF jederzeit.</dd>
+            <dd data-i18n="p3_d">Komprimiert gespeichert, verlustfrei wiederherstellbar. Export als EML, MBOX oder PDF.</dd>
           </div>
           <div>
             <dt data-i18n="p4_t">Updates verlieren nie Daten</dt>
-            <dd data-i18n="p4_d">Neue Versionen kommen signiert von dieser Seite. Vor jeder Umstellung wird gesichert; startet etwas nicht, kehrt MailArchy von selbst zur alten Version zurück.</dd>
+            <dd data-i18n="p4_d">Signierte Updates mit Sicherung vor der Installation und automatischer Rückkehr zur Vorversion bei Fehlern.</dd>
           </div>
         </dl>
-        <p class="zusagen-fuss"><svg aria-hidden="true"><use href="#i-shield"/></svg><span data-i18n="privacy_page">Auch diese Webseite setzt keine Cookies, verwendet keine Zählpixel und lädt nichts von fremden Servern.</span></p>
+        <p class="zusagen-fuss"><svg aria-hidden="true"><use href="#i-shield"/></svg><span data-i18n="privacy_page">Diese Webseite verwendet keine Cookies, kein Tracking und keine externen Ressourcen.</span></p>
       </div>
     </section>
 
@@ -215,16 +213,14 @@
       <div class="rahmen">
         <h2 id="funktionen-titel" data-i18n="features_title">Funktionen im Überblick</h2>
         <dl class="liste">
-          <div><dt data-i18n="f1_t">Alle üblichen Quellen</dt><dd data-i18n="f1_d">IMAP und POP3 (Gmail mit Google-Anmeldung, GMX, WEB.DE, T-Online …) mit automatischer Einrichtung, Outlook-Dateien (.pst/.ost) auch ohne installiertes Outlook, Thunderbird, EML- und MBOX-Dateien.</dd></div>
-          <div><dt data-i18n="f2_t">Archiviert von selbst</dt><dd data-i18n="f2_d">Zeitplan pro Postfach, läuft im Infobereich mit, holt verpasste Termine nach und meldet sich per E-Mail, wenn etwas nicht klappt.</dd></div>
-          <div><dt data-i18n="f3_t">Auf Wunsch verschlüsselt</dt><dd data-i18n="f3_d">Das ganze Archiv mit AES-256 geschützt – mit Ihrem Kennwort, dazu ein Wiederherstellungsschlüssel für den Notfall.</dd></div>
-          <div><dt data-i18n="f4_t">Sicher anzeigen</dt><dd data-i18n="f4_d">Externe Bilder und Tracking-Pixel bleiben blockiert, Skripte laufen nie.</dd></div>
-          <div><dt data-i18n="f5_t">Im Heimnetz auf dem Handy</dt><dd data-i18n="f5_d">Optionaler Webzugriff zum Lesen für Familienmitglieder – jeder sieht nur die Postfächer, die Sie freigeben.</dd></div>
-          <div><dt data-i18n="f6_t">KI-Assistent, wenn Sie wollen</dt><dd data-i18n="f6_d">Fragen Sie Ihr Archiv in eigenen Worten („Welche Verträge laufen noch?“) – mit Ihrem eigenen Claude-Schlüssel und Belegen zu jeder Aussage. Ohne Schlüssel bleibt alles lokal.</dd></div>
-          <div><dt data-i18n="f7_t">Export jederzeit</dt><dd data-i18n="f7_d">Einzelne E-Mails, Ordner oder das ganze Archiv als EML, MBOX oder PDF – zum Ausdrucken, als Nachweis oder für ein anderes Programm.</dd></div>
-          <div><dt data-i18n="f9_t">Archiv wird regelmäßig geprüft</dt><dd data-i18n="f9_d">Jede Woche setzt MailArchy jede E-Mail zusammen und kontrolliert jeden Anhang mit seiner Prüfsumme. Das Ergebnis steht auf der Startseite; bei Problemen kommt sofort eine Benachrichtigung.</dd></div>
-          <div><dt data-i18n="f10_t">Spart Platz, verliert nichts</dt><dd data-i18n="f10_d">Anhänge, die mehrfach vorkommen, werden nur einmal gespeichert, Texte mit einem aus Ihrem Archiv gelernten Wörterbuch gepackt. Die Startseite zeigt, wie viel Platz das spart.</dd></div>
-          <div><dt data-i18n="f8_t">Hell, dunkel, vier Sprachen</dt><dd data-i18n="f8_d">Folgt der Windows-Einstellung und dem Kontrastdesign; Deutsch, Englisch, Französisch und Spanisch.</dd></div>
+          <div><dt data-i18n="f1_t">Alle üblichen Quellen</dt><dd data-i18n="f1_d">IMAP und POP3 mit automatischer Einrichtung, Gmail und Microsoft-Konten per Anmeldung, Outlook-Dateien (.pst/.ost) ohne installiertes Outlook, Thunderbird, EML und MBOX.</dd></div>
+          <div><dt data-i18n="f2_t">Archiviert von selbst</dt><dd data-i18n="f2_d">Zeitplan je Postfach, Ausführung im Hintergrund, Benachrichtigung bei Fehlern.</dd></div>
+          <div><dt data-i18n="f3_t">Auf Wunsch verschlüsselt</dt><dd data-i18n="f3_d">AES-256 für das gesamte Archiv, mit Kennwort und Wiederherstellungsschlüssel.</dd></div>
+          <div><dt data-i18n="f4_t">Sicher anzeigen</dt><dd data-i18n="f4_d">Externe Bilder und Tracking-Pixel werden blockiert, Skripte nie ausgeführt.</dd></div>
+          <div><dt data-i18n="f5_t">Im Heimnetz auf dem Handy</dt><dd data-i18n="f5_d">Optionaler Lesezugriff im Heimnetz, mit Freigabe je Postfach und Benutzer.</dd></div>
+          <div><dt data-i18n="f6_t">KI-Assistent, wenn Sie wollen</dt><dd data-i18n="f6_d">Fragen an das Archiv in eigenen Worten, mit Quellenangaben. Nur mit Ihrem eigenen Claude-Schlüssel; ohne Schlüssel bleibt alles lokal.</dd></div>
+          <div><dt data-i18n="f7_t">Export jederzeit</dt><dd data-i18n="f7_d">Einzelne E-Mails, Ordner oder das gesamte Archiv als EML, MBOX oder PDF.</dd></div>
+          <div><dt data-i18n="f8_t">Hell, dunkel, vier Sprachen</dt><dd data-i18n="f8_d">Hell, dunkel und Kontrastdesign; Deutsch, Englisch, Französisch, Spanisch.</dd></div>
         </dl>
       </div>
     </section>
@@ -233,9 +229,9 @@
     <section class="abschnitt ablage offen" id="mitmachen" aria-labelledby="offen-titel">
       <div class="rahmen offen-innen">
         <div class="offen-text">
-          <h2 id="offen-titel" data-i18n="open_title">Offener Quelltext, mit KI-Unterstützung entwickelt</h2>
-          <p data-i18n="open_p1">MailArchy ist „vibe-coded“: Das Programm wurde im Dialog mit einer KI entwickelt, mit Claude von Anthropic. Ein Mensch hat festgelegt, was MailArchy tun soll und was nicht; einen großen Teil des Codes hat die KI geschrieben.</p>
-          <p data-i18n="open_p2">Deshalb liegt der gesamte Quelltext offen auf GitHub. So lässt sich nachprüfen, dass MailArchy am Postfach nichts löscht: Die Tests, die genau das sicherstellen, kann jeder lesen und selbst ausführen.</p>
+          <h2 id="offen-titel" data-i18n="open_title">Offener Quelltext</h2>
+          <p data-i18n="open_p1">Der gesamte Quelltext und alle Tests sind auf GitHub einsehbar – auch die Tests, die den rein lesenden Zugriff auf Postfächer absichern.</p>
+          <p data-i18n="open_p2">MailArchy wird mit KI-Unterstützung (Claude von Anthropic) entwickelt. Anforderungen, Prüfung und Freigabe liegen beim Entwickler.</p>
           <a class="knopf knopf-neben" href="{{REPO_URL}}" rel="noopener">
             <svg aria-hidden="true"><use href="#i-code"/></svg><span data-i18n="open_repo">Quelltext auf GitHub ansehen</span>
           </a>
@@ -259,16 +255,16 @@
           <h2 id="installation-titel" data-i18n="install_title">Installation in drei Schritten</h2>
           <ol class="schritte">
             <li data-i18n-html="s1"><a href="{{SETUP}}">Setup herunterladen</a> und starten.</li>
-            <li data-i18n-html="s2">Windows SmartScreen warnt beim ersten Start, weil das Setup nicht mit einem gekauften Zertifikat signiert ist. Klicken Sie auf <b>Weitere Informationen → Trotzdem ausführen</b>.</li>
-            <li data-i18n="s3">Ein Postfach oder eine Outlook-Datei hinzufügen. Fertig.</li>
+            <li data-i18n-html="s2">Bei der SmartScreen-Warnung <b>Weitere Informationen → Trotzdem ausführen</b> wählen. Das Setup ist nicht mit einem kostenpflichtigen Zertifikat signiert.</li>
+            <li data-i18n="s3">Postfach oder Outlook-Datei hinzufügen.</li>
           </ol>
-          <p class="hinweis" data-i18n="updates_note">Danach kommen Updates direkt über die App – signiert und vor der Installation geprüft.</p>
+          <p class="hinweis" data-i18n="updates_note">Updates installiert MailArchy selbst – signiert und geprüft.</p>
         </div>
         <dl class="steckbrief" id="pruefsumme">
           <div><dt data-i18n="sb_version">Aktuelle Version</dt><dd class="zahl">{{VERSION}}</dd></div>
           <div><dt data-i18n="sb_date">Veröffentlicht</dt><dd class="zahl">{{DATE}}</dd></div>
           <div><dt data-i18n="sb_setup">Setup</dt><dd><a href="{{SETUP}}" class="zahl">MailArchy-Setup-{{VERSION}}.exe</a> · <span class="zahl">{{SETUP_MB}}</span> MB</dd></div>
-          <div><dt data-i18n="sb_zip">Portable ZIP</dt><dd><a href="{{ZIP}}" data-i18n="sb_zip_link">herunterladen</a> · <span class="zahl">{{SIZE_MB}}</span> MB<span class="klein" data-i18n="sb_zip_note">Ohne Setup: entpacken und starten. Mit einer leeren Datei portable.txt neben MailVault.exe bleibt alles im Programmordner, etwa auf einem USB-Stick.</span></dd></div>
+          <div><dt data-i18n="sb_zip">Portable ZIP</dt><dd><a href="{{ZIP}}" data-i18n="sb_zip_link">herunterladen</a> · <span class="zahl">{{SIZE_MB}}</span> MB<span class="klein" data-i18n="sb_zip_note">Ohne Installation. Mit einer leeren Datei portable.txt neben MailVault.exe bleiben alle Daten im Programmordner.</span></dd></div>
           <div><dt data-i18n="sb_system">System</dt><dd data-i18n="sb_system_v">Windows 10 oder 11, 64 Bit</dd></div>
           <div><dt data-i18n="sb_price">Preis</dt><dd data-i18n="sb_price_v">Kostenlos</dd></div>
           <div class="pruef"><dt data-i18n="sb_sha">SHA-256 (ZIP)</dt><dd class="zahl">{{SHA256}}</dd></div>
@@ -280,14 +276,14 @@
     <section class="abschnitt ablage anmeldung" id="anmeldung" aria-labelledby="anmeldung-titel">
       <div class="rahmen anmeldung-innen">
         <div>
-          <h2 id="anmeldung-titel" data-i18n="signin_title">Gmail und Outlook: mit dem Konto anmelden statt mit Passwort</h2>
-          <p data-i18n-html="signin_p1">Gmail ist in der Download-Version schnell eingerichtet: Adresse eingeben, <b>Automatisch einrichten</b>, dann <b>Bei Google anmelden …</b>. Die Anmeldung läuft in Ihrem Browser direkt bei Google. MailArchy bekommt nur die Erlaubnis, Ihre E-Mails zu lesen, und nie Ihr Kennwort.</p>
-          <p data-i18n="signin_p2">Diese Anmeldung heißt OAuth. Damit ein Programm sie nutzen darf, muss es beim E-Mail-Anbieter als App registriert sein und dessen Client-ID kennen. Die Download-Version von dieser Seite bringt die Registrierung für Google mit. Wer MailArchy selbst aus dem Quelltext baut oder die Registrierung seiner Firma verwenden muss, trägt eigene Client-IDs unter Verwaltung → Anmeldung (OAuth) ein – die Anleitungen unten zeigen, wie das geht.</p>
+          <h2 id="anmeldung-titel" data-i18n="signin_title">Gmail und Microsoft: Anmeldung mit dem Konto</h2>
+          <p data-i18n-html="signin_p1">Gmail, Outlook.com, Hotmail und Microsoft 365 verbinden Sie über die Anmeldung beim Anbieter (OAuth). Die Anmeldung erfolgt im Browser; MailArchy erhält nur Lesezugriff und nie Ihr Kennwort.</p>
+          <p data-i18n="signin_p2">Die Download-Version enthält die nötigen App-Registrierungen. Eigene Client-IDs sind nur für selbst gebaute Versionen oder nach Firmenvorgabe nötig (Verwaltung → Anmeldung).</p>
         </div>
         <dl class="steckbrief anbieter">
-          <div><dt data-i18n="prov_gmail">Gmail, Google Workspace</dt><dd data-i18n="prov_gmail_v">Mit Google-Konto anmelden (in der Download-Version eingebaut) oder mit App-Passwort.</dd></div>
-          <div><dt data-i18n="prov_ms">Outlook.com, Hotmail, Microsoft 365</dt><dd data-i18n="prov_ms_v">Nur mit Microsoft-Konto: App-Passwörter nimmt Microsoft für fremde Mailprogramme seit September 2024 nicht mehr an. Die Anmeldung ist eingebaut: „Mit Microsoft-Konto“ wählen und im Browser anmelden. Firmenkonten (Microsoft 365) brauchen je nach Firma die Freigabe durch den Administrator.</dd></div>
-          <div><dt data-i18n="prov_other">GMX, WEB.DE, T-Online, iCloud, Yahoo …</dt><dd data-i18n="prov_other_v">Mit Kennwort bzw. App-Passwort; die Servereinstellungen ermittelt MailArchy selbst. Bei GMX und WEB.DE muss der Zugriff per IMAP/POP3 im Postfach eingeschaltet sein.</dd></div>
+          <div><dt data-i18n="prov_gmail">Gmail, Google Workspace</dt><dd data-i18n="prov_gmail_v">Google-Anmeldung oder App-Passwort.</dd></div>
+          <div><dt data-i18n="prov_ms">Outlook.com, Hotmail, Microsoft 365</dt><dd data-i18n="prov_ms_v">Microsoft-Anmeldung (App-Passwörter werden seit 2024 nicht mehr akzeptiert). Firmenkonten erfordern ggf. die Freigabe durch den Administrator.</dd></div>
+          <div><dt data-i18n="prov_other">GMX, WEB.DE, T-Online, iCloud, Yahoo …</dt><dd data-i18n="prov_other_v">Kennwort oder App-Passwort; Servereinstellungen werden automatisch ermittelt. Bei GMX und WEB.DE IMAP/POP3 im Postfach aktivieren.</dd></div>
         </dl>
       </div>
     </section>
@@ -296,7 +292,7 @@
     <section class="abschnitt anleitungen" id="anleitungen" aria-labelledby="anleitungen-titel">
       <div class="rahmen">
         <h2 id="anleitungen-titel" data-i18n="guides_title">Anleitungen</h2>
-        <p class="hinweis anleitungen-lead" data-i18n="guides_lead">Für die Download-Version reicht meist die erste Anleitung. Die übrigen brauchen Sie nur ohne Google-Anmeldung, für eine selbst gebaute Version oder für Microsoft.</p>
+        <p class="hinweis anleitungen-lead" data-i18n="guides_lead">Für die Download-Version genügt in der Regel die erste Anleitung.</p>
         <div class="anleitungen-liste">
 
           <details class="anleitung" id="anleitung-gmail">
@@ -417,8 +413,8 @@
       <div class="rahmen unterstuetzen-innen">
         <div>
           <h2 id="unterstuetzen-titel" data-i18n="support_title">MailArchy unterstützen</h2>
-          <p data-i18n="support_p1">MailArchy ist kostenlos und bleibt es. Wer mag, hilft dem Entwickler mit einem Beitrag, Server und Weiterentwicklung zu bezahlen.</p>
-          <p data-i18n="support_p2">Der Beitrag ändert nichts: Sie bekommen dieselbe App wie alle anderen, ohne Konto, ohne Freischaltung, ohne Werbung. Er ist deshalb kein Preis für eine Leistung, sondern ein freiwilliger Zuschuss.</p>
+          <p data-i18n="support_p1">MailArchy ist kostenlos. Freiwillige Beiträge finanzieren Server und Weiterentwicklung.</p>
+          <p data-i18n="support_p2">Ein Beitrag ist keine Gegenleistung: Funktionsumfang und Nutzung bleiben für alle gleich.</p>
           <a class="knopf knopf-neben" rel="noopener" target="_blank"
              href="https://www.paypal.com/cgi-bin/webscr?cmd=_xclick&amp;business=flusu%40zerze.de&amp;currency_code=EUR&amp;item_name=Kostenbeitrag+zu+Betrieb+und+Pflege+von+MailArchy">
             <span data-i18n="support_btn">Mit PayPal unterstützen</span><svg aria-hidden="true"><use href="#i-out"/></svg>
@@ -426,8 +422,8 @@
         </div>
         <div class="beleg">
           <h3 data-i18n="receipt_title">Bestätigung gewünscht?</h3>
-          <p data-i18n-html="receipt_p1">Auf Wunsch gibt es eine Zahlungsbestätigung mit Datum, Betrag und den Anbieterangaben aus dem Impressum. Schicken Sie dazu nach der Zahlung die PayPal-Transaktionsnummer an <a href="mailto:mailarchy@zerze.de">mailarchy@zerze.de</a>.</p>
-          <p data-i18n="receipt_p2">Keine Umsatzsteuer ausgewiesen: Der Beitrag ist freiwillig und hängt mit keiner Gegenleistung zusammen (echter Zuschuss). MailArchy ist nicht gemeinnützig; eine Spendenquittung ist daher nicht möglich.</p>
+          <p data-i18n-html="receipt_p1">Eine Zahlungsbestätigung erhalten Sie auf Anfrage: PayPal-Transaktionsnummer an <a href="mailto:mailarchy@zerze.de">mailarchy@zerze.de</a> senden.</p>
+          <p data-i18n="receipt_p2">Ohne Umsatzsteuer, da freiwilliger Zuschuss ohne Gegenleistung. Keine Spendenquittung möglich (nicht gemeinnützig).</p>
         </div>
       </div>
     </section>
@@ -437,15 +433,15 @@
       <div class="rahmen fragen-innen">
         <h2 id="fragen-titel" data-i18n="faq_title">Häufige Fragen</h2>
         <div class="fragen-liste">
-          <details><summary data-i18n="q1">Braucht MailArchy eine Internetverbindung?</summary><p data-i18n="a1">Nur zum Abholen von E-Mails aus Postfächern und für die Update-Suche (abschaltbar). Suchen, Lesen und Exportieren funktionieren komplett offline.</p></details>
-          <details><summary data-i18n="q2">Wo liegen meine Daten?</summary><p data-i18n="a2">In einem Ordner Ihrer Wahl auf Ihrem PC – zum Sichern einfach den Ordner kopieren. Wer das ZIP mit einer Datei portable.txt neben MailVault.exe nutzt, hat alles im Programmordner, etwa auf einem USB-Stick.</p></details>
-          <details><summary data-i18n="q7">Warum warnt Windows beim ersten Start?</summary><p data-i18n="a7">SmartScreen kennt Programme ohne gekauftes Signaturzertifikat noch nicht und warnt deshalb. Was im Setup steckt, können Sie im offenen Quelltext auf GitHub nachlesen. Updates prüft MailArchy danach selbst anhand einer Signatur.</p></details>
-          <details><summary data-i18n="q3">Funktioniert Gmail mit Zwei-Faktor-Anmeldung?</summary><p data-i18n="a3">Ja. Am einfachsten melden Sie sich in MailArchy mit Ihrem Google-Konto an – dann braucht es kein Passwort in MailArchy. Alternativ geht ein App-Passwort aus Ihrem Google-Konto. Beides steht oben in den Anleitungen.</p></details>
-          <details><summary data-i18n="q8">Und Outlook.com, Hotmail oder Microsoft 365?</summary><p data-i18n="a8">Microsoft lässt fremde Mailprogramme nur noch mit der Microsoft-Anmeldung (OAuth) zu, App-Passwörter funktionieren dort nicht mehr. MailArchy hat diese Anmeldung eingebaut: Im Profil „Mit Microsoft-Konto“ wählen, im Browser anmelden und den Zugriff erlauben. Bei Firmenkonten (Microsoft 365) kann es sein, dass der Administrator die App erst freigeben muss. Alternativ lässt sich die Outlook-Datendatei (.pst/.ost) archivieren.</p></details>
-          <details><summary data-i18n="q4">Gibt es MailArchy für Mac oder Linux?</summary><p data-i18n="a4">Nein, MailArchy läuft unter Windows 10 und 11. Der Webzugriff im Heimnetz funktioniert aber mit jedem Browser, auch auf Mac, iPhone und Android.</p></details>
-          <details><summary data-i18n="q5">Was passiert mit meinen E-Mails beim KI-Assistenten?</summary><p data-i18n="a5">Nichts, solange Sie ihn nicht einschalten. Mit Ihrem eigenen Claude-Schlüssel gehen nur die Auszüge an Anthropic, die zur Beantwortung Ihrer Frage nötig sind – Sie sehen jede Quelle.</p></details>
-          <details><summary data-i18n="q6">Wie entferne ich MailArchy wieder?</summary><p data-i18n="a6">MailArchy beenden, den Ordner %LOCALAPPDATA%\Programs\MailVault und die Verknüpfung im Startmenü löschen – fertig, Administratorrechte braucht es nicht. Ihr Archiv liegt getrennt davon und bleibt, bis Sie es selbst löschen.</p></details>
-          <details><summary data-i18n="q9">Hieß MailArchy früher MailVault?</summary><p data-i18n="a9">Ja. Bis Version 0.7 hieß das Programm MailVault. Es ist dasselbe Programm mit demselben Archiv: Bestehende Installationen bekommen den neuen Namen automatisch mit dem nächsten Update, Ihre E-Mails und Einstellungen bleiben, wo sie sind.</p></details>
+          <details><summary data-i18n="q1">Braucht MailArchy eine Internetverbindung?</summary><p data-i18n="a1">Nur zum Abrufen von E-Mails und für die Update-Suche. Suchen, Lesen und Exportieren funktionieren offline.</p></details>
+          <details><summary data-i18n="q2">Wo liegen meine Daten?</summary><p data-i18n="a2">In einem Ordner Ihrer Wahl auf Ihrem PC. Zum Sichern genügt das Kopieren dieses Ordners.</p></details>
+          <details><summary data-i18n="q7">Warum warnt Windows beim ersten Start?</summary><p data-i18n="a7">SmartScreen warnt bei Programmen ohne kostenpflichtiges Signaturzertifikat. Der Quelltext ist auf GitHub einsehbar; Updates prüft MailArchy anhand einer Signatur.</p></details>
+          <details><summary data-i18n="q3">Funktioniert Gmail mit Zwei-Faktor-Anmeldung?</summary><p data-i18n="a3">Ja, per Google-Anmeldung oder App-Passwort. Siehe Anleitungen.</p></details>
+          <details><summary data-i18n="q8">Und Outlook.com, Hotmail oder Microsoft 365?</summary><p data-i18n="a8">Ja, per eingebauter Microsoft-Anmeldung. Bei Firmenkonten kann eine Freigabe durch den Administrator nötig sein. Alternativ lassen sich Outlook-Datendateien (.pst/.ost) archivieren.</p></details>
+          <details><summary data-i18n="q4">Gibt es MailArchy für Mac oder Linux?</summary><p data-i18n="a4">Nein, nur Windows 10 und 11. Der Webzugriff im Heimnetz funktioniert in jedem Browser.</p></details>
+          <details><summary data-i18n="q5">Was passiert mit meinen E-Mails beim KI-Assistenten?</summary><p data-i18n="a5">Ohne Ihren eigenen Claude-Schlüssel ist der Assistent aus. Mit Schlüssel werden nur die für eine Frage nötigen Auszüge an Anthropic gesendet; jede Quelle wird angezeigt.</p></details>
+          <details><summary data-i18n="q6">Wie entferne ich MailArchy wieder?</summary><p data-i18n="a6">MailArchy beenden, den Ordner %LOCALAPPDATA%\Programs\MailVault und die Startmenü-Verknüpfung löschen. Das Archiv bleibt davon unberührt.</p></details>
+          <details><summary data-i18n="q9">Hieß MailArchy früher MailVault?</summary><p data-i18n="a9">Ja, bis Version 0.7. Bestehende Installationen werden automatisch umgestellt; Archiv und Einstellungen bleiben erhalten.</p></details>
         </div>
       </div>
     </section>
