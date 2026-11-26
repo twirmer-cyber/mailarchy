@@ -1,6 +1,7 @@
 {
   "de": [
     "MailVault heißt jetzt MailArchy. Programm, Archiv und Einstellungen bleiben unverändert – nur der Name ist neu.",
+    "Outlook.com, Hotmail und Microsoft 365 lassen sich jetzt direkt mit dem Microsoft-Konto einbinden – ohne eigene Client-ID.",
     "Neue Webseite: mailarchy.zerze.de. Updates kommen weiterhin automatisch und signiert.",
     "Die Startmenü-Verknüpfung heißt jetzt „MailArchy“.",
     "Suche: Wer im Ordnerbaum einen Ordner auswählt, sucht nur noch dort (samt Unterordnern) – mit eigenem Suchfeld in der Ordneransicht. Der Chip „Nur in …“ hebt die Beschränkung auf.",
@@ -8,6 +9,7 @@
   ],
   "en": [
     "MailVault is now called MailArchy. The program, your archive and your settings stay the same – only the name is new.",
+    "Outlook.com, Hotmail and Microsoft 365 can now be added directly with your Microsoft account – no client ID of your own needed.",
     "New website: mailarchy.zerze.de. Updates keep arriving automatically and signed.",
     "The Start menu shortcut is now called “MailArchy”.",
     "Search: when you select a folder in the folder tree, searches only cover that folder and its subfolders – with its own search box in the folder view. The “Only in …” chip lifts the restriction.",
@@ -15,6 +17,7 @@
   ],
   "fr": [
     "MailVault s’appelle désormais MailArchy. Le programme, votre archive et vos réglages restent inchangés – seul le nom est nouveau.",
+    "Outlook.com, Hotmail et Microsoft 365 s’ajoutent désormais directement avec le compte Microsoft – sans ID client personnel.",
     "Nouveau site web : mailarchy.zerze.de. Les mises à jour continuent d’arriver automatiquement et signées.",
     "Le raccourci du menu Démarrer s’appelle désormais « MailArchy ».",
     "Recherche : lorsqu’un dossier est sélectionné dans l’arborescence, la recherche ne porte que sur ce dossier et ses sous-dossiers – avec son propre champ de recherche. La puce « Uniquement dans … » lève la restriction.",
@@ -22,6 +25,7 @@
   ],
   "es": [
     "MailVault ahora se llama MailArchy. El programa, su archivo y sus ajustes no cambian: solo el nombre es nuevo.",
+    "Outlook.com, Hotmail y Microsoft 365 ya se pueden añadir directamente con la cuenta de Microsoft, sin ID de cliente propio.",
     "Nuevo sitio web: mailarchy.zerze.de. Las actualizaciones siguen llegando automáticamente y firmadas.",
     "El acceso directo del menú Inicio ahora se llama «MailArchy».",
     "Búsqueda: al seleccionar una carpeta en el árbol, solo se busca en ella y sus subcarpetas, con su propio cuadro de búsqueda. La etiqueta «Solo en …» quita la restricción.",
