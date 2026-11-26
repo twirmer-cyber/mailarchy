@@ -251,6 +251,13 @@ public partial class App : Application
 
     void OnUnhandledException(object sender, DispatcherUnhandledExceptionEventArgs e)
     {
+        // Für die Fehlersuche: vollständige Meldung mit Aufrufstapel lokal im Datenordner ablegen (wird nirgends hin gesendet).
+        try
+        {
+            var dir = Services.AppState.Archive?.DataDirectory ?? System.IO.Path.GetTempPath();
+            System.IO.File.AppendAllText(System.IO.Path.Combine(dir, "fehler.log"), $"{DateTime.Now:yyyy-MM-dd HH:mm:ss}  {e.Exception}" + Environment.NewLine + Environment.NewLine);
+        }
+        catch (Exception) { }
         MessageBox.Show(L.F("App_UnexpectedError", e.Exception.Message), "MailArchy",
             MessageBoxButton.OK, MessageBoxImage.Error);
         e.Handled = true;
